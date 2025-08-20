@@ -1,0 +1,3 @@
+2025-08-12 13:39:58 | INFO | __main__ | Application started
+2025-08-12 13:40:07 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-12 13:40:21 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'hide')

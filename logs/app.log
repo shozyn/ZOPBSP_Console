@@ -1,0 +1,2 @@
+2025-08-12 16:00:10 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-12 16:00:14 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'hide')

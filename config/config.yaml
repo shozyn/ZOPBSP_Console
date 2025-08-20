@@ -1,0 +1,211 @@
+num_receivers: 3
+map:
+  # - layer: "C:\\Code\\Console\\kosobudno.tif"
+  - layer: "resources/ortofot_topocentryczny.bmp"
+targets:
+  - id: "Target1"
+    parameters:
+      IP:
+        value: 153.19.108.122
+        editable: false  
+      Port:
+        value: 7000
+        editable: false  
+receivers:
+  - id: RPI1
+    parameters:
+      IP:
+        value: 192.168.0.210
+        editable: true
+      MASK:
+        value: 255.255.255.0
+        editable: true
+      Serial:
+        value: 6675
+        editable: false
+      Mode:
+        value: 2
+        editable: true
+      BatPerc:
+        value: 67
+        editable: false
+      StPPS:
+        value: 5
+        editable: false
+      SRate:
+        value: 64000
+        editable: true
+      Nagrywanie:
+        value: True
+        editable: true
+      AktHydro:
+        value: True
+        editable: true
+      AktGPS:
+        value: True
+        editable: true
+      RPiProc:
+        value: ""
+        editable: false
+    sftp: 
+      host:     "172.30.83.44"
+      sftp_user:     "stann"
+      sftp_password: "123"
+      sftp_port:     22      
+      host_key_policy: "auto_add"          # auto_add | reject | system
+      keepalive_s: 30
+      poll_interval_ms: 3000               
+      stability_checks: 2                  # unchanged size+mtime across N polls
+      monitor_poll_s: 10                   # read monitor.txt every N seconds
+      remote_dirs:
+        streaming: "/home/streaming"
+        gps: "/home/GPS"
+        config: "/home/Config"
+      local_dirs:                          
+        streaming: "downloads/RPI1/streaming"
+        gps: "downloads/RPI1/GPS"
+        config: "downloads/RPI1/Config"
+      patterns:
+        streaming: "*.wav"
+        gps: "*.txt"
+        monitor_file: "monitor.txt"
+        control_file: "control.txt"
+      delete_after_download:
+        streaming: false
+        gps: false
+  - id: RPI2
+    parameters:
+      server_IP:
+        value: 192.168.0.220
+        editable: false
+      IP:
+        value: 192.168.138.12
+        editable: true
+      MASK:
+        value: 255.255.255.0
+        editable: true
+      Serial:
+        value: 6676
+        editable: false
+      Mode:
+        value: 2
+        editable: true
+      BatPerc:
+        value: 67
+        editable: false
+      StPPS:
+        value: 5
+        editable: false
+      SRate:
+        value: 64000
+        editable: true
+      Nagrywanie:
+        value: True
+        editable: true
+      AktHydro:
+        value: True
+        editable: true
+      AktGPS:
+        value: True
+        editable: true
+      RPiProc:
+        value: ""
+        editable: false
+    sftp: 
+      host:     "192.168.0.220"
+      sftp_user:     "pi"
+      sftp_password: "raspberry"
+      sftp_port:     22      
+      host_key_policy: "auto_add"          # auto_add | reject | system
+      keepalive_s: 30
+      poll_interval_ms: 3000               
+      stability_checks: 2                  # unchanged size+mtime across N polls
+      monitor_poll_s: 10                   # read monitor.txt every N seconds
+      remote_dirs:
+        streaming: "/home/streaming"
+        gps: "/home/GPS"
+        config: "/home/Config"
+      local_dirs:                          
+        streaming: "downloads/RPI1/streaming"
+        gps: "downloads/RPI1/GPS"
+        config: "downloads/RPI1/Config"
+      patterns:
+        streaming: "*.wav"
+        gps: "*.txt"
+        monitor_file: "monitor.txt"
+        control_file: "control.txt"
+      delete_after_download:
+        streaming: false
+        gps: false
+  - id: RPI3
+    parameters:
+      server_IP:
+        value: 192.168.0.230
+        editable: false
+      IP:
+        value: 192.168.0.230
+        editable: true
+      MASK:
+        value: 255.255.255.0
+        editable: true
+      Serial:
+        value: 6941
+        editable: false
+      Mode:
+        value: 2
+        editable: true
+      BatPerc:
+        value: 67
+        editable: false
+      StPPS:
+        value: 5
+        editable: false
+      SRate:
+        value: 64000
+        editable: true
+      Nagrywanie:
+        value: True
+        editable: true
+      AktHydro:
+        value: True
+        editable: true
+      AktGPS:
+        value: True
+        editable: true
+      RPiProc:
+        value: ""
+        editable: false
+    sftp: 
+      host:     "192.168.0.230"
+      sftp_user:     "pi"
+      sftp_password: "raspberry"
+      sftp_port:     22      
+      host_key_policy: "auto_add"          # auto_add | reject | system
+      keepalive_s: 30
+      poll_interval_ms: 3000               
+      stability_checks: 2                  # unchanged size+mtime across N polls
+      monitor_poll_s: 10                   # read monitor.txt every N seconds
+      remote_dirs:
+        streaming: "/home/streaming"
+        gps: "/home/GPS"
+        config: "/home/Config"
+      local_dirs:                          
+        streaming: "downloads/RPI1/streaming"
+        gps: "downloads/RPI1/GPS"
+        config: "downloads/RPI1/Config"
+      patterns:
+        streaming: "*.wav"
+        gps: "*.txt"
+        monitor_file: "monitor.txt"
+        control_file: "control.txt"
+      delete_after_download:
+        streaming: false
+        gps: false
+logging:
+  file: "logs/log.log"
+  file_level: "DEBUG"
+  gui_level: "INFO"
+  ring_capacity: 2000
+  rotate: true
+  max_bytes: 5000000
+  backup_count: 5

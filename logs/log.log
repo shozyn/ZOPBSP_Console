@@ -1,0 +1,1349 @@
+2025-08-13 11:42:26 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-13 11:42:31 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'hide')
+2025-08-13 13:00:05 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 13:00:16 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 13:21:06 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 14:13:06 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 14:21:52 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 15:16:59 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-13 16:21:26 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('', 'open_project')
+2025-08-13 16:21:30 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-14 10:08:35 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-14 10:18:16 | INFO | controller.target_controller | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-14 11:22:26 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'display')
+2025-08-18 17:18:29 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-18 17:18:34 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-18 17:18:37 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:18:42 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:18:43 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:18:46 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:18:51 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-18 17:19:02 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-18 17:19:06 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-18 17:21:39 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-18 17:21:42 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-18 17:28:21 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:28:24 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:28:25 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:48:00 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-18 17:48:02 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-18 17:48:08 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 17:48:10 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-18 17:48:18 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI2', 'connect')
+2025-08-18 17:48:21 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI2', 'disconnect')
+2025-08-18 17:48:23 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-18 17:48:25 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI3', 'disconnect')
+2025-08-18 18:08:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 18:08:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 18:08:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 18:08:23 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-18 18:08:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-18 18:08:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-18 18:08:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-18 18:08:31 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 13:31:39 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-19 13:31:39 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-19 13:31:39 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-19 13:31:39 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'set_parameters')
+2025-08-19 17:25:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:30:28 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:36:56 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:37:41 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:37:41 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:37:41 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:37:41 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:40:27 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:40:27 | INFO | controller.controllers | [ReceiverController] In function: _start_sftp;
+2025-08-19 17:40:27 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:40:27 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:40:27 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:43:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:43:36 | INFO | controller.controllers | [ReceiverController] In function: _start_sftp;
+2025-08-19 17:43:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:43:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:43:36 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:43:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 17:44:57 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:44:57 | INFO | controller.controllers | [ReceiverController] In function: _start_sftp;
+2025-08-19 17:44:57 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:44:57 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:44:57 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:44:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 17:45:00 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:45:21 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:45:45 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:46:09 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:46:30 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:46:51 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:47:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:47:33 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:47:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:48:00 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 17:48:46 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:48:46 | INFO | controller.controllers | [ReceiverController] In function: _start_sftp;
+2025-08-19 17:48:46 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:48:46 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:48:46 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 17:48:46 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 17:48:49 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 17:49:03 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:07:34 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:07:34 | INFO | controller.controllers | [ReceiverController] In function: _start_sftp;
+2025-08-19 18:07:34 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:07:34 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:07:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 18:07:34 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:07:34 | INFO | controller.controllers | SFTP poller start host=192.168.0.210
+2025-08-19 18:07:37 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 18:31:29 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:32:44 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:44:52 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:45:13 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-19 18:45:13 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-19 18:45:13 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-19 18:45:13 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-19 18:45:33 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:45:33 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 18:47:19 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:19 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:19 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:19 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 18:47:19 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:22 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 18:47:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:33 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:33 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:33 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:37 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:37 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:37 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:37 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-19 18:47:37 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-19 18:47:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-19 18:47:44 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:46 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:46 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-19 18:47:46 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 12:52:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 12:52:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 12:52:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 12:52:25 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-20 12:52:25 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 12:52:28 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 12:52:28 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 12:52:30 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 12:52:30 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 12:52:30 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 13:05:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:05:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:05:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:05:32 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Started
+2025-08-20 13:05:32 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:05:35 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:14:45 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:14:45 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:14:45 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:14:45 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:14:45 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:14:45 | INFO | controller.controllers | [SFTP poller start host=None
+2025-08-20 13:14:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:14:54 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:15:00 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:15:06 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:15:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:16:59 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:16:59 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:16:59 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:16:59 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:16:59 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:16:59 | INFO | controller.controllers | [SFTP poller start host=None
+2025-08-20 13:17:02 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:17:02 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 13:17:04 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 13:17:04 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 13:17:04 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 13:18:51 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:18:51 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:18:51 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:18:51 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:18:51 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:18:51 | INFO | controller.controllers | [SFTP poller start host={'value': '192.168.0.210'}
+2025-08-20 13:18:54 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:18:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:20:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:20:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:20:32 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:20:32 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:20:32 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:20:32 | INFO | controller.controllers | [SFTP poller start host=192.168.0.210
+2025-08-20 13:20:35 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:31:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:31:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:31:36 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:31:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:31:36 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:31:36 | INFO | controller.controllers | [SFTP poller start host=192.168.0.210
+2025-08-20 13:31:39 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:32:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:32:27 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:32:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:33:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:33:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:34:00 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:34:21 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:34:45 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:35:06 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:35:27 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:35:51 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:36:15 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:36:39 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:37:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:37:27 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:37:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:38:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:38:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:39:01 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:39:22 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:39:46 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:40:10 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:40:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:40:55 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:41:19 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:41:43 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:42:07 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:42:31 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:42:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:43:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:43:37 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:44:01 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:44:25 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:45:00 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:45:00 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:45:00 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:45:00 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 13:45:00 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 13:45:00 | INFO | controller.controllers | [SFTP poller start host=192.168.0.210
+2025-08-20 13:45:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:45:24 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:45:27 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:45:48 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:45:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:46:09 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:46:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:46:33 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:46:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:46:57 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:47:00 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:47:21 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:47:21 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:47:42 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:47:42 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:48:03 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:48:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:48:24 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:48:24 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:48:45 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:48:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:49:09 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:49:09 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:49:30 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:49:30 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:49:51 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:49:51 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:50:13 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:50:15 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:50:37 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:50:37 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:50:58 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:50:58 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:51:19 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:51:19 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:51:40 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:51:43 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:52:04 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:52:07 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:52:28 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:52:28 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:52:49 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:52:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:53:13 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:53:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:53:37 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:53:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:54:01 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:54:04 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:54:25 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:54:28 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:54:49 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:54:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:55:13 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:55:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:55:37 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:55:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:56:01 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:56:01 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:56:22 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:56:25 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:56:46 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:56:49 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:57:10 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:57:13 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:57:34 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:57:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:57:55 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:57:55 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:58:16 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:58:17 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:58:38 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:58:38 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:58:59 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:59:02 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:59:23 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:59:26 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 13:59:47 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 13:59:50 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:00:11 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:00:14 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:00:35 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:00:38 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:00:59 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:01:02 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:01:23 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:01:23 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:01:44 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:01:44 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:02:05 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:02:05 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:02:26 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:02:29 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:02:50 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:02:50 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:03:11 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:03:14 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:03:35 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:03:38 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:03:59 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:04:02 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:04:23 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:04:23 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:04:45 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:04:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:05:09 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:05:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:05:33 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:05:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:05:57 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:05:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:06:18 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:06:21 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:06:42 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:06:45 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:07:06 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:07:09 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:07:30 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:07:33 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:07:54 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:07:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:08:18 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:08:21 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:08:42 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:08:42 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:09:03 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:09:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:09:24 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:09:24 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:09:45 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:09:48 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:10:09 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:10:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:10:33 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:10:36 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:10:57 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:10:57 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:11:18 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:11:18 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:11:39 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:11:42 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:12:03 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:12:06 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:12:27 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:12:30 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:12:51 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:12:54 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:13:15 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:13:18 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:13:39 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:13:42 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:14:03 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:14:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:14:24 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:14:27 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:14:49 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:14:51 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:15:13 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:15:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:15:37 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:15:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:16:01 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:16:01 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:16:22 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:16:22 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:16:43 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:16:46 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:17:07 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:17:10 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:17:31 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:17:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:17:55 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:17:55 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:18:16 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:18:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:18:37 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:18:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:19:01 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:19:04 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:19:25 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:19:28 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:19:49 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:19:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:20:13 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:20:13 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:20:34 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:20:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:20:45 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 14:20:47 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 14:20:47 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 14:20:47 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 14:21:01 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-20 14:21:01 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-20 14:21:01 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-20 14:21:01 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'connect')
+2025-08-20 14:21:06 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-20 14:21:06 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-20 14:21:06 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-20 14:21:06 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('Target1', 'disconnect')
+2025-08-20 14:21:12 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 14:21:12 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 14:21:12 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 14:21:12 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 14:21:12 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 14:21:12 | INFO | controller.controllers | [SFTP poller start host=192.168.0.210
+2025-08-20 14:21:15 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:21:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI2', 'connect')
+2025-08-20 14:21:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI2', 'connect')
+2025-08-20 14:21:23 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI2', 'connect')
+2025-08-20 14:21:23 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI2', 'connect')
+2025-08-20 14:21:23 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 14:21:23 | INFO | controller.controllers | [SFTP poller start host=192.168.0.220
+2025-08-20 14:21:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-20 14:21:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-20 14:21:25 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-20 14:21:25 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI3', 'connect')
+2025-08-20 14:21:25 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 14:21:25 | INFO | controller.controllers | [SFTP poller start host=192.168.0.230
+2025-08-20 14:21:26 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:21:28 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:21:36 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:21:39 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:21:47 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:21:49 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:21:50 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:21:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 14:22:00 | INFO | controller.controllers | [[WinError 10060] Próba połączenia nie powiodła się, ponieważ połączona strona nie odpowiedziała poprawnie po ustalonym okresie czasu lub utworzone połączenie nie powiodło się, ponieważ połączony host nie odpowiedział
+2025-08-20 14:22:03 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:40 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:49:40 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:49:40 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:49:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 16:49:40 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:49:40 | INFO | controller.controllers | [SFTP poller start host=172.30.83.44
+2025-08-20 16:49:43 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8b3aa0
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:49:43 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:49:43 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:49:45 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:49:45 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:49:46 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8e7320
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:49:46 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:49:46 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:49:50 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:49:50 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:49:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8e7890
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:49:52 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:49:52 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:49:54 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:49:54 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:49:55 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8e7e00
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:49:55 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:49:55 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:49:57 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:49:57 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:49:58 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fc470
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:49:58 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:49:58 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:50:02 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:50:02 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:50:04 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fcfb0
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:50:04 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:50:04 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:50:06 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:50:06 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:50:07 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fe060
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:50:07 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:50:07 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:50:09 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:50:09 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:50:10 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fd460
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:50:10 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:50:10 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:50:12 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:50:12 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:50:13 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fed80
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:50:13 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:50:13 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:50:14 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:50:15 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:50:16 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:50:16 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:50:16 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:50:16 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:50:16 | INFO | controller.controllers | [SFTP poller stopped
+2025-08-20 16:51:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:51:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:51:31 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:51:31 | INFO | utils.sftp_worker | [_SftpWorker] In function: start; Worker sftp started
+2025-08-20 16:51:31 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'connect')
+2025-08-20 16:51:31 | INFO | controller.controllers | [SFTP poller start host=172.30.83.44
+2025-08-20 16:51:34 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8ffa40
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:34 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:34 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:36 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:36 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:37 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f8fe3c0
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:37 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:37 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:39 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:39 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:40 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94c770
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:40 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:40 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:42 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:42 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:51:43 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94d1f0
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:43 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:43 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:45 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:45 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:51:46 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94e0f0
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:46 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:46 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:48 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:48 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:49 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94ca70
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:49 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:49 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:51 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:51 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:51:52 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94ea80
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:51:52 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:51:52 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:51:54 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:51:54 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:51:55 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:51:55 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:55 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94f530
+2025-08-20 16:51:55 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:55 | DEBUG | paramiko.transport | Banner: Exceeded MaxStartups
+2025-08-20 16:51:55 | ERROR | paramiko.transport | Exception (client): Error reading SSH protocol banner
+2025-08-20 16:51:55 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:51:55 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2363, in _check_banner
+2025-08-20 16:51:55 | ERROR | paramiko.transport |     buf = self.packetizer.readline(timeout)
+2025-08-20 16:51:55 | ERROR | paramiko.transport |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:51:55 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 395, in readline
+2025-08-20 16:51:55 | ERROR | paramiko.transport |     buf += self._read_timeout(timeout)
+2025-08-20 16:51:55 | ERROR | paramiko.transport |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:51:55 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 665, in _read_timeout
+2025-08-20 16:51:55 | ERROR | paramiko.transport |     raise EOFError()
+2025-08-20 16:51:55 | ERROR | paramiko.transport | EOFError
+2025-08-20 16:51:55 | ERROR | paramiko.transport | 
+2025-08-20 16:51:55 | ERROR | paramiko.transport | During handling of the above exception, another exception occurred:
+2025-08-20 16:51:55 | ERROR | paramiko.transport | 
+2025-08-20 16:51:55 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:51:55 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2179, in run
+2025-08-20 16:51:55 | ERROR | paramiko.transport |     self._check_banner()
+2025-08-20 16:51:55 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2367, in _check_banner
+2025-08-20 16:51:55 | ERROR | paramiko.transport |     raise SSHException(
+2025-08-20 16:51:55 | ERROR | paramiko.transport | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2025-08-20 16:51:55 | ERROR | paramiko.transport | 
+2025-08-20 16:51:55 | INFO | controller.controllers | [Error reading SSH protocol banner
+2025-08-20 16:51:58 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:51:58 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:51:58 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f7c0e60
+2025-08-20 16:51:58 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:51:58 | DEBUG | paramiko.transport | Banner: Exceeded MaxStartups
+2025-08-20 16:51:58 | ERROR | paramiko.transport | Exception (client): Error reading SSH protocol banner
+2025-08-20 16:51:58 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:51:58 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2363, in _check_banner
+2025-08-20 16:51:58 | ERROR | paramiko.transport |     buf = self.packetizer.readline(timeout)
+2025-08-20 16:51:58 | ERROR | paramiko.transport |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:51:58 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 395, in readline
+2025-08-20 16:51:58 | ERROR | paramiko.transport |     buf += self._read_timeout(timeout)
+2025-08-20 16:51:58 | ERROR | paramiko.transport |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:51:58 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 665, in _read_timeout
+2025-08-20 16:51:58 | ERROR | paramiko.transport |     raise EOFError()
+2025-08-20 16:51:58 | ERROR | paramiko.transport | EOFError
+2025-08-20 16:51:58 | ERROR | paramiko.transport | 
+2025-08-20 16:51:58 | ERROR | paramiko.transport | During handling of the above exception, another exception occurred:
+2025-08-20 16:51:58 | ERROR | paramiko.transport | 
+2025-08-20 16:51:58 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:51:58 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2179, in run
+2025-08-20 16:51:58 | ERROR | paramiko.transport |     self._check_banner()
+2025-08-20 16:51:58 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2367, in _check_banner
+2025-08-20 16:51:58 | ERROR | paramiko.transport |     raise SSHException(
+2025-08-20 16:51:58 | ERROR | paramiko.transport | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2025-08-20 16:51:58 | ERROR | paramiko.transport | 
+2025-08-20 16:51:58 | INFO | controller.controllers | [Error reading SSH protocol banner
+2025-08-20 16:52:01 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f94eed0
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:01 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:01 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:03 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:03 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:04 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:52:04 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:04 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f9687d0
+2025-08-20 16:52:04 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:04 | DEBUG | paramiko.transport | Banner: Exceeded MaxStartups
+2025-08-20 16:52:04 | ERROR | paramiko.transport | Exception (client): Error reading SSH protocol banner
+2025-08-20 16:52:04 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:52:04 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2363, in _check_banner
+2025-08-20 16:52:04 | ERROR | paramiko.transport |     buf = self.packetizer.readline(timeout)
+2025-08-20 16:52:04 | ERROR | paramiko.transport |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:52:04 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 395, in readline
+2025-08-20 16:52:04 | ERROR | paramiko.transport |     buf += self._read_timeout(timeout)
+2025-08-20 16:52:04 | ERROR | paramiko.transport |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:52:04 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 665, in _read_timeout
+2025-08-20 16:52:04 | ERROR | paramiko.transport |     raise EOFError()
+2025-08-20 16:52:04 | ERROR | paramiko.transport | EOFError
+2025-08-20 16:52:04 | ERROR | paramiko.transport | 
+2025-08-20 16:52:04 | ERROR | paramiko.transport | During handling of the above exception, another exception occurred:
+2025-08-20 16:52:04 | ERROR | paramiko.transport | 
+2025-08-20 16:52:04 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:52:04 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2179, in run
+2025-08-20 16:52:04 | ERROR | paramiko.transport |     self._check_banner()
+2025-08-20 16:52:04 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2367, in _check_banner
+2025-08-20 16:52:04 | ERROR | paramiko.transport |     raise SSHException(
+2025-08-20 16:52:04 | ERROR | paramiko.transport | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2025-08-20 16:52:04 | ERROR | paramiko.transport | 
+2025-08-20 16:52:04 | INFO | controller.controllers | [Error reading SSH protocol banner
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:52:07 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f969250
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:07 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:07 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:09 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:09 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:52:10 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f9694f0
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:10 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:10 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:12 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:12 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:52:13 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f969d30
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:13 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:13 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:15 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:15 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:16 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f968770
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:16 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:16 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:18 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:18 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:19 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f96aa50
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.11
+2025-08-20 16:52:19 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.6p1)
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | kex algos: sntrup761x25519-sha512@openssh.com, curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, ext-info-s, kex-strict-s-v00@openssh.com
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | client lang: <none>
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | server lang: <none>
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | kex follows: False
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Compression: none
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 172.30.83.44: b'1908a8b1116e518222c90a78b0a7520c'
+2025-08-20 16:52:19 | DEBUG | paramiko.transport | userauth is OK
+2025-08-20 16:52:21 | INFO | paramiko.transport | Authentication (password) failed.
+2025-08-20 16:52:21 | INFO | controller.controllers | [Authentication failed.
+2025-08-20 16:52:22 | INFO | utils.sftp_worker | [_SftpWorker] In function: _tick; In tick
+2025-08-20 16:52:22 | DEBUG | paramiko.transport | starting thread (client mode): 0x2f96b4d0
+2025-08-20 16:52:22 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-08-20 16:52:22 | DEBUG | paramiko.transport | Banner: Exceeded MaxStartups
+2025-08-20 16:52:22 | ERROR | paramiko.transport | Exception (client): Error reading SSH protocol banner
+2025-08-20 16:52:22 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:52:22 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2363, in _check_banner
+2025-08-20 16:52:22 | ERROR | paramiko.transport |     buf = self.packetizer.readline(timeout)
+2025-08-20 16:52:22 | ERROR | paramiko.transport |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:52:22 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 395, in readline
+2025-08-20 16:52:22 | ERROR | paramiko.transport |     buf += self._read_timeout(timeout)
+2025-08-20 16:52:22 | ERROR | paramiko.transport |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-20 16:52:22 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\packet.py", line 665, in _read_timeout
+2025-08-20 16:52:22 | ERROR | paramiko.transport |     raise EOFError()
+2025-08-20 16:52:22 | ERROR | paramiko.transport | EOFError
+2025-08-20 16:52:22 | ERROR | paramiko.transport | 
+2025-08-20 16:52:22 | ERROR | paramiko.transport | During handling of the above exception, another exception occurred:
+2025-08-20 16:52:22 | ERROR | paramiko.transport | 
+2025-08-20 16:52:22 | ERROR | paramiko.transport | Traceback (most recent call last):
+2025-08-20 16:52:22 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2179, in run
+2025-08-20 16:52:22 | ERROR | paramiko.transport |     self._check_banner()
+2025-08-20 16:52:22 | ERROR | paramiko.transport |   File "C:\Users\stann\miniconda3\envs\Console\Lib\site-packages\paramiko\transport.py", line 2367, in _check_banner
+2025-08-20 16:52:22 | ERROR | paramiko.transport |     raise SSHException(
+2025-08-20 16:52:22 | ERROR | paramiko.transport | paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2025-08-20 16:52:22 | ERROR | paramiko.transport | 
+2025-08-20 16:52:22 | INFO | controller.controllers | [Error reading SSH protocol banner
+2025-08-20 16:52:24 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:52:26 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:52:26 | INFO | controller.controllers | [ReceiverController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:52:26 | INFO | controller.controllers | [TargetController] Slot activated: handle_command; ('RPI1', 'disconnect')
+2025-08-20 16:52:26 | INFO | controller.controllers | [SFTP poller stopped
+2025-08-20 16:53:34 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:37 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:40 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:43 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:46 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:49 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:53:52 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:01 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:07 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:10 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:13 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:16 | DEBUG | paramiko.transport | EOF in transport thread
+2025-08-20 16:54:19 | DEBUG | paramiko.transport | EOF in transport thread
