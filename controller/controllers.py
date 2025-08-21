@@ -3,6 +3,7 @@ import inspect
 from PyQt5.QtWidgets import QDialog
 from view.parameter_dialog import ParameterDialog
 from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
+from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
 from utils.receiver_client_worker import ReceiverClientWorker  # we'll use this from before
 #from utils.server_comm_sftp import ServerCommSFTP
 from utils.sftp_worker import _SftpWorker
@@ -335,7 +336,6 @@ class MapController(QObject):
             self.toolbar.tool_changed.connect(self.map_view.on_send_tool)
 
     def add_raster_layer(self, path, crs="EPSG:4326"):
-        from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
         layer = QgsRasterLayer(path)
         if not layer.isValid():
             print(f"Layer failed to load: {path}")

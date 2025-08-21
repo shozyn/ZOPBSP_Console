@@ -9,9 +9,6 @@ import paramiko  # pip install paramiko
 import logging
 log = logging.getLogger(__name__)
 
-def _stat_is_dir(st_mode: int) -> bool:
-    import stat as _stat
-    return _stat.S_ISDIR(st_mode or 0)
 
 class ServerCommSFTP(QObject):
     """
@@ -42,13 +39,6 @@ class ServerCommSFTP(QObject):
         self._client: Optional[paramiko.SSHClient] = None
         self._sftp: Optional[paramiko.SFTPClient] = None
         self._running = False
-        self._busy = False
-        self._last_monitor_check = 0
-        # seen maps: (dir_key, filename) -> (size, mtime, stable_count)
-        self._seen: Dict[Tuple[str, str], Tuple[int, int, int]] = {}
-        # local dirs must exist
-        for key in ("streaming", "gps", "config"):
-            Path(self.cfg["local_dirs"][key]).mkdir(parents=True, exist_ok=True)
 
     # ---------- lifecycle ----------
     def start(self):
@@ -74,42 +64,11 @@ class ServerCommSFTP(QObject):
         self.status.emit("SFTP poller stopped.")
         self.finished.emit()
 
-    # ---------- API to upload control.txt (write-once, on demand) ----------
-    def send_control_text(self, text: str) -> None:
-        """Upload 'control.txt' content to remote config dir (overwrite)."""
-        try:
-            self._ensure_connected()
-            rdir = self.cfg["remote_dirs"]["config"]
-            ctrl_name = self.cfg["patterns"]["control_file"]
-            remote_path = posixpath.join(rdir, ctrl_name)
-            # write via sftp.open for atomic replace: .tmp then rename
-            tmp_remote = remote_path + ".tmp"
-            with self._sftp.file(tmp_remote, "w") as f:
-                f.write(text)
-                f.flush()
-            # remote atomic-ish: rename tmp -> final
-            self._sftp.rename(tmp_remote, remote_path)
-            self.control_uploaded.emit(remote_path)
-            self.status.emit(f"Uploaded control.txt -> {remote_path}")
-        except Exception as e:
-            self.error.emit(f"control.txt upload failed: {e}")
-            log.exception("control.txt upload failed: %s", e)
+    def _connect(self):
+        self.close()
 
-    def send_control_file(self, local_path: str | Path) -> None:
-        """Upload a local file as 'control.txt' to remote config dir (overwrite)."""
-        try:
-            self._ensure_connected()
-            rdir = self.cfg["remote_dirs"]["config"]
-            ctrl_name = self.cfg["patterns"]["control_file"]
-            remote_path = posixpath.join(rdir, ctrl_name)
-            tmp_remote = remote_path + ".tmp"
-            self._sftp.put(str(local_path), tmp_remote)
-            self._sftp.rename(tmp_remote, remote_path)
-            self.control_uploaded.emit(remote_path)
-            self.status.emit(f"Uploaded {local_path} -> {remote_path}")
-        except Exception as e:
-            self.error.emit(f"control.txt upload failed: {e}")
-            log.exception("control.txt upload failed: %s", e)
+    # ---------- API to upload control.txt (write-once, on demand) ----------
+    
 
     # ---------- polling core ----------
     def _tick(self):
@@ -136,66 +95,8 @@ class ServerCommSFTP(QObject):
         finally:
             self._busy = False
 
-    def _scan_and_download(self, dir_key: str, glob_pattern: str):
-        rdir = self.cfg["remote_dirs"][dir_key]
-        ldir = Path(self.cfg["local_dirs"][dir_key])
-        entries = self._safe_listdir_attr(rdir)
-        for attr in entries:
-            name = attr.filename
-            if glob_pattern and not Path(name).match(glob_pattern):
-                continue
-            if _stat_is_dir(attr.st_mode):
-                continue
+        # ---------- SFTP plumbing ----------
 
-            size, mtime = int(attr.st_size or 0), int(attr.st_mtime or 0)
-            k = (dir_key, name)
-            prev = self._seen.get(k)
-            if not prev:
-                self._seen[k] = (size, mtime, 1)
-                continue
-            psize, pmtime, stable = prev
-            stable = stable + 1 if (psize == size and pmtime == mtime) else 1
-            self._seen[k] = (size, mtime, stable)
-
-            if stable >= int(self.cfg.get("stability_checks", 2)):
-                remote_path = posixpath.join(rdir, name)
-                local_final = ldir / name
-                try:
-                    self._download_atomic(remote_path, local_final, expected_size=size)
-                    self.file_downloaded.emit(remote_path, str(local_final))
-                    if self.cfg.get("delete_after_download", {}).get(dir_key, False):
-                        self._sftp.remove(remote_path)
-                    self._seen.pop(k, None)  # ready for a future new file with same name
-                except Exception as e:
-                    self.error.emit(f"Download failed {remote_path}: {e}")
-                    log.exception("Download failed for %s: %s", remote_path, e)
-
-    def _fetch_monitor(self):
-        rdir = self.cfg["remote_dirs"]["config"]
-        mname = self.cfg["patterns"]["monitor_file"]
-        rpath = posixpath.join(rdir, mname)
-        lpath = Path(self.cfg["local_dirs"]["config"]) / mname
-        try:
-            rattr = self._sftp.stat(rpath)
-            r_mtime = int(getattr(rattr, "st_mtime", 0) or 0)
-            if not lpath.exists() or int(lpath.stat().st_mtime) < r_mtime:
-                self._download_atomic(rpath, lpath, expected_size=int(getattr(rattr, "st_size", 0) or 0))
-                # sync mtime locally to match remote (optional)
-                try:
-                    os.utime(lpath, (time.time(), r_mtime))
-                except Exception:
-                    pass
-                self.monitor_downloaded.emit(str(lpath))
-                self.status.emit(f"monitor.txt updated -> {lpath}")
-        except FileNotFoundError:
-            # monitor.txt not present yet—ignore
-            return
-
-    # ---------- SFTP plumbing ----------
-    def _ensure_connected(self):
-        if self._sftp and self._transport and self._transport.is_active():
-            return
-        self._disconnect()
 
         host = self.cfg.get("host")
         port = int(self.cfg.get("port", 22))
@@ -252,26 +153,4 @@ class ServerCommSFTP(QObject):
         except Exception:
             raise
 
-    # ---------- IO helpers ----------
-    def _download_atomic(self, remote_path, local_final: Path, expected_size: int = 0):
-        """
-        Local atomic download: write to temporary file in the same directory, then replace.
-        On handled errors, the temp is removed; only a hard crash could leave a .part file.
-        """
-        local_final.parent.mkdir(parents=True, exist_ok=True)
-        fd, tmpname = tempfile.mkstemp(prefix=f".{local_final.name}.part-", dir=str(local_final.parent))
-        os.close(fd)
-        tmp = Path(tmpname)
-        try:
-            self._sftp.get(remote_path, str(tmp))
-            if expected_size and tmp.stat().st_size != expected_size:
-                raise IOError(f"Size mismatch: got={tmp.stat().st_size}, expected={expected_size}")
-            tmp.replace(local_final)  # atomic on same filesystem
-            self.status.emit(f"Downloaded {remote_path} -> {local_final}")
-            log.info("Downloaded %s -> %s", remote_path, local_final)
-        except Exception as e:
-            try:
-                if tmp.exists() and not local_final.exists():
-                    tmp.unlink()
-            finally:
-                raise e
+

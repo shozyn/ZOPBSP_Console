@@ -48,31 +48,25 @@ receivers:
         value: ""
         editable: false
     sftp: 
-      host:     "172.30.83.44"
-      sftp_user:     "stann"
-      sftp_password: "123"
-      sftp_port:     22      
+      host: '172.23.21.12'
+      user: 's.hozyn'
+      password: '19Sie2011>>>'
+      port: 22      
       host_key_policy: "auto_add"          # auto_add | reject | system
-      keepalive_s: 30
-      poll_interval_ms: 3000               
-      stability_checks: 2                  # unchanged size+mtime across N polls
-      monitor_poll_s: 10                   # read monitor.txt every N seconds
+      keepalive_s: 30                 # read monitor.txt every N seconds
       remote_dirs:
-        streaming: "/home/streaming"
-        gps: "/home/GPS"
-        config: "/home/Config"
+        streaming: "C:\\Pi\\streaming"
+        gps: "C:\\Pi\\GPS"
+        config: "C:\\Pi\\PARAM"
       local_dirs:                          
-        streaming: "downloads/RPI1/streaming"
-        gps: "downloads/RPI1/GPS"
-        config: "downloads/RPI1/Config"
+        streaming: "C:\\Pi_loc\\streaming"
+        gps: "C:\\Pi_loc\\GPS"
+        config: "C:\\Pi_loc\\PARAM"
       patterns:
         streaming: "*.wav"
         gps: "*.txt"
-        monitor_file: "monitor.txt"
-        control_file: "control.txt"
-      delete_after_download:
-        streaming: false
-        gps: false
+        monitor_file: "PARAM_RPI3_MONITOR.txt"
+        control_file: "PARAM_RPI3_CONTROL.txt"
   - id: RPI2
     parameters:
       server_IP:
