@@ -173,6 +173,10 @@ class ReceiverController(QObject):
         elif command == "disconnect":
             self.disconnect_receiver()
 
+    @pyqtSlot(str)
+    def on_status_sftp_changed(self,status : str) -> None:
+        print(status)
+
     def connect_receiver(self):
         print("Connect_receiver triggered")
         self._start_sftp()
@@ -198,8 +202,7 @@ class ReceiverController(QObject):
 
         self.thread = QThread(self)
         self.worker = _SftpWorker(self.model.sftp_cfg)
-        self.worker.status.connect(self.on_status_sftp_changed)
-        self.worker.error.connect(self.on_status_sftp_changed)
+        self.worker.status_changed.connect(self.on_status_sftp_changed)
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.start)                    # worker creates QTimer inside start()
@@ -265,10 +268,6 @@ class ReceiverController(QObject):
                     if pname in params_dict:
                         value_item.setText(str(params_dict[pname].get("value")))
                 break
-
-    def on_status_sftp_changed(self,message: str) -> None:
-        logger.info(f"[{message}")
-        print(f"[{self.__class__.__name__}] {inspect.currentframe().f_code.co_name}; {message}")
 
 class MainController(QObject):
     """

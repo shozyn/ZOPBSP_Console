@@ -1,5 +1,6 @@
 import sys
-from config.config_loader import Config
+from PyQt5.QtWidgets import QMessageBox
+from config.config_loader import Config, ConfigError
 from qgis.core import QgsApplication
 from view.mainwindow import MainWindow
 from view.widgets import MapView
@@ -25,8 +26,18 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
-    config = Config("config/config.yaml")
-    log_cfg_dict = config.get_logging_config() #To check
+    CONFIG_PATH = "config/config.yaml"
+
+    try:
+     config = Config(CONFIG_PATH)
+    except ConfigError as e:
+        QMessageBox.critical(None, "Configuration error", str(e))  # modal dialog
+        qgs.exitQgis()
+        sys.exit(1)  # or QCoreApplication.exit(1) if the loop is running 
+
+
+    #log_cfg_dict = config.get_logging_config() #To check self.log_cfg
+    log_cfg_dict = config.log_cfg #To check self.log_cfg
     receivers_cfg = config.receivers
     targets_cfg = config.targets
 
@@ -56,7 +67,6 @@ def main():
         parameters = rx_cfg.get("parameters", {}).copy()
         receiver_id = rx_cfg.get("id")
         sftp_cfg = rx_cfg.get("sftp", {}).copy()
-        print(sftp_cfg)
         rx_model = ReceiverModel(receiver_id=receiver_id, parameters=parameters,sftp_cfg=sftp_cfg)
         rx_view = ReceiverView() #To finish
         rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)

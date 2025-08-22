@@ -1,27 +1,40 @@
 import yaml
 from pathlib import Path
 
+class ConfigError(Exception): pass
+
 class Config:
     def __init__(self, path="config/config.yaml"):
         self.path = Path(path)
         print(f"Config path: {self.path.resolve()}")
         self._data = {}
-        self._load()
         self.log_cfg: dict = {}
+        self._load()
+        
 
     def _load(self):
-        with self.path.open("r") as f:
-            self._data = yaml.safe_load(f)
+
+        try:
+            with self.path.open("r") as f:
+                data = yaml.safe_load(f)
+            if not isinstance(data, dict):
+                raise ConfigError("Config root must be a mapping.")
+            self._data = data
+        except (FileNotFoundError, OSError, yaml.YAMLError) as e:
+            raise ConfigError(f"Failed to load YAML '{self.path.resolve()}': {e}") from e
 
         self.receivers = self._data.get("receivers", [])
         self.targets = self._data.get("targets", [])
         self.map = self._data.get("map",[])
         self.logging_cfg = (self._data.get("logging") or {})
+        print(f"self.logging_cfg:\n{self.logging_cfg}")
         self.log_cfg = self.get_logging_config()
+        print(f"self.log_cfg:\n{self.log_cfg}")
 
 
     def get_logging_config(self):
         lc = self.logging_cfg
+
         return {
             "file": lc.get("file", "logs/app.log"),
             "file_level": lc.get("file_level", "DEBUG"),
