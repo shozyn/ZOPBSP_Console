@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMessageBox
-from config.config_loader import Config, ConfigError
+from config.config_loader import Config, ConfigError, DataError
 from qgis.core import QgsApplication
 from view.mainwindow import MainWindow
 from view.widgets import MapView
@@ -30,19 +30,22 @@ def main():
 
     try:
      config = Config(CONFIG_PATH)
-    except ConfigError as e:
-        QMessageBox.critical(None, "Configuration error", str(e))  # modal dialog
+    except Exception as e:
+        if isinstance(Exception,ConfigError):           
+            QMessageBox.critical(None, "Conif file cannot be read", str(e)) 
+        if isinstance(Exception,DataError):
+            QMessageBox.critical(None, "Data cannot be read", str(e))  
+        else:
+            QMessageBox.critical(None, "Unknown error while loading YAML file", str(e))  
+                
         qgs.exitQgis()
-        sys.exit(1)  # or QCoreApplication.exit(1) if the loop is running 
+        sys.exit(1)  
 
 
     #log_cfg_dict = config.get_logging_config() #To check self.log_cfg
     log_cfg_dict = config.log_cfg #To check self.log_cfg
     receivers_cfg = config.receivers
     targets_cfg = config.targets
-
-    
-
 
     map_layer = config.get_layer()
 
@@ -52,11 +55,11 @@ def main():
     tool_bar = ToolBar()
     menu_bar = MenuBar(receivers=receivers_cfg, targets=targets_cfg)
     map_controller = MapController(map_view, map_model, map_layer, tool_bar)
-    coord_label = make_coord_label()
+    coord_label = make_coord_label() #GUI label
     status_widget = StatusWidget()
 
 
-    dock_info = DockInformationWidget()
+    dock_info = DockInformationWidget() #GUI logs
 
     #RECEIVERS
     receiver_models = []
@@ -64,9 +67,10 @@ def main():
     receiver_controllers = []
 
     for rx_cfg in receivers_cfg:
-        parameters = rx_cfg.get("parameters", {}).copy()
+        parameters = {"param_monitor": rx_cfg.get("param_monitor", {}),"param_control": \
+                     rx_cfg.get("param_control", {})}
         receiver_id = rx_cfg.get("id")
-        sftp_cfg = rx_cfg.get("sftp", {}).copy()
+        sftp_cfg = rx_cfg.get("sftp", {})
         rx_model = ReceiverModel(receiver_id=receiver_id, parameters=parameters,sftp_cfg=sftp_cfg)
         rx_view = ReceiverView() #To finish
         rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)
@@ -74,7 +78,6 @@ def main():
         receiver_models.append(rx_model)
         receiver_views.append(rx_view)
         receiver_controllers.append(rx_controller)
-
     # TARGET
     target_models = []
     target_views = []
@@ -102,8 +105,8 @@ def main():
     #populate_from_yaml(status_widget.get_model(), receivers_cfg, targets_cfg)
     populate_status_panel(
     status_widget.get_model(),
-    config.receivers,
-    config.targets
+    receivers_cfg,
+    targets_cfg
 )
     status_widget.tree.expandAll()
     status_widget.tree.resizeColumnToContents(0)

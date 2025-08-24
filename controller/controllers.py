@@ -10,11 +10,11 @@ from utils.sftp_worker import _SftpWorker
 import inspect
 import logging
 from pathlib import Path
+import string
 
 logger = logging.getLogger(__name__)
 logger.debug("low-level details you only want in the file")
 logger.info("user-visible status you want in the dock")
-
 
 class TargetController(QObject):
     stopRequested = pyqtSignal()
@@ -44,10 +44,11 @@ class TargetController(QObject):
     
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
-        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
         if sender_id != self.model.target_id:
             return
+        
+        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
 
         if command == "connect":
             self.connect_target()
@@ -128,6 +129,8 @@ class ReceiverController(QObject):
     Controller for receiver interactions.
     """
     stopRequested = pyqtSignal()  
+    model_changed = pyqtSignal(str,dict)
+    control_param_changed = pyqtSignal(dict)
 
 
     def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
@@ -143,35 +146,54 @@ class ReceiverController(QObject):
         self.worker: _SftpWorker | None = None
         self.connected = False
 
-
-        menu_bar.command_triggered.connect(self.handle_receiver_command)
         menu_bar.command_triggered.connect(self.handle_command)
-        self.model.status_changed.connect(self.update_receiver_params)
         self.connected = False
-     
+        
+        #self.model_changed.connect(lambda id,dict: print(f"model_changed:\n{id}:\n{dict}"))
 
-    def handle_receiver_command(self, receiver_id, command_name):
-        if receiver_id != self.model.receiver_id:
+    @pyqtSlot(str)
+    def on_monitor_read(self,param_monitor):
+        print(f"param_monitor:\n{param_monitor}")
+        param_dict = {}
+        if not param_monitor:
             return
-
-        if command_name == "set_parameters":
-            dialog = ParameterDialog(self.model.parameters)
-            if dialog.exec_() == QDialog.Accepted:
-                new_params = dialog.get_new_parameters()
-                for name, value in new_params.items():
-                    self.model.set_parameter(name, value)
-
+        for line in param_monitor.splitlines():
+            line_stripped = line.strip()
+            if not line_stripped or '=' not in line_stripped:
+                continue
+            key, value = line_stripped.split('=',1)
+            printable_value = ''.join(ch for ch in value if ch in string.printable)
+            param_dict[key.strip()] = {"value": printable_value.strip()}            
+        
+        if not param_dict:
+            return
+        
+        for name, value in param_dict.items():
+            self.model.set_parameter_monitor(name, value["value"])
+        self.on_model_updated()
+    
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
-        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
         if sender_id != self.model.receiver_id:
             return
+        
+        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
 
         if command == "connect":
             self.connect_receiver()
         elif command == "disconnect":
             self.disconnect_receiver()
+        if command == "set_parameters":
+            dialog = ParameterDialog(self.model.parameters)
+            if dialog.exec_() == QDialog.Accepted:
+                new_params = dialog.get_new_parameters()
+
+                if new_params:
+                    for name, value in new_params.items():
+                        self.model.set_parameter_control(name, value)
+                    self.control_param_changed.emit(new_params)
+
 
     @pyqtSlot(str)
     def on_status_sftp_changed(self,status : str) -> None:
@@ -203,6 +225,9 @@ class ReceiverController(QObject):
         self.thread = QThread(self)
         self.worker = _SftpWorker(self.model.sftp_cfg)
         self.worker.status_changed.connect(self.on_status_sftp_changed)
+        self.worker.monitor_read.connect(self.on_monitor_read)
+        self.control_param_changed.connect(self.worker.on_control_param_changed)
+        
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.start)                    # worker creates QTimer inside start()
@@ -241,8 +266,13 @@ class ReceiverController(QObject):
             self._stop_sftp()
         except Exception:
             pass
-
-    def update_receiver_params(self, params_dict):
+    
+    def on_model_updated(self):
+        self.update_status_widget()
+        self.model_changed.emit(self.receiver_id,self.model.parameters)
+        
+    
+    def update_status_widget(self):
         """
         Update the StatusWidget's tree/list with the new parameter values.
         """
@@ -265,8 +295,10 @@ class ReceiverController(QObject):
                     name_item = group.child(j, 0)
                     value_item = group.child(j, 1)
                     pname = name_item.text()
-                    if pname in params_dict:
-                        value_item.setText(str(params_dict[pname].get("value")))
+                    if pname in self.model.parameters["param_monitor"]:
+                        value_item.setText(str(self.model.parameters["param_monitor"][pname].get("value")))
+                    if pname in self.model.parameters["param_control"]:
+                        value_item.setText(str(self.model.parameters["param_control"][pname].get("value")))
                 break
 
 class MainController(QObject):
@@ -286,7 +318,7 @@ class MainController(QObject):
         """
         Receives the command string from the menu bar and dispatches to the correct logic.
         """
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        #print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
 
         if command == "open_project":
             self.open_project()

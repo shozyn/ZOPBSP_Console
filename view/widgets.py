@@ -104,6 +104,7 @@ class MenuBar(QMenuBar):
 
         for rx in receivers:
             rx_id = rx["id"]
+            print(f"rx_id\n{rx_id}")
             receiver_menu = self.addMenu(f"Receiver {rx_id}")
 
             # Connect / Disconnect toggle (like targets)

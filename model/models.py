@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 from qgis.core import QgsPointXY
-from typing import Any
+from typing import Any, Optional
 import inspect
 
 class TargetModel(QObject):
@@ -32,39 +32,35 @@ class TargetModel(QObject):
         self.predicted_position_updated.emit(self.predicted_position)
 
 class ReceiverModel(QObject): 
-    status_changed = pyqtSignal(object)  # For UI/status updates
     def __init__(self, receiver_id, parameters,sftp_cfg, parent=None):
         super().__init__(parent)
         self.receiver_id = receiver_id
         self.parameters = parameters
         self.sftp_cfg = sftp_cfg
-    def get_parameter(self, name: str) -> Any:
-        """Return the parameter's dict or value for a given name."""
-        return self.parameters.get(name)
 
-    def set_parameter(self, name: str, value: Any) -> None:
+    def set_parameter_control(self, name: str, value: Any) -> None:
         """Update the parameter value (for dialog/UI update)."""
-        if name in self.parameters:
-            self.parameters[name]['value'] = value
-            self.status_changed.emit(self.parameters)
-        else:
-            # Optionally: support new parameters added at runtime
-            self.parameters[name] = {'value': value}
-            self.status_changed.emit(self.sftp_cfg)
+        if name in self.parameters["param_control"]:
+            self.parameters["param_control"][name]['value'] = value
 
-    def get_sftp_cfg(self, name: str) -> Any:
-        """Return the parameter's dict or value for a given name."""
-        return self.sftp_cfg.get(name)
+            
+    def set_parameter_monitor(self, name: str, value: Any) -> None:
+        """Update the parameter value (for dialog/UI update)."""
+        if name in self.parameters["param_monitor"]:
+            self.parameters["param_monitor"][name]['value'] = value
+
+            
+    def get_sftp_cfg(self, name: str) -> Optional[any]:
+        """Return the parameter's value for a given name."""
+        if name in self.sftp_cfg:
+            return self.sftp_cfg.get(name)
+        else:
+            return None
 
     def set_sftp_cfg(self, name: str, value: Any) -> None:
         """Update the parameter value (for dialog/UI update)."""
         if name in self.parameters:
             self.parasftp_cfgmeters[name]['value'] = value
-            self.status_changed.emit(self.parameters)
-        else:
-            # Optionally: support new parameters added at runtime
-            self.parameters[name] = {'value': value}
-            self.status_changed.emit(self.sftp_cfg)
 
 class ProjectModel(QObject):
     """

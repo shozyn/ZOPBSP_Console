@@ -7,29 +7,12 @@ from typing import Any, Dict, List, Optional
 
 class Config:
     """
-    Loads config/config.yaml with the new structure:
-      receivers:
-        - id: ...
-          parameters: { <name>: {value: ..., editable: ...}, ... }
-          sftp:
-            sftp_IP:       {value: "..."}   # device IP for SFTP
-            sftp_user:     {value: "..."}
-            sftp_password: {value: "..."}
-            sftp_port:     {value: 22}
-            host_key_policy: "auto_add"
-            keepalive_s: 30
-            poll_interval_ms: 3000
-            stability_checks: 2
-            monitor_poll_s: 10
-            remote_dirs: {streaming: "...", gps: "...", config: "..."}
-            local_dirs:  {streaming: "...", gps: "...", config: "..."}  # relative to app root
-            patterns:    {streaming: "*.wav", gps: "*.txt", monitor_file: "monitor.txt", control_file: "control.txt"}
-            delete_after_download: {streaming: false, gps: false}
+    Load parameters from config.yaml
     """
     def __init__(self, path: str = "config/config.yaml", app_root: Optional[Path] = None):
-        # Resolve relative to the folder containing main.py (entry script)
         if app_root is None:
             main_file = Path(sys.modules["__main__"].__file__).resolve()
+            
             app_root = main_file.parent
         self.app_root = Path(app_root)
         self.path = (self.app_root / path).resolve()

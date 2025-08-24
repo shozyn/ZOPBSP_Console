@@ -1,26 +1,24 @@
 from PyQt5.QtWidgets import QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 
 class ParameterDialog(QDialog):
     """
     Dialog to display and edit receiver parameters dynamically.
     """
+    # control_params_set = pyqtSignal(dict)
+    
     def __init__(self, parameters, parent=None):
-        """
-        parameters: dict {param_name: {'value':..., 'editable':...}, ...}
-        """
         super().__init__(parent)
         self.setWindowTitle("Set Parameters")
-
-        # Remove "?" button (Help button) from title bar
+        
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
 
-        self.editors = {}  # name -> QLineEdit
+        self.editors = {} 
 
         layout = QFormLayout(self)
-        for name, info in parameters.items():
+        for name, info in parameters.get("param_control", {}).items():
             value = info.get("value", "")
-            editable = info.get("editable", True)
+            editable = info.get("readable", True)
             label = QLabel(name)
             editor = QLineEdit(str(value))
             editor.setReadOnly(not editable)
@@ -37,3 +35,4 @@ class ParameterDialog(QDialog):
     def get_new_parameters(self):
         """Return updated parameter values as a dict {name: value, ...}"""
         return {name: editor.text() for name, editor in self.editors.items()}
+    

@@ -36,10 +36,13 @@ def populate_status_panel(model, receivers_cfg, targets_cfg):
             group_val.setEditable(False)
             rx_root.appendRow([group, group_val])
 
-            params = rx.get("parameters", {})
-            for pname, meta in params.items():
-                _add_value_row(group, pname, meta.get("value"))
+            for params in [rx.get("param_monitor", {}),rx.get("param_control", {})]:
+                for pname, meta in params.items():
+                    _add_value_row(group, pname, meta.get("value"))
 
+            # params = rx.get("param_control", {})
+            # for pname, meta in params.items():
+            #     _add_value_row(group, pname, meta.get("value"))
     # Targets
     if targets_cfg:
         tg_root = QStandardItem("Targets")
@@ -50,7 +53,7 @@ def populate_status_panel(model, receivers_cfg, targets_cfg):
 
         for tg in targets_cfg:
             tid = tg.get("id", "unknown")
-            group = QStandardItem(f"Target {tid}")
+            group = QStandardItem(f"{tid}")
             group_val = QStandardItem("")
             group.setEditable(False)
             group_val.setEditable(False)

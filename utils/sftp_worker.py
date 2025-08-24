@@ -36,7 +36,6 @@ class _SftpWorker(QObject):
         monitor_file = self.cfg.get("remote_dirs",{}).get("monitor_file")
         self.monitor_path = (Path(monitor_folder) / monitor_file).as_posix()
         self.status_changed.emit(self._state)
-        self.monitor_read.connect(lambda a: print(a))
 
     def start(self):
         if self._running:
@@ -165,7 +164,8 @@ class _SftpWorker(QObject):
                 logger.warning(f"[{self.__class__.__name__}] Read attempt {attempt}/{self.max_retries} failed for {self.monitor_path}:\n{e}")
                 return None
             
-
+    def on_control_param_changed(self,new_control_params):
+        print(f"new_control_params:\n{new_control_params}")
         
 
         
