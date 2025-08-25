@@ -1,0 +1,208 @@
+num_receivers: 3
+map:
+  - layer: "C:\\Code\\Console\\kosobudno.tif"
+  #- layer: "resources/ortofot_topocentryczny.bmp"
+targets:
+  - id: "Target1"
+    parameters:
+      IP:
+        value: 153.19.108.122
+        readable: true 
+      Port:
+        value: 7000
+        readable: true   
+receivers:
+  - id: RPI1
+    param_monitor:
+      Serial:
+        value: 6675
+        readable: true
+      IP:
+        value: 192.168.0.210
+        readable: true 
+      MASK:
+        value: 255.255.255.0
+        readable: true
+      Mode:
+        value: 2
+        readable: true
+      BatPerc:
+        value: -1
+        readable: true
+      StPPS:
+        value: 3
+        readable: true
+      RPiProc:
+        value: -1%
+        readable: true
+    param_control:
+      SRate:
+        value: 64000
+        readable: true
+      Nagrywanie:
+        value: False
+        readable: true
+      AktHydro:
+        value: False
+        readable: true
+      AktGPS:
+        value: False
+        readable: true
+      AktStreaming:
+        value: false
+        readable: true
+      RecDur:
+        value: 1
+        readable: true
+      Pause:
+        value: 9
+        readable: true
+    sftp: 
+      host: '172.23.21.12'
+      user: 's.hozyn'
+      password: '19Sie2011>>>'
+      port: 22      
+      keepalive_s: 30
+      remote_dirs:
+        streaming: "C:\\Pi\\RPI1\\bsp\\streaming"
+        gps: "C:\\Pi\\RPI1\\bsp\\GPS"
+        config: "C:\\Pi\\RPI1\\bsp\\PARAM"
+        monitor_file: "PARAM_RPI1_MONITOR.txt"
+        control_file: "PARAM_RPI1_CONTROL.txt"
+        max_retries: 3
+      local_dirs:                          
+        streaming: "C:\\Pi_loc\\RPI1\\streaming"
+        gps: "C:\\Pi_loc\\RPI1\\GPS"
+        config: "C:\\Pi_loc\\RPI1\\PARAM"
+  - id: RPI2
+    param_monitor:
+      Serial:
+        value: 6675
+        readable: true
+      IP:
+        value: 192.168.0.220
+        readable: true 
+      MASK:
+        value: 255.255.255.0
+        readable: true
+      Mode:
+        value: 2
+        readable: true
+      BatPerc:
+        value: -1
+        readable: true
+      StPPS:
+        value: 3
+        readable: true
+      RPiProc:
+        value: -1%
+        readable: true
+    param_control:
+      SRate:
+        value: 64000
+        readable: true
+      Nagrywanie:
+        value: False
+        readable: true
+      AktHydro:
+        value: False
+        readable: true
+      AktGPS:
+        value: False
+        readable: true
+      AktStreaming:
+        value: false
+        readable: true
+      RecDur:
+        value: 1
+        readable: true
+      Pause:
+        value: 9
+        readable: true
+    sftp: 
+      host: '127.0.0.1' #host: '172.23.21.12'
+      user: 's.hozyn'
+      password: '19Sie2011>>>'
+      port: 22      
+      keepalive_s: 30
+      remote_dirs:
+        streaming: "C:\\Pi\\RPI2\\bsp\\streaming"
+        gps: "C:\\Pi\\RPI2\\bsp\\GPS"
+        config: "C:\\Pi\\RPI2\\bsp\\PARAM"
+        monitor_file: "PARAM_RPI2_MONITOR.txt"
+        control_file: "PARAM_RPI2_CONTROL.txt"
+        max_retries: 3
+      local_dirs:                          
+        streaming: "C:\\Pi_loc\\RPI2\\streaming"
+        gps: "C:\\Pi_loc\\RPI2\\GPS"
+        config: "C:\\Pi_loc\\RPI2\\PARAM"
+  - id: RPI3
+    param_monitor:
+      Serial:
+        value: 6675
+        readable: true
+      IP:
+        value: 192.168.0.230
+        readable: true 
+      MASK:
+        value: 255.255.255.0
+        readable: true
+      Mode:
+        value: 2
+        readable: true
+      BatPerc:
+        value: -1
+        readable: true
+      StPPS:
+        value: 3
+        readable: true
+      RPiProc:
+        value: -1%
+        readable: true
+    param_control:
+      SRate:
+        value: 64000
+        readable: true
+      Nagrywanie:
+        value: False
+        readable: true
+      AktHydro:
+        value: False
+        readable: true
+      AktGPS:
+        value: False
+        readable: true
+      AktStreaming:
+        value: false
+        readable: true
+      RecDur:
+        value: 1
+        readable: true
+      Pause:
+        value: 9
+        readable: true
+    sftp: 
+      host: '127.0.0.1' #host: '172.23.21.12'
+      user: 's.hozyn'
+      password: '19Sie2011>>>'
+      port: 22      
+      keepalive_s: 30
+      remote_dirs:
+        streaming: "C:\\Pi\\RPI3\\bsp\\streaming"
+        gps: "C:\\Pi\\RPI3\\bsp\\GPS"
+        config: "C:\\Pi\\RPI3\\bsp\\PARAM"
+        monitor_file: "PARAM_RPI3_MONITOR.txt"
+        control_file: "PARAM_RPI3_CONTROL.txt"
+        max_retries: 3
+      local_dirs:                          
+        streaming: "C:\\Pi_loc\\RPI3\\streaming"
+        gps: "C:\\Pi_loc\\RPI3\\GPS"
+        config: "C:\\Pi_loc\\RPI3\\PARAM"
+logging:
+  file: "logs/log.log"
+  file_level: "DEBUG"
+  gui_level: "INFO"
+  ring_capacity: 2000
+  rotate: true
+  max_bytes: 5000000
+  backup_count: 5

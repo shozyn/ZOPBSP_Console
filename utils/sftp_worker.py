@@ -1,26 +1,24 @@
-from PyQt5.QtCore import QObject, QThread, QTimer, pyqtSignal
+import string
+from PyQt5.QtCore import QObject,  QTimer, pyqtSignal
 import paramiko
 import os, posixpath, tempfile, time
 from pathlib import Path
-#from pathlib import PurePosixPath
-import inspect
 import logging
+from typing import Optional
 
 logger = logging.getLogger(__name__)
-logger.debug("low-level details you only want in the file")
-#logger.info("user-visible status you want in the dock")
-#logger.info(f"[{self.__class__.__name__}][{inspect.currentframe().f_code.co_name}][{self.host}]; Worker sftp started")
 
 class _SftpWorker(QObject):
-    file_downloaded = pyqtSignal(str, str)
     status_changed = pyqtSignal(str)
     monitor_read =  pyqtSignal(str)
+    control_param_updated = pyqtSignal(dict)
+
     finished = pyqtSignal()
 
     def __init__(self, sftp_cfg: dict, parent=None):
         super().__init__(parent)
         self.cfg = sftp_cfg
-        self._timer: QTimer | None = None
+        self._timer: Optional[QTimer] = None
         self._client: paramiko.SSHClient | None = None
         self._transport: paramiko.Transport | None = None
         self._sftp: paramiko.SFTPClient | None = None
@@ -34,16 +32,22 @@ class _SftpWorker(QObject):
         self.max_retries = self.cfg.get("remote_dirs",{}).get("max_retries",1)
         monitor_folder = self.cfg.get("remote_dirs",{}).get("config")
         monitor_file = self.cfg.get("remote_dirs",{}).get("monitor_file")
+        control_folder = self.cfg.get("remote_dirs",{}).get("config")
+        control_file = self.cfg.get("remote_dirs",{}).get("control_file")
         self.monitor_path = (Path(monitor_folder) / monitor_file).as_posix()
+        self.control_path = (Path(control_folder) / control_file).as_posix()
         self.status_changed.emit(self._state)
 
     def start(self):
         if self._running:
             return
-        logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Worker sftp started")
+
+        logger.info(f"[{self.__class__.__name__}][{self.host}]; Worker sftp started")
         self._running = True
+        
         self._timer = QTimer(self)
-        self._timer.setInterval(int(self.cfg.get("poll_interval_ms", 2000)))
+        assert self._timer is not None
+        self._timer.setInterval(int(self.cfg.get("poll_interval_ms", 5000)))
         self._timer.timeout.connect(self._tick)
         self._timer.start()
         self._connect()
@@ -56,22 +60,20 @@ class _SftpWorker(QObject):
             self._timer = None
         self._disconnect()
         self.finished.emit()
+        logger.info(f"[{self.__class__.__name__}][{self.host}]; Worker sftp stopped)")
 
     def _tick(self):
-        logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; In tick")
         if self._state == "CONNECTING":
             return
         self._check_connected()
 
         if self._state == "DISCONNECTED":
-            logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Disconnected")
             self._connect()
             return
-
-        logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Working...")
         
-        if self._read_monitor() is not None:
-            self.monitor_read.emit(self._read_monitor())
+        if (content := self._read_monitor_file()):
+            logger.info(f"[{self.__class__.__name__}][{self.host}]; Monitor file read successfully.") 
+            self.monitor_read.emit(content)
 
 
     def _connect(self):
@@ -81,7 +83,7 @@ class _SftpWorker(QObject):
         self._disconnect()
         self._state = "CONNECTING"
         self.status_changed.emit(self._state)
-        logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Connecting...")
+        logger.info(f"[{self.__class__.__name__}][{self.host}]; Connecting...")
 
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -89,7 +91,7 @@ class _SftpWorker(QObject):
             client.connect(hostname=self.host, port=self.port, username=self.user, password=self.pwd, timeout=10)
             transport = client.get_transport()
             if transport is not None and transport.is_active():
-                logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; SSH connection established.")
+                logger.info(f"[{self.__class__.__name__}][{self.host}]; SSH connection established.")
                 print("trasport layer is active")
                 self._client = client
                 self._transport = transport
@@ -98,12 +100,12 @@ class _SftpWorker(QObject):
                 self._is_connected = True
                 self._state = "CONNECTED"
                 self.status_changed.emit(self._state)
-                logger.debug(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Connected!")
+                logger.info(f"[{self.__class__.__name__}][{self.host}]; Connected.")
         except Exception as e:
             print(e) 
             self._state = "DISCONNECTED"
             self.status_changed.emit(self._state)
-            logger.info(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Connecting problem!!!\n{e}")
+            logger.error(f"[{self.__class__.__name__}][{self.host}]; Connection problem!!!\n{e}")
 
         
     def _disconnect(self):
@@ -124,26 +126,26 @@ class _SftpWorker(QObject):
         self._client = None
         self._state = "DISCONNECTED"
         self.status_changed.emit(self._state)
-        logger.info(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Disconnected")
+        logger.info(f"[{self.__class__.__name__}][{self.host}]; Disconnected")
 
     def _check_connected(self):
             if self._client and self._transport and self._transport.is_active():
                 self._is_connected = True
                 self._state = "CONNECTED"
                 self.status_changed.emit(self._state)
-                logger.info(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Connected")
+                logger.info(f"[{self.__class__.__name__}][{self.host}]; Connected")
             else:
                 self._is_connected = False
                 self._state = "DISCONNECTED"
                 self.status_changed.emit(self._state)
-                logger.info(f"[{inspect.currentframe().f_code.co_name}][{self.host}]; Disconnected")
+                logger.info(f"[{self.__class__.__name__}][{self.host}]; Disconnected")
 
-    def _read_monitor(self) -> str | None:
+    def _read_monitor_file(self) -> str | None:
+        assert self._sftp is not None
         try:
             self._sftp.stat(self.monitor_path)
-            print("Path exists")
         except Exception as e:
-            print(f"Monitor file not found!!!\n{e}")
+            logger.error(f"[{self.__class__.__name__}][{self.host}]; Monitor file not found!!!")
             return None
         
         for attempt in range(1, self.max_retries + 1):
@@ -157,15 +159,88 @@ class _SftpWorker(QObject):
                         size = self._sftp.stat(self.monitor_path).st_size
                         data = f.read(size)  
                     except Exception:
-                        data = f.read()      
+                        data = f.read()     
                 return data.decode("utf-8", errors="replace")
         
             except Exception as e:
                 logger.warning(f"[{self.__class__.__name__}] Read attempt {attempt}/{self.max_retries} failed for {self.monitor_path}:\n{e}")
                 return None
+    
+
+    def _read_control_file(self) -> Optional[str]:
+        assert self._sftp is not None
+        try:
+            self._sftp.stat(self.control_path)
+        except Exception as e:
+            logger.error(f"[{self.__class__.__name__}][{self.host}]; Control file not found!!!")
+            return None
+        
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                with self._sftp.open(self.control_path, mode="rb", bufsize=32768) as f: 
+                    try:
+                        f.prefetch()
+                    except Exception:
+                        pass
+                    try:
+                        size = self._sftp.stat(self.control_path).st_size
+                        data = f.read(size)  
+                        data = data.decode("utf-8", errors="replace")
+                        return data
+                    except Exception:
+                        data = f.read()      
+                        data = data.decode("utf-8", errors="replace")
+                        return data
+            except Exception as e:
+                logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read attempt {attempt}/{self.max_retries} failed for {self.control_path}:\n{e}")
+                return None
+
+    def on_control_param_changed(self,new_ctr_param_dict: dict) -> None:
+        assert self._sftp is not None
+        if not (old_ctr_params_str := self._read_control_file()): return
+
+        old_ctr_param_dict = {}
+        for line in old_ctr_params_str.splitlines():
+            line_stripped = line.strip()
+            if not line_stripped or '=' not in line_stripped:
+                continue
+            key, value = line_stripped.split('=',1)
+            printable_value = ''.join(ch for ch in value if ch in string.printable)
+            old_ctr_param_dict[key.strip()] = printable_value.strip()   
+
+        for key in old_ctr_param_dict:
+            if key in new_ctr_param_dict:
+                old_ctr_param_dict[key] = new_ctr_param_dict[key]
+
+        new_file_content = "\n".join(f"{k}={v}" for k, v in old_ctr_param_dict.items()) + "\n"
+        tmp_path = self.control_path + ".tmp"
+
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                with self._sftp.open(tmp_path, mode="wb", bufsize=32768) as f:
+                    f.write(new_file_content.encode("utf-8"))
+
+                self._sftp.posix_rename(tmp_path, self.control_path)
+                logger.info(f"[{self.__class__.__name__}][{self.host}]; Control file updated successfully on attempt {attempt}.")
+                self.control_param_updated.emit(old_ctr_param_dict)
+                break 
+
+            except Exception as e:
+                logger.warning(f"[{self.__class__.__name__}][{self.host}]; Write attempt {attempt}/{self.max_retries} failed: {e}")
+
+                try:
+                    self._sftp.remove(tmp_path)
+                except Exception:
+                    pass
+
+                if attempt == self.max_retries:
+                    logger.error(f"[{self.__class__.__name__}][{self.host}]; Failed to update control file after {self.max_retries} attempts.")
+
+
+
+
             
-    def on_control_param_changed(self,new_control_params):
-        print(f"new_control_params:\n{new_control_params}")
+            
         
 
         

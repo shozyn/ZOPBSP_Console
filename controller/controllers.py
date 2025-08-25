@@ -13,8 +13,10 @@ from pathlib import Path
 import string
 
 logger = logging.getLogger(__name__)
-logger.debug("low-level details you only want in the file")
-logger.info("user-visible status you want in the dock")
+def current_func_name() -> str:
+    frame = inspect.currentframe()
+    return frame.f_code.co_name if frame else "<unknown>"
+
 
 class TargetController(QObject):
     stopRequested = pyqtSignal()
@@ -36,7 +38,7 @@ class TargetController(QObject):
         self.display_enabled = False
 
     def handle_new_gps(self, lat, lon):
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {lat, lon}")
+        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {lat, lon}")
         self.model.update_actual_position(lat, lon)
 
         if self.display_enabled:
@@ -47,8 +49,7 @@ class TargetController(QObject):
         if sender_id != self.model.target_id:
             return
         
-        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "connect":
             self.connect_target()
@@ -82,10 +83,11 @@ class TargetController(QObject):
         if self.connected:
             return
         
+        
         self.thread = QThread(self)
         self.worker = ReceiverClientWorker(self.model.ip, self.model.port)
         self.worker.moveToThread(self.thread)
-
+        assert self.thread is not None
         self.thread.started.connect(self.worker.start)
         self.stopRequested.connect(self.worker.stop, type=Qt.QueuedConnection)
         self.worker.finished.connect(self.thread.quit)
@@ -107,6 +109,7 @@ class TargetController(QObject):
         if not self.connected:
             return
         
+        assert self.thread is not None
         self.stopRequested.emit()  # queued into worker thread
         self.thread.wait(2000)         # optional: block briefly for clean join
 
@@ -150,6 +153,7 @@ class ReceiverController(QObject):
         self.connected = False
         
         #self.model_changed.connect(lambda id,dict: print(f"model_changed:\n{id}:\n{dict}"))
+        
 
     @pyqtSlot(str)
     def on_monitor_read(self,param_monitor):
@@ -177,8 +181,7 @@ class ReceiverController(QObject):
         if sender_id != self.model.receiver_id:
             return
         
-        logger.info(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "connect":
             self.connect_receiver()
@@ -188,12 +191,16 @@ class ReceiverController(QObject):
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
                 new_params = dialog.get_new_parameters()
+                self.control_param_changed.emit(new_params) #without value
 
-                if new_params:
-                    for name, value in new_params.items():
-                        self.model.set_parameter_control(name, value)
-                    self.control_param_changed.emit(new_params)
 
+
+    @pyqtSlot(dict)
+    def on_control_param_updated(self,updated_prams):
+        if updated_prams:
+            for name, value in updated_prams.items():
+                self.model.set_parameter_control(name, value)
+            self.on_model_updated()
 
     @pyqtSlot(str)
     def on_status_sftp_changed(self,status : str) -> None:
@@ -223,10 +230,12 @@ class ReceiverController(QObject):
             return
 
         self.thread = QThread(self)
+        assert self.thread is not None
         self.worker = _SftpWorker(self.model.sftp_cfg)
         self.worker.status_changed.connect(self.on_status_sftp_changed)
         self.worker.monitor_read.connect(self.on_monitor_read)
         self.control_param_changed.connect(self.worker.on_control_param_changed)
+        self.worker.control_param_updated.connect(self.on_control_param_updated)
         
         self.worker.moveToThread(self.thread)
 
@@ -318,7 +327,7 @@ class MainController(QObject):
         """
         Receives the command string from the menu bar and dispatches to the correct logic.
         """
-        #print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {sender_id, command}")
+        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "open_project":
             self.open_project()
@@ -378,3 +387,5 @@ class MapController(QObject):
     
     def on_map_moved(self, point):
         self.coordinates_changed.emit(point.y(), point.x())
+
+

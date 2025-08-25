@@ -26,7 +26,7 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
-    CONFIG_PATH = "config/config.yaml"
+    CONFIG_PATH = "config/configWin.yaml"
 
     try:
      config = Config(CONFIG_PATH)

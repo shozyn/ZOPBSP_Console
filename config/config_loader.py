@@ -6,7 +6,7 @@ class ConfigError(Exception): pass
 class DataError(Exception): pass
 
 class Config:
-    def __init__(self, path="config/config.yaml"):
+    def __init__(self, path="config/configWin.yaml"):
         self.path = Path(path)
         #print(f"Config path: {self.path.resolve()}")
         self._data = {}
