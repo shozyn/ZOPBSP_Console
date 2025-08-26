@@ -18,7 +18,7 @@ receivers:
         value: 6675
         readable: true
       IP:
-        value: 192.168.0.210
+        value: 192.168.0.100
         readable: true 
       MASK:
         value: 255.255.255.0
@@ -58,15 +58,15 @@ receivers:
         value: 9
         readable: true
     sftp: 
-      host: '127.0.0.1' #host: '172.23.21.12'
-      user: 'dell'
-      password: '098'
+      host: '192.168.0.100' #host: '172.23.21.12'
+      user: 'pi'
+      password: 'raspberry'
       port: 22      
       keepalive_s: 30
       remote_dirs:
-        streaming: "C:\\Pi\\RPI1\\bsp\\streaming"
-        gps: "C:\\Pi\\RPI1\\bsp\\GPS"
-        config: "C:\\Pi\\RPI1\\bsp\\PARAM"
+        streaming: "/home/pi/bsp/streaming"
+        gps: "/home/pi/bsp/GPS"
+        config: "/home/pi/bsp/PARAM"
         monitor_file: "PARAM_RPI1_MONITOR.txt"
         control_file: "PARAM_RPI1_CONTROL.txt"
         max_retries: 3
@@ -120,15 +120,15 @@ receivers:
         value: 9
         readable: true
     sftp: 
-      host: '127.0.0.1' #host: '172.23.21.12'
-      user: 's.hozyn'
-      password: '19Sie2011>>>'
+      host: '192.168.0.220' #host: '172.23.21.12'
+      user: 'pi'
+      password: 'raspberry'
       port: 22      
       keepalive_s: 30
       remote_dirs:
-        streaming: "C:\\Pi\\RPI2\\bsp\\streaming"
-        gps: "C:\\Pi\\RPI2\\bsp\\GPS"
-        config: "C:\\Pi\\RPI2\\bsp\\PARAM"
+        streaming: "/home/pi/bsp/streaming"
+        gps: "/home/pi/bsp/GPS"
+        config: "/home/pi/bsp/PARAM"
         monitor_file: "PARAM_RPI2_MONITOR.txt"
         control_file: "PARAM_RPI2_CONTROL.txt"
         max_retries: 3
@@ -182,15 +182,15 @@ receivers:
         value: 9
         readable: true
     sftp: 
-      host: '127.0.0.1' #host: '172.23.21.12'
-      user: 's.hozyn'
-      password: '19Sie2011>>>'
+      host: '192.168.0.230' #host: '172.23.21.12'
+      user: 'pi'
+      password: 'raspberry'
       port: 22      
       keepalive_s: 30
       remote_dirs:
-        streaming: "C:\\Pi\\RPI3\\bsp\\streaming"
-        gps: "C:\\Pi\\RPI3\\bsp\\GPS"
-        config: "C:\\Pi\\RPI3\\bsp\\PARAM"
+        streaming: "/home/pi/bsp/streaming"
+        gps: "/home/pi/bsp/GPS"
+        config: "/home/pi/bsp/PARAM"
         monitor_file: "PARAM_RPI3_MONITOR.txt"
         control_file: "PARAM_RPI3_CONTROL.txt"
         max_retries: 3

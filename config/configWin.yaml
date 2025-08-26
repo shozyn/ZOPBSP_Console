@@ -58,9 +58,9 @@ receivers:
         value: 9
         readable: true
     sftp: 
-      host: '172.23.21.12'
-      user: 's.hozyn'
-      password: '19Sie2011>>>'
+      host: '127.0.0.1'
+      user: 'dell'
+      password: '098'
       port: 22      
       keepalive_s: 30
       remote_dirs:
