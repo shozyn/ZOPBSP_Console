@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import QObject, pyqtSignal, QTimer
 import inspect
 from PyQt5.QtWidgets import QDialog
 from view.parameter_dialog import ParameterDialog
@@ -193,8 +193,8 @@ class ReceiverController(QObject):
             if dialog.exec_() == QDialog.Accepted:
                 print("dialog accepted")
                 new_params = dialog.get_new_parameters()
-                print("new parameters getted")
-                self.control_param_changed.emit(new_params) #without value
+                print("new parameters get")
+                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params)) #without value
                 print("after emmiting control_param_changed signal")
 
 
@@ -238,7 +238,7 @@ class ReceiverController(QObject):
         self.worker = _SftpWorker(self.model.sftp_cfg)
         self.worker.status_changed.connect(self.on_status_sftp_changed)
         self.worker.monitor_read.connect(self.on_monitor_read)
-        self.control_param_changed.connect(self.worker.on_control_param_changed)
+        self.control_param_changed.connect(self.worker.on_control_param_changed,type=Qt.QueuedConnection)
         self.worker.control_param_updated.connect(self.on_control_param_updated)
         
         self.worker.moveToThread(self.thread)
