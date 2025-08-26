@@ -188,10 +188,14 @@ class ReceiverController(QObject):
         elif command == "disconnect":
             self.disconnect_receiver()
         if command == "set_parameters":
+            print("dialog opened")
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
+                print("dialog accepted")
                 new_params = dialog.get_new_parameters()
+                print("new parameters getted")
                 self.control_param_changed.emit(new_params) #without value
+                print("after emmiting control_param_changed signal")
 
 
 

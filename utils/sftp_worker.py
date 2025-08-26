@@ -215,12 +215,16 @@ class _SftpWorker(QObject):
         new_file_content = "\n".join(f"{k}={v}" for k, v in old_ctr_param_dict.items()) + "\n"
         tmp_path = self.control_path + ".tmp"
 
+        print("the new variable dictionary was created")
+
         for attempt in range(1, self.max_retries + 1):
             try:
                 with self._sftp.open(tmp_path, mode="wb", bufsize=32768) as f:
                     f.write(new_file_content.encode("utf-8"))
+                    print("temporary file was written")
 
                 self._sftp.posix_rename(tmp_path, self.control_path)
+                print("rename was performed")
                 logger.info(f"[{self.__class__.__name__}][{self.host}]; Control file updated successfully on attempt {attempt}.")
                 self.control_param_updated.emit(old_ctr_param_dict)
                 break 
