@@ -15,52 +15,52 @@ receivers:
   - id: RPI1
     param_monitor:
       Serial:
-        value: 6675
+        value: xxx
         readable: true
       IP:
-        value: 192.168.0.210
+        value: xxx
         readable: true 
       MASK:
-        value: 255.255.255.0
+        value: xxx
         readable: true
       Mode:
-        value: 2
+        value: xxx
         readable: true
       BatPerc:
-        value: -1
+        value: xxx
         readable: true
       StPPS:
-        value: 3
+        value: xxx
         readable: true
       RPiProc:
-        value: -1%
+        value: xxx
         readable: true
     param_control:
       SRate:
-        value: 64000
+        value: xxx
         readable: true
       Nagrywanie:
-        value: False
+        value: xxx
         readable: true
       AktHydro:
-        value: False
+        value: xxx
         readable: true
       AktGPS:
-        value: False
+        value: xxx
         readable: true
       AktStreaming:
-        value: false
+        value: xxx
         readable: true
       RecDur:
-        value: 1
+        value: xxx
         readable: true
       Pause:
-        value: 9
+        value: xxx
         readable: true
     sftp: 
       host: '127.0.0.1'
-      user: 'dell'
-      password: '098'
+      user: 's.hozyn'
+      password: '19Sie2011>>>'
       port: 22      
       keepalive_s: 30
       remote_dirs:
@@ -99,7 +99,7 @@ receivers:
         readable: true
     param_control:
       SRate:
-        value: 64000
+        value: xxx
         readable: true
       Nagrywanie:
         value: False

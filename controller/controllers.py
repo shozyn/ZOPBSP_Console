@@ -157,7 +157,6 @@ class ReceiverController(QObject):
 
     @pyqtSlot(str)
     def on_monitor_read(self,param_monitor):
-        print(f"param_monitor:\n{param_monitor}")
         param_dict = {}
         if not param_monitor:
             return
