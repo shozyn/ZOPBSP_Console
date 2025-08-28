@@ -35,6 +35,27 @@ receivers:
       RPiProc:
         value: xxx
         readable: true
+      Act_SRate:
+        value: xxx
+        readable: true
+      Act_Nagrywanie:
+        value: xxx
+        readable: true
+      Act_AktHydro:
+        value: xxx
+        readable: true
+      Act_AktGPS:
+        value: xxx
+        readable: true
+      Act_AktStreaming:
+        value: xxx
+        readable: true
+      Act_RecDur:
+        value: xxx
+        readable: true
+      Act_Pause:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: xxx
@@ -71,9 +92,9 @@ receivers:
         control_file: "PARAM_RPI1_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI1\\streaming"
-        gps: "C:\\Pi_loc\\RPI1\\GPS"
-        config: "C:\\Pi_loc\\RPI1\\PARAM"
+        streaming: "C:\\Pi_loc\\RPI1\\bsp\\streaming"
+        gps: "C:\\Pi_loc\\RPI1\\bsp\\GPS"
+        config: "C:\\Pi_loc\\RPI1\\bsp\\PARAM"
   - id: RPI2
     param_monitor:
       Serial:

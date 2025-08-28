@@ -8,40 +8,40 @@ from threading import Lock
 
 logger = logging.getLogger(__name__)
 
-# class RemoteFolderWatcher:
-#     def __init__(self, sftp, remote_dir: str, local_dir: str):
-#         self.sftp = sftp
-#         self.remote_dir = remote_dir
-#         self.local_dir = Path(local_dir)
-#         self.local_dir.mkdir(parents=True, exist_ok=True)
-#         self.downloaded = set()
+class RemoteFolderWatcher:
+    def __init__(self, sftp, remote_dir: str, local_dir: str):
+        self.sftp = sftp
+        self.remote_dir = Path(remote_dir).as_posix()
+        self.local_dir = Path(local_dir)
+        self.local_dir.mkdir(parents=True, exist_ok=True)
+        self.old_files = set()
 
-#         #Mark all existing remote files as already seen
-#         try:
-#             initial_files = [attr.filename for attr in self.sftp.listdir_attr(self.remote_dir)]
-#             self.downloaded.update(initial_files)
-#             logger.info(f"Initial snapshot for {remote_dir}: {len(initial_files)} files")
-#         except Exception as e:
-#             logger.error(f"Error taking initial snapshot of {remote_dir}: {e}")     
+        #Mark all existing remote files as already seen
+        try:
+            initial_files = [attr.filename for attr in self.sftp.listdir_attr(self.remote_dir)]
+            self.old_files.update(initial_files)
+            logger.info(f"Initially stored files for {self.remote_dir}: {len(initial_files)} files")
+        except Exception as e:
+            logger.error(f"Error reading initially stored files of {self.remote_dir}: {e}")     
 
-#     def check_and_download(self):
-#         new_files = []
-#         try:
-#             for attr in self.sftp.listdir_attr(self.remote_dir):
-#                 fname = attr.filename
-#                 if fname not in self.downloaded:
-#                     remote_path = f"{self.remote_dir}/{fname}"
-#                     local_path = self.local_dir / fname
-#                     try:
-#                         self.sftp.get(remote_path, str(local_path))
-#                         self.downloaded.add(fname)
-#                         new_files.append(str(local_path))
-#                         logger.info(f"Downloaded {remote_path} -> {local_path}")
-#                     except Exception as e:
-#                         logger.error(f"Failed to download {remote_path}: {e}")
-#         except Exception as e:
-#             logger.error(f"Error listing {self.remote_dir}: {e}")
-#         return new_files
+    def check_and_download(self):
+        new_files = []
+        try:
+            for attr in self.sftp.listdir_attr(self.remote_dir):
+                fname = attr.filename
+                if fname not in self.old_files:
+                    remote_path = f"{self.remote_dir}/{fname}"
+                    local_path = self.local_dir / fname
+                    try:
+                        self.sftp.get(remote_path,local_path)
+                        self.old_files.add(fname)
+                        new_files.append(str(local_path))
+                        logger.info(f"Downloaded {remote_path} -> {local_path}")
+                    except Exception as e:
+                        logger.error(f"Failed to download {remote_path}: {e}")
+        except Exception as e:
+            logger.error(f"Error listing {self.remote_dir}: {e}")
+        return new_files
 
 class _SftpWorker(QObject):
     status_changed = pyqtSignal(str)
@@ -58,8 +58,8 @@ class _SftpWorker(QObject):
         self._transport: paramiko.Transport | None = None
         self._sftp_control: paramiko.SFTPClient | None = None
         self._sftp_monitor: paramiko.SFTPClient | None = None
-        # self.sftp_gps: paramiko.SFTPClient | None = None
-        # self.sftp_hydro: paramiko.SFTPClient | None = None
+        self._sftp_gps: paramiko.SFTPClient | None = None
+        self._sftp_hydro: paramiko.SFTPClient | None = None
         self._running = False
         self.path_gps = Path(self.cfg["remote_dirs"]["gps"])
         self._state = "DISCONNECTED"
@@ -82,8 +82,8 @@ class _SftpWorker(QObject):
         self.status_changed.emit(self._state)
         self.initial_ctr_params_dict: Optional[dict] = None
         self._lock = Lock()
-        # self.gps_watcher: Optional[RemoteFolderWatcher] = None
-        # self.hydro_watcher: Optional[RemoteFolderWatcher] = None
+        self.gps_watcher: Optional[RemoteFolderWatcher] = None
+        self.hydro_watcher: Optional[RemoteFolderWatcher] = None
 
     def start(self):
         if self._running:
@@ -94,7 +94,7 @@ class _SftpWorker(QObject):
         
         self._timer = QTimer(self)
         assert self._timer is not None
-        self._timer.setInterval(int(self.cfg.get("poll_interval_ms", 1000)))
+        self._timer.setInterval(int(self.cfg.get("poll_interval_ms", 5000)))
         self._timer.timeout.connect(self._tick)
         self._connect()
         self._timer.start()
@@ -120,19 +120,23 @@ class _SftpWorker(QObject):
         
         if not self.initial_ctr_params_dict:
             self.set_initial_control_params()
-            #return 
+            return 
 
-        # if not self.gps_watcher:
-        #     self.gps_watcher = RemoteFolderWatcher(self.sftp_gps,self.remote_gps_folder,self.local_gps_folder)
-        #     self.gps_watcher.check_and_download()
-        # if not self.hydro_watcher:
-        #     self.hydro_watcher = RemoteFolderWatcher(self.sftp_hydro,self.remote_hydro_folder,self.local_hydro_folder)
-            # self.hydro_watcher.check_and_download()
+        if not self.gps_watcher:
+            self.gps_watcher = RemoteFolderWatcher(self._sftp_gps,self.remote_gps_folder,self.local_gps_folder)
+        if not self.hydro_watcher:
+            self.hydro_watcher = RemoteFolderWatcher(self._sftp_hydro,self.remote_hydro_folder,self.local_hydro_folder)
+
+        if self.gps_watcher: self.gps_watcher.check_and_download()
+        if self.hydro_watcher: self.hydro_watcher.check_and_download()
 
         if (content := self._read_monitor_file()):
             logger.info(f"[{self.__class__.__name__}][{self.host}]; Monitor file read successfully.") 
             self.monitor_read.emit(content)
+        else:
+            logger.warning(f"[{self.__class__.__name__}][{self.host}]; Monitor file read failed.") 
 
+        
 
     def _connect(self):
         if self._state in ("CONNECTING","CONNECTING"):
@@ -156,8 +160,9 @@ class _SftpWorker(QObject):
                 self._transport.set_keepalive(30)
                 self._sftp_control = client.open_sftp()
                 self._sftp_monitor = client.open_sftp()
-                # self._sftp_gps = client.open_sftp()
-                # self._sftp_hydro = client.open_sftp()
+                self._sftp_gps = client.open_sftp()
+                self._sftp_hydro = client.open_sftp()
+
                 self._is_connected = True
                 self._state = "CONNECTED"
                 self.status_changed.emit(self._state)
@@ -173,14 +178,14 @@ class _SftpWorker(QObject):
         try:
             if self._sftp_control: self._sftp_control.close()
             if self._sftp_monitor: self._sftp_monitor.close()
-            # if self._sftp_gps: self._sftp_gps.close()
-            # if self._sftp_hydro: self._sftp_hydro.close()
+            if self._sftp_gps: self._sftp_gps.close()
+            if self._sftp_hydro: self._sftp_hydro.close()
         except Exception:
             pass
         self._sftp_control = None
         self.sftp_monitor = None
-        # self._sftp_gps = None
-        # self._sftp_hydro = None
+        self._sftp_gps = None
+        self._sftp_hydro = None
         try:
             if self._transport: self._transport.close()
         except Exception:
@@ -283,7 +288,9 @@ class _SftpWorker(QObject):
     def set_initial_control_params(self):
         print(f"[{self.host}]; set_initial_control_params")
         assert self._sftp_control is not None
-        if not (initial_ctr_params_str := self._read_control_file()): return
+        if not (initial_ctr_params_str := self._read_control_file()): 
+            logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read data is None")
+            return
 
         self.initial_ctr_params_dict = {}
         for line in initial_ctr_params_str.splitlines():
@@ -299,7 +306,9 @@ class _SftpWorker(QObject):
     def on_control_param_changed(self,new_ctr_param_dict: dict) -> None:
         print(f"[{self.host}]; entering on_control_param_changed()")
         assert self._sftp_control is not None
-        if not (old_ctr_params_str := self._read_control_file()): return
+        if not (old_ctr_params_str := self._read_control_file()):
+            logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read data is None")
+            return
 
         old_ctr_param_dict = {}
         for line in old_ctr_params_str.splitlines():

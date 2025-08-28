@@ -35,6 +35,27 @@ receivers:
       RPiProc:
         value: xxx
         readable: true
+      Act_SRate:
+        value: xxx
+        readable: true
+      Act_Nagrywanie:
+        value: xxx
+        readable: true
+      Act_AktHydro:
+        value: xxx
+        readable: true
+      Act_AktGPS:
+        value: xxx
+        readable: true
+      Act_AktStreaming:
+        value: xxx
+        readable: true
+      Act_RecDur:
+        value: xxx
+        readable: true
+      Act_Pause:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: xxx
@@ -97,6 +118,27 @@ receivers:
       RPiProc:
         value: -1%
         readable: true
+      Act_SRate:
+        value: xxx
+        readable: true
+      Act_Nagrywanie:
+        value: xxx
+        readable: true
+      Act_AktHydro:
+        value: xxx
+        readable: true
+      Act_AktGPS:
+        value: xxx
+        readable: true
+      Act_AktStreaming:
+        value: xxx
+        readable: true
+      Act_RecDur:
+        value: xxx
+        readable: true
+      Act_Pause:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: 64000
@@ -158,6 +200,27 @@ receivers:
         readable: true
       RPiProc:
         value: -1%
+        readable: true
+      Act_SRate:
+        value: xxx
+        readable: true
+      Act_Nagrywanie:
+        value: xxx
+        readable: true
+      Act_AktHydro:
+        value: xxx
+        readable: true
+      Act_AktGPS:
+        value: xxx
+        readable: true
+      Act_AktStreaming:
+        value: xxx
+        readable: true
+      Act_RecDur:
+        value: xxx
+        readable: true
+      Act_Pause:
+        value: xxx
         readable: true
     param_control:
       SRate:
