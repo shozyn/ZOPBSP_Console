@@ -40,9 +40,6 @@ def populate_status_panel(model, receivers_cfg, targets_cfg):
                 for pname, meta in params.items():
                     _add_value_row(group, pname, meta.get("value"))
 
-            # params = rx.get("param_control", {})
-            # for pname, meta in params.items():
-            #     _add_value_row(group, pname, meta.get("value"))
     # Targets
     if targets_cfg:
         tg_root = QStandardItem("Targets")

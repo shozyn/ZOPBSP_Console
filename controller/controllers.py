@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QObject, pyqtSignal, QTimer
 import inspect
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QFileDialog, QWidget
 from view.parameter_dialog import ParameterDialog
 from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
 from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
@@ -133,7 +133,7 @@ class ReceiverController(QObject):
     """
     stopRequested = pyqtSignal()  
     model_changed = pyqtSignal(str,dict)
-    control_param_changed = pyqtSignal(dict)
+    control_param_changed = pyqtSignal(dict,str)
 
 
     def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
@@ -192,8 +192,13 @@ class ReceiverController(QObject):
             if dialog.exec_() == QDialog.Accepted:
                 print("dialog accepted")
                 new_params = dialog.get_new_parameters()
-                print("new parameters get")
-                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params)) #without value
+                window = QWidget() 
+                folder = ""
+                if new_params.get("AktStreaming","False") == "True":
+                    folder = QFileDialog.getExistingDirectory(window,"Select or Create Folder",f"C:/Pi_loc/{self.receiver_id}/streaming",
+                                                              QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks
+                                                              | QFileDialog.DontUseNativeDialog)
+                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,folder)) #without value
                 print("after emmiting control_param_changed signal")
 
 

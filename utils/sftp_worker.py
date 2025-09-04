@@ -303,8 +303,16 @@ class _SftpWorker(QObject):
             self.control_param_updated.emit(self.initial_ctr_params_dict)
     
     
-    def on_control_param_changed(self,new_ctr_param_dict: dict) -> None:
+    def on_control_param_changed(self,new_ctr_param_dict: dict, streaming_path: str) -> None:
         print(f"[{self.host}]; entering on_control_param_changed()")
+        print(f"streaming_path: {streaming_path}")
+        
+        if streaming_path:
+            self.hydro_watcher.local_dir = Path(streaming_path)
+            self.gps_watcher.local_dir = Path(streaming_path.replace("streaming","gps"))
+            self.gps_watcher.local_dir.mkdir(parents=True, exist_ok=True)
+            
+        
         assert self._sftp_control is not None
         if not (old_ctr_params_str := self._read_control_file()):
             logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read data is None")

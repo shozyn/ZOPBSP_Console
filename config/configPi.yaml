@@ -35,25 +35,25 @@ receivers:
       RPiProc:
         value: xxx
         readable: true
-      Act_SRate:
+      ACT_SRate:
         value: xxx
         readable: true
-      Act_Nagrywanie:
+      ACT_Nagrywanie:
         value: xxx
         readable: true
-      Act_AktHydro:
+      ACT_AktHydro:
         value: xxx
         readable: true
-      Act_AktGPS:
+      ACT_AktGPS:
         value: xxx
         readable: true
-      Act_AktStreaming:
+      ACT_AktStreaming:
         value: xxx
         readable: true
-      Act_RecDur:
+      ACT_RecDur:
         value: xxx
         readable: true
-      Act_Pause:
+      ACT_Pause:
         value: xxx
         readable: true
     param_control:
@@ -62,16 +62,16 @@ receivers:
         readable: true
       Nagrywanie:
         value: xxx
-        readable: true
+        readable: false
       AktHydro:
         value: xxx
-        readable: true
+        readable: false
       AktGPS:
         value: xxx
-        readable: true
+        readable: false
       AktStreaming:
         value: xxx
-        readable: true
+        readable: false
       RecDur:
         value: xxx
         readable: true
@@ -79,7 +79,7 @@ receivers:
         value: xxx
         readable: true
     sftp: 
-      host: '192.168.0.100' #host: '172.23.21.12'
+      host: '192.168.0.102' #host: '172.23.21.12'
       user: 'pi'
       password: 'raspberry'
       port: 22      
@@ -98,68 +98,68 @@ receivers:
   - id: RPI2
     param_monitor:
       Serial:
-        value: 6675
+        value: xxx
         readable: true
       IP:
-        value: 192.168.0.220
+        value: xxx
         readable: true 
       MASK:
-        value: 255.255.255.0
+        value: xxx
         readable: true
       Mode:
-        value: 2
+        value: xxx
         readable: true
       BatPerc:
-        value: -1
+        value: xxx
         readable: true
       StPPS:
-        value: 3
+        value: xxx
         readable: true
       RPiProc:
-        value: -1%
-        readable: true
-      Act_SRate:
         value: xxx
         readable: true
-      Act_Nagrywanie:
+      ACT_SRate:
         value: xxx
         readable: true
-      Act_AktHydro:
+      ACT_Nagrywanie:
         value: xxx
         readable: true
-      Act_AktGPS:
+      ACT_AktHydro:
         value: xxx
         readable: true
-      Act_AktStreaming:
+      ACT_AktGPS:
         value: xxx
         readable: true
-      Act_RecDur:
+      ACT_AktStreaming:
         value: xxx
         readable: true
-      Act_Pause:
+      ACT_RecDur:
+        value: xxx
+        readable: true
+      ACT_Pause:
         value: xxx
         readable: true
     param_control:
       SRate:
-        value: 64000
+        value: xxx
         readable: true
       Nagrywanie:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktHydro:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktGPS:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktStreaming:
-        value: false
-        readable: true
+        value: xxx
+        readable: false
       RecDur:
-        value: 1
+        value: xxx
         readable: true
       Pause:
-        value: 9
+        value: xxx
         readable: true
     sftp: 
       host: '192.168.0.220' #host: '172.23.21.12'
@@ -181,68 +181,68 @@ receivers:
   - id: RPI3
     param_monitor:
       Serial:
-        value: 6675
+        value: xxx
         readable: true
       IP:
-        value: 192.168.0.230
+        value: xxx
         readable: true 
       MASK:
-        value: 255.255.255.0
+        value: xxx
         readable: true
       Mode:
-        value: 2
+        value: xxx
         readable: true
       BatPerc:
-        value: -1
+        value: xxx
         readable: true
       StPPS:
-        value: 3
+        value: xxx
         readable: true
       RPiProc:
-        value: -1%
-        readable: true
-      Act_SRate:
         value: xxx
         readable: true
-      Act_Nagrywanie:
+      ACT_SRate:
         value: xxx
         readable: true
-      Act_AktHydro:
+      ACT_Nagrywanie:
         value: xxx
         readable: true
-      Act_AktGPS:
+      ACT_AktHydro:
         value: xxx
         readable: true
-      Act_AktStreaming:
+      ACT_AktGPS:
         value: xxx
         readable: true
-      Act_RecDur:
+      ACT_AktStreaming:
         value: xxx
         readable: true
-      Act_Pause:
+      ACT_RecDur:
+        value: xxx
+        readable: true
+      ACT_Pause:
         value: xxx
         readable: true
     param_control:
       SRate:
-        value: 64000
+        value: xxx
         readable: true
       Nagrywanie:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktHydro:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktGPS:
-        value: False
-        readable: true
+        value: xxx
+        readable: false
       AktStreaming:
-        value: false
-        readable: true
+        value: xxx
+        readable: false
       RecDur:
-        value: 1
+        value: xxx
         readable: true
       Pause:
-        value: 9
+        value: xxx
         readable: true
     sftp: 
       host: '192.168.0.230' #host: '172.23.21.12'

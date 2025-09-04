@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox
+from PyQt5.QtWidgets import QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox, QCheckBox
 from PyQt5.QtCore import Qt, pyqtSignal
 
 class ParameterDialog(QDialog):
@@ -12,7 +12,7 @@ class ParameterDialog(QDialog):
         self.setWindowTitle("Set Parameters")
         
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
-
+        
         self.editors = {} 
 
         layout = QFormLayout(self)
@@ -20,10 +20,15 @@ class ParameterDialog(QDialog):
             value = info.get("value", "")
             editable = info.get("readable", True)
             label = QLabel(name)
-            editor = QLineEdit(str(value))
-            editor.setReadOnly(not editable)
-            if not editable:
-                editor.setDisabled(True)  # This will grey out the field and prevent all edits/focus
+            if editable:
+                editor = QLineEdit(str(value))
+            else:
+                editor = QCheckBox()
+                if value == "True":
+                    editor.setChecked(True)
+            #editor.setReadOnly(not editable)
+            # if not editable:
+            #     editor.setDisabled(True)  # This will grey out the field and prevent all edits/focus
             self.editors[name] = editor
             layout.addRow(label, editor)
 
@@ -34,5 +39,12 @@ class ParameterDialog(QDialog):
 
     def get_new_parameters(self):
         """Return updated parameter values as a dict {name: value, ...}"""
-        return {name: editor.text() for name, editor in self.editors.items()}
+        #return {name: editor.text() for name, editor in self.editors.items()}
+        result = {}
+        for name, editor in self.editors.items():
+            if isinstance(editor, QCheckBox):
+                result[name] = "True" if editor.isChecked() else "False"
+            else:  # QLineEdit (or other text widgets)
+                result[name] = editor.text()
+        return result
     
