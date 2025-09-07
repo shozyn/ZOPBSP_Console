@@ -13,7 +13,17 @@ targets:
         readable: true   
 receivers:
   - id: RPI1
+    status:
+      Colour: 
+        value: "red"
+        readable: true 
+      Status: 
+        value: "DISCONNECTED"
+        readable: true 
     param_monitor:
+      Update date:
+        value: xxx
+        readable: true
       Serial:
         value: xxx
         readable: true
@@ -54,6 +64,9 @@ receivers:
         value: xxx
         readable: true
       ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
         value: xxx
         readable: true
     param_control:
@@ -118,6 +131,30 @@ receivers:
       RPiProc:
         value: xxx
         readable: true
+      ACT_SRate:
+        value: xxx
+        readable: true
+      ACT_Nagrywanie:
+        value: xxx
+        readable: true
+      ACT_AktHydro:
+        value: xxx
+        readable: true
+      ACT_AktGPS:
+        value: xxx
+        readable: true
+      ACT_AktStreaming:
+        value: xxx
+        readable: true
+      ACT_RecDur:
+        value: xxx
+        readable: true
+      ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: xxx
@@ -180,22 +217,46 @@ receivers:
       RPiProc:
         value: xxx
         readable: true
+      ACT_SRate:
+        value: xxx
+        readable: true
+      ACT_Nagrywanie:
+        value: xxx
+        readable: true
+      ACT_AktHydro:
+        value: xxx
+        readable: true
+      ACT_AktGPS:
+        value: xxx
+        readable: true
+      ACT_AktStreaming:
+        value: xxx
+        readable: true
+      ACT_RecDur:
+        value: xxx
+        readable: true
+      ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: xxx
         readable: true
       Nagrywanie:
         value: xxx
-        readable: true
+        readable: false
       AktHydro:
         value: xxx
-        readable: true
+        readable: false
       AktGPS:
         value: xxx
-        readable: true
+        readable: false
       AktStreaming:
         value: xxx
-        readable: true
+        readable: false
       RecDur:
         value: xxx
         readable: true

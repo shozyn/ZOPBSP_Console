@@ -36,7 +36,7 @@ def populate_status_panel(model, receivers_cfg, targets_cfg):
             group_val.setEditable(False)
             rx_root.appendRow([group, group_val])
 
-            for params in [rx.get("param_monitor", {}),rx.get("param_control", {})]:
+            for params in [rx.get("status", {}),rx.get("param_monitor", {}),rx.get("param_control", {})]:
                 for pname, meta in params.items():
                     _add_value_row(group, pname, meta.get("value"))
 

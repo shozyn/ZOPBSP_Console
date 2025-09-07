@@ -1,4 +1,5 @@
 from PyQt5.QtCore import QObject, pyqtSignal, QTimer
+from PyQt5.QtGui import QColor, QBrush
 import inspect
 from PyQt5.QtWidgets import QDialog, QFileDialog, QWidget
 from view.parameter_dialog import ParameterDialog
@@ -38,7 +39,7 @@ class TargetController(QObject):
         self.display_enabled = False
 
     def handle_new_gps(self, lat, lon):
-        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {lat, lon}")
+        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {lat, lon}")
         self.model.update_actual_position(lat, lon)
 
         if self.display_enabled:
@@ -49,7 +50,7 @@ class TargetController(QObject):
         if sender_id != self.model.target_id:
             return
         
-        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
+        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "connect":
             self.connect_target()
@@ -99,7 +100,7 @@ class TargetController(QObject):
 
         self.connected = True
         self.menu_bar.set_target_connection_text(self.model.target_id, True)
-        print(f"[{self.__class__.__name__}] Connected to {self.model.target_id}")
+        #print(f"[{self.__class__.__name__}] Connected to {self.model.target_id}")
 
     def disconnect_target(self):
         # if self.connected:
@@ -115,7 +116,7 @@ class TargetController(QObject):
 
         self.connected = False
         self.menu_bar.set_target_connection_text(self.model.target_id, False)
-        print(f"[{self.__class__.__name__}] Disconnected from {self.model.target_id}")
+        #print(f"[{self.__class__.__name__}] Disconnected from {self.model.target_id}")
 
         self.thread = None
         self.worker = None
@@ -151,8 +152,12 @@ class ReceiverController(QObject):
 
         menu_bar.command_triggered.connect(self.handle_command)
         self.connected = False
-        
+
+        self.model.actual_position_updated.connect(self.view.display_actual_position)
         #self.model_changed.connect(lambda id,dict: print(f"model_changed:\n{id}:\n{dict}"))
+        
+        
+        
         
 
     @pyqtSlot(str)
@@ -162,9 +167,13 @@ class ReceiverController(QObject):
             return
         for line in param_monitor.splitlines():
             line_stripped = line.strip()
-            if not line_stripped or '=' not in line_stripped:
+            if not line_stripped:
                 continue
-            key, value = line_stripped.split('=',1)
+            if '=' not in line_stripped:
+                if ":" in line_stripped:
+                    key, value = line_stripped.split(':',1)
+            else:      
+                key, value = line_stripped.split('=',1)
             printable_value = ''.join(ch for ch in value if ch in string.printable)
             param_dict[key.strip()] = {"value": printable_value.strip()}            
         
@@ -180,28 +189,27 @@ class ReceiverController(QObject):
         if sender_id != self.model.receiver_id:
             return
         
-        print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
+        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "connect":
             self.connect_receiver()
         elif command == "disconnect":
             self.disconnect_receiver()
         if command == "set_parameters":
-            print("dialog opened")
+            #print("dialog opened")
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
-                print("dialog accepted")
+                #print("dialog accepted")
                 new_params = dialog.get_new_parameters()
                 window = QWidget() 
-                folder = ""
+                folder = self.model.sftp_cfg.get("local_dirs",{}).get("streaming",f"C:/Pi_loc/{self.receiver_id}/bsp/streaming")
                 if new_params.get("AktStreaming","False") == "True":
-                    folder = QFileDialog.getExistingDirectory(window,"Select or Create Folder",f"C:/Pi_loc/{self.receiver_id}/streaming",
+                    chosen_folder = QFileDialog.getExistingDirectory(window,"Select or Create Folder",folder,
                                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks
                                                               | QFileDialog.DontUseNativeDialog)
+                if  chosen_folder:
+                    folder = chosen_folder
                 QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,folder)) #without value
-                print("after emmiting control_param_changed signal")
-
-
 
     @pyqtSlot(dict)
     def on_control_param_updated(self,updated_prams):
@@ -212,17 +220,19 @@ class ReceiverController(QObject):
 
     @pyqtSlot(str)
     def on_status_sftp_changed(self,status : str) -> None:
-        print(status)
+        self.model.set_parameter_status("Status", status)
+        self.update_status_widget()
+        #print(status)
 
     def connect_receiver(self):
-        print("Connect_receiver triggered")
+        #print("Connect_receiver triggered")
         self._start_sftp()
 
     def disconnect_receiver(self):
-        print("Disconnect_receiver triggered")
+        #print("Disconnect_receiver triggered")
         self._stop_sftp()
 
-    # ---------------- public API (optional) ----------------
+    # ---------------- public API  ----------------
     def send_control_text(self, text: str):
         """Write-once upload of control.txt"""
         if self._sftp_worker:
@@ -261,7 +271,7 @@ class ReceiverController(QObject):
 
         self.connected = True
         self.menu_bar.set_receiver_connection_text(self.receiver_id, True)
-        print(f"[{self.__class__.__name__}] Connected to {self.receiver_id}")
+        #print(f"[{self.__class__.__name__}] Connected to {self.receiver_id}")
 
     def _stop_sftp(self):
         if not self.connected:
@@ -272,7 +282,7 @@ class ReceiverController(QObject):
 
         self.connected = False
         self.menu_bar.set_receiver_connection_text(self.receiver_id, False)
-        print(f"[{self.__class__.__name__}] Disconnected from {self.receiver_id}")
+        #print(f"[{self.__class__.__name__}] Disconnected from {self.receiver_id}")
 
         self.thread = None
         self.worker = None
@@ -285,6 +295,7 @@ class ReceiverController(QObject):
             pass
     
     def on_model_updated(self):
+        self.model.update_actual_position()
         self.update_status_widget()
         self.model_changed.emit(self.receiver_id,self.model.parameters)
         
@@ -312,10 +323,22 @@ class ReceiverController(QObject):
                     name_item = group.child(j, 0)
                     value_item = group.child(j, 1)
                     pname = name_item.text()
+                    
+                    if pname in self.model.parameters["status"]:
+                        new_value = str(self.model.parameters["status"][pname].get("value"))
+                        value_item.setText(new_value)
+                        if new_value == "DISCONNECTED":
+                            value_item.setBackground(QBrush(QColor("red")))
+                        elif new_value == "CONNECTING":
+                            value_item.setBackground(QBrush(QColor("yellow")))
+                        else:
+                            value_item.setBackground(QBrush(QColor("white")))
+                        
                     if pname in self.model.parameters["param_monitor"]:
                         value_item.setText(str(self.model.parameters["param_monitor"][pname].get("value")))
                     if pname in self.model.parameters["param_control"]:
                         value_item.setText(str(self.model.parameters["param_control"][pname].get("value")))
+                        
                 break
 
 class MainController(QObject):
@@ -366,16 +389,18 @@ class MapController(QObject):
     """
     coordinates_changed = pyqtSignal(float, float)  # lat, lon
 
-    def __init__(self, map_view, map_model,map_layer, toolbar=None):
+    def __init__(self, map_view, map_model,map_layer, toolbar, menu_bar):
         super().__init__()
         self.map_view = map_view
         self.map_view.map_moved.connect(self.on_map_moved)
         self.map_model = map_model
         self.toolbar = toolbar
         self.map_layer = map_layer
+        self.menu_bar = menu_bar
 
         # Connect the model's signal to the view's slot
         self.map_model.layers_changed.connect(self.map_view.set_layers)
+        self.menu_bar.command_triggered.connect(self.on_menu_bar_command_triggered)
 
         if self.map_layer:
             self.add_raster_layer(self.map_layer)
@@ -383,6 +408,12 @@ class MapController(QObject):
         if self.toolbar is not None:
             self.toolbar.tool_changed.connect(self.map_view.on_send_tool)
 
+    def on_menu_bar_command_triggered(self,who: str, command: str) -> None:
+        if who != "Map":
+            return
+        if command == "zoom_to_full":
+            self.map_view.m_MapCanvas.zoomToFullExtent()
+    
     def add_raster_layer(self, path, crs="EPSG:4326"):
         layer = QgsRasterLayer(path)
         if not layer.isValid():

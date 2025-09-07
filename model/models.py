@@ -18,13 +18,13 @@ class TargetModel(QObject):
         self.actual_position = None
         self.predicted_position = None
 
-        self.actual_position_updated.connect(lambda p: print(f"Actual: {p}"))
+        #self.actual_position_updated.connect(lambda p: print(f"Actual: {p}"))
         #target.predicted_position_updated.connect(lambda p: print(f"Predicted: {p}"))
 
     def update_actual_position(self, lat, lon):
-        #self.actual_position = QgsPointXY(lon, lat)
-        print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {lat, lon}")
-        self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
+        self.actual_position = QgsPointXY(lon, lat)
+        #print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {lat, lon}")
+        #self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
         self.actual_position_updated.emit(self.actual_position)
 
     def update_predicted_position(self, point: QgsPointXY):
@@ -32,12 +32,23 @@ class TargetModel(QObject):
         self.predicted_position_updated.emit(self.predicted_position)
 
 class ReceiverModel(QObject): 
+    actual_position_updated = pyqtSignal(QgsPointXY)
     def __init__(self, receiver_id, parameters,sftp_cfg, parent=None):
         super().__init__(parent)
         self.receiver_id = receiver_id
         self.parameters = parameters
         self.sftp_cfg = sftp_cfg
+        self.actual_position: QgsPointXY  | None = None
 
+    def update_actual_position(self) -> None:
+        #act_pos = "5432.6659792,01832.7680816"
+        act_pos = self.parameters.get("param_monitor",{}).get("ACT_Pos",{}).get("value","")
+        if not act_pos or act_pos == "xxx":
+            return
+        self.actual_position = ReceiverModel.parse_act_pos(act_pos)
+        #self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
+        self.actual_position_updated.emit(self.actual_position)
+        
     def set_parameter_control(self, name: str, value: Any) -> None:
         """Update the parameter value (for dialog/UI update)."""
         if name in self.parameters["param_control"]:
@@ -48,7 +59,11 @@ class ReceiverModel(QObject):
         """Update the parameter value (for dialog/UI update)."""
         if name in self.parameters["param_monitor"]:
             self.parameters["param_monitor"][name]['value'] = value
-
+            
+    def set_parameter_status(self, name: str, value: Any) -> None:
+        """Update the parameter value (for dialog/UI update)."""
+        if name in self.parameters["status"]:
+            self.parameters["status"][name]['value'] = value
             
     def get_sftp_cfg(self, name: str) -> Optional[any]:
         """Return the parameter's value for a given name."""
@@ -61,6 +76,45 @@ class ReceiverModel(QObject):
         """Update the parameter value (for dialog/UI update)."""
         if name in self.parameters:
             self.parasftp_cfgmeters[name]['value'] = value
+    
+    @staticmethod       
+    def nmea_to_decimal(coord: str, deg_len: int) -> float:
+        """
+        Convert NMEA coordinate (DDMM.MMMM or DDDMM.MMMM) to decimal degrees.
+        deg_len = 2 for latitude, 3 for longitude
+        """
+        coord = coord.strip()
+        degrees = int(coord[:deg_len])
+        minutes = float(coord[deg_len:])
+        return degrees + minutes / 60.0
+    
+    @staticmethod
+    def parse_act_pos(act_pos: str) -> Optional[QgsPointXY]:
+        """
+        Convert ACT_Pos string "lat,lon" (NMEA format) into QgsPointXY(decimal_lat, decimal_lon).
+        Returns None if the input is invalid.
+        """
+        try:
+            # Check format
+            parts = act_pos.split(",")
+            if len(parts) != 2:
+                raise ValueError(f"Invalid act_pos format: {act_pos!r}")
+
+            lat_str, lon_str = parts
+
+            # Check numeric
+            if not (lat_str.replace(".", "", 1).isdigit() and lon_str.replace(".", "", 1).isdigit()):
+                raise ValueError(f"Non-numeric act_pos: {act_pos!r}")
+
+            # Convert using NMEA rules
+            lat = ReceiverModel.nmea_to_decimal(lat_str, 2)
+            lon = ReceiverModel.nmea_to_decimal(lon_str, 3)
+
+            return QgsPointXY(lon, lat)
+
+        except Exception as e:
+            print(f"[ReceiverModel] parse_act_pos failed: {e}")
+            return None
 
 class ProjectModel(QObject):
     """
@@ -96,4 +150,6 @@ class MapModel(QObject):
     def select_feature(self, feature_id):
         self.selected_features.append(feature_id)
         self.selection_changed.emit()
+        
+
 

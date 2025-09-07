@@ -26,7 +26,7 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
-    CONFIG_PATH = "config/configWin.yaml"
+    CONFIG_PATH = "config/configPi.yaml"
 
     try:
      config = Config(CONFIG_PATH)
@@ -48,13 +48,12 @@ def main():
     targets_cfg = config.targets
 
     map_layer = config.get_layer()
-
     map_view = MapView()
     map_model = MapModel()
 
     tool_bar = ToolBar()
     menu_bar = MenuBar(receivers=receivers_cfg, targets=targets_cfg)
-    map_controller = MapController(map_view, map_model, map_layer, tool_bar)
+    map_controller = MapController(map_view, map_model, map_layer, tool_bar,menu_bar)
     coord_label = make_coord_label() #GUI label
     status_widget = StatusWidget()
 
@@ -67,12 +66,13 @@ def main():
     receiver_controllers = []
 
     for rx_cfg in receivers_cfg:
-        parameters = {"param_monitor": rx_cfg.get("param_monitor", {}),"param_control": \
+        parameters = {"status": rx_cfg.get("status",{}),"param_monitor": rx_cfg.get("param_monitor", {}),"param_control": \
                      rx_cfg.get("param_control", {})}
         receiver_id = rx_cfg.get("id")
         sftp_cfg = rx_cfg.get("sftp", {})
         rx_model = ReceiverModel(receiver_id=receiver_id, parameters=parameters,sftp_cfg=sftp_cfg)
-        rx_view = ReceiverView() #To finish
+        rx_colour = rx_cfg.get("status",{}).get("Colour",{}).get("value","red")
+        rx_view = ReceiverView(map_view.m_MapCanvas,rx_colour) 
         rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)
 
         receiver_models.append(rx_model)

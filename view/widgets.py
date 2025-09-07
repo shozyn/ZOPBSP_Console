@@ -6,7 +6,6 @@ from PyQt5.QtGui import QMouseEvent, QColor, QCursor, QWheelEvent
 from PyQt5.QtCore import Qt, QObject, pyqtSignal, QSize
 
 def make_coord_label() -> QLabel:
-    # No QWidget is constructed at import time anymore
     return QLabel("Coordinates: ")
 
 class ToolBar(QToolBar):
@@ -76,6 +75,12 @@ class MenuBar(QMenuBar):
             action = QAction(display_name, self) # self -> parent
             action.triggered.connect(lambda checked=False, name=command_name: self.command_triggered.emit("", name)) #checked -> optional, True if teh action is checkable
             project_menu.addAction(action)
+            
+        map_menu = self.addMenu("Map")
+        act_zoom_to_full = QAction("Zoom to Full Size",self)
+        act_zoom_to_full.triggered.connect(lambda: self.command_triggered.emit("Map","zoom_to_full"))
+        map_menu.addAction(act_zoom_to_full)
+        #self.send_zoom_to_full.connect(self.m_map.on_zoom_to_full)
 
               # Target Menus with toggle logic
         for tgt in targets:
@@ -104,7 +109,7 @@ class MenuBar(QMenuBar):
 
         for rx in receivers:
             rx_id = rx["id"]
-            print(f"rx_id\n{rx_id}")
+            #print(f"rx_id\n{rx_id}")
             receiver_menu = self.addMenu(f"Receiver {rx_id}")
 
             # Connect / Disconnect toggle (like targets)
@@ -190,10 +195,7 @@ class MyQgsMapCanvas(QgsMapCanvas):
         # dst_crs = QgsCoordinateReferenceSystem.fromEpsgId(4326)  # WGS84 lon/lat
         # xform = QgsCoordinateTransform(src_crs, dst_crs, QgsProject.instance())
         # point = xform.transform(point)
-
         self.map_clicked.emit(point)
-
-        print(point)
         super().mousePressEvent(event)
 
 class ShowMapTool(QgsMapTool):
@@ -225,7 +227,7 @@ class WheelBlocker(QObject):
 
 class MapView(QObject):
     """
-    MVC 'View' for the map. Handles all map display and interaction, but no logic.
+    MVC 'View' for the map. Handles all map display and interaction.
     """
     map_moved = pyqtSignal(QgsPointXY)
     def __init__(self, parent=None):
@@ -273,7 +275,7 @@ class MapView(QObject):
 
 
     def on_send_tool(self, tool: str):
-        print(f"In class {self.__class__.__name__}: tool = {tool}")
+        #print(f"In class {self.__class__.__name__}: tool = {tool}")
         if tool == "Show":
             self.m_MapCanvas.setMapTool(self.showTool)
         elif tool == "Pan":

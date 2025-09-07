@@ -1,5 +1,6 @@
 import string
 from PyQt5.QtCore import QObject,  QTimer, pyqtSignal
+from PyQt5.QtWidgets import QMessageBox
 import paramiko
 from pathlib import Path
 import logging
@@ -29,16 +30,18 @@ class RemoteFolderWatcher:
         try:
             for attr in self.sftp.listdir_attr(self.remote_dir):
                 fname = attr.filename
-                if fname not in self.old_files:
-                    remote_path = f"{self.remote_dir}/{fname}"
-                    local_path = self.local_dir / fname
-                    try:
-                        self.sftp.get(remote_path,local_path)
-                        self.old_files.add(fname)
-                        new_files.append(str(local_path))
-                        logger.info(f"Downloaded {remote_path} -> {local_path}")
-                    except Exception as e:
-                        logger.error(f"Failed to download {remote_path}: {e}")
+                if "temp" in fname or fname in self.old_files:
+                    continue  # skip this one
+                #if fname not in self.old_files and "temp" not in fname:
+                remote_path = f"{self.remote_dir}/{fname}"
+                local_path = self.local_dir / fname
+                try:
+                    self.sftp.get(remote_path,local_path)
+                    self.old_files.add(fname)
+                    new_files.append(str(local_path))
+                    logger.info(f"Downloaded {remote_path} -> {local_path}")
+                except Exception as e:
+                    logger.error(f"Failed to download {remote_path}: {e}")
         except Exception as e:
             logger.error(f"Error listing {self.remote_dir}: {e}")
         return new_files
@@ -61,6 +64,7 @@ class _SftpWorker(QObject):
         self._sftp_gps: paramiko.SFTPClient | None = None
         self._sftp_hydro: paramiko.SFTPClient | None = None
         self._running = False
+        print(f"self.cfg: {self.cfg["remote_dirs"]["gps"]}")
         self.path_gps = Path(self.cfg["remote_dirs"]["gps"])
         self._state = "DISCONNECTED"
         self.host = self.cfg.get("host","192.168.0.210")
@@ -154,7 +158,7 @@ class _SftpWorker(QObject):
             transport = client.get_transport()
             if transport is not None and transport.is_active():
                 logger.info(f"[{self.__class__.__name__}][{self.host}]; SSH connection established.")
-                print(f"[{self.host}]; trasport layer is active")
+                #print(f"[{self.host}]; trasport layer is active")
                 self._client = client
                 self._transport = transport
                 self._transport.set_keepalive(30)
@@ -214,7 +218,7 @@ class _SftpWorker(QObject):
 
     def _read_monitor_file(self) -> str | None:
         assert self._sftp_monitor is not None
-        print(f"[{self.host}]; Before reading the monitor file")
+        #print(f"[{self.host}]; Before reading the monitor file")
         with self._lock:
             try:
                 self._sftp_monitor.stat(self.monitor_path)
@@ -233,15 +237,15 @@ class _SftpWorker(QObject):
                         #     pass
                         try:
                             size = self._sftp_monitor.stat(self.monitor_path).st_size
-                            print(f"[{self.host}]; before read(size)")
+                            #print(f"[{self.host}]; before read(size)")
                             data = f.read(size)  
-                            print(f"[{self.host}]; after read(size)")
+                            #print(f"[{self.host}]; after read(size)")
                             return data.decode("utf-8", errors="replace")
                         except Exception:
-                            print(f"[{self.host}]; before read()")
+                            #print(f"[{self.host}]; before read()")
                             data = f.read() 
                             return data.decode("utf-8", errors="replace")
-                            print(f"[{self.host}]; after read())")   
+                            #print(f"[{self.host}]; after read())")   
                 except Exception as e:
                     logger.warning(f"[{self.__class__.__name__}] Read attempt {attempt}/{self.max_retries} failed for {self.monitor_path}:\n{e}")
                     return None
@@ -255,38 +259,38 @@ class _SftpWorker(QObject):
             except Exception as e:
                 logger.error(f"[{self.__class__.__name__}][{self.host}]; Control file not found!!!")
                 return None
-            print(f"[{self.host}]; Before reading control file")
+            #print(f"[{self.host}]; Before reading control file")
             for attempt in range(1, self.max_retries + 1):
                 try:
-                    print(f"[{self.host}]; Before opening control file")
+                    #print(f"[{self.host}]; Before opening control file")
                     with self._sftp_control.open(self.control_path, mode="rb", bufsize=32768) as f: 
-                        print(f"[{self.host}]; After opening control file")
+                        #print(f"[{self.host}]; After opening control file")
                         try:
-                            print(f"[{self.host}]; Before fetch control")
+                            #print(f"[{self.host}]; Before fetch control")
                             f.prefetch()
-                            print(f"[{self.host}]; After fetch control")
+                            #print(f"[{self.host}]; After fetch control")
                         except Exception:
                             pass
                         try:
                             size = self._sftp_control.stat(self.control_path).st_size
-                            print(f"[{self.host}]; Before read(size) control")
+                            #print(f"[{self.host}]; Before read(size) control")
                             data = f.read(size)  
-                            print(f"[{self.host}]; After read(size) control")
+                            #print(f"[{self.host}]; After read(size) control")
                             data = data.decode("utf-8", errors="replace")
                             return data
                         except Exception:
-                            print(f"[{self.host}]; Before read() control")
+                            #print(f"[{self.host}]; Before read() control")
                             data = f.read()      
-                            print(f"[{self.host}]; After read() control")
+                            #print(f"[{self.host}]; After read() control")
                             data = data.decode("utf-8", errors="replace")
-                            print(f"[{self.host}]; After reading control file")
+                            #print(f"[{self.host}]; After reading control file")
                             return data
                 except Exception as e:
                     logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read attempt {attempt}/{self.max_retries} failed for {self.control_path}:\n{e}")
                     return None
 
     def set_initial_control_params(self):
-        print(f"[{self.host}]; set_initial_control_params")
+        #print(f"[{self.host}]; set_initial_control_params")
         assert self._sftp_control is not None
         if not (initial_ctr_params_str := self._read_control_file()): 
             logger.warning(f"[{self.__class__.__name__}][{self.host}]; Read data is None")
@@ -304,8 +308,19 @@ class _SftpWorker(QObject):
     
     
     def on_control_param_changed(self,new_ctr_param_dict: dict, streaming_path: str) -> None:
-        print(f"[{self.host}]; entering on_control_param_changed()")
-        print(f"streaming_path: {streaming_path}")
+        #print(f"[{self.host}]; entering on_control_param_changed()")
+        #print(f"streaming_path: {streaming_path}")
+        
+        if not self.hydro_watcher or not self.gps_watcher:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setWindowTitle("SFTP serwer warning")
+            msg.setText("SFTP serwer was not intiliased completely")
+            msg.setInformativeText("Try to set parameters later")
+            msg.setStandardButtons(QMessageBox.Ok)
+            result = msg.exec_()
+            return
+
         
         if streaming_path:
             self.hydro_watcher.local_dir = Path(streaming_path)
@@ -334,16 +349,16 @@ class _SftpWorker(QObject):
         new_file_content = "\n".join(f"{k}={v}" for k, v in old_ctr_param_dict.items()) + "\n"
         tmp_path = self.control_path + ".tmp"
 
-        print(f"[{self.host}]; the new variable dictionary was created")
+        #print(f"[{self.host}]; the new variable dictionary was created")
 
         for attempt in range(1, self.max_retries + 1):
             try:
                 with self._sftp_control.open(tmp_path, mode="wb", bufsize=32768) as f:
                     f.write(new_file_content.encode("utf-8"))
-                    print(f"[{self.host}]; temporary file was written")
+                    #print(f"[{self.host}]; temporary file was written")
 
                 self._sftp_control.posix_rename(tmp_path, self.control_path)
-                print(f"[{self.host}]; rename was performed")
+                #print(f"[{self.host}]; rename was performed")
                 logger.info(f"[{self.__class__.__name__}][{self.host}]; Control file updated successfully on attempt {attempt}.")
                 self.control_param_updated.emit(old_ctr_param_dict)
                 break 

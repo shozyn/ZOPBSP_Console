@@ -13,8 +13,8 @@ class TargetView(QObject):
         self.canvas = canvas
 
         self.actual_marker = QgsVertexMarker(self.canvas)
-        self.actual_marker.setColor(QColor(0, 0, 255))
-        self.actual_marker.setIconType(QgsVertexMarker.ICON_CROSS)
+        self.actual_marker.setColor(QColor(0, 0, 0))
+        self.actual_marker.setIconType(QgsVertexMarker.ICON_DOUBLE_TRIANGLE)
         self.actual_marker.setIconSize(8)
         self.actual_marker.setPenWidth(2)
         self.actual_marker.hide()
@@ -41,12 +41,22 @@ class TargetView(QObject):
         self.predicted_marker.hide()
         self.canvas.refresh()
 
-        from PyQt5.QtWidgets import QWidget
 
 class ReceiverView(QWidget):
     """
     View for displaying a receiver (marker, info) on the map.
     """
-    def __init__(self, parent=None):
+    def __init__(self, canvas, colour="red",parent=None):
         super().__init__(parent)
-        # TODO: implement receiver marker drawing
+        self.canvas = canvas
+        self.actual_marker = QgsVertexMarker(self.canvas)
+        self.actual_marker.setColor(QColor(colour))
+        self.actual_marker.setIconType(QgsVertexMarker.ICON_CIRCLE)
+        self.actual_marker.setIconSize(8)
+        self.actual_marker.setPenWidth(2)
+        self.actual_marker.hide()
+        
+    def display_actual_position(self, point: QgsPointXY):
+        self.actual_marker.setCenter(point)
+        self.actual_marker.show()
+        self.canvas.refresh()

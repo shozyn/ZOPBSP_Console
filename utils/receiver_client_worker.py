@@ -26,7 +26,7 @@ class ReceiverClientWorker(QObject):
 
     def start(self):
         # This is called inside the worker thread
-        print(f"[{self.__class__.__name__}] START called in thread: {QThread.currentThread()}")
+        #print(f"[{self.__class__.__name__}] START called in thread: {QThread.currentThread()}")
         # self.timer = QTimer(self)  # Must be owned by this object
         # self.timer.setInterval(2000)
         # self.timer.timeout.connect(self.fetch_position)
@@ -46,10 +46,10 @@ class ReceiverClientWorker(QObject):
         self._timer.setInterval(2000)
         self._timer.timeout.connect(self._send_request)
         self._timer.start()
-        print("[[{self.__class__.__name__}] Timer started in thread:", QThread.currentThread())
+        #print("[[{self.__class__.__name__}] Timer started in thread:", QThread.currentThread())
 
     def stop(self):
-        print(f"[{self.__class__.__name__}] STOP called in thread: {QThread.currentThread()}")
+        #print(f"[{self.__class__.__name__}] STOP called in thread: {QThread.currentThread()}")
         #self.timer.stop()
         if not self._running:
             self.finished.emit()
@@ -66,7 +66,7 @@ class ReceiverClientWorker(QObject):
             self._sock.deleteLater()
             self._sock = None
 
-        print(f"[{self.__class__.__name__}] stopped")
+        #print(f"[{self.__class__.__name__}] stopped")
         self.finished.emit()
         
 

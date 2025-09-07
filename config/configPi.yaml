@@ -13,7 +13,17 @@ targets:
         readable: true   
 receivers:
   - id: RPI1
+    status:
+      Colour: 
+        value: "red"
+        readable: true 
+      Status: 
+        value: "DISCONNECTED"
+        readable: true 
     param_monitor:
+      Update date:
+        value: xxx
+        readable: true
       Serial:
         value: xxx
         readable: true
@@ -54,6 +64,9 @@ receivers:
         value: xxx
         readable: true
       ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
         value: xxx
         readable: true
     param_control:
@@ -92,11 +105,21 @@ receivers:
         control_file: "PARAM_RPI1_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI1\\streaming"
-        gps: "C:\\Pi_loc\\RPI1\\GPS"
-        config: "C:\\Pi_loc\\RPI1\\PARAM"
+        streaming: "C:\\Pi_loc\\RPI1\\bsp\\streaming"
+        gps: "C:\\Pi_loc\\RPI1\\bsp\\GPS"
+        config: "C:\\Pi_loc\\RPI1\\bsp\\PARAM"
   - id: RPI2
+    status:
+      Colour: 
+        value: "green"
+        readable: true 
+      Status: 
+        value: "DISCONNECTED"
+        readable: true 
     param_monitor:
+      Update date:
+        value: xxx
+        readable: true
       Serial:
         value: xxx
         readable: true
@@ -137,6 +160,9 @@ receivers:
         value: xxx
         readable: true
       ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
         value: xxx
         readable: true
     param_control:
@@ -175,11 +201,21 @@ receivers:
         control_file: "PARAM_RPI2_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI2\\streaming"
-        gps: "C:\\Pi_loc\\RPI2\\GPS"
-        config: "C:\\Pi_loc\\RPI2\\PARAM"
+        streaming: "C:\\Pi_loc\\RPI2\\bsp\\streaming"
+        gps: "C:\\Pi_loc\\RPI2\\bsp\\GPS"
+        config: "C:\\Pi_loc\\RPI2\\bsp\\PARAM"
   - id: RPI3
+    status:
+      Colour: 
+        value: "red"
+        readable: true 
+      Status: 
+        value: "DISCONNECTED"
+        readable: true 
     param_monitor:
+      Update date:
+        value: xxx
+        readable: true
       Serial:
         value: xxx
         readable: true
@@ -222,6 +258,9 @@ receivers:
       ACT_Pause:
         value: xxx
         readable: true
+      ACT_Pos:
+        value: xxx
+        readable: true
     param_control:
       SRate:
         value: xxx
@@ -258,9 +297,9 @@ receivers:
         control_file: "PARAM_RPI3_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI3\\streaming"
-        gps: "C:\\Pi_loc\\RPI3\\GPS"
-        config: "C:\\Pi_loc\\RPI3\\PARAM"
+        streaming: "C:\\Pi_loc\\RPI3\\bsp\\streaming"
+        gps: "C:\\Pi_loc\\RPI3\\bsp\\GPS"
+        config: "C:\\Pi_loc\\RPI3\\bsp\\PARAM"
 logging:
   file: "logs/log.log"
   file_level: "DEBUG"
