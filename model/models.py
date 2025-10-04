@@ -39,14 +39,22 @@ class ReceiverModel(QObject):
         self.parameters = parameters
         self.sftp_cfg = sftp_cfg
         self.actual_position: QgsPointXY  | None = None
+        #self.xxx_pos: QgsPointXY = QgsPointXY(17.64695232, 53.83649398)
 
     def update_actual_position(self) -> None:
         #act_pos = "5432.6659792,01832.7680816"
         act_pos = self.parameters.get("param_monitor",{}).get("ACT_Pos",{}).get("value","")
+        # step = 1e-5
+        # self.xxx_pos.setX(self.xxx_pos.x() + step)
+        # self.xxx_pos.setY(self.xxx_pos.y() + step)
+
+        print(f"act_pos: {act_pos}")
         if not act_pos or act_pos == "xxx":
             return
-        self.actual_position = ReceiverModel.parse_act_pos(act_pos)
-        #self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
+        pos = ReceiverModel.parse_act_pos(act_pos)
+        if pos is None:
+            return
+        self.actual_position = pos
         self.actual_position_updated.emit(self.actual_position)
         
     def set_parameter_control(self, name: str, value: Any) -> None:

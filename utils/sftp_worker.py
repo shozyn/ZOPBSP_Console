@@ -30,11 +30,13 @@ class RemoteFolderWatcher:
         try:
             for attr in self.sftp.listdir_attr(self.remote_dir):
                 fname = attr.filename
-                if "temp" in fname or fname in self.old_files:
+                if "tmp" in fname or fname in self.old_files:
                     continue  # skip this one
                 #if fname not in self.old_files and "temp" not in fname:
                 remote_path = f"{self.remote_dir}/{fname}"
                 local_path = self.local_dir / fname
+                local_path.parent.mkdir(parents=True, exist_ok=True)
+                
                 try:
                     self.sftp.get(remote_path,local_path)
                     self.old_files.add(fname)
@@ -312,7 +314,7 @@ class _SftpWorker(QObject):
         #print(f"streaming_path: {streaming_path}")
         
         if not self.hydro_watcher or not self.gps_watcher:
-            msg = QMessageBox()
+            msg = QMessageBox() #XXX move to View
             msg.setIcon(QMessageBox.Warning)
             msg.setWindowTitle("SFTP serwer warning")
             msg.setText("SFTP serwer was not intiliased completely")

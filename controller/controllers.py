@@ -159,26 +159,46 @@ class ReceiverController(QObject):
         self.model.actual_position_updated.connect(self.view.display_actual_position)
         #self.model_changed.connect(lambda id,dict: print(f"model_changed:\n{id}:\n{dict}"))
         
-    def _ask_for_stream_folder(self) -> str:
-        """
-        Opens a simple text dialog, creates the target directory under:
-        C:\\Pi_loc\\{self.receiver_id}\\GPS\\{token}
-        and returns the absolute folder path as str. Returns '' on cancel/error.
-        """
-        # 1) Ask for user token (prefill with last used)
-        token, ok = FolderNameDialog.get_folder_token(
-            parent=self.view,
-            initial_text=self.__class__._last_folder_token
-        )
+    # def _ask_for_stream_folder(self) -> str:
+    #     # 1) Ask for user token (prefill with last used)
+
+    #     token, ok = FolderNameDialog.get_folder_token(
+    #         parent=self.view,
+    #         initial_text=self.__class__._last_folder_token
+    #     )
+    #     # if not ok:
+    #     #     return ""
+        
+    #             # 2) Remember for next time
+    #     self.__class__._last_folder_token = token
+
+    #     base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / token
+
+    #     # 4) Ensure the directory exists
+    #     try:
+    #         Path(str(base)).mkdir(parents=True, exist_ok=True)
+    #     except Exception as e:
+    #         QMessageBox.critical(
+    #             self.view, "Create folder failed",
+    #             f"Couldn't create:\n{base}\n\n{e}"
+    #         )
+    #         return ""
+
+    #     chosen_folder = str(base)
+    #     return chosen_folder
+    @staticmethod
+    def ask_for_token_static(parent, initial_text: str = "XXX") -> tuple[str, bool]:
+        # no access to self/cls here
+        return FolderNameDialog.get_folder_token(parent=parent, initial_text=initial_text)
         # if not ok:
         #     return ""
         
                 # 2) Remember for next time
         self.__class__._last_folder_token = token
-
-        # 3) Build Windows path using PureWindowsPath for correctness (even on non-Windows hosts)
-        base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / token
-
+        return self.__class__._last_folder_token
+    
+    def _set_folder(self) -> str:
+        base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / ReceiverController._last_folder_token
         # 4) Ensure the directory exists
         try:
             Path(str(base)).mkdir(parents=True, exist_ok=True)
@@ -190,8 +210,7 @@ class ReceiverController(QObject):
             return ""
 
         chosen_folder = str(base)
-        return chosen_folder
-        
+        return chosen_folder      
         
     @pyqtSlot(str)
     def on_monitor_read(self,param_monitor):
@@ -240,10 +259,8 @@ class ReceiverController(QObject):
         elif command == "disconnect":
             self.disconnect_receiver()
         if command == "set_parameters":
-            #print("dialog opened")
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
-                #print("dialog accepted")
                 new_params = dialog.get_new_parameters()
                 # window = QWidget() 
                 # folder = self.model.sftp_cfg.get("local_dirs",{}).get("streaming",f"C:/Pi_loc/{self.receiver_id}/bsp/streaming")
@@ -251,12 +268,18 @@ class ReceiverController(QObject):
                 #     chosen_folder = QFileDialog.getExistingDirectory(window,"Select or Create Folder",folder,
                 #                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks
                 #                                               | QFileDialog.DontUseNativeDialog)
-                
-                chosen_folder = self._ask_for_stream_folder()
-                if  chosen_folder:
-                    folder = chosen_folder
+
+                chosen_folder = ""
+                if new_params.get("AktStreaming","False") == "True":
+                    #chosen_folder = self._ask_for_stream_folder() NNN
+                    token, ok = ReceiverController.ask_for_token_static(parent=self.view,initial_text=ReceiverController._last_folder_token)
+                    if ok:
+                        ReceiverController._last_folder_token = token
+                        chosen_folder = self._set_folder()
+
+
                 print(f"chosen_folder: {chosen_folder}")
-                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,folder)) #without value
+                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
 
     @pyqtSlot(dict)
     def on_control_param_updated(self,updated_prams):
@@ -307,10 +330,6 @@ class ReceiverController(QObject):
         self.thread.started.connect(self.worker.start)                    # worker creates QTimer inside start()
         self.stopRequested.connect(self.worker.stop, type=Qt.QueuedConnection)  # stop in worker thread
         self.worker.finished.connect(self.thread.quit)
-
-        # (optional UI/log hooks)
-        #self.worker.status.connect(self.status_widget.add_text)
-        #self.worker.error.connect(self.status_widget.add_text)
 
         self.thread.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
@@ -433,31 +452,24 @@ class MainController(QObject):
             self._set_parameters_all()
                 
     def _set_parameters_all(self):
-        """
-        Open one ParameterDialog based on common keys across receivers.
-        Apply accepted values to all receiver controllers.
-        """
+
         if not self.receiver_controllers:
             return
 
-        # 1) build an intersection of param_control keys across all receivers
-        # dicts = [rc.model.parameters.get("param_control", {}) for rc in self.receiver_controllers]
-        # common = set(dicts[0].keys())
-        # for d in dicts[1:]:
-        #     common &= set(d.keys())
-        # # If there is no strict intersection, fall back to the first schema (pragmatic default)
-        # if not common:
-        #     params_for_dialog = {"param_control": dicts[0]}
-        # else:
-        #     base = dicts[0]
-        #     params_for_dialog = {"param_control": {k: base[k] for k in sorted(common)}}
-
-        # # 2) show the existing dialog once
         params_for_dialog = self.receiver_controllers[0].model.parameters
         dlg = ParameterDialog(parameters=params_for_dialog, parent=self.main_window)
         if dlg.exec_() != dlg.Accepted:
             return
         new_params = dlg.get_new_parameters()
+
+        chosen_folder = ""
+        if new_params.get("AktStreaming","False") == "True":
+            token, ok = ReceiverController.ask_for_token_static(parent=self.main_window,initial_text=ReceiverController._last_folder_token)
+            if ok:
+                ReceiverController._last_folder_token = token
+
+        print(f"chosen_folder: {chosen_folder}")
+        #QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
 
         # 3) apply to all: update models and ask workers to push control file
         for rc in self.receiver_controllers:
@@ -466,17 +478,19 @@ class MainController(QObject):
                 rc.model.set_parameter_control(name, value)
             rc.on_model_updated()  # uses your existing refresh path
 
-            # (b) choose folder for streaming param — reuse receiver defaults (no extra dialog)
-            sftp = rc.model.sftp_cfg or {}
-            default_folder = (
-                sftp.get("local_dirs", {}).get("streaming",
-                    f"C:/Pi_loc/{rc.receiver_id}/bsp/streaming")
-            )
+            # # (b) choose folder for streaming param — reuse receiver defaults (no extra dialog)
+            # sftp = rc.model.sftp_cfg or {}
+            # default_folder = (
+            #     sftp.get("local_dirs", {}).get("streaming",
+            #         f"C:/Pi_loc/{rc.receiver_id}/bsp/streaming")
+            # )
+            chosen_folder = rc._set_folder()
+            #QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
             # Use current default; if you want a single folder for all, replace with your FolderNameDialog flow.
-            folder = default_folder
+            #folder = default_folder
 
             # (c) push to worker via the controller's signal (queued to worker thread)
-            rc.control_param_changed.emit(new_params, folder)
+            rc.control_param_changed.emit(new_params, chosen_folder)
     
     def open_project(self):
         # Implement logic to open a project (dialog, load file, etc.)
