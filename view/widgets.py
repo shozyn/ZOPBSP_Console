@@ -13,6 +13,7 @@ class ToolBar(QToolBar):
     Custom toolbar for the application.
     """
     tool_changed = pyqtSignal(str)
+    bulk_action = pyqtSignal(str)
 
     def __init__(self, parent=None):
         super().__init__("Tools", parent)
@@ -48,6 +49,18 @@ class ToolBar(QToolBar):
         self.action_group.addAction(self.action_zoom_out)
 
         self.action_show.setChecked(True)
+        self.addSeparator()
+        act_set_all = QAction("Set Parameters All", self)
+        act_set_all.triggered.connect(lambda: self.bulk_action.emit("set_params_all"))
+        self.addAction(act_set_all)
+
+        act_connect_all = QAction("Connect All", self)
+        act_connect_all.triggered.connect(lambda: self.bulk_action.emit("connect_all"))
+        self.addAction(act_connect_all)
+
+        act_disconnect_all = QAction("Disconnect All", self)
+        act_disconnect_all.triggered.connect(lambda: self.bulk_action.emit("disconnect_all"))
+        self.addAction(act_disconnect_all)
 
 class MenuBar(QMenuBar):
     """

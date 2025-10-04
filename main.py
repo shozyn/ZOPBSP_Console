@@ -26,7 +26,8 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
-    CONFIG_PATH = "config/configPi.yaml"
+    #CONFIG_PATH = "config/configPi.yaml"
+    CONFIG_PATH = "config/configWin.yaml"
 
     try:
      config = Config(CONFIG_PATH)
@@ -130,7 +131,8 @@ def main():
     ),
     )
     
-    main_controller = MainController(main_window=main_window, menu_bar = menu_bar)
+    main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
+                                     receiver_controllers=receiver_controllers)
 
 
     map_controller.coordinates_changed.connect(main_window.on_coordinates_changed)
