@@ -31624,3 +31624,34 @@ Authentication failed.
 2025-10-04 18:38:16 | DEBUG | paramiko.transport | EOF in transport thread
 2025-10-04 18:38:16 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.253]; Disconnected
 2025-10-04 18:38:16 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.253]; Worker sftp stopped)
+2025-10-08 21:58:00 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Worker sftp started
+2025-10-08 21:58:00 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:00 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-08 21:58:10 | ERROR | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connection problem!!!
+timed out
+2025-10-08 21:58:15 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:15 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:15 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-08 21:58:25 | ERROR | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connection problem!!!
+timed out
+2025-10-08 21:58:25 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:25 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:25 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-08 21:58:35 | ERROR | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connection problem!!!
+timed out
+2025-10-08 21:58:35 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:35 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-08 21:58:35 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-09 17:46:32 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Worker sftp started
+2025-10-09 17:46:32 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-09 17:46:32 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-09 17:46:42 | ERROR | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connection problem!!!
+timed out
+2025-10-09 17:46:47 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-09 17:46:47 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-09 17:46:47 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...
+2025-10-09 17:46:57 | ERROR | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connection problem!!!
+timed out
+2025-10-09 17:47:02 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-09 17:47:02 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Disconnected
+2025-10-09 17:47:02 | INFO | utils.sftp_worker | [_SftpWorker][192.168.43.89]; Connecting...

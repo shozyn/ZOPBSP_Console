@@ -302,15 +302,15 @@ class ReceiverController(QObject):
         #print("Disconnect_receiver triggered")
         self._stop_sftp()
 
-    # ---------------- public API  ----------------
-    def send_control_text(self, text: str):
-        """Write-once upload of control.txt"""
-        if self._sftp_worker:
-            self._sftp_worker.request_control_text(text)
+    # # ---------------- public API  ----------------
+    # def send_control_text(self, text: str):
+    #     """Write-once upload of control.txt"""
+    #     if self._sftp_worker:
+    #         self._sftp_worker.request_control_text(text)
 
-    def send_control_file(self, local_path: str | Path):
-        if self._sftp_worker:
-            self._sftp_worker.request_control_file(str(local_path))
+    # def send_control_file(self, local_path: str | Path):
+    #     if self._sftp_worker:
+    #         self._sftp_worker.request_control_file(str(local_path))
 
     # ---------------- lifecycle ----------------
     def _start_sftp(self):

@@ -6,6 +6,7 @@ from pathlib import Path
 import logging
 from typing import Optional
 from threading import Lock
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -15,38 +16,47 @@ class RemoteFolderWatcher:
         self.remote_dir = Path(remote_dir).as_posix()
         self.local_dir = Path(local_dir)
         self.local_dir.mkdir(parents=True, exist_ok=True)
-        self.old_files = set()
+        self.old_file_names = set()
 
-        #Mark all existing remote files as already seen
         try:
             initial_files = [attr.filename for attr in self.sftp.listdir_attr(self.remote_dir)]
-            self.old_files.update(initial_files)
+            self.old_file_names.update(initial_files)
             logger.info(f"Initially stored files for {self.remote_dir}: {len(initial_files)} files")
         except Exception as e:
             logger.error(f"Error reading initially stored files of {self.remote_dir}: {e}")     
 
     def check_and_download(self):
-        new_files = []
+        new_files_set = set()
         try:
             for attr in self.sftp.listdir_attr(self.remote_dir):
                 fname = attr.filename
-                if "tmp" in fname or fname in self.old_files:
-                    continue  # skip this one
-                #if fname not in self.old_files and "temp" not in fname:
-                remote_path = f"{self.remote_dir}/{fname}"
+                if "tmp" in fname or fname in self.old_file_names:
+                    continue 
+                remote_path = self.remote_dir / fname
                 local_path = self.local_dir / fname
                 local_path.parent.mkdir(parents=True, exist_ok=True)
-                
-                try:
-                    self.sftp.get(remote_path,local_path)
-                    self.old_files.add(fname)
-                    new_files.append(str(local_path))
-                    logger.info(f"Downloaded {remote_path} -> {local_path}")
-                except Exception as e:
-                    logger.error(f"Failed to download {remote_path}: {e}")
+                retries = 3
+                for attempt in range(1, retries + 1):
+                    try:
+                        self.sftp.get(remote_path.as_posix(),local_path.as_posix())
+                        
+                        size_remote = self.sftp.stat(remote_path).st_size
+                        size_local  = local_path.stat().st_size
+                        
+                        if size_remote != size_local:
+                            raise IOError(f"Size mismatch: local={size_local}, remote={size_remote}")
+                        
+                        new_files_set.add(fname)
+                        logger.info(f"Downloaded {remote_path} -> {local_path}")
+                        return new_files_set
+                    except Exception as e:
+                        local_path.unlink(missing_ok=True)
+                        logger.warning(f"Attempt {attempt}/{retries} failed for {local_path} -> {remote_path}: {e}")
+                        time.sleep(5)
+                        continue
         except Exception as e:
             logger.error(f"Error listing {self.remote_dir}: {e}")
-        return new_files
+        return None
 
 class _SftpWorker(QObject):
     status_changed = pyqtSignal(str)
@@ -133,8 +143,15 @@ class _SftpWorker(QObject):
         if not self.hydro_watcher:
             self.hydro_watcher = RemoteFolderWatcher(self._sftp_hydro,self.remote_hydro_folder,self.local_hydro_folder)
 
-        if self.gps_watcher: self.gps_watcher.check_and_download()
-        if self.hydro_watcher: self.hydro_watcher.check_and_download()
+        if self.gps_watcher: 
+            new_set = self.gps_watcher.check_and_download()
+            if new_set is not None:
+                self.gps_watcher.old_file_names.update(new_set)
+        if self.hydro_watcher: 
+            new_set = self.hydro_watcher.check_and_download()
+            if new_set is not None:
+                self.hydro_watcher.old_file_names.update(new_set)
+                
 
         if (content := self._read_monitor_file()):
             logger.info(f"[{self.__class__.__name__}][{self.host}]; Monitor file read successfully.") 
@@ -189,7 +206,7 @@ class _SftpWorker(QObject):
         except Exception:
             pass
         self._sftp_control = None
-        self.sftp_monitor = None
+        self._sftp_monitor = None
         self._sftp_gps = None
         self._sftp_hydro = None
         try:
@@ -220,7 +237,6 @@ class _SftpWorker(QObject):
 
     def _read_monitor_file(self) -> str | None:
         assert self._sftp_monitor is not None
-        #print(f"[{self.host}]; Before reading the monitor file")
         with self._lock:
             try:
                 self._sftp_monitor.stat(self.monitor_path)
@@ -231,27 +247,13 @@ class _SftpWorker(QObject):
             for attempt in range(1, self.max_retries + 1):
                 try:
                     with self._sftp_monitor.open(self.monitor_path, mode="rb", bufsize=32768) as f: 
-                        # try:
-                        #     print(f"[{self.host}]; before prefetch")
-                        #     f.prefetch()
-                        #     print(f"[{self.host}]; after prefetch")
-                        # except Exception:
-                        #     pass
-                        try:
-                            size = self._sftp_monitor.stat(self.monitor_path).st_size
-                            #print(f"[{self.host}]; before read(size)")
-                            data = f.read(size)  
-                            #print(f"[{self.host}]; after read(size)")
-                            return data.decode("utf-8", errors="replace")
-                        except Exception:
-                            #print(f"[{self.host}]; before read()")
-                            data = f.read() 
-                            return data.decode("utf-8", errors="replace")
-                            #print(f"[{self.host}]; after read())")   
+                        size = self._sftp_monitor.stat(self.monitor_path).st_size
+                        data = f.read(size)  
+                        return data.decode("utf-8", errors="replace")
                 except Exception as e:
                     logger.warning(f"[{self.__class__.__name__}] Read attempt {attempt}/{self.max_retries} failed for {self.monitor_path}:\n{e}")
-                    return None
-    
+                    continue
+            return None   
 
     def _read_control_file(self) -> Optional[str]:
         assert self._sftp_control is not None
