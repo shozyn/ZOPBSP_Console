@@ -4,6 +4,9 @@ from qgis.core import QgsPointXY
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget
 
+import logging
+logger = logging.getLogger(__name__)
+
 class TargetView(QObject):
     """
     Draws the target's actual and predicted positions on the map.
@@ -57,7 +60,7 @@ class ReceiverView(QWidget):
         self.actual_marker.hide()
         
     def display_actual_position(self, point: QgsPointXY):
-        print(f"[{self.__class__.__name__}] triggered. Point: {point}")
         self.actual_marker.setCenter(point)
         self.actual_marker.show()
         self.canvas.refresh()
+        print(f"[{self.__class__.__name__}] Current position was displayed on the map: {point.x()}, {point.y()}")

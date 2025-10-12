@@ -50,10 +50,7 @@ class TargetController(QObject):
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
         if sender_id != self.model.target_id:
-            return
-        
-        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
-
+            return   
         if command == "connect":
             self.connect_target()
         elif command == "disconnect":
@@ -77,20 +74,16 @@ class TargetController(QObject):
 
         if self.model.actual_position:
             self.view.display_actual_position(self.model.actual_position)
-        # if self.model.predicted_position:
-        #     self.view.display_predicted_position(self.model.predicted_position)
     
     def connect_target(self):
-        # if not self.connected and not self.thread.isRunning():
-        #     self.thread.start()
         if self.connected:
             return
-        
-        
+
         self.thread = QThread(self)
         self.worker = ReceiverClientWorker(self.model.ip, self.model.port)
         self.worker.moveToThread(self.thread)
-        assert self.thread is not None
+        if self.thread is None: #For Pylance
+            return
         self.thread.started.connect(self.worker.start)
         self.stopRequested.connect(self.worker.stop, type=Qt.QueuedConnection)
         self.worker.finished.connect(self.thread.quit)
@@ -102,29 +95,21 @@ class TargetController(QObject):
 
         self.connected = True
         self.menu_bar.set_target_connection_text(self.model.target_id, True)
-        #print(f"[{self.__class__.__name__}] Connected to {self.model.target_id}")
 
     def disconnect_target(self):
-        # if self.connected:
-        #     self.stopRequested.emit()
-        #     self.thread.quit()
-        #     self.thread.wait()
         if not self.connected:
             return
         
-        assert self.thread is not None
+        if self.thread is None:
+            return
         self.stopRequested.emit()  # queued into worker thread
-        self.thread.wait(2000)         # optional: block briefly for clean join
-
+        self.thread.wait(2000)       
         self.connected = False
         self.menu_bar.set_target_connection_text(self.model.target_id, False)
-        #print(f"[{self.__class__.__name__}] Disconnected from {self.model.target_id}")
-
         self.thread = None
         self.worker = None
 
     def __del__(self):
-        # best-effort cleanup
         try:
             self.disconnect_target()
         except Exception:
@@ -138,7 +123,8 @@ class ReceiverController(QObject):
     
     stopRequested = pyqtSignal()  
     model_changed = pyqtSignal(str,dict)
-    control_param_changed = pyqtSignal(dict,str)
+    #control_param_changed = pyqtSignal(dict,str)
+    control_param_changed = pyqtSignal(dict)
 
     def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
         super().__init__(parent)
@@ -157,45 +143,10 @@ class ReceiverController(QObject):
         self.connected = False
 
         self.model.actual_position_updated.connect(self.view.display_actual_position)
-        #self.model_changed.connect(lambda id,dict: print(f"model_changed:\n{id}:\n{dict}"))
         
-    # def _ask_for_stream_folder(self) -> str:
-    #     # 1) Ask for user token (prefill with last used)
-
-    #     token, ok = FolderNameDialog.get_folder_token(
-    #         parent=self.view,
-    #         initial_text=self.__class__._last_folder_token
-    #     )
-    #     # if not ok:
-    #     #     return ""
-        
-    #             # 2) Remember for next time
-    #     self.__class__._last_folder_token = token
-
-    #     base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / token
-
-    #     # 4) Ensure the directory exists
-    #     try:
-    #         Path(str(base)).mkdir(parents=True, exist_ok=True)
-    #     except Exception as e:
-    #         QMessageBox.critical(
-    #             self.view, "Create folder failed",
-    #             f"Couldn't create:\n{base}\n\n{e}"
-    #         )
-    #         return ""
-
-    #     chosen_folder = str(base)
-    #     return chosen_folder
     @staticmethod
     def ask_for_token_static(parent, initial_text: str = "XXX") -> tuple[str, bool]:
-        # no access to self/cls here
         return FolderNameDialog.get_folder_token(parent=parent, initial_text=initial_text)
-        # if not ok:
-        #     return ""
-        
-                # 2) Remember for next time
-        self.__class__._last_folder_token = token
-        return self.__class__._last_folder_token
     
     def _set_folder(self) -> str:
         base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / ReceiverController._last_folder_token
@@ -205,7 +156,7 @@ class ReceiverController(QObject):
         except Exception as e:
             QMessageBox.critical(
                 self.view, "Create folder failed",
-                f"Couldn't create:\n{base}\n\n{e}"
+                f"Couldn't create: {base} {e}"
             )
             return ""
 
@@ -222,11 +173,8 @@ class ReceiverController(QObject):
             s = line.strip()
             if not s:
                 continue
-            # Choose the first delimiter found, otherwise skip this line safely
             delim = '=' if '=' in s else (':' if ':' in s else None)
             if not delim:
-                # Optional: keep a trace for debugging; no exception!
-                # logger.debug("Skipping unparsable monitor line: %r", s)
                 continue
 
             key, value = s.split(delim, 1)
@@ -240,19 +188,16 @@ class ReceiverController(QObject):
         if not param_dict:
             return
         
-        # Update the model (only known keys are applied inside the model)
+        # Update the model 
         for name, pair in param_dict.items():
             self.model.set_parameter_monitor(name, pair["value"])
 
-        # Kick the position recomputation and status refresh
         self.on_model_updated()
     
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
         if sender_id != self.model.receiver_id:
             return
-        
-        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
 
         if command == "connect":
             self.connect_receiver()
@@ -262,24 +207,17 @@ class ReceiverController(QObject):
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
                 new_params = dialog.get_new_parameters()
-                # window = QWidget() 
-                # folder = self.model.sftp_cfg.get("local_dirs",{}).get("streaming",f"C:/Pi_loc/{self.receiver_id}/bsp/streaming")
-                # if new_params.get("AktStreaming","False") == "True":
-                #     chosen_folder = QFileDialog.getExistingDirectory(window,"Select or Create Folder",folder,
-                #                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks
-                #                                               | QFileDialog.DontUseNativeDialog)
 
                 chosen_folder = ""
                 if new_params.get("AktStreaming","False") == "True":
-                    #chosen_folder = self._ask_for_stream_folder() NNN
                     token, ok = ReceiverController.ask_for_token_static(parent=self.view,initial_text=ReceiverController._last_folder_token)
                     if ok:
                         ReceiverController._last_folder_token = token
                         chosen_folder = self._set_folder()
-
-
-                print(f"chosen_folder: {chosen_folder}")
-                QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
+                        self.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
+                        chosen_folder_gps = chosen_folder.replace("streaming","gps")
+                        self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+                        QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params)) #without value
 
     @pyqtSlot(dict)
     def on_control_param_updated(self,updated_prams):
@@ -295,30 +233,19 @@ class ReceiverController(QObject):
         #print(status)
 
     def connect_receiver(self):
-        #print("Connect_receiver triggered")
         self._start_sftp()
 
     def disconnect_receiver(self):
-        #print("Disconnect_receiver triggered")
         self._stop_sftp()
 
-    # # ---------------- public API  ----------------
-    # def send_control_text(self, text: str):
-    #     """Write-once upload of control.txt"""
-    #     if self._sftp_worker:
-    #         self._sftp_worker.request_control_text(text)
-
-    # def send_control_file(self, local_path: str | Path):
-    #     if self._sftp_worker:
-    #         self._sftp_worker.request_control_file(str(local_path))
-
-    # ---------------- lifecycle ----------------
     def _start_sftp(self):
         if self.connected:
             return
 
         self.thread = QThread(self)
-        assert self.thread is not None
+        if self.thread is None:
+            return
+        
         self.worker = _SftpWorker(self.model.sftp_cfg)
         self.worker.status_changed.connect(self.on_status_sftp_changed)
         self.worker.monitor_read.connect(self.on_monitor_read)
@@ -337,7 +264,6 @@ class ReceiverController(QObject):
 
         self.connected = True
         self.menu_bar.set_receiver_connection_text(self.receiver_id, True)
-        #print(f"[{self.__class__.__name__}] Connected to {self.receiver_id}")
 
     def _stop_sftp(self):
         if not self.connected:
@@ -348,7 +274,6 @@ class ReceiverController(QObject):
 
         self.connected = False
         self.menu_bar.set_receiver_connection_text(self.receiver_id, False)
-        #print(f"[{self.__class__.__name__}] Disconnected from {self.receiver_id}")
 
         self.thread = None
         self.worker = None
@@ -428,15 +353,12 @@ class MainController(QObject):
         """
         Receives the command string from the menu bar and dispatches to the correct logic.
         """
-        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {sender_id, command}")
-
         if command == "open_project":
             self.open_project()
         elif command == "close_project":
             self.close_project()
         elif command == "new_project":
             self.new_project()
-        # Add more commands as needed
         else:
             print(f"[MainController] Unknown command received: {command}")
 
@@ -452,7 +374,6 @@ class MainController(QObject):
             self._set_parameters_all()
                 
     def _set_parameters_all(self):
-
         if not self.receiver_controllers:
             return
 
@@ -461,36 +382,22 @@ class MainController(QObject):
         if dlg.exec_() != dlg.Accepted:
             return
         new_params = dlg.get_new_parameters()
-
-        chosen_folder = ""
         if new_params.get("AktStreaming","False") == "True":
             token, ok = ReceiverController.ask_for_token_static(parent=self.main_window,initial_text=ReceiverController._last_folder_token)
             if ok:
                 ReceiverController._last_folder_token = token
 
-        print(f"chosen_folder: {chosen_folder}")
-        #QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
-
-        # 3) apply to all: update models and ask workers to push control file
         for rc in self.receiver_controllers:
             # (a) set model values (so the UI/status panel updates immediately)
             for name, value in new_params.items():
                 rc.model.set_parameter_control(name, value)
             rc.on_model_updated()  # uses your existing refresh path
-
-            # # (b) choose folder for streaming param — reuse receiver defaults (no extra dialog)
-            # sftp = rc.model.sftp_cfg or {}
-            # default_folder = (
-            #     sftp.get("local_dirs", {}).get("streaming",
-            #         f"C:/Pi_loc/{rc.receiver_id}/bsp/streaming")
-            # )
             chosen_folder = rc._set_folder()
-            #QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params,chosen_folder)) #without value
-            # Use current default; if you want a single folder for all, replace with your FolderNameDialog flow.
-            #folder = default_folder
-
-            # (c) push to worker via the controller's signal (queued to worker thread)
-            rc.control_param_changed.emit(new_params, chosen_folder)
+            rc.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
+            chosen_folder_gps = chosen_folder.replace("streaming","gps")
+            rc.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+            #rc.control_param_changed.emit(new_params, chosen_folder) XXX
+            rc.control_param_changed.emit(new_params)
     
     def open_project(self):
         # Implement logic to open a project (dialog, load file, etc.)

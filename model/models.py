@@ -1,7 +1,10 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 from qgis.core import QgsPointXY
 from typing import Any, Optional
-import inspect
+import logging
+from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 class TargetModel(QObject):
     """
@@ -47,8 +50,6 @@ class ReceiverModel(QObject):
         # step = 1e-5
         # self.xxx_pos.setX(self.xxx_pos.x() + step)
         # self.xxx_pos.setY(self.xxx_pos.y() + step)
-
-        print(f"act_pos: {act_pos}")
         if not act_pos or act_pos == "xxx":
             return
         pos = ReceiverModel.parse_act_pos(act_pos)
@@ -106,13 +107,13 @@ class ReceiverModel(QObject):
             # Check format
             parts = act_pos.split(",")
             if len(parts) != 2:
-                raise ValueError(f"Invalid act_pos format: {act_pos!r}")
+                raise ValueError(f"Invalid NMEA format: {act_pos!r}")
 
             lat_str, lon_str = parts
 
             # Check numeric
             if not (lat_str.replace(".", "", 1).isdigit() and lon_str.replace(".", "", 1).isdigit()):
-                raise ValueError(f"Non-numeric act_pos: {act_pos!r}")
+                raise ValueError(f"No GPS position in NMEA, current value: {act_pos!r}")
 
             # Convert using NMEA rules
             lat = ReceiverModel.nmea_to_decimal(lat_str, 2)
@@ -121,7 +122,7 @@ class ReceiverModel(QObject):
             return QgsPointXY(lon, lat)
 
         except Exception as e:
-            print(f"[ReceiverModel] parse_act_pos failed: {e}")
+            logger.warning(f"[ReceiverModel] parse_act_pos failed: {e}") 
             return None
 
 class ProjectModel(QObject):

@@ -92,7 +92,7 @@ receivers:
         value: xxx
         readable: true
     sftp: 
-      host: '192.168.43.89' #host: '172.23.21.12'
+      host: '10.131.26.96' #host: '172.23.21.12'
       user: 'pi'
       password: 'raspberry'
       port: 22      
@@ -188,7 +188,7 @@ receivers:
         value: xxx
         readable: true
     sftp: 
-      host: '192.168.43.253' #host: '172.23.21.12'
+      host: '10.131.26.166' #host: '172.23.21.12'
       user: 'pi'
       password: 'raspberry'
       port: 22      
@@ -204,102 +204,102 @@ receivers:
         streaming: "C:\\Pi_loc\\RPI2\\streaming\\XXX"
         gps: "C:\\Pi_loc\\RPI2\\GPS\\XXX"
         config: "C:\\Pi_loc\\RPI2\\PARAM"
-  # - id: RPI3
-  #   status:
-  #     Colour: 
-  #       value: "red"
-  #       readable: true 
-  #     Status: 
-  #       value: "DISCONNECTED"
-  #       readable: true 
-  #   param_monitor:
-  #     Update date:
-  #       value: xxx
-  #       readable: true
-  #     Serial:
-  #       value: xxx
-  #       readable: true
-  #     IP:
-  #       value: xxx
-  #       readable: true 
-  #     MASK:
-  #       value: xxx
-  #       readable: true
-  #     Mode:
-  #       value: xxx
-  #       readable: true
-  #     BatPerc:
-  #       value: xxx
-  #       readable: true
-  #     StPPS:
-  #       value: xxx
-  #       readable: true
-  #     RPiProc:
-  #       value: xxx
-  #       readable: true
-  #     ACT_SRate:
-  #       value: xxx
-  #       readable: true
-  #     ACT_Nagrywanie:
-  #       value: xxx
-  #       readable: true
-  #     ACT_AktHydro:
-  #       value: xxx
-  #       readable: true
-  #     ACT_AktGPS:
-  #       value: xxx
-  #       readable: true
-  #     ACT_AktStreaming:
-  #       value: xxx
-  #       readable: true
-  #     ACT_RecDur:
-  #       value: xxx
-  #       readable: true
-  #     ACT_Pause:
-  #       value: xxx
-  #       readable: true
-  #     ACT_Pos:
-  #       value: xxx
-  #       readable: true
-  #   param_control:
-  #     SRate:
-  #       value: xxx
-  #       readable: true
-  #     Nagrywanie:
-  #       value: xxx
-  #       readable: false
-  #     AktHydro:
-  #       value: xxx
-  #       readable: false
-  #     AktGPS:
-  #       value: xxx
-  #       readable: false
-  #     AktStreaming:
-  #       value: xxx
-  #       readable: false
-  #     RecDur:
-  #       value: xxx
-  #       readable: true
-  #     Pause:
-  #       value: xxx
-  #       readable: true
-  #   sftp: 
-  #     host: '192.168.0.230' #host: '172.23.21.12'
-  #     user: 'pi'
-  #     password: 'raspberry'
-  #     port: 22      
-  #     keepalive_s: 30
-  #     remote_dirs:
-  #       streaming: "/home/pi/bsp/streaming"
-  #       gps: "/home/pi/bsp/GPS"
-  #       config: "/home/pi/bsp/PARAM"
-  #       monitor_file: "PARAM_RPI3_MONITOR.txt"
-  #       control_file: "PARAM_RPI3_CONTROL.txt"
-  #       max_retries: 3
-  #     local_dirs:                          
-  #       streaming: "C:\\Pi_loc\\RPI3\\streaming\\XXX"
-  #       gps: "C:\\Pi_loc\\RPI3\\GPS\\XXX"
-  #       config: "C:\\Pi_loc\\RPI2\\PARAM"
+  - id: RPI3
+    status:
+      Colour: 
+        value: "blue"
+        readable: true 
+      Status: 
+        value: "DISCONNECTED"
+        readable: true 
+    param_monitor:
+      Update date:
+        value: xxx
+        readable: true
+      Serial:
+        value: xxx
+        readable: true
+      IP:
+        value: xxx
+        readable: true 
+      MASK:
+        value: xxx
+        readable: true
+      Mode:
+        value: xxx
+        readable: true
+      BatPerc:
+        value: xxx
+        readable: true
+      StPPS:
+        value: xxx
+        readable: true
+      RPiProc:
+        value: xxx
+        readable: true
+      ACT_SRate:
+        value: xxx
+        readable: true
+      ACT_Nagrywanie:
+        value: xxx
+        readable: true
+      ACT_AktHydro:
+        value: xxx
+        readable: true
+      ACT_AktGPS:
+        value: xxx
+        readable: true
+      ACT_AktStreaming:
+        value: xxx
+        readable: true
+      ACT_RecDur:
+        value: xxx
+        readable: true
+      ACT_Pause:
+        value: xxx
+        readable: true
+      ACT_Pos:
+        value: xxx
+        readable: true
+    param_control:
+      SRate:
+        value: xxx
+        readable: true
+      Nagrywanie:
+        value: xxx
+        readable: false
+      AktHydro:
+        value: xxx
+        readable: false
+      AktGPS:
+        value: xxx
+        readable: false
+      AktStreaming:
+        value: xxx
+        readable: false
+      RecDur:
+        value: xxx
+        readable: true
+      Pause:
+        value: xxx
+        readable: true
+    sftp: 
+      host: '192.168.0.230' #host: '172.23.21.12'
+      user: 'pi'
+      password: 'raspberry'
+      port: 22      
+      keepalive_s: 30
+      remote_dirs:
+        streaming: "/home/pi/bsp/streaming"
+        gps: "/home/pi/bsp/GPS"
+        config: "/home/pi/bsp/PARAM"
+        monitor_file: "PARAM_RPI3_MONITOR.txt"
+        control_file: "PARAM_RPI3_CONTROL.txt"
+        max_retries: 3
+      local_dirs:                          
+        streaming: "C:\\Pi_loc\\RPI3\\streaming\\XXX"
+        gps: "C:\\Pi_loc\\RPI3\\GPS\\XXX"
+        config: "C:\\Pi_loc\\RPI3\\PARAM"
 logging:
   file: "logs/log.log"
   file_level: "DEBUG"

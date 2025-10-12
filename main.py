@@ -42,9 +42,7 @@ def main():
         qgs.exitQgis()
         sys.exit(1)  
 
-
-    #log_cfg_dict = config.get_logging_config() #To check self.log_cfg
-    log_cfg_dict = config.log_cfg #To check self.log_cfg
+    log_cfg_dict = config.log_cfg 
     receivers_cfg = config.receivers
     targets_cfg = config.targets
 
@@ -57,8 +55,6 @@ def main():
     map_controller = MapController(map_view, map_model, map_layer, tool_bar,menu_bar)
     coord_label = make_coord_label() #GUI label
     status_widget = StatusWidget()
-
-
     dock_info = DockInformationWidget() #GUI logs
 
     #RECEIVERS
