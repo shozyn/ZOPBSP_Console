@@ -105,181 +105,181 @@ receivers:
         control_file: "PARAM_RPI1_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI1\\bsp\\streaming"
-        gps: "C:\\Pi_loc\\RPI1\\bsp\\GPS"
-        config: "C:\\Pi_loc\\RPI1\\bsp\\PARAM"
-  - id: RPI2
-    param_monitor:
-      Serial:
-        value: xxx
-        readable: true
-      IP:
-        value: xxx
-        readable: true 
-      MASK:
-        value: xxx
-        readable: true
-      Mode:
-        value: xxx
-        readable: true
-      BatPerc:
-        value: xxx
-        readable: true
-      StPPS:
-        value: xxx
-        readable: true
-      RPiProc:
-        value: xxx
-        readable: true
-      ACT_SRate:
-        value: xxx
-        readable: true
-      ACT_Nagrywanie:
-        value: xxx
-        readable: true
-      ACT_AktHydro:
-        value: xxx
-        readable: true
-      ACT_AktGPS:
-        value: xxx
-        readable: true
-      ACT_AktStreaming:
-        value: xxx
-        readable: true
-      ACT_RecDur:
-        value: xxx
-        readable: true
-      ACT_Pause:
-        value: xxx
-        readable: true
-      ACT_Pos:
-        value: xxx
-        readable: true
-    param_control:
-      SRate:
-        value: xxx
-        readable: true
-      Nagrywanie:
-        value: xxx
-        readable: false
-      AktHydro:
-        value: xxx
-        readable: false
-      AktGPS:
-        value: xxx
-        readable: false
-      AktStreaming:
-        value: xxx
-        readable: false
-      RecDur:
-        value: xxx
-        readable: true
-      Pause:
-        value: xxx
-        readable: true
-    sftp: 
-      host: '127.0.0.1' #host: '172.23.21.12'
-      user: 's.hozyn'
-      password: '19Sie2011>>>'
-      port: 22      
-      keepalive_s: 30
-      remote_dirs:
-        streaming: "C:\\Pi\\RPI2\\bsp\\streaming"
-        gps: "C:\\Pi\\RPI2\\bsp\\GPS"
-        config: "C:\\Pi\\RPI2\\bsp\\PARAM"
-        monitor_file: "PARAM_RPI2_MONITOR.txt"
-        control_file: "PARAM_RPI2_CONTROL.txt"
-        max_retries: 3
-      local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI2\\streaming"
-        gps: "C:\\Pi_loc\\RPI2\\GPS"
-        config: "C:\\Pi_loc\\RPI2\\PARAM"
-  - id: RPI3
-    param_monitor:
-      Serial:
-        value: xxx
-        readable: true
-      IP:
-        value: xxx
-        readable: true 
-      MASK:
-        value: xxx
-        readable: true
-      Mode:
-        value: xxx
-        readable: true
-      BatPerc:
-        value: xxx
-        readable: true
-      StPPS:
-        value: xxx
-        readable: true
-      RPiProc:
-        value: xxx
-        readable: true
-      ACT_SRate:
-        value: xxx
-        readable: true
-      ACT_Nagrywanie:
-        value: xxx
-        readable: true
-      ACT_AktHydro:
-        value: xxx
-        readable: true
-      ACT_AktGPS:
-        value: xxx
-        readable: true
-      ACT_AktStreaming:
-        value: xxx
-        readable: true
-      ACT_RecDur:
-        value: xxx
-        readable: true
-      ACT_Pause:
-        value: xxx
-        readable: true
-      ACT_Pos:
-        value: xxx
-        readable: true
-    param_control:
-      SRate:
-        value: xxx
-        readable: true
-      Nagrywanie:
-        value: xxx
-        readable: false
-      AktHydro:
-        value: xxx
-        readable: false
-      AktGPS:
-        value: xxx
-        readable: false
-      AktStreaming:
-        value: xxx
-        readable: false
-      RecDur:
-        value: xxx
-        readable: true
-      Pause:
-        value: xxx
-        readable: true
-    sftp: 
-      host: '127.0.0.1' #host: '172.23.21.12'
-      user: 's.hozyn'
-      password: '19Sie2011>>>'
-      port: 22      
-      keepalive_s: 30
-      remote_dirs:
-        streaming: "C:\\Pi\\RPI3\\bsp\\streaming"
-        gps: "C:\\Pi\\RPI3\\bsp\\GPS"
-        config: "C:\\Pi\\RPI3\\bsp\\PARAM"
-        monitor_file: "PARAM_RPI3_MONITOR.txt"
-        control_file: "PARAM_RPI3_CONTROL.txt"
-        max_retries: 3
-      local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI3\\streaming"
-        gps: "C:\\Pi_loc\\RPI3\\GPS"
-        config: "C:\\Pi_loc\\RPI3\\PARAM"
+        streaming: "C:\\Pi_loc\\XXX\\RPI1\\streaming"
+        gps: "C:\\Pi_loc\\XXX\\RPI1\\GPS"
+        config: "C:\\Pi_loc\\XXX\\RPI1\\PARAM"
+  # - id: RPI2
+  #   param_monitor:
+  #     Serial:
+  #       value: xxx
+  #       readable: true
+  #     IP:
+  #       value: xxx
+  #       readable: true 
+  #     MASK:
+  #       value: xxx
+  #       readable: true
+  #     Mode:
+  #       value: xxx
+  #       readable: true
+  #     BatPerc:
+  #       value: xxx
+  #       readable: true
+  #     StPPS:
+  #       value: xxx
+  #       readable: true
+  #     RPiProc:
+  #       value: xxx
+  #       readable: true
+  #     ACT_SRate:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Nagrywanie:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktHydro:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktGPS:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktStreaming:
+  #       value: xxx
+  #       readable: true
+  #     ACT_RecDur:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Pause:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Pos:
+  #       value: xxx
+  #       readable: true
+  #   param_control:
+  #     SRate:
+  #       value: xxx
+  #       readable: true
+  #     Nagrywanie:
+  #       value: xxx
+  #       readable: false
+  #     AktHydro:
+  #       value: xxx
+  #       readable: false
+  #     AktGPS:
+  #       value: xxx
+  #       readable: false
+  #     AktStreaming:
+  #       value: xxx
+  #       readable: false
+  #     RecDur:
+  #       value: xxx
+  #       readable: true
+  #     Pause:
+  #       value: xxx
+  #       readable: true
+  #   sftp: 
+  #     host: '127.0.0.1' #host: '172.23.21.12'
+  #     user: 's.hozyn'
+  #     password: '19Sie2011>>>'
+  #     port: 22      
+  #     keepalive_s: 30
+  #     remote_dirs:
+  #       streaming: "C:\\Pi\\RPI2\\bsp\\streaming"
+  #       gps: "C:\\Pi\\RPI2\\bsp\\GPS"
+  #       config: "C:\\Pi\\RPI2\\bsp\\PARAM"
+  #       monitor_file: "PARAM_RPI2_MONITOR.txt"
+  #       control_file: "PARAM_RPI2_CONTROL.txt"
+  #       max_retries: 3
+  #     local_dirs:                          
+  #       streaming: "C:\\Pi_loc\\RPI2\\streaming"
+  #       gps: "C:\\Pi_loc\\RPI2\\GPS"
+  #       config: "C:\\Pi_loc\\RPI2\\PARAM"
+  # - id: RPI3
+  #   param_monitor:
+  #     Serial:
+  #       value: xxx
+  #       readable: true
+  #     IP:
+  #       value: xxx
+  #       readable: true 
+  #     MASK:
+  #       value: xxx
+  #       readable: true
+  #     Mode:
+  #       value: xxx
+  #       readable: true
+  #     BatPerc:
+  #       value: xxx
+  #       readable: true
+  #     StPPS:
+  #       value: xxx
+  #       readable: true
+  #     RPiProc:
+  #       value: xxx
+  #       readable: true
+  #     ACT_SRate:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Nagrywanie:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktHydro:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktGPS:
+  #       value: xxx
+  #       readable: true
+  #     ACT_AktStreaming:
+  #       value: xxx
+  #       readable: true
+  #     ACT_RecDur:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Pause:
+  #       value: xxx
+  #       readable: true
+  #     ACT_Pos:
+  #       value: xxx
+  #       readable: true
+  #   param_control:
+  #     SRate:
+  #       value: xxx
+  #       readable: true
+  #     Nagrywanie:
+  #       value: xxx
+  #       readable: false
+  #     AktHydro:
+  #       value: xxx
+  #       readable: false
+  #     AktGPS:
+  #       value: xxx
+  #       readable: false
+  #     AktStreaming:
+  #       value: xxx
+  #       readable: false
+  #     RecDur:
+  #       value: xxx
+  #       readable: true
+  #     Pause:
+  #       value: xxx
+  #       readable: true
+  #   sftp: 
+  #     host: '127.0.0.1' #host: '172.23.21.12'
+  #     user: 's.hozyn'
+  #     password: '19Sie2011>>>'
+  #     port: 22      
+  #     keepalive_s: 30
+  #     remote_dirs:
+  #       streaming: "C:\\Pi\\RPI3\\bsp\\streaming"
+  #       gps: "C:\\Pi\\RPI3\\bsp\\GPS"
+  #       config: "C:\\Pi\\RPI3\\bsp\\PARAM"
+  #       monitor_file: "PARAM_RPI3_MONITOR.txt"
+  #       control_file: "PARAM_RPI3_CONTROL.txt"
+  #       max_retries: 3
+  #     local_dirs:                          
+  #       streaming: "C:\\Pi_loc\\RPI3\\streaming"
+  #       gps: "C:\\Pi_loc\\RPI3\\GPS"
+  #       config: "C:\\Pi_loc\\RPI3\\PARAM"
 logging:
   file: "logs/log.log"
   file_level: "DEBUG"

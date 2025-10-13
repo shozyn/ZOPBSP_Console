@@ -149,7 +149,7 @@ class ReceiverController(QObject):
         return FolderNameDialog.get_folder_token(parent=parent, initial_text=initial_text)
     
     def _set_folder(self) -> str:
-        base = PureWindowsPath(r"C:\Pi_loc") / str(self.receiver_id) / "streaming" / ReceiverController._last_folder_token
+        base = PureWindowsPath(r"C:\Pi_loc") / ReceiverController._last_folder_token / str(self.receiver_id) / "streaming" 
         # 4) Ensure the directory exists
         try:
             Path(str(base)).mkdir(parents=True, exist_ok=True)

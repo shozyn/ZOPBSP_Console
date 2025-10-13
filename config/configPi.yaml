@@ -105,9 +105,9 @@ receivers:
         control_file: "PARAM_RPI1_CONTROL.txt"
         max_retries: 3                         
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI1\\streaming\\XXX"
-        gps: "C:\\Pi_loc\\RPI1\\GPS\\XXX"
-        config: "C:\\Pi_loc\\RPI1\\PARAM"
+        streaming: "C:\\Pi_loc\\XXX\\RPI1\\streaming"
+        gps: "C:\\Pi_loc\\XXX\\RPI1\\GPS"
+        config: "C:\\Pi_loc\\XXX\\RPI1\\PARAM"
   - id: RPI2
     status:
       Colour: 
@@ -201,9 +201,9 @@ receivers:
         control_file: "PARAM_RPI2_CONTROL.txt"
         max_retries: 3
       local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI2\\streaming\\XXX"
-        gps: "C:\\Pi_loc\\RPI2\\GPS\\XXX"
-        config: "C:\\Pi_loc\\RPI2\\PARAM"
+        streaming: "C:\\Pi_loc\\XXX\\RPI2\\streaming"
+        gps: "C:\\Pi_loc\\XXX\\RPI2\\GPS"
+        config: "C:\\Pi_loc\\XXX\\RPI2\\PARAM"
   - id: RPI3
     status:
       Colour: 
@@ -296,10 +296,10 @@ receivers:
         monitor_file: "PARAM_RPI3_MONITOR.txt"
         control_file: "PARAM_RPI3_CONTROL.txt"
         max_retries: 3
-      local_dirs:                          
-        streaming: "C:\\Pi_loc\\RPI3\\streaming\\XXX"
-        gps: "C:\\Pi_loc\\RPI3\\GPS\\XXX"
-        config: "C:\\Pi_loc\\RPI3\\PARAM"
+      local_dirs:                     
+        streaming: "C:\\Pi_loc\\XXX\\RPI3\\streaming"
+        gps: "C:\\Pi_loc\\XXX\\RPI3\\GPS"
+        config: "C:\\Pi_loc\\XXX\\RPI3\\PARAM"
 logging:
   file: "logs/log.log"
   file_level: "DEBUG"
