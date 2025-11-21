@@ -1,10 +1,56 @@
-from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import QObject, pyqtSignal, QSettings, pyqtSlot
 from qgis.core import QgsPointXY
 from typing import Any, Optional
 import logging
 from typing import Optional
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
+
 
 logger = logging.getLogger(__name__)
+# -----------------------------------------------------------------------------
+# Data structures (part of Model)
+# -----------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class FileMeta:
+    """Metadata for a single local WAV file."""
+    receiver_id: str      # e.g., '172.0.0.0'
+    path: str             # absolute local file path
+    ts_key: str           # normalized key 'YYYYMMDD_HHMMSS'
+    mtime_ns: int         # tie-breaker for equal keys (nanoseconds)
+
+
+@dataclass(frozen=True)
+class CalcJob:
+    """A single calculation job formed from a synchronized WAV triplet."""
+    job_id: str           # use the ts_key as a unique id
+    wav_rpis: dict[str,str]
+
+
+# -----------------------------------------------------------------------------
+# Utilities: filename timestamp parsing
+# -----------------------------------------------------------------------------
+
+# Matches: <anything>_<YYYYMMDD>_<HHMMSS>.wav  (case-insensitive .wav)
+_WAV_TS_RE = re.compile(r".*_(\d{8})_(\d{6})\.(?i:wav)$")
+
+def parse_wav_ts_key(p: Path) -> Optional[str]:
+    """
+    Extract 'YYYYMMDD_HHMMSS' from a WAV filename.
+    Returns None if the pattern is not found.
+
+    SJW6937_20250822_125320.wav  ->  '20250822_125320'
+    """
+    m = _WAV_TS_RE.match(p.name)
+    if not m:
+        return None
+    ymd, hms = m.groups()
+    # Normalize to a consistent format to allow lexical ordering:
+    # 'YYYYMMDD_HHMMSS' (zero-padded already)
+    return f"{ymd}_{hms}"
 
 class TargetModel(QObject):
     """
@@ -74,12 +120,12 @@ class ReceiverModel(QObject):
         if name in self.parameters["status"]:
             self.parameters["status"][name]['value'] = value
             
-    def get_sftp_cfg(self, name: str) -> Optional[any]:
-        """Return the parameter's value for a given name."""
-        if name in self.sftp_cfg:
-            return self.sftp_cfg.get(name)
-        else:
-            return None
+    # def get_sftp_cfg(self, name: str) -> Optional[any]:
+    #     """Return the parameter's value for a given name."""
+    #     if name in self.sftp_cfg:
+    #         return self.sftp_cfg.get(name)
+    #     else:
+    #         return None
 
     def set_sftp_cfg(self, name: str, value: Any) -> None:
         """Update the parameter value (for dialog/UI update)."""
@@ -138,6 +184,7 @@ class ProjectModel(QObject):
     def update_project(self, new_data):
         self.project_data = new_data
         self.project_changed.emit(new_data)
+
 class MapModel(QObject):
     """
     Model holding the state of the map (layers, selections, etc.).
@@ -159,6 +206,127 @@ class MapModel(QObject):
     def select_feature(self, feature_id):
         self.selected_features.append(feature_id)
         self.selection_changed.emit()
+
+class CalculationModel(QObject):
+    """
+    Aggregates new WAV arrivals per receiver and forms jobs when a 'newest'
+    common timestamp exists across all required receivers.
+
+    Design:
+    - For each receiver, keep a mapping: ts_key -> FileMeta
+    - On each arrival, recompute the intersection of keys across receivers.
+    - Pick the LATEST (lexicographically max) ts_key in the intersection that
+      has NOT been processed yet -> form a CalcJob and emit job_ready.
+
+    Persistence:
+    - Uses QSettings to store a set of 'processed' job_ids (ts_keys), so that
+      on app restarts we don't recompute the same triplet.
+    """
+
+    job_ready = pyqtSignal(object)  # emits CalcJob
+
+    def __init__(self,
+                 required_receivers: tuple[str] = ("172.0.0.1",),
+                 org: str = "AMW",
+                 app: str = "ZOPBSP_Console",
+                 parent: QObject | None = None) -> None:
+        super().__init__(parent)
+        self.required_receivers: tuple[str, ...] = required_receivers
+        # per-receiver dictionary: receiver_id -> { ts_key -> FileMeta }
+        self.receivers_fileMeta: Dict[str, Dict[str, FileMeta]] = {
+            rid: {} for rid in required_receivers
+        }
+
+        self._settings = QSettings(org, app)
+        self._processed: Set[str] = set(self._load_processed())
+        print(f"_processed in init(): {self._processed}")
+
+    # ------------------------ Persistence helpers ----------------------------
+
+    def _load_processed(self) -> List[str]:
+        """Load processed job ids (ts_keys) from QSettings."""
+        self._settings.beginGroup("calc/processed")
+        self._settings.setValue("job_ids", list())
+        ids = self._settings.value("job_ids", [], type=list)
+        self._settings.endGroup()
+        return ids
+
+    def _save_processed(self) -> None:
+        """Persist processed job ids to QSettings."""
+        self._settings.beginGroup("calc/processed")
+        self._settings.setValue("job_ids", list(self._processed))
+        self._settings.endGroup()
+        self._settings.sync()
+
+    # ------------------------ Public API used by the Controller --------------
+
+    @pyqtSlot(object)
+    def update_latest(self, meta: FileMeta) -> None:
+        """
+        Push a newly arrived WAV into the model.
+        The Controller calls this per-file when an SFTP worker reports a download.
+        """
         
+        if meta.receiver_id not in self.receivers_fileMeta:
+            logger.warning("[CalculationModel] Unknown receiver_id=%s; ignoring", meta.receiver_id)
+            return
 
+        # Insert/replace newest instance for that ts_key
+        stored_files = self.receivers_fileMeta[meta.receiver_id] 
+        #print(f"Stored_metafiles for {meta.receiver_id}:\n{stored_files}")
+        existing = stored_files.get(meta.ts_key)
+        if (existing is None) or (meta.mtime_ns >= existing.mtime_ns):
+            stored_files[meta.ts_key] = meta
+            logger.debug("[CalculationModel] Stored %s for %s: %s",
+                         meta.ts_key, meta.receiver_id, meta.path)
 
+        self._test_if_ready_calc()
+
+    # ------------------------ Core matching logic ----------------------------
+
+    def _test_if_ready_calc(self) -> None:
+        """
+        If all receivers share at least one common ts_key, pick the
+        newest (max) common key that hasn't been processed and emit a CalcJob.
+        """
+        # 1) Build the intersection of ts_keys across required receivers
+        key_sets: List[Set[str]] = []
+        for rid in self.required_receivers:
+            keys = set(self.receivers_fileMeta[rid].keys())
+            if not keys:
+                return  # some receiver has not provided anything yet
+            key_sets.append(keys)
+
+        print(f"[CalculationModel] key_sets to test appearance in rcs:\n{key_sets}\n")
+
+        common = set.intersection(*key_sets) if key_sets else set()
+        print(f"[CalculationModel] common keys: {common}")
+
+        if not common:
+            return
+
+        for ts_key in sorted(common, reverse=False):
+            if ts_key not in self._processed:
+                print(f"[CalculationModel] ts_key to process:\n{ts_key}\n")
+                self._emit_job_for(ts_key)
+                break  # emit only one job per update (policy)
+
+    def _emit_job_for(self, ts_key: str) -> None:
+        """Create a CalcJob from the three FileMeta entries and emit job_ready."""
+        # Must exist for every required receiver by definition of 'common'
+        rpis = dict()
+        for k, v in self.receivers_fileMeta.items():
+            rpis[k] = self.receivers_fileMeta[k][ts_key].path
+            print(f"[CalculationModel] _emit_job_for receiver {k}, wav: {rpis[k]}")
+
+        
+            
+        # rpi1 = self.receivers_fileMeta["RPI1"][ts_key].path
+        # rpi2 = self.receivers_fileMeta["RPI2"][ts_key].path
+        # rpi3 = self.receivers_fileMeta["RPI3"][ts_key].path
+        job = CalcJob(job_id=ts_key, wav_rpis=rpis)
+        self._processed.add(ts_key)
+        print(f"self._processed: {self._processed}")
+        self._save_processed()
+        logger.info("[CalculationModel] Job ready: %s", ts_key)
+        self.job_ready.emit(job) #sent to the worker

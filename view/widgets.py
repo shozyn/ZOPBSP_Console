@@ -4,6 +4,7 @@ from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem, QgsPointXY, 
 from PyQt5.QtWidgets import QWidget, QSizePolicy
 from PyQt5.QtGui import QMouseEvent, QColor, QCursor, QWheelEvent
 from PyQt5.QtCore import Qt, QObject, pyqtSignal, QSize
+from typing import  Optional
 
 def make_coord_label() -> QLabel:
     return QLabel("Coordinates: ")
@@ -74,7 +75,11 @@ class MenuBar(QMenuBar):
         self.target_connect_actions = {}
         self.target_display_actions = {}
         self.target_track_actions = {}
+        self.calc_action:  Optional[QAction] = None
+
         self._setup_menu(receivers, targets or [])
+
+        
 
     def _setup_menu(self, receivers,targets):
         # Define your menus and commands here
@@ -94,6 +99,13 @@ class MenuBar(QMenuBar):
         act_zoom_to_full.triggered.connect(lambda: self.command_triggered.emit("Map","zoom_to_full"))
         map_menu.addAction(act_zoom_to_full)
         #self.send_zoom_to_full.connect(self.m_map.on_zoom_to_full)
+
+        calc_menu = self.addMenu("Calculation")
+        self.calc_action = QAction("Start",self)
+        if self.calc_action is not None:
+            self.calc_action.triggered.connect(lambda: self._toggle_calculation())
+            calc_menu.addAction(self.calc_action)
+
 
               # Target Menus with toggle logic
         for tgt in targets:
@@ -138,6 +150,16 @@ class MenuBar(QMenuBar):
             set_params_action.setCheckable(False)
             set_params_action.triggered.connect(lambda _, rid=rx_id: self.command_triggered.emit(rid, "set_parameters"))
             receiver_menu.addAction(set_params_action)
+
+    def _toggle_calculation(self):
+        """
+        Flip Calculation 'Start' <-> 'Stop' and emit the corresponding command.
+        """
+        if self.calc_action is not None:
+            is_calculating = self.calc_action.text().lower() == "stop"
+            print(f"is_calculating: {is_calculating}")
+            self.calc_action.setText("Start" if is_calculating else "Stop")
+            self.command_triggered.emit("Calculation","Stop" if is_calculating else "Start")
 
     def _toggle_receiver_connection(self, receiver_id: str):
         """
@@ -197,13 +219,13 @@ class MyQgsMapCanvas(QgsMapCanvas):
             return QSize(800, 600)
 
     def mouseMoveEvent(self, event: QMouseEvent):
-        point = self.getCoordinateTransform().toMapCoordinates(event.pos().x(), event.pos().y())
+        point = self.getCoordinateTransform().toMapCoordinates(event.pos().x(), event.pos().y()) # type: ignore
         self.map_moved.emit(point)
         super().mouseMoveEvent(event)
 
     def mousePressEvent(self, event: QMouseEvent):
-        point = self.getCoordinateTransform().toMapCoordinates(event.pos().x(), event.pos().y())
-
+        point = self.getCoordinateTransform().toMapCoordinates(event.pos().x(), event.pos().y()) # type: ignore
+ 
         # src_crs = QgsCoordinateReferenceSystem.fromEpsgId(32634)
         # dst_crs = QgsCoordinateReferenceSystem.fromEpsgId(4326)  # WGS84 lon/lat
         # xform = QgsCoordinateTransform(src_crs, dst_crs, QgsProject.instance())

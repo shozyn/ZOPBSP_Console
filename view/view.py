@@ -2,7 +2,7 @@ from PyQt5.QtCore import QObject
 from qgis.gui import QgsVertexMarker
 from qgis.core import QgsPointXY
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QMessageBox
 
 import logging
 logger = logging.getLogger(__name__)
@@ -64,3 +64,10 @@ class ReceiverView(QWidget):
         self.actual_marker.show()
         self.canvas.refresh()
         print(f"[{self.__class__.__name__}] Current position was displayed on the map: {point.x()}, {point.y()}")
+    
+    def show_warning(self, title: str, message: str):
+        m = QMessageBox(self)
+        m.setIcon(QMessageBox.Warning)
+        m.setWindowTitle(title)
+        m.setText(message)
+        m.exec_()

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from PyQt5.QtCore import QObject, pyqtSignal, QTimer
 from PyQt5.QtGui import QColor, QBrush
 import inspect
@@ -6,7 +8,9 @@ from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog, QWidget
 from view.parameter_dialog import ParameterDialog
 from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
 from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
-from utils.receiver_client_worker import ReceiverClientWorker  # we'll use this from before
+from utils.receiver_client_worker import ReceiverClientWorker  
+from utils.math_worker import CalculationWorker, start_calculation_thread, stop_calculation_thread
+from model.models import CalculationModel, FileMeta, CalcJob, parse_wav_ts_key
 from view.parameter_dialog import FolderNameDialog 
 #from utils.server_comm_sftp import ServerCommSFTP
 from utils.sftp_worker import _SftpWorker
@@ -14,6 +18,13 @@ import inspect
 import logging
 from pathlib import Path
 import string
+from typing import List, Optional
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from view.widgets import MenuBar
+
+
 
 logger = logging.getLogger(__name__)
 def current_func_name() -> str:
@@ -125,6 +136,7 @@ class ReceiverController(QObject):
     model_changed = pyqtSignal(str,dict)
     #control_param_changed = pyqtSignal(dict,str)
     control_param_changed = pyqtSignal(dict)
+    files_arrived = pyqtSignal(str, str, list)   # (receiver_id, role, files)
 
     def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
         super().__init__(parent)
@@ -143,6 +155,7 @@ class ReceiverController(QObject):
         self.connected = False
 
         self.model.actual_position_updated.connect(self.view.display_actual_position)
+        
         
     @staticmethod
     def ask_for_token_static(parent, initial_text: str = "XXX") -> tuple[str, bool]:
@@ -249,8 +262,12 @@ class ReceiverController(QObject):
         self.worker = _SftpWorker(self.model.sftp_cfg)
         self.worker.status_changed.connect(self.on_status_sftp_changed)
         self.worker.monitor_read.connect(self.on_monitor_read)
-        self.control_param_changed.connect(self.worker.on_control_param_changed,type=Qt.QueuedConnection)
+        self.worker.warning.connect(self.view.show_warning)  # slot in view
         self.worker.control_param_updated.connect(self.on_control_param_updated)
+        self.control_param_changed.connect(self.worker.on_control_param_changed,type=Qt.QueuedConnection)
+
+        self.worker.files_arrived.connect(self._on_worker_files_arrived)
+        
         
         self.worker.moveToThread(self.thread)
 
@@ -270,13 +287,20 @@ class ReceiverController(QObject):
             return
         self.stopRequested.emit()     # queued -> worker.stop() in worker thread
         if self.thread:
-            self.thread.wait(2000)    # brief join
+            self.thread.wait(2000)
 
         self.connected = False
         self.menu_bar.set_receiver_connection_text(self.receiver_id, False)
 
         self.thread = None
         self.worker = None
+
+    @pyqtSlot(str, str, list)
+    def _on_worker_files_arrived(self, receiver_id: str, role: str, files: list) -> None:
+        """
+        Relay incoming files from sftp_worker
+        """
+        self.files_arrived.emit(receiver_id, role, files)
 
     def __del__(self):
         # best-effort cleanup
@@ -457,3 +481,126 @@ class MapController(QObject):
         self.coordinates_changed.emit(point.y(), point.x())
 
 
+
+
+class CalculationController(QObject):
+    """
+    Controller that:
+      - Listens to SFTP workers' 'files_arrived(receiver_id, role, files)' signals,
+      - Filters to WAVs, parses timestamp keys, builds FileMeta, and
+      - Calls model.update_latest(meta).
+      - Forwards formed jobs to the CalculationWorker.
+    """
+
+    def __init__(self, model: CalculationModel, menu_bar: MenuBar,
+                 parent: Optional[QObject] = None) -> None:
+        super().__init__(parent)
+        self.model = model
+
+        # Runtime state for the calculation pipeline
+        self._calc_worker: Optional[CalculationWorker] = None
+        self._calc_thread = None
+        self._calc_running: bool = False
+        self.menu_bar = menu_bar
+        self.menu_bar.command_triggered.connect(self.handle_command)
+
+# ----------------- Lifecycle slots (bind to GUI) -----------------
+
+    @pyqtSlot()
+    def start_calculation(self) -> None:
+        """
+        Create worker + thread and wire model → worker. Idempotent.
+        """
+        if self._calc_running:
+            logger.info("[CalculationController] Calculation already running.")
+            return
+
+        # Create worker and thread
+        worker = CalculationWorker()
+        thread = start_calculation_thread(worker)
+
+        # Wire signals: Model → Worker (queued across threads)
+        self.model.job_ready.connect(worker.enqueue_job)
+
+        # Optional: observe worker signals (to update a View or logs)
+        worker.job_started.connect(lambda jid: logger.info("[Calc] job_started %s", jid))
+        worker.job_finished.connect(lambda jid, res: logger.info("[Calc] job_finished %s → %s", jid, res))
+        worker.job_failed.connect(lambda jid, info: logger.error("[Calc] job_failed %s\n%s", jid, info))
+
+        # Keep references
+        self._calc_worker = worker
+        self._calc_thread = thread
+        self._calc_running = True
+        logger.info("[CalculationController] Calculation started.")
+
+    @pyqtSlot()
+    def stop_calculation(self) -> None:
+        """
+        Cooperatively stop and tear down the worker thread. Idempotent.
+        """
+        if not self._calc_running:
+            logger.info("[CalculationController] Calculation is not running.")
+            return
+
+        assert self._calc_worker is not None and self._calc_thread is not None
+
+        # Disconnect model→worker to avoid late deliveries during teardown
+        try:
+            self.model.job_ready.disconnect(self._calc_worker.enqueue_job)
+        except Exception:
+            pass
+
+        # Stop gracefully
+        stop_calculation_thread(self._calc_worker, self._calc_thread, timeout_ms=3000)
+
+        # Null out references so GC can collect
+        self._calc_worker = None
+        self._calc_thread = None
+        self._calc_running = False
+        logger.info("[CalculationController] Calculation stopped.")
+
+
+
+    # This signature matches the suggested SFTP worker signal:
+    #   files_arrived(receiver_id: str, role: str, files: list[str])
+    @pyqtSlot(str, str, list)
+    def on_files_arrived(self, receiver_id: str, role: str, files: List[str]) -> None:
+        """
+        Slot called whenever the SFTP finishes downloads.
+        It creates FileMeta for the Calculation Model
+        """
+
+        print(f"Files arrived in calculation controller: {receiver_id}\n{files}\n")
+        for f in files:
+            p = Path(f)
+            if p.suffix.lower() != ".wav":
+                continue  # ignore TXT and others
+            if not p.exists():
+                continue
+            ts_key = parse_wav_ts_key(p)
+            if not ts_key:
+                logger.warning("[CalculationController] Could not parse ts from %s", p.name)
+                continue
+            meta = FileMeta(
+                receiver_id=receiver_id,
+                path=str(p),
+                ts_key=ts_key,
+                mtime_ns=p.stat().st_mtime_ns,
+            )
+            print(f"[CalculationController] meta.ts_key for arrived files: {meta.ts_key}")
+            self.model.update_latest(meta) #The model is updated for each file separately
+
+
+    @pyqtSlot(str, str)
+    def handle_command(self, sender_id, command):
+        if sender_id != "Calculation":
+            return   
+        if command == "Start":
+            self.start_calculation()
+        elif command == "Stop":
+            self.stop_calculation()
+
+    # @pyqtSlot(object)
+    # def _on_job_ready(self, job: CalcJob) -> None:
+    #     """Forward ready jobs to the calculation worker queue."""
+    #     self.calc_worker.enqueue_job(job)

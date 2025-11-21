@@ -3,21 +3,14 @@ from PyQt5.QtWidgets import QMessageBox
 from config.config_loader import Config, ConfigError, DataError
 from qgis.core import QgsApplication
 from view.mainwindow import MainWindow
-from view.widgets import MapView
-from view.widgets import ToolBar
-from view.view import TargetView
-from view.widgets import make_coord_label
-from model.models import MapModel
-from controller.controllers import MapController
-from controller.controllers import MainController
-from controller.controllers import ReceiverController
-from controller.controllers import TargetController
+from view.widgets import MapView, ToolBar, make_coord_label
+from controller.controllers import MapController, MainController, ReceiverController, TargetController, CalculationController
 from view.widgets import MenuBar
-from model.models import ReceiverModel
-from model.models import TargetModel
-from view.view import ReceiverView
+from model.models import ReceiverModel, TargetModel, MapModel, CalculationModel
+from view.view import ReceiverView, TargetView
 from utils.loggings import setup_logging_for_app, LoggingConfig
 from utils.status_builder import populate_status_panel
+from utils.math_worker import CalculationWorker
 import logging
 
 from view.dock_widgets import StatusWidget, DockInformationWidget
@@ -26,8 +19,8 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
+    #CONFIG_PATH = "config/configPi.yaml"
     CONFIG_PATH = "config/configPi.yaml"
-    #CONFIG_PATH = "config/configWin.yaml"
 
     try:
      config = Config(CONFIG_PATH)
@@ -126,18 +119,41 @@ def main():
         backup_count=log_cfg_dict["backup_count"],
     ),
     )
+
+    receiver_ids = []
+    receiver_ips = []
+    for rc in receiver_controllers:
+        #receiver_ids.append(rc.receiver_id)
+        receiver_ips.append(rc.model.sftp_cfg["host"])
+        
+    receiver_ips = tuple(receiver_ips)
+    print(f"receiver_ips: {receiver_ips}")
+
+    # CALCULATION
+    calc_model = CalculationModel(required_receivers=receiver_ips)
+    calc_worker = CalculationWorker()
+    calc_controller = CalculationController(calc_model, menu_bar=menu_bar)
     
     main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
                                      receiver_controllers=receiver_controllers)
+
+    for rc in receiver_controllers:
+        rc.files_arrived.connect(calc_controller.on_files_arrived)
+
+    
 
 
     map_controller.coordinates_changed.connect(main_window.on_coordinates_changed)
     main_window.show()
 
+
     #exit_code = app.exec_()
     exit_code = qgs.exec()
+
     qgs.exitQgis()
     sys.exit(exit_code)
+
+
 
 if __name__ == "__main__":
     main()
