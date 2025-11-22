@@ -21644,3 +21644,722 @@ Downloaded:
 2025-11-21 11:57:54 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
 2025-11-21 11:57:54 | INFO | model.models | [CalculationModel] Job ready: 20251121_115745
 2025-11-21 11:57:54 | INFO | controller.controllers | [Calc] job_started 20251121_115745
+2025-11-22 14:01:02 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Worker sftp started
+2025-11-22 14:01:02 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Disconnected
+2025-11-22 14:01:02 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Connecting...
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | starting thread (client mode): 0xfbf10230
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_for_Windows_9.5
+2025-11-22 14:01:02 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_for_Windows_9.5)
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | client lang: <none>
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | server lang: <none>
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | kex follows: False
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Compression: none
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com,ssh-dss,ssh-rsa,rsa-sha2-256,rsa-sha2-512', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 127.0.0.1: b'346d3cfba23fc830bef0ed604e5b16e7'
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | userauth is OK
+2025-11-22 14:01:02 | INFO | paramiko.transport | Authentication (password) successful!
+2025-11-22 14:01:02 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; SSH connection established.
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 0] Max packet in: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Received global request "hostkeys-00@openssh.com"
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Rejecting "hostkeys-00@openssh.com" global request from server.
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 0] Max packet out: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Secsh channel 0 opened.
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 0] Sesch channel 0 request ok
+2025-11-22 14:01:02 | INFO | paramiko.transport.sftp | [chan 0] Opened sftp connection (server version 3)
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 1] Max packet in: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 1] Max packet out: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Secsh channel 1 opened.
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 1] Sesch channel 1 request ok
+2025-11-22 14:01:02 | INFO | paramiko.transport.sftp | [chan 1] Opened sftp connection (server version 3)
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 2] Max packet in: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | [chan 2] Max packet out: 32768 bytes
+2025-11-22 14:01:02 | DEBUG | paramiko.transport | Secsh channel 2 opened.
+2025-11-22 14:01:03 | DEBUG | paramiko.transport | [chan 2] Sesch channel 2 request ok
+2025-11-22 14:01:03 | INFO | paramiko.transport.sftp | [chan 2] Opened sftp connection (server version 3)
+2025-11-22 14:01:03 | DEBUG | paramiko.transport | [chan 3] Max packet in: 32768 bytes
+2025-11-22 14:01:03 | DEBUG | paramiko.transport | [chan 3] Max packet out: 32768 bytes
+2025-11-22 14:01:03 | DEBUG | paramiko.transport | Secsh channel 3 opened.
+2025-11-22 14:01:03 | DEBUG | paramiko.transport | [chan 3] Sesch channel 3 request ok
+2025-11-22 14:01:03 | INFO | paramiko.transport.sftp | [chan 3] Opened sftp connection (server version 3)
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb')
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb') -> 00000000
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:01:08 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Control file read successfully on attempt 1.
+2025-11-22 14:01:08 | DEBUG | paramiko.transport.sftp | [chan 0] close(00000000)
+2025-11-22 14:01:08 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2025-11-22 14:01:08 | INFO | controller.controllers | [CalculationController] Calculation started.
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:13 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/GPS: 3 files
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:13 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/streaming: 0 files
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:13 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:18 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:23 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:28 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:33 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:38 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125231.wav')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125231.wav', 'rb')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125231.wav', 'rb') -> 00000000
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] close(00000000)
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125231.wav')
+2025-11-22 14:01:43 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1]:
+Downloaded:
+C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125231.wav -> C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125231.wav
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:43 | DEBUG | model.models | [CalculationModel] Stored 20250822_125231 for 127.0.0.1: C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125231.wav
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:43 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:43 | INFO | model.models | [CalculationModel] Job ready: 20250822_125231
+2025-11-22 14:01:43 | INFO | controller.controllers | [Calc] job_started 20250822_125231
+2025-11-22 14:01:43 | ERROR | controller.controllers | [Calc] job_failed 20250822_125231
+too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\utils\math_worker.py", line 62, in _get_job_from_queue
+    result = self._compute(job)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\utils\math_worker.py", line 82, in _compute
+    for receiver_id, wav_path in job.wav_rpis:
+        ^^^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:48 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:53 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:01:58 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:03 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:08 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:13 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:18 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:23 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:28 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:33 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:38 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:02:43 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:18 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Worker sftp started
+2025-11-22 14:05:18 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Disconnected
+2025-11-22 14:05:18 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Connecting...
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | starting thread (client mode): 0x20591010
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_for_Windows_9.5
+2025-11-22 14:05:18 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_for_Windows_9.5)
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | client lang: <none>
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | server lang: <none>
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | kex follows: False
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Compression: none
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com,ssh-dss,ssh-rsa,rsa-sha2-256,rsa-sha2-512', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 127.0.0.1: b'346d3cfba23fc830bef0ed604e5b16e7'
+2025-11-22 14:05:18 | DEBUG | paramiko.transport | userauth is OK
+2025-11-22 14:05:19 | INFO | paramiko.transport | Authentication (password) successful!
+2025-11-22 14:05:19 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; SSH connection established.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 0] Max packet in: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Received global request "hostkeys-00@openssh.com"
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Rejecting "hostkeys-00@openssh.com" global request from server.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 0] Max packet out: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Secsh channel 0 opened.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 0] Sesch channel 0 request ok
+2025-11-22 14:05:19 | INFO | paramiko.transport.sftp | [chan 0] Opened sftp connection (server version 3)
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 1] Max packet in: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 1] Max packet out: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Secsh channel 1 opened.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 1] Sesch channel 1 request ok
+2025-11-22 14:05:19 | INFO | paramiko.transport.sftp | [chan 1] Opened sftp connection (server version 3)
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 2] Max packet in: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 2] Max packet out: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Secsh channel 2 opened.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 2] Sesch channel 2 request ok
+2025-11-22 14:05:19 | INFO | paramiko.transport.sftp | [chan 2] Opened sftp connection (server version 3)
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 3] Max packet in: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 3] Max packet out: 32768 bytes
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | Secsh channel 3 opened.
+2025-11-22 14:05:19 | DEBUG | paramiko.transport | [chan 3] Sesch channel 3 request ok
+2025-11-22 14:05:19 | INFO | paramiko.transport.sftp | [chan 3] Opened sftp connection (server version 3)
+2025-11-22 14:05:20 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2025-11-22 14:05:20 | INFO | controller.controllers | [CalculationController] Calculation started.
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb')
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb') -> 00000000
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:05:24 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Control file read successfully on attempt 1.
+2025-11-22 14:05:24 | DEBUG | paramiko.transport.sftp | [chan 0] close(00000000)
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:29 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/GPS: 3 files
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:29 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/streaming: 1 files
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:29 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:34 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:39 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:44 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125235.wav')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125235.wav', 'rb')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125235.wav', 'rb') -> 00000000
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] close(00000000)
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125235.wav')
+2025-11-22 14:05:49 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1]:
+Downloaded:
+C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125235.wav -> C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125235.wav
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:49 | DEBUG | model.models | [CalculationModel] Stored 20250822_125235 for 127.0.0.1: C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125235.wav
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:49 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:49 | INFO | model.models | [CalculationModel] Job ready: 20250822_125235
+2025-11-22 14:05:49 | INFO | controller.controllers | [Calc] job_started 20250822_125235
+2025-11-22 14:05:51 | INFO | controller.controllers | [Calc] job_finished 20250822_125235 → {'x': 0.0, 'y': 0.0}
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:54 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:05:59 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:11 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Worker sftp started
+2025-11-22 14:33:11 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Disconnected
+2025-11-22 14:33:11 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Connecting...
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | starting thread (client mode): 0xfa3975f0
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Local version/idstring: SSH-2.0-paramiko_4.0.0
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Remote version/idstring: SSH-2.0-OpenSSH_for_Windows_9.5
+2025-11-22 14:33:11 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_for_Windows_9.5)
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | === Key exchange possibilities ===
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, kex-strict-s-v00@openssh.com
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | server key: rsa-sha2-512, rsa-sha2-256, ecdsa-sha2-nistp256, ssh-ed25519
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | client compress: none, zlib@openssh.com
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | server compress: none, zlib@openssh.com
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | client lang: <none>
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | server lang: <none>
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | kex follows: False
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | === Key exchange agreements ===
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Strict kex mode: True
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Kex: curve25519-sha256@libssh.org
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | HostKey: ssh-ed25519
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Cipher: aes128-ctr
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | MAC: hmac-sha2-256
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Compression: none
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | === End of kex handshake ===
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Resetting outbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Switch to new keys ...
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Resetting inbound seqno after NEWKEYS due to strict mode
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,sk-ssh-ed25519@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com,ssh-dss,ssh-rsa,rsa-sha2-256,rsa-sha2-512', 'publickey-hostbound@openssh.com': b'0', 'ping@openssh.com': b'0'}
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Adding ssh-ed25519 host key for 127.0.0.1: b'346d3cfba23fc830bef0ed604e5b16e7'
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | userauth is OK
+2025-11-22 14:33:11 | INFO | paramiko.transport | Authentication (password) successful!
+2025-11-22 14:33:11 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; SSH connection established.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 0] Max packet in: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Received global request "hostkeys-00@openssh.com"
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Rejecting "hostkeys-00@openssh.com" global request from server.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 0] Max packet out: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Secsh channel 0 opened.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 0] Sesch channel 0 request ok
+2025-11-22 14:33:11 | INFO | paramiko.transport.sftp | [chan 0] Opened sftp connection (server version 3)
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 1] Max packet in: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 1] Max packet out: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Secsh channel 1 opened.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 1] Sesch channel 1 request ok
+2025-11-22 14:33:11 | INFO | paramiko.transport.sftp | [chan 1] Opened sftp connection (server version 3)
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 2] Max packet in: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 2] Max packet out: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Secsh channel 2 opened.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 2] Sesch channel 2 request ok
+2025-11-22 14:33:11 | INFO | paramiko.transport.sftp | [chan 2] Opened sftp connection (server version 3)
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 3] Max packet in: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 3] Max packet out: 32768 bytes
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | Secsh channel 3 opened.
+2025-11-22 14:33:11 | DEBUG | paramiko.transport | [chan 3] Sesch channel 3 request ok
+2025-11-22 14:33:11 | INFO | paramiko.transport.sftp | [chan 3] Opened sftp connection (server version 3)
+2025-11-22 14:33:13 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2025-11-22 14:33:13 | INFO | controller.controllers | [CalculationController] Calculation started.
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb')
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt', 'rb') -> 00000000
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_CONTROL.txt')
+2025-11-22 14:33:16 | INFO | utils.sftp_worker | [_SftpWorker][127.0.0.1]; Control file read successfully on attempt 1.
+2025-11-22 14:33:16 | DEBUG | paramiko.transport.sftp | [chan 0] close(00000000)
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:21 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/GPS: 3 files
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:21 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1] Initially stored files in C:/Pi/RPI1/bsp/streaming: 2 files
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:21 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:26 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:31 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:36 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:41 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:46 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:51 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125243.wav')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125243.wav', 'rb')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] open(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125243.wav', 'rb') -> 00000000
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] close(00000000)
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 3] stat(b'C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125243.wav')
+2025-11-22 14:33:56 | INFO | utils.sftp_worker | [RemoteFolderWatcher][127.0.0.1]:
+Downloaded:
+C:/Pi/RPI1/bsp/streaming/SJW6937_20250822_125243.wav -> C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125243.wav
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:33:56 | DEBUG | model.models | [CalculationModel] Stored 20250822_125243 for 127.0.0.1: C:\Pi_loc\XXX\RPI1\streaming\SJW6937_20250822_125243.wav
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:33:56 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:33:56 | INFO | model.models | [CalculationModel] Job ready: 20250822_125243
+2025-11-22 14:33:56 | INFO | controller.controllers | [Calc] job_started 20250822_125243
+2025-11-22 14:33:58 | INFO | controller.controllers | [Calc] job_finished 20250822_125243 → {'x': 0.0, 'y': 0.0}
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:01 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:06 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:11 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:16 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:21 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:26 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 0] listdir(b'.')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] listdir(b'.')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'.')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'.')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 2] listdir(b'C:/Pi/RPI1/bsp/GPS')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 3] listdir(b'C:/Pi/RPI1/bsp/streaming')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] open(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt', 'rb') -> 00000000
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
+2025-11-22 14:34:31 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)

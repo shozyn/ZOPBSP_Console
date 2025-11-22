@@ -5,6 +5,10 @@ import logging
 import time
 from collections import deque
 from typing import Deque, Optional
+import numpy as np
+from scipy.io import wavfile
+
+from Classifier.AKA1A import AKA1A
 
 from PyQt5.QtCore import QObject, QThread, QTimer, pyqtSignal, pyqtSlot
 
@@ -71,6 +75,21 @@ class CalculationWorker(QObject):
         and return early. For chunked or iterative algorithms, sprinkle:
             if self._stopping: raise RuntimeError("Cancelled")
         """
+
+            #job_id: str           # use the ts_key as a unique id
+            #wav_rpis: dict[str,str]
+
+        print(f"job.job_id: {job.job_id}")
+        print(f"job.wav_rpis:\n{job.wav_rpis}")
+
+        for receiver_id, wav_path in job.wav_rpis.items():
+            fs_i, data = wavfile.read(wav_path)          # fs_i: int, data: np.ndarray
+            s_i = data.astype(np.int32)  
+            pred_class, class_prob = AKA1A(s_i, fs_i)
+            print(f"pred_class: {pred_class}")
+            print(f"class_prob: {class_prob}")
+
+
 
         time.sleep(2.0)
         return {"x": 0.0, "y": 0.0}
