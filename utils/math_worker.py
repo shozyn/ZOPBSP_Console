@@ -7,8 +7,15 @@ from collections import deque
 from typing import Deque, Optional
 import numpy as np
 from scipy.io import wavfile
+from calculation.algorithms import (
+    AKA1AAlgorithm,
+    VMDv2Algorithm,
+    TDOAAlgorithm,
+    TDOAPositionAlgorithm,
+)
 
-from Classifier.AKA1A import AKA1A
+
+#from Estymacja_Pozycji.Estymacja_Pozycji.tdoa_solver_31_03_2025 import position_estimation_TDOA_6
 
 from PyQt5.QtCore import QObject, QThread, QTimer, pyqtSignal, pyqtSlot
 
@@ -26,6 +33,11 @@ class CalculationWorker(QObject):
         self._queue: Deque[CalcJob] = deque()
         self._busy = False
         self._stopping = False 
+        self.algo_aka1a = AKA1AAlgorithm()
+        self.algo_vmd = VMDv2Algorithm()
+        self.algo_tdoa = TDOAAlgorithm()
+        self.algo_pos = TDOAPositionAlgorithm()
+
 
     @pyqtSlot()
     def request_stop(self) -> None:
@@ -52,7 +64,6 @@ class CalculationWorker(QObject):
         if self._busy or not self._queue:
             return
         job = self._queue.popleft()
-        print(f"Processed job:\n{job.job_id}\n")
         self._busy = True
         try:
             if self._stopping:
@@ -69,56 +80,99 @@ class CalculationWorker(QObject):
             if self._queue and not self._stopping:
                 QTimer.singleShot(0, self._get_job_from_queue)
 
-    def _compute(self, job: CalcJob) -> dict:
-        """
-        long-running math → if possible, periodically check self._stopping
-        and return early. For chunked or iterative algorithms, sprinkle:
-            if self._stopping: raise RuntimeError("Cancelled")
-        """
+    def _compute(self, job):
+        items = list(job.wav_rpis.items())
+        n = len(items)
+        
+        #n = 2 #! temp. change
 
-            #job_id: str           # use the ts_key as a unique id
-            #wav_rpis: dict[str,str]
+        if n == 0:
+            return {"job_id": job.job_id, "results": "No WAV files"}
 
-        print(f"job.job_id: {job.job_id}")
-        print(f"job.wav_rpis:\n{job.wav_rpis}")
+        if n == 1:
+            rid, path = items[0]
+            fs, d1 = wavfile.read(path)
+            
+            if d1.ndim == 2:
+                d1 = d1.mean(axis=1)
+            
+            d1=d1.astype(np.int32)
 
-        for receiver_id, wav_path in job.wav_rpis.items():
-            fs_i, data = wavfile.read(wav_path)          # fs_i: int, data: np.ndarray
-            s_i = data.astype(np.int32)  
-            pred_class, class_prob = AKA1A(s_i, fs_i)
-            print(f"pred_class: {pred_class}")
-            print(f"class_prob: {class_prob}")
+            aka1a_res = self.algo_aka1a.run(d1, fs)
+            vmd_res = self.algo_vmd.run(d1, fs)
 
+            return {
+                "job_id": job.job_id,
+                "fs": fs,
+                "receivers": [rid],
+                "AKA1A": aka1a_res,
+                "VMDv2": vmd_res,
+            }
 
+        #n == 2
+        #! (rid1, p1), (rid2, p2) = items[0], items[1]
+        rid, path = items[0]
+        fs1, d1 = wavfile.read(path)
+        fs2, d2 = wavfile.read(path) #! Changed input
+        if fs1 != fs2:
+            raise ValueError(f"Sampling rate mismatch: {rid}={fs1}, {rid}={fs2}") #! rid1 and rid2
 
-        time.sleep(2.0)
-        return {"x": 0.0, "y": 0.0}
+        d1=d1.astype(np.int32)
+        aka1a_res = self.algo_aka1a.run(d1, fs1)
+        vmd_res = self.algo_vmd.run(d1, fs1)
+        
+        sample_duration = 10
+        x1 = np.array(d1[0:sample_duration*fs1], dtype=np.float64)
+        x2 = np.array(d2[0:sample_duration*fs2], dtype=np.float64)
+
+        tdoa_res = self.algo_tdoa.run(x1, x2, fs1)
+
+        # TDOA_POS currently ignores tdoa_res and runs the developer synthetic demo,
+        # but we still pass it so the interface is future-ready.
+        pos_res = self.algo_pos.run(tdoa_res)
+
+        return {
+            "job_id": job.job_id,
+            "fs": fs1,
+            "receivers": [rid, rid], #! rid1 and rid2
+            "AKA1A": aka1a_res,
+            "VMDv2": vmd_res,
+            "TDOA": tdoa_res,
+            "TDOA_POS": pos_res,
+        }
+
 
 def start_calculation_thread(worker: CalculationWorker) -> QThread:
 
     th = QThread()
     worker.moveToThread(th)
     th.finished.connect(worker.deleteLater)
+    th.finished.connect(th.deleteLater)
     th.start()
-    logger.info("[CalculationWorker] Thread started")
+    logger.info("[CalculationWorker] Thread started (id=%s)", int(th.currentThreadId()))
     print("[CalculationWorker] Thread started")
     return th
 
-def stop_calculation_thread(worker: CalculationWorker, thread: QThread, timeout_ms: int = 3000) -> None:
+def stop_calculation_thread(worker: CalculationWorker, thread: QThread, timeout_ms: int = 3000) -> bool:
     """
-    Gracefully stop the worker's thread:
-      1) ask the worker to stop (cooperative),
-      2) quit the event loop,
-      3) wait bounded time for clean shutdown.
+    Attempt graceful stop. Returns True if the thread stopped within timeout.
+    If False, caller MUST keep references alive and retry / escalate.
     """
     try:
         worker.request_stop()
     except Exception:
         pass
-    try:
-        thread.quit()         # posts exit to the thread's event loop
-        thread.wait(timeout_ms)
-    finally:
-        if thread.isRunning():
-            # Last resort: forceful termination is discouraged; prefer cooperative stop.
-            logger.warning("[CalculationWorker] Thread did not stop within %d ms", timeout_ms)
+
+    thread.quit()
+    stopped = thread.wait(timeout_ms)  # blocks caller thread until finished or timeout :contentReference[oaicite:5]{index=5}
+    if not stopped:
+        logger.warning("[CalculationWorker] Thread did not stop within %d ms", timeout_ms)
+    return stopped
+
+@pyqtSlot()
+def clear_pending(self):
+    """
+    Drop all jobs that are waiting in the queue.
+    This does NOT interrupt a job that is currently executing.
+    """
+    self._queue.clear()

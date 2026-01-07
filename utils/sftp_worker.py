@@ -1,6 +1,6 @@
 import string
-from PyQt5.QtCore import QObject,  QTimer, pyqtSignal
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtCore import QObject, QTimer, pyqtSignal, pyqtSlot
+#from PyQt5.QtWidgets import QMessageBox
 import paramiko
 from pathlib import Path 
 import posixpath
@@ -106,6 +106,7 @@ class _SftpWorker(QObject):
         self.gps_watcher: RemoteFolderWatcher | None = None
         self.hydro_watcher: RemoteFolderWatcher | None = None
         #self.files_arrived.connect(lambda *args: print("files_arrived:", args))
+        self._force_download_all = False
 
     def __del__(self):
         self._disconnect()
@@ -145,40 +146,62 @@ class _SftpWorker(QObject):
 
         if not self.initial_ctr_params_dict:
             self.set_initial_control_params()
-            return 
+            # If user requested "download all", continue even if params were not read yet.
+            if not self._force_download_all:
+                return
 
         if not self.gps_watcher:
             self.gps_watcher = RemoteFolderWatcher(self._sftp_gps,self.host,self.remote_gps_folder,self.local_gps_folder)
         if not self.hydro_watcher:
             self.hydro_watcher = RemoteFolderWatcher(self._sftp_hydro,self.host,self.remote_hydro_folder,self.local_hydro_folder)
 
-        if self.gps_watcher: 
-            self.local_gps_folder = self.cfg.get("local_dirs",{}).get("gps") 
-            new_set = self.gps_watcher.check_and_download(self.local_gps_folder)
+        # if self.gps_watcher: 
+        #     self.local_gps_folder = self.cfg.get("local_dirs",{}).get("gps") 
+        #     new_set = self.gps_watcher.check_and_download(self.local_gps_folder)
 
-            if new_set:
-                paths = [str(Path(self.local_gps_folder) / fn) for fn in new_set]
-                self.files_arrived.emit(self.host, "gps", paths)
-                self.gps_watcher.old_file_names.update(new_set)
+        #     if new_set:
+        #         paths = [str(Path(self.local_gps_folder) / fn) for fn in new_set]
+        #         self.files_arrived.emit(self.host, "gps", paths)
+        #         self.gps_watcher.old_file_names.update(new_set)
 
 
 
-        if self.hydro_watcher: 
-            self.local_hydro_folder = self.cfg.get("local_dirs",{}).get("streaming") 
-            new_set = self.hydro_watcher.check_and_download(self.local_hydro_folder)
+        # if self.hydro_watcher: 
+        #     self.local_hydro_folder = self.cfg.get("local_dirs",{}).get("streaming") 
+        #     new_set = self.hydro_watcher.check_and_download(self.local_hydro_folder)
 
-            if new_set:
-                paths = [str(Path(self.local_hydro_folder) / fn) for fn in new_set]
-                self.files_arrived.emit(self.host, "hydro", paths) 
-                self.hydro_watcher.old_file_names.update(new_set)
-                
+        #     if new_set:
+        #         paths = [str(Path(self.local_hydro_folder) / fn) for fn in new_set]
+        #         self.files_arrived.emit(self.host, "hydro", paths) 
+        #         self.hydro_watcher.old_file_names.update(new_set)
+        force = self._force_download_all
+        self._force_download_all = False
+
+        if self.gps_watcher:
+            self.local_gps_folder = self.cfg.get("local_dirs", {}).get("gps")
+            self._download_from_watcher(self.gps_watcher, "gps", self.local_gps_folder, force)
+
+        if self.hydro_watcher:
+            self.local_hydro_folder = self.cfg.get("local_dirs", {}).get("streaming")
+            self._download_from_watcher(self.hydro_watcher, "hydro", self.local_hydro_folder, force)              
 
         if (content := self._read_monitor_file()):
             self.monitor_read.emit(content)
         else:
             logger.warning(f"[{self.__class__.__name__}][{self.host}]; Monitor file read failed.") 
 
-        
+    def _download_from_watcher(self, watcher, role, local_dir, force):
+        if not watcher:
+            return
+        if force:
+            watcher.old_file_names.clear()
+
+        new_set = watcher.check_and_download(local_dir)
+        if new_set:
+            paths = [str(Path(local_dir) / fn) for fn in new_set]
+            self.files_arrived.emit(self.host, role, paths)
+            watcher.old_file_names.update(new_set)
+    
 
     def _connect(self):
         if self._state == "CONNECTING":
@@ -418,6 +441,14 @@ class _SftpWorker(QObject):
                 continue
         logger.error(f"[{self.__class__.__name__}][{self.host}]; Failed to update control file after {self.max_retries} attempts.")
         return None
+    
+    def request_download_all(self):
+        """
+        Treat all remote files as 'new' once and download them immediately.
+        Executed in the worker thread (queued connection from ReceiverController).
+        """
+        self._force_download_all = True
+        QTimer.singleShot(0, self._tick)
 
 
 

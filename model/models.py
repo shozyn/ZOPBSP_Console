@@ -211,22 +211,12 @@ class CalculationModel(QObject):
     """
     Aggregates new WAV arrivals per receiver and forms jobs when a 'newest'
     common timestamp exists across all required receivers.
-
-    Design:
-    - For each receiver, keep a mapping: ts_key -> FileMeta
-    - On each arrival, recompute the intersection of keys across receivers.
-    - Pick the LATEST (lexicographically max) ts_key in the intersection that
-      has NOT been processed yet -> form a CalcJob and emit job_ready.
-
-    Persistence:
-    - Uses QSettings to store a set of 'processed' job_ids (ts_keys), so that
-      on app restarts we don't recompute the same triplet.
     """
 
     job_ready = pyqtSignal(object)  # emits CalcJob
 
     def __init__(self,
-                 required_receivers: tuple[str] = ("172.0.0.1",),
+                 required_receivers: tuple[str] = ("RPI1",),
                  org: str = "AMW",
                  app: str = "ZOPBSP_Console",
                  parent: QObject | None = None) -> None:
@@ -239,7 +229,6 @@ class CalculationModel(QObject):
 
         self._settings = QSettings(org, app)
         self._processed: Set[str] = set(self._load_processed())
-        print(f"_processed in init(): {self._processed}")
 
     # ------------------------ Persistence helpers ----------------------------
 
@@ -282,6 +271,17 @@ class CalculationModel(QObject):
 
         self._test_if_ready_calc()
 
+    def reset_session(self):
+        """
+        Start a fresh calculation session:
+        - forget all collected FileMeta
+        - forget all processed ts_keys
+        """
+        for rid in self.receivers_fileMeta:
+            self.receivers_fileMeta[rid].clear()
+
+        self._processed.clear()
+        self._save_processed()  # keep QSettings consistent with reset
     # ------------------------ Core matching logic ----------------------------
 
     def _test_if_ready_calc(self) -> None:
@@ -297,17 +297,13 @@ class CalculationModel(QObject):
                 return  # some receiver has not provided anything yet
             key_sets.append(keys)
 
-        print(f"[CalculationModel] key_sets to test appearance in rcs:\n{key_sets}\n")
-
         common = set.intersection(*key_sets) if key_sets else set()
-        print(f"[CalculationModel] common keys: {common}")
 
         if not common:
             return
 
         for ts_key in sorted(common, reverse=False):
             if ts_key not in self._processed:
-                print(f"[CalculationModel] ts_key to process:\n{ts_key}\n")
                 self._emit_job_for(ts_key)
                 break  # emit only one job per update (policy)
 
@@ -326,7 +322,20 @@ class CalculationModel(QObject):
         # rpi3 = self.receivers_fileMeta["RPI3"][ts_key].path
         job = CalcJob(job_id=ts_key, wav_rpis=rpis)
         self._processed.add(ts_key)
-        print(f"self._processed: {self._processed}")
         self._save_processed()
         logger.info("[CalculationModel] Job ready: %s", ts_key)
         self.job_ready.emit(job) #sent to the worker
+        
+    def reset_processed(self, clear_file_meta=True):
+        """
+        Allow recomputation by clearing 'already processed' memory.
+
+        clear_file_meta=True additionally forgets the seen FileMeta per receiver,
+        which makes the next replay behave like a fresh session.
+        """
+        if hasattr(self, "_processed"):
+            self._processed.clear()
+
+        if clear_file_meta and hasattr(self, "receivers_fileMeta"):
+            for rid in self.receivers_fileMeta:
+                self.receivers_fileMeta[rid].clear()

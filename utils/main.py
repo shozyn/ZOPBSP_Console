@@ -14,8 +14,6 @@ from utils.math_worker import CalculationWorker
 import logging
 
 from view.dock_widgets import StatusWidget, DockInformationWidget
-import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 def main():
     qgs = QgsApplication([], True)
@@ -123,26 +121,16 @@ def main():
     )
 
     receiver_ids = []
-    #receiver_ips = []
-    ##for rc in receiver_controllers:
+    receiver_ips = []
+    for rc in receiver_controllers:
         #receiver_ids.append(rc.receiver_id)
-        #receiver_ips.append(rc.model.sftp_cfg["host"])
+        receiver_ips.append(rc.model.sftp_cfg["host"])
         
-    ##receiver_ips = tuple(receiver_ips)
-    ##print(f"receiver_ips: {receiver_ips}")
+    receiver_ips = tuple(receiver_ips)
+    print(f"receiver_ips: {receiver_ips}")
 
     # CALCULATION
-    ## calc_model = CalculationModel(required_receivers=receiver_ips)
-    ## calc_worker = CalculationWorker()
-    ## calc_controller = CalculationController(calc_model, menu_bar=menu_bar)
-    
-    ##receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
-    
-    receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
-    calc_model = CalculationModel(required_receivers=receiver_ids)
-    print(f"receiver_ids: {receiver_ids}")
-
-    calc_model = CalculationModel(required_receivers=receiver_ids)
+    calc_model = CalculationModel(required_receivers=receiver_ips)
     calc_worker = CalculationWorker()
     calc_controller = CalculationController(calc_model, menu_bar=menu_bar)
     

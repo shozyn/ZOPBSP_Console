@@ -62,6 +62,10 @@ class ToolBar(QToolBar):
         act_disconnect_all = QAction("Disconnect All", self)
         act_disconnect_all.triggered.connect(lambda: self.bulk_action.emit("disconnect_all"))
         self.addAction(act_disconnect_all)
+        
+        #act_read_all = QAction("Read All", self)
+        #act_read_all.triggered.connect(lambda: self.bulk_action.emit("read_all"))
+        #self.addAction(act_read_all)
 
 class MenuBar(QMenuBar):
     """
@@ -75,12 +79,16 @@ class MenuBar(QMenuBar):
         self.target_connect_actions = {}
         self.target_display_actions = {}
         self.target_track_actions = {}
+        self.receiver_read_actions = {}  # ReceiverID -> QAction("Read files")
         self.calc_action:  Optional[QAction] = None
 
         self._setup_menu(receivers, targets or [])
 
-        
-
+    def set_receiver_read_files_enabled(self, enabled: bool) -> None:
+        """Enable/disable *all* Receiver/Read files actions."""
+        for act in self.receiver_read_actions.values():
+            act.setEnabled(enabled)
+            
     def _setup_menu(self, receivers,targets):
         # Define your menus and commands here
         project_menu = self.addMenu("Project")
@@ -150,6 +158,18 @@ class MenuBar(QMenuBar):
             set_params_action.setCheckable(False)
             set_params_action.triggered.connect(lambda _, rid=rx_id: self.command_triggered.emit(rid, "set_parameters"))
             receiver_menu.addAction(set_params_action)
+            
+            read_local_action = QAction("Calculate Files", self)
+            read_local_action.setCheckable(False)
+            read_local_action.setEnabled(False)  # <-- key requirement
+            read_local_action.triggered.connect(lambda _, rid=rx_id: self.command_triggered.emit(rid, "read_local"))
+            receiver_menu.addAction(read_local_action)
+            self.receiver_read_actions[rx_id] = read_local_action
+            
+            download_action = QAction("Download files", self)
+            download_action.setCheckable(False)
+            download_action.triggered.connect(lambda _, rid=rx_id: self.command_triggered.emit(rid, "download_files"))
+            receiver_menu.addAction(download_action)
 
     def _toggle_calculation(self):
         """

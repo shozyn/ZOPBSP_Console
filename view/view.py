@@ -63,7 +63,7 @@ class ReceiverView(QWidget):
         self.actual_marker.setCenter(point)
         self.actual_marker.show()
         self.canvas.refresh()
-        print(f"[{self.__class__.__name__}] Current position was displayed on the map: {point.x()}, {point.y()}")
+        ##print(f"[{self.__class__.__name__}] Current position was displayed on the map: {point.x()}, {point.y()}")
     
     def show_warning(self, title: str, message: str):
         m = QMessageBox(self)

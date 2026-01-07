@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from PyQt5.QtCore import QObject, pyqtSignal, QTimer
+from PyQt5.QtCore import QObject, pyqtSignal, QTimer, QMetaObject
 from PyQt5.QtGui import QColor, QBrush
 import inspect
 from pathlib import Path, PureWindowsPath
@@ -136,7 +136,8 @@ class ReceiverController(QObject):
     model_changed = pyqtSignal(str,dict)
     #control_param_changed = pyqtSignal(dict,str)
     control_param_changed = pyqtSignal(dict)
-    files_arrived = pyqtSignal(str, str, list)   # (receiver_id, role, files)
+    files_arrived = pyqtSignal(str, str, list)   
+    download_files_requested = pyqtSignal()
 
     def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
         super().__init__(parent)
@@ -150,13 +151,81 @@ class ReceiverController(QObject):
         self.thread: QThread | None = None
         self.worker: _SftpWorker | None = None
         self.connected = False
+        self.local_reader = None
 
         menu_bar.command_triggered.connect(self.handle_command)
-        self.connected = False
 
         self.model.actual_position_updated.connect(self.view.display_actual_position)
         
+    def read_local_files(self):
+        """
+        Offline replay from already-downloaded files.
+        Uses current paths in self.model.sftp_cfg["local_dirs"], so changes in the GUI apply immediately.
+        """
+        from utils.local_folder_reader import LocalFolderReader
+
+        # Optional safety: avoid mixing live downloads and offline replay
+        # If you prefer, remove this guard.
+        if self.connected:
+            self.disconnect_receiver()
+            
+        token, ok = ReceiverController.ask_for_token_static(parent=self.view,initial_text=ReceiverController._last_folder_token)
+        if ok:
+            ReceiverController._last_folder_token = token
+            chosen_folder = self._set_folder()
+            self.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
+            chosen_folder_gps = str(Path(chosen_folder).with_name("gps"))
+            self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps            
+            try:
+                Path(chosen_folder_gps).mkdir(parents=True, exist_ok=True)
+                self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+            except Exception as e:
+                self.view.show_warning("Folder", f"GPS folder could not be created:\n{chosen_folder_gps}\n{e}")
+
+        local_dirs = self.model.sftp_cfg.get("local_dirs", {})
+        hydro_dir = local_dirs.get("streaming", "")
+        gps_dir = local_dirs.get("gps", "")
+
+        if not hydro_dir and not gps_dir:
+            self.view.show_warning("Local read", "No local_dirs configured for this receiver.")
+            return
+
         
+        # Keep reference so object is not garbage-collected mid-emission
+        self.local_reader = LocalFolderReader(self.receiver_id, batch=100, parent=self)
+
+        # forward local-reader events exactly like the SFTP pipeline
+        self.local_reader.files_arrived.connect(self.files_arrived.emit)
+
+        # optional: route status to logs/UI
+        self.local_reader.status.connect(lambda msg: logger.info(msg))
+
+        # cleanup
+        self.local_reader.finished.connect(self.local_reader.deleteLater)
+        self.local_reader.finished.connect(lambda: setattr(self, "local_reader", None))
+
+        self.local_reader.start(hydro_dir, gps_dir)
+        
+    def download_all_files(self):
+        if not self.connected or not self.worker:
+            self.view.show_warning("Download files", "Receiver is not connected. Connect first.")
+            return
+        
+        token, ok = ReceiverController.ask_for_token_static(parent=self.view,initial_text=ReceiverController._last_folder_token)
+        if ok:
+            ReceiverController._last_folder_token = token
+            chosen_folder = self._set_folder()
+            self.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
+            chosen_folder_gps = str(Path(chosen_folder).with_name("gps"))
+            self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps            
+            try:
+                Path(chosen_folder_gps).mkdir(parents=True, exist_ok=True)
+                self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+            except Exception as e:
+                self.view.show_warning("Folder", f"GPS folder could not be created:\n{chosen_folder_gps}\n{e}")
+        
+            self.download_files_requested.emit()
+    
     @staticmethod
     def ask_for_token_static(parent, initial_text: str = "XXX") -> tuple[str, bool]:
         return FolderNameDialog.get_folder_token(parent=parent, initial_text=initial_text)
@@ -167,11 +236,12 @@ class ReceiverController(QObject):
         try:
             Path(str(base)).mkdir(parents=True, exist_ok=True)
         except Exception as e:
-            QMessageBox.critical(
-                self.view, "Create folder failed",
+            self.view.show_warning(
+                "Create folder failed",
                 f"Couldn't create: {base} {e}"
             )
             return ""
+        
 
         chosen_folder = str(base)
         return chosen_folder      
@@ -216,7 +286,8 @@ class ReceiverController(QObject):
             self.connect_receiver()
         elif command == "disconnect":
             self.disconnect_receiver()
-        if command == "set_parameters":
+            
+        elif command == "set_parameters":
             dialog = ParameterDialog(self.model.parameters)
             if dialog.exec_() == QDialog.Accepted:
                 new_params = dialog.get_new_parameters()
@@ -228,9 +299,20 @@ class ReceiverController(QObject):
                         ReceiverController._last_folder_token = token
                         chosen_folder = self._set_folder()
                         self.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
-                        chosen_folder_gps = chosen_folder.replace("streaming","gps")
-                        self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+                        chosen_folder_gps = str(Path(chosen_folder).with_name("gps"))
+                        try:
+                            Path(chosen_folder_gps).mkdir(parents=True, exist_ok=True)
+                            self.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+                        except Exception as e:
+                            self.view.show_warning("Folder", f"GPS folder could not be created:\n{chosen_folder_gps}\n{e}")
+                        
                         QTimer.singleShot(0,lambda: self.control_param_changed.emit(new_params)) #without value
+                        
+        elif command == "read_local":
+            self.read_local_files()
+            
+        elif command == "download_files":
+            self.download_all_files()
 
     @pyqtSlot(dict)
     def on_control_param_updated(self,updated_prams):
@@ -265,6 +347,7 @@ class ReceiverController(QObject):
         self.worker.warning.connect(self.view.show_warning)  # slot in view
         self.worker.control_param_updated.connect(self.on_control_param_updated)
         self.control_param_changed.connect(self.worker.on_control_param_changed,type=Qt.QueuedConnection)
+        self.download_files_requested.connect(self.worker.request_download_all, type=Qt.QueuedConnection)
 
         self.worker.files_arrived.connect(self._on_worker_files_arrived)
         
@@ -296,11 +379,12 @@ class ReceiverController(QObject):
         self.worker = None
 
     @pyqtSlot(str, str, list)
-    def _on_worker_files_arrived(self, receiver_id: str, role: str, files: list) -> None:
+    def _on_worker_files_arrived(self, worker_id: str, role: str, files: list) -> None:
         """
         Relay incoming files from sftp_worker
         """
-        self.files_arrived.emit(receiver_id, role, files)
+        ## self.files_arrived.emit(receiver_id, role, files)
+        self.files_arrived.emit(self.receiver_id, role, files)
 
     def __del__(self):
         # best-effort cleanup
@@ -396,6 +480,8 @@ class MainController(QObject):
                 rc.disconnect_receiver()
         elif what == "set_params_all":
             self._set_parameters_all()
+        elif what == "read_all":
+            self._read_all()
                 
     def _set_parameters_all(self):
         if not self.receiver_controllers:
@@ -421,8 +507,23 @@ class MainController(QObject):
             chosen_folder_gps = chosen_folder.replace("streaming","gps")
             rc.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
             #rc.control_param_changed.emit(new_params, chosen_folder) XXX
+            
             rc.control_param_changed.emit(new_params)
-    
+            
+    def _read_all(self):
+        if not self.receiver_controllers:
+            return
+
+        token, ok = ReceiverController.ask_for_token_static(parent=self.main_window,initial_text=ReceiverController._last_folder_token)
+        if ok:
+            ReceiverController._last_folder_token = token
+
+        for rc in self.receiver_controllers:
+            chosen_folder = rc._set_folder()
+            rc.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
+            chosen_folder_gps = chosen_folder.replace("streaming","gps")
+            rc.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+
     def open_project(self):
         # Implement logic to open a project (dialog, load file, etc.)
         print("[MainController] open_project triggered")
@@ -513,8 +614,11 @@ class CalculationController(QObject):
         """
         if self._calc_running:
             logger.info("[CalculationController] Calculation already running.")
+            if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
+                self.menu_bar.set_receiver_read_files_enabled(True)
             return
-
+        
+        self.model.reset_session()
         # Create worker and thread
         worker = CalculationWorker()
         thread = start_calculation_thread(worker)
@@ -524,7 +628,18 @@ class CalculationController(QObject):
 
         # Optional: observe worker signals (to update a View or logs)
         worker.job_started.connect(lambda jid: logger.info("[Calc] job_started %s", jid))
-        worker.job_finished.connect(lambda jid, res: logger.info("[Calc] job_finished %s → %s", jid, res))
+        ##worker.job_finished.connect(lambda jid, res: logger.info("[Calc] job_finished %s → %s", jid, res))
+        worker.job_finished.connect(
+            lambda jid, res: logger.info(
+                "[Calc] job_finished %s\n%s",
+                jid,
+                "\n".join(
+                    f"  {name}: {(res.get('results', res)).get(name)}"
+                    for name in ("AKA1A", "VMDv2", "TDOA", "TDOA_POS")
+                    if isinstance(res, dict) and name in (res.get("results", res))
+                ) or f"  {res}"
+            )
+        )
         worker.job_failed.connect(lambda jid, info: logger.error("[Calc] job_failed %s\n%s", jid, info))
 
         # Keep references
@@ -532,6 +647,9 @@ class CalculationController(QObject):
         self._calc_thread = thread
         self._calc_running = True
         logger.info("[CalculationController] Calculation started.")
+        # Enable "Receiver X / Read files" while calculation is running.
+        if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
+            self.menu_bar.set_receiver_read_files_enabled(True)
 
     @pyqtSlot()
     def stop_calculation(self) -> None:
@@ -540,6 +658,8 @@ class CalculationController(QObject):
         """
         if not self._calc_running:
             logger.info("[CalculationController] Calculation is not running.")
+            if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
+                self.menu_bar.set_receiver_read_files_enabled(False)
             return
 
         assert self._calc_worker is not None and self._calc_thread is not None
@@ -549,15 +669,35 @@ class CalculationController(QObject):
             self.model.job_ready.disconnect(self._calc_worker.enqueue_job)
         except Exception:
             pass
-
+        
+        try:
+            QMetaObject.invokeMethod(self._calc_worker, "clear_pending", Qt.QueuedConnection)
+        except Exception:
+            pass
+        
+        
         # Stop gracefully
-        stop_calculation_thread(self._calc_worker, self._calc_thread, timeout_ms=3000)
+        stopped = stop_calculation_thread(self._calc_worker, self._calc_thread, timeout_ms=3000)
 
-        # Null out references so GC can collect
+        if not stopped:
+            # IMPORTANT: keep references so PyQt/Qt do not destroy objects while thread is still running.
+            logger.warning("[CalculationController] Stop requested but thread still running; keeping references.")
+            return
+
+        # Safe to release references now (thread finished will deleteLater both worker and thread)
         self._calc_worker = None
         self._calc_thread = None
         self._calc_running = False
         logger.info("[CalculationController] Calculation stopped.")
+        # Disable "Receiver X / Read files" once calculation is stopped.
+        if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
+            self.menu_bar.set_receiver_read_files_enabled(False)
+            
+            # This makes Stop→Start act like a "simulation reset".
+        try:
+            self.model.reset_processed(clear_file_meta=True)
+        except Exception:
+            pass
 
 
 
@@ -569,11 +709,12 @@ class CalculationController(QObject):
         Slot called whenever the SFTP finishes downloads.
         It creates FileMeta for the Calculation Model
         """
-
-        print(f"Files arrived in calculation controller: {receiver_id}\n{files}\n")
+        if not self._calc_running:
+            return
+        
         for f in files:
             p = Path(f)
-            if p.suffix.lower() != ".wav":
+            if p.suffix.lower() != ".wav": #Continue
                 continue  # ignore TXT and others
             if not p.exists():
                 continue
@@ -587,7 +728,6 @@ class CalculationController(QObject):
                 ts_key=ts_key,
                 mtime_ns=p.stat().st_mtime_ns,
             )
-            print(f"[CalculationController] meta.ts_key for arrived files: {meta.ts_key}")
             self.model.update_latest(meta) #The model is updated for each file separately
 
 
