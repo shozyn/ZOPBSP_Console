@@ -6,7 +6,7 @@ class MainWindow(QMainWindow):
     Main application window (View).
     """
     def __init__(self, map_view, menu_bar, tool_bar, coord_label, status_widget,
-                 dock_info, parent=None):
+                 dock_info, dock_result, parent=None):
         super().__init__(parent)
         self.setWindowTitle("ZOPBSP Console")
         self.resize(1200, 800)
@@ -26,6 +26,10 @@ class MainWindow(QMainWindow):
         # Information Dock
         self.dock_info = dock_info
         self.addDockWidget(self.dock_info.default_area, self.dock_info)
+
+        # Result Dock
+        self.dock_result = dock_result
+        self.addDockWidget(self.dock_result.default_area, self.dock_result)
 
         # Status bar
         self.status = self.statusBar()

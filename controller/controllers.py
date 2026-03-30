@@ -12,6 +12,7 @@ from utils.receiver_client_worker import ReceiverClientWorker
 from utils.math_worker import CalculationWorker, start_calculation_thread, stop_calculation_thread
 from model.models import CalculationModel, FileMeta, CalcJob, parse_wav_ts_key
 from view.parameter_dialog import FolderNameDialog 
+from view.dock_widgets import DockResultWidget
 #from utils.server_comm_sftp import ServerCommSFTP
 from utils.sftp_worker import _SftpWorker
 import inspect
@@ -593,7 +594,8 @@ class CalculationController(QObject):
       - Forwards formed jobs to the CalculationWorker.
     """
 
-    def __init__(self, model: CalculationModel, menu_bar: MenuBar,
+    print_res = pyqtSignal(dict)
+    def __init__(self, model: CalculationModel, menu_bar: MenuBar, dock_result: DockResultWidget,
                  parent: Optional[QObject] = None) -> None:
         super().__init__(parent)
         self.model = model
@@ -604,6 +606,7 @@ class CalculationController(QObject):
         self._calc_running: bool = False
         self.menu_bar = menu_bar
         self.menu_bar.command_triggered.connect(self.handle_command)
+        self.print_res.connect(dock_result.add_result)
 
 # ----------------- Lifecycle slots (bind to GUI) -----------------
 
@@ -629,17 +632,19 @@ class CalculationController(QObject):
         # Optional: observe worker signals (to update a View or logs)
         worker.job_started.connect(lambda jid: logger.info("[Calc] job_started %s", jid))
         ##worker.job_finished.connect(lambda jid, res: logger.info("[Calc] job_finished %s → %s", jid, res))
-        worker.job_finished.connect(
-            lambda jid, res: logger.info(
-                "[Calc] job_finished %s\n%s",
-                jid,
-                "\n".join(
-                    f"  {name}: {(res.get('results', res)).get(name)}"
-                    for name in ("AKA1A", "VMDv2", "TDOA", "TDOA_POS")
-                    if isinstance(res, dict) and name in (res.get("results", res))
-                ) or f"  {res}"
-            )
-        )
+        # worker.job_finished.connect(
+        #     lambda jid, res: logger.info(
+        #         "[Calc] job_finished %s\n%s",
+        #         jid,
+        #         "\n".join(
+        #             f"  {name}: {(res.get('results', res)).get(name)}"
+        #             for name in ("AKA1A", "VMDv2", "TDOA", "TDOA_POS")
+        #             if isinstance(res, dict) and name in (res.get("results", res))
+        #         ) or f"  {res}"
+        #     )
+        # )
+
+        worker.job_finished.connect(self.print_results)
         worker.job_failed.connect(lambda jid, info: logger.error("[Calc] job_failed %s\n%s", jid, info))
 
         # Keep references
@@ -650,6 +655,10 @@ class CalculationController(QObject):
         # Enable "Receiver X / Read files" while calculation is running.
         if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
             self.menu_bar.set_receiver_read_files_enabled(True)
+
+    def print_results(self, jid, res) -> None:
+        self.print_res.emit(res)
+
 
     @pyqtSlot()
     def stop_calculation(self) -> None:

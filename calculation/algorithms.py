@@ -1,7 +1,7 @@
 import numpy as np
 from Classifier.AKA1A import AKA1A
-from VMDv2.Detekcja_VMDv2 import run_detection
-from ctdoa.tdoa import TDOA
+from Detekcja_VMDv3.Detekcja_VMDv3 import run_detection
+from ctdoa.tdoa_cython import compute_tdoa_1hz
 from calculation.tdoa_position_solver import position_estimation_TDOA_6
 
 class AKA1AAlgorithm:
@@ -42,29 +42,30 @@ class TDOAAlgorithm:
     Two-channel TDOA.
     """
     def __init__(self):
-        self.tdoa = TDOA()
+        #self.tdoa = TDOA()
         self.params = {
-            "epsilon": 1e-6,
-            "sigma": 2.0,
-            "window": 2.0,
-            "overlap": 0.5,
-            "lowcut": 20.0,
-            "highcut": 5000.0,
-            "vel_sound": 1461.0
+            "c": 1461.0,
+            "epsilon": 0.055,
+            "sigma": 0.1314,
+            "window_sec": 0.85,
+            "window_jump_sec": 0.23,
+            "lowcut": 177,
+            "highcut": 750.0,
         }
 
     def run(self, x1, x2, fs):
         p = self.params
-        self.tdoa.vel_sound = float(p["vel_sound"])
+        #self.tdoa.vel_sound = float(p["vel_sound"])
 
-        res = self.tdoa.wyznaczTDOA(
-            x1, x2, fs, fs,
+        res = compute_tdoa_1hz(
+            x1, x2, fs, 
+            int(p["c"]),
             float(p["epsilon"]),
             float(p["sigma"]),
-            float(p["window"]),
-            float(p["overlap"]),
-            float(p["lowcut"]),
-            float(p["highcut"])
+            float(p["window_sec"]),
+            float(p["window_jump_sec"]),
+            int(p["lowcut"]),
+            int(p["highcut"])
         )
         return {"tdoa": res, "params": dict(p)}
 

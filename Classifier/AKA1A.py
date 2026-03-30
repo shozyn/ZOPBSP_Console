@@ -1,21 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun May 11 11:14:21 2025
+AKA1A.py
 
-@author: stann
+Project ABI:
+pred_class, class_prob = AKA1A(s_i_cut, fs_i)
+
+- s_i_cut: np.array int32 (mono), arbitrary length
+- fs_i   : int
+
+AKA1A keeps the historical design:
+- cache one classifier instance
+- if sampling rate changes -> rebuild classifier instance
 """
+
 from Classifier.classifier1 import Classifier
-        
+
+
 def AKA1A(s_i_cut, fs_i):
+    # Initialize static variables on first call
     if not hasattr(AKA1A, "fs_i"):
-        AKA1A.fs_i = fs_i  # initialize static variable
-        AKA1A.classifier = Classifier(fs_i)
-    
-    if AKA1A.fs_i != fs_i:
-        AKA1A.classifier = Classifier(fs_i)
-        AKA1A.fs_i = fs_i
-          
-    return AKA1A.classifier.predict(input_signal=s_i_cut)        
+        AKA1A.fs_i = int(fs_i)
+        AKA1A.classifier = Classifier(AKA1A.fs_i)
+
+    # If sampling frequency changes, rebuild classifier (legacy behavior)
+    if AKA1A.fs_i != int(fs_i):
+        AKA1A.fs_i = int(fs_i)
+        AKA1A.classifier = Classifier(AKA1A.fs_i)
+
+    # Legacy call style: classifier uses its stored fs_i
+    return AKA1A.classifier.predict(input_signal=s_i_cut)
+ 
         
         
     

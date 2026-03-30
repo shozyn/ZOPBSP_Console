@@ -11,11 +11,28 @@ import time
 
 logger = logging.getLogger(__name__)
 
+def _remote_path(path: str | None) -> str: #!!!
+    """
+    Normalize a remote SFTP path to forward-slash form.
+    Works for both:
+      - Windows-style paths: C:\\Pi\\RPI2\\bsp\\streaming
+      - POSIX-style paths   : /home/pi/bsp/streaming
+    """
+    return (path or "").replace("\\", "/")
+
 class RemoteFolderWatcher:
-    def __init__(self, sftp, host: str, remote_dir: str, local_dir: str):
+    def __init__(
+        self,
+        sftp,
+        host: str,
+        remote_dir: str,
+        local_dir: str,
+        archive_remote_dir: str | None = None,
+    ):
         self.sftp = sftp
         self.host = host
-        self.remote_dir = Path(remote_dir).as_posix()
+        self.remote_dir = _remote_path(remote_dir)
+        self.archive_remote_dir = _remote_path(archive_remote_dir) if archive_remote_dir else ""
         self.local_dir = Path(local_dir)
         self.local_dir.mkdir(parents=True, exist_ok=True)
         self.old_file_names = set()
@@ -23,47 +40,194 @@ class RemoteFolderWatcher:
         try:
             initial_files = [attr.filename for attr in self.sftp.listdir_attr(self.remote_dir)]
             self.old_file_names.update(initial_files)
-            logger.info(f"[{self.__class__.__name__}][{self.host}] Initially stored files in {self.remote_dir}: {len(initial_files)} files")
+            logger.info(
+                f"[{self.__class__.__name__}][{self.host}] "
+                f"Initially stored files in {self.remote_dir}: {len(initial_files)} files"
+            )
         except Exception as e:
-            logger.error(f"[{self.__class__.__name__}][{self.host}] Error reading initially stored files in {self.remote_dir}: {e}")     
+            logger.error(
+                f"[{self.__class__.__name__}][{self.host}] "
+                f"Error reading initially stored files in {self.remote_dir}: {e}"
+            )
 
-    def check_and_download(self,local_dir):
+    def _ensure_remote_dir(self, remote_dir: str) -> None:
+        """
+        Create the remote directory recursively if it does not exist.
+        Handles both:
+          - C:/Pi/RPI2/bsp_history/streaming
+          - /home/pi/bsp_history/streaming
+        """
+        remote_dir = _remote_path(remote_dir).rstrip("/")
+        if not remote_dir:
+            return
+
+        is_abs_posix = remote_dir.startswith("/")
+        parts = [p for p in remote_dir.split("/") if p]
+        if not parts:
+            return
+
+        if is_abs_posix:
+            current = ""
+        else:
+            current = parts.pop(0)  # e.g. 'C:' or first relative segment
+
+        for part in parts:
+            if current in ("", "/"):
+                current = f"/{part}" if is_abs_posix else part
+            else:
+                current = posixpath.join(current, part)
+
+            try:
+                self.sftp.stat(current)
+            except IOError:
+                self.sftp.mkdir(current)
+
+    def _move_remote_to_archive(self, remote_path: str, fname: str) -> bool:
+        """
+        Move the remote file from the active folder to the archive folder.
+        Returns True if the move succeeded, False otherwise.
+        """
+        if not self.archive_remote_dir:
+            return True
+
+        try:
+            self._ensure_remote_dir(self.archive_remote_dir)
+            archive_path = posixpath.join(self.archive_remote_dir, fname)
+
+            try:
+                self.sftp.posix_rename(remote_path, archive_path)
+            except Exception:
+                self.sftp.rename(remote_path, archive_path)
+
+            logger.info(
+                f"[{self.__class__.__name__}][{self.host}] Archived remote file:\n"
+                f"{remote_path} -> {archive_path}"
+            )
+            return True
+
+        except Exception as e:
+            logger.warning(
+                f"[{self.__class__.__name__}][{self.host}] "
+                f"Downloaded locally, but could not archive remote file {remote_path}:\n{e}"
+            )
+            return False
+
+    def check_and_download(self, local_dir):
         new_files_set = set()
+
         try:
             for attr in self.sftp.listdir_attr(self.remote_dir):
                 fname = attr.filename
                 if "tmp" in fname or fname in self.old_file_names:
-                    continue 
+                    continue
 
                 remote_path = posixpath.join(self.remote_dir, fname)
                 local_path = Path(local_dir) / fname
                 local_path.parent.mkdir(parents=True, exist_ok=True)
+
                 retries = 3
                 for attempt in range(1, retries + 1):
                     try:
-                        self.sftp.get(remote_path,local_path)
+                        self.sftp.get(remote_path, str(local_path))
+
                         size_remote = self.sftp.stat(remote_path).st_size
-                        size_local  = local_path.stat().st_size
+                        size_local = local_path.stat().st_size
                         if size_remote != size_local:
-                            raise IOError(f"Size mismatch: local={size_local}, remote={size_remote}")
-                        
+                            raise IOError(
+                                f"Size mismatch: local={size_local}, remote={size_remote}"
+                            )
+
+                        archive_ok = self._move_remote_to_archive(remote_path, fname)
+
                         new_files_set.add(fname)
-                        logger.info(f"[{self.__class__.__name__}][{self.host}]:\nDownloaded:\n{remote_path} -> {local_path}")
+                        if archive_ok:
+                            logger.info(
+                                f"[{self.__class__.__name__}][{self.host}]:\n"
+                                f"Downloaded and archived:\n"
+                                f"{remote_path} -> {local_path}"
+                            )
+                        else:
+                            logger.info(
+                                f"[{self.__class__.__name__}][{self.host}]:\n"
+                                f"Downloaded (archive failed):\n"
+                                f"{remote_path} -> {local_path}"
+                            )
                         break
 
                     except Exception as e:
                         local_path.unlink(missing_ok=True)
-                        logger.warning(f"[{self.__class__.__name__}][{self.host}]:Attempt {attempt}/{retries} failed for {local_path} -> {remote_path}:\n{e}")
+                        logger.warning(
+                            f"[{self.__class__.__name__}][{self.host}]: "
+                            f"Attempt {attempt}/{retries} failed for "
+                            f"{local_path} <- {remote_path}:\n{e}"
+                        )
 
                         if attempt == retries:
                             continue
-                        else:
-                            delay = min(5, 1 * 2**(attempt-1))
-                            time.sleep(delay)
-                        continue
+
+                        delay = min(5, 1 * 2 ** (attempt - 1))
+                        time.sleep(delay)
+
         except Exception as e:
-            logger.error(f"[{self.__class__.__name__}][{self.host}] Error reading {self.remote_dir}:\n{e}")
+            logger.error(
+                f"[{self.__class__.__name__}][{self.host}] "
+                f"Error reading {self.remote_dir}:\n{e}"
+            )
+
         return new_files_set
+# class RemoteFolderWatcher:
+#     def __init__(self, sftp, host: str, remote_dir: str, local_dir: str):
+#         self.sftp = sftp
+#         self.host = host
+#         self.remote_dir = Path(remote_dir).as_posix()
+#         self.local_dir = Path(local_dir)
+#         self.local_dir.mkdir(parents=True, exist_ok=True)
+#         self.old_file_names = set()
+
+#         try:
+#             initial_files = [attr.filename for attr in self.sftp.listdir_attr(self.remote_dir)]
+#             self.old_file_names.update(initial_files)
+#             logger.info(f"[{self.__class__.__name__}][{self.host}] Initially stored files in {self.remote_dir}: {len(initial_files)} files")
+#         except Exception as e:
+#             logger.error(f"[{self.__class__.__name__}][{self.host}] Error reading initially stored files in {self.remote_dir}: {e}")     
+
+#     def check_and_download(self,local_dir):
+#         new_files_set = set()
+#         try:
+#             for attr in self.sftp.listdir_attr(self.remote_dir):
+#                 fname = attr.filename
+#                 if "tmp" in fname or fname in self.old_file_names:
+#                     continue 
+
+#                 remote_path = posixpath.join(self.remote_dir, fname)
+#                 local_path = Path(local_dir) / fname
+#                 local_path.parent.mkdir(parents=True, exist_ok=True)
+#                 retries = 3
+#                 for attempt in range(1, retries + 1):
+#                     try:
+#                         self.sftp.get(remote_path,local_path)
+#                         size_remote = self.sftp.stat(remote_path).st_size
+#                         size_local  = local_path.stat().st_size
+#                         if size_remote != size_local:
+#                             raise IOError(f"Size mismatch: local={size_local}, remote={size_remote}")
+                        
+#                         new_files_set.add(fname)
+#                         logger.info(f"[{self.__class__.__name__}][{self.host}]:\nDownloaded:\n{remote_path} -> {local_path}")
+#                         break
+
+#                     except Exception as e:
+#                         local_path.unlink(missing_ok=True)
+#                         logger.warning(f"[{self.__class__.__name__}][{self.host}]:Attempt {attempt}/{retries} failed for {local_path} -> {remote_path}:\n{e}")
+
+#                         if attempt == retries:
+#                             continue
+#                         else:
+#                             delay = min(5, 1 * 2**(attempt-1))
+#                             time.sleep(delay)
+#                         continue
+#         except Exception as e:
+#             logger.error(f"[{self.__class__.__name__}][{self.host}] Error reading {self.remote_dir}:\n{e}")
+#         return new_files_set
 
 class _SftpWorker(QObject):
     status_changed = pyqtSignal(str)
@@ -94,12 +258,34 @@ class _SftpWorker(QObject):
         control_folder = self.cfg.get("remote_dirs",{}).get("config")
         control_file = self.cfg.get("remote_dirs",{}).get("control_file")
 
-        self.remote_gps_folder = self.cfg.get("remote_dirs",{}).get("gps") 
-        self.remote_hydro_folder = self.cfg.get("remote_dirs",{}).get("streaming") 
-        self.local_gps_folder = self.cfg.get("local_dirs",{}).get("gps") 
-        self.local_hydro_folder = self.cfg.get("local_dirs",{}).get("streaming") 
-        self.monitor_path = (Path(monitor_folder) / monitor_file).as_posix()
-        self.control_path = (Path(control_folder) / control_file).as_posix()
+        # self.remote_gps_folder = self.cfg.get("remote_dirs",{}).get("gps") #!!!
+        # self.remote_hydro_folder = self.cfg.get("remote_dirs",{}).get("streaming") 
+        # self.local_gps_folder = self.cfg.get("local_dirs",{}).get("gps") 
+        # self.local_hydro_folder = self.cfg.get("local_dirs",{}).get("streaming") 
+        # self.monitor_path = (Path(monitor_folder) / monitor_file).as_posix()
+        # self.control_path = (Path(control_folder) / control_file).as_posix()
+
+        self.remote_gps_folder = _remote_path(self.cfg.get("remote_dirs", {}).get("gps")) #!!!
+        self.remote_hydro_folder = _remote_path(self.cfg.get("remote_dirs", {}).get("streaming"))
+        self.remote_gps_history_folder = _remote_path(
+            self.cfg.get("remote_dirs", {}).get("history_gps")
+        )
+        self.remote_hydro_history_folder = _remote_path(
+            self.cfg.get("remote_dirs", {}).get("history_streaming")
+        )
+
+        self.local_gps_folder = self.cfg.get("local_dirs", {}).get("gps")
+        self.local_hydro_folder = self.cfg.get("local_dirs", {}).get("streaming")
+
+        self.monitor_path = posixpath.join(
+            _remote_path(monitor_folder),
+            monitor_file,
+        )
+        self.control_path = posixpath.join(
+            _remote_path(control_folder),
+            control_file,
+        )
+
         self.status_changed.emit(self._state)
         self.initial_ctr_params_dict: Optional[dict] = None
         self._lock = Lock()
@@ -150,10 +336,28 @@ class _SftpWorker(QObject):
             if not self._force_download_all:
                 return
 
+        # if not self.gps_watcher: #!!!
+        #     self.gps_watcher = RemoteFolderWatcher(self._sftp_gps,self.host,self.remote_gps_folder,self.local_gps_folder)
+        # if not self.hydro_watcher:
+        #     self.hydro_watcher = RemoteFolderWatcher(self._sftp_hydro,self.host,self.remote_hydro_folder,self.local_hydro_folder)
+
         if not self.gps_watcher:
-            self.gps_watcher = RemoteFolderWatcher(self._sftp_gps,self.host,self.remote_gps_folder,self.local_gps_folder)
+            self.gps_watcher = RemoteFolderWatcher(
+                self._sftp_gps,
+                self.host,
+                self.remote_gps_folder,
+                self.local_gps_folder,
+                self.remote_gps_history_folder,
+            )
+
         if not self.hydro_watcher:
-            self.hydro_watcher = RemoteFolderWatcher(self._sftp_hydro,self.host,self.remote_hydro_folder,self.local_hydro_folder)
+            self.hydro_watcher = RemoteFolderWatcher(
+                self._sftp_hydro,
+                self.host,
+                self.remote_hydro_folder,
+                self.local_hydro_folder,
+                self.remote_hydro_history_folder,
+            )
 
         # if self.gps_watcher: 
         #     self.local_gps_folder = self.cfg.get("local_dirs",{}).get("gps") 

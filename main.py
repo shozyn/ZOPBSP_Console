@@ -13,7 +13,7 @@ from utils.status_builder import populate_status_panel
 from utils.math_worker import CalculationWorker
 import logging
 
-from view.dock_widgets import StatusWidget, DockInformationWidget
+from view.dock_widgets import StatusWidget, DockInformationWidget, DockResultWidget
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
@@ -51,6 +51,7 @@ def main():
     coord_label = make_coord_label() #GUI label
     status_widget = StatusWidget()
     dock_info = DockInformationWidget() #GUI logs
+    dock_result = DockResultWidget()
 
     #RECEIVERS
     receiver_models = []
@@ -107,7 +108,7 @@ def main():
     #target_controller.connect_target()
     main_window = MainWindow(map_view=map_view,menu_bar=menu_bar,
                         tool_bar=tool_bar,coord_label=coord_label,status_widget=status_widget,
-                        dock_info=dock_info)
+                        dock_info=dock_info,dock_result=dock_result)
     
     root_logger, log_listener, gui_handler = setup_logging_for_app(
     main_window.dock_info.add_text,
@@ -142,17 +143,15 @@ def main():
     calc_model = CalculationModel(required_receivers=receiver_ids)
     print(f"receiver_ids: {receiver_ids}")
 
-    calc_model = CalculationModel(required_receivers=receiver_ids)
-    calc_worker = CalculationWorker()
-    calc_controller = CalculationController(calc_model, menu_bar=menu_bar)
+    #calc_model = CalculationModel(required_receivers=receiver_ids) !!!
+    #calc_worker = CalculationWorker() !!!
+    calc_controller = CalculationController(calc_model, menu_bar=menu_bar, dock_result=dock_result)
     
     main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
                                      receiver_controllers=receiver_controllers)
 
     for rc in receiver_controllers:
         rc.files_arrived.connect(calc_controller.on_files_arrived)
-
-    
 
 
     map_controller.coordinates_changed.connect(main_window.on_coordinates_changed)
