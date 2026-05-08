@@ -82,16 +82,20 @@ class CalculationWorker(QObject):
                 QTimer.singleShot(0, self._get_job_from_queue)
 
     def _compute(self, job):
-        items = list(job.wav_rpis.items())
-        n = len(items)
-        
-        #n = 2 #! temp. change
+        wav_items = list(job.wav_rpis.items())
+        gps_rpis = getattr(job, "gps_rpis", {})
+
+        n = len(wav_items)
 
         if n == 0:
-            return {"job_id": job.job_id, "results": "No WAV files"}
+            return {
+                "job_id": job.job_id,
+                "results": "No WAV files",
+                "gps_files": gps_rpis,
+            }
 
         if n == 1:
-            rid1, path1 = items[0]
+            rid1, path1 = wav_items[0]
             fs1, d1 = wavfile.read(path1)
             
             if d1.ndim == 2:
@@ -105,12 +109,13 @@ class CalculationWorker(QObject):
                 "job_id": job.job_id,
                 "fs": [fs1],
                 "receivers": [rid1],
+                "gps_files": gps_rpis,
                 "AKA1A": [aka1a_res1],
                 "VMDv2": [vmd_res1],
             }
 
         if n == 2:
-            (rid1, path1), (rid2, path2) = items[0], items[1]
+            (rid1, path1), (rid2, path2) = wav_items[0], wav_items[1]
             fs1, d1 = wavfile.read(path1)
             fs2, d2 = wavfile.read(path2) #! Changed input
 
@@ -139,6 +144,7 @@ class CalculationWorker(QObject):
                 "job_id": job.job_id,
                 "fs": [fs1,fs2],
                 "receivers": [rid1, rid2], #! rid1 and rid2
+                "gps_files": gps_rpis,
                 "AKA1A": [aka1a_res1,aka1a_res2],
                 "VMDv2": [vmd_res1,vmd_res2],
                 "TDOA": [tdoa_res_1_2],
@@ -146,7 +152,7 @@ class CalculationWorker(QObject):
             }
 
         if n == 3:
-            (rid1, path1), (rid2, path2), (rid3, path3) = items[0], items[1], items[2]
+            (rid1, path1), (rid2, path2), (rid3, path3) = wav_items[0], wav_items[1], wav_items[2]
             fs1, d1 = wavfile.read(path1)
             fs2, d2 = wavfile.read(path2) #! Changed input
             fs3, d3 = wavfile.read(path3)
@@ -184,12 +190,21 @@ class CalculationWorker(QObject):
                 "job_id": job.job_id,
                 "fs": [fs1,fs2,fs3],
                 "receivers": [rid1, rid2,rid3], #! rid1 and rid2
+                "gps_files": gps_rpis,
                 "AKA1A": [aka1a_res1,aka1a_res2,aka1a_res3],
                 "VMDv2": [vmd_res1,vmd_res2,vmd_res3],
                 "TDOA": [tdoa_res_1_2,tdoa_res_2_3,tdoa_res_3_1],
                 "TDOA_POS": [pos_res_1_2,pos_res_2_3,pos_res_3_1],
             }
 
+    @pyqtSlot()
+    def clear_pending(self):
+        """
+        Drop all jobs that are waiting in the queue.
+        This does NOT interrupt a job that is currently executing.
+        """
+        self._queue.clear()
+        
 def start_calculation_thread(worker: CalculationWorker) -> QThread:
 
     th = QThread()
@@ -216,11 +231,3 @@ def stop_calculation_thread(worker: CalculationWorker, thread: QThread, timeout_
     if not stopped:
         logger.warning("[CalculationWorker] Thread did not stop within %d ms", timeout_ms)
     return stopped
-
-@pyqtSlot()
-def clear_pending(self):
-    """
-    Drop all jobs that are waiting in the queue.
-    This does NOT interrupt a job that is currently executing.
-    """
-    self._queue.clear()

@@ -10,7 +10,13 @@ from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
 from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
 from utils.receiver_client_worker import ReceiverClientWorker  
 from utils.math_worker import CalculationWorker, start_calculation_thread, stop_calculation_thread
-from model.models import CalculationModel, FileMeta, CalcJob, parse_wav_ts_key
+from model.models import (
+    CalculationModel,
+    FileMeta,
+    CalcJob,
+    parse_wav_ts_key,
+    parse_gps_ts_key,
+)
 from view.parameter_dialog import FolderNameDialog 
 from view.dock_widgets import DockResultWidget
 #from utils.server_comm_sftp import ServerCommSFTP
@@ -20,6 +26,7 @@ import logging
 from pathlib import Path
 import string
 from typing import List, Optional
+import time
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -196,7 +203,8 @@ class ReceiverController(QObject):
         self.local_reader = LocalFolderReader(self.receiver_id, batch=100, parent=self)
 
         # forward local-reader events exactly like the SFTP pipeline
-        self.local_reader.files_arrived.connect(self.files_arrived.emit)
+        #self.local_reader.files_arrived.connect(self.files_arrived.emit)
+        self.local_reader.files_arrived.connect(self._on_worker_files_arrived)
 
         # optional: route status to logs/UI
         self.local_reader.status.connect(lambda msg: logger.info(msg))
@@ -382,9 +390,19 @@ class ReceiverController(QObject):
     @pyqtSlot(str, str, list)
     def _on_worker_files_arrived(self, worker_id: str, role: str, files: list) -> None:
         """
-        Relay incoming files from sftp_worker
+        React to files downloaded by the SFTP worker.
+
+        GPS files:
+            1. are parsed by ReceiverModel to update the map marker;
+            2. are relayed further to the calculation pipeline.
+
+        Hydro/WAV files:
+            are relayed to the calculation pipeline.
         """
-        ## self.files_arrived.emit(receiver_id, role, files)
+        if role == "gps":
+            for gps_file in sorted(files):
+                self.model.update_position_from_gps_file(gps_file)
+
         self.files_arrived.emit(self.receiver_id, role, files)
 
     def __del__(self):
@@ -395,9 +413,15 @@ class ReceiverController(QObject):
             pass
     
     def on_model_updated(self):
-        self.model.update_actual_position()
+        """
+        Update receiver non-geometric state.
+
+        Important:
+        This method must not update the receiver's map position.
+        Position updates will be handled explicitly from downloaded GPS files.
+        """
         self.update_status_widget()
-        self.model_changed.emit(self.receiver_id,self.model.parameters)
+        self.model_changed.emit(self.receiver_id, self.model.parameters)
         
     
     def update_status_widget(self):
@@ -599,11 +623,11 @@ class CalculationController(QObject):
                  parent: Optional[QObject] = None) -> None:
         super().__init__(parent)
         self.model = model
-
         # Runtime state for the calculation pipeline
         self._calc_worker: Optional[CalculationWorker] = None
         self._calc_thread = None
         self._calc_running: bool = False
+        self._job_t0: dict[str, float] = {}
         self.menu_bar = menu_bar
         self.menu_bar.command_triggered.connect(self.handle_command)
         self.print_res.connect(dock_result.add_result)
@@ -629,23 +653,9 @@ class CalculationController(QObject):
         # Wire signals: Model → Worker (queued across threads)
         self.model.job_ready.connect(worker.enqueue_job)
 
-        # Optional: observe worker signals (to update a View or logs)
-        worker.job_started.connect(lambda jid: logger.info("[Calc] job_started %s", jid))
-        ##worker.job_finished.connect(lambda jid, res: logger.info("[Calc] job_finished %s → %s", jid, res))
-        # worker.job_finished.connect(
-        #     lambda jid, res: logger.info(
-        #         "[Calc] job_finished %s\n%s",
-        #         jid,
-        #         "\n".join(
-        #             f"  {name}: {(res.get('results', res)).get(name)}"
-        #             for name in ("AKA1A", "VMDv2", "TDOA", "TDOA_POS")
-        #             if isinstance(res, dict) and name in (res.get("results", res))
-        #         ) or f"  {res}"
-        #     )
-        # )
-
-        worker.job_finished.connect(self.print_results)
-        worker.job_failed.connect(lambda jid, info: logger.error("[Calc] job_failed %s\n%s", jid, info))
+        worker.job_started.connect(self._on_calc_job_started)
+        worker.job_finished.connect(self._on_calc_job_finished)
+        worker.job_failed.connect(self._on_calc_job_failed)
 
         # Keep references
         self._calc_worker = worker
@@ -715,29 +725,77 @@ class CalculationController(QObject):
     @pyqtSlot(str, str, list)
     def on_files_arrived(self, receiver_id: str, role: str, files: List[str]) -> None:
         """
-        Slot called whenever the SFTP finishes downloads.
-        It creates FileMeta for the Calculation Model
+        Slot called whenever receiver files arrive.
+
+        role == "hydro":
+            register WAV files for calculation.
+
+        role == "gps":
+            register GPS TXT files for calculation.
+
+        A calculation job is emitted only when all required receivers have
+        both WAV and GPS files for the same timestamp key.
         """
         if not self._calc_running:
             return
-        
+
         for f in files:
             p = Path(f)
-            if p.suffix.lower() != ".wav": #Continue
-                continue  # ignore TXT and others
+
             if not p.exists():
+                logger.warning("[CalculationController] File does not exist: %s", p)
                 continue
-            ts_key = parse_wav_ts_key(p)
-            if not ts_key:
-                logger.warning("[CalculationController] Could not parse ts from %s", p.name)
-                continue
-            meta = FileMeta(
-                receiver_id=receiver_id,
-                path=str(p),
-                ts_key=ts_key,
-                mtime_ns=p.stat().st_mtime_ns,
-            )
-            self.model.update_latest(meta) #The model is updated for each file separately
+
+            if role == "hydro":
+                if p.suffix.lower() != ".wav":
+                    continue
+
+                ts_key = parse_wav_ts_key(p)
+
+                if not ts_key:
+                    logger.warning(
+                        "[CalculationController] Could not parse WAV timestamp from %s",
+                        p.name,
+                    )
+                    continue
+
+                meta = FileMeta(
+                    receiver_id=receiver_id,
+                    path=str(p),
+                    ts_key=ts_key,
+                    mtime_ns=p.stat().st_mtime_ns,
+                )
+
+                self.model.update_wav(meta)
+
+            elif role == "gps":
+                if p.suffix.lower() != ".txt":
+                    continue
+
+                ts_key = parse_gps_ts_key(p)
+
+                if not ts_key:
+                    logger.warning(
+                        "[CalculationController] Could not parse GPS timestamp from %s",
+                        p.name,
+                    )
+                    continue
+
+                meta = FileMeta(
+                    receiver_id=receiver_id,
+                    path=str(p),
+                    ts_key=ts_key,
+                    mtime_ns=p.stat().st_mtime_ns,
+                )
+
+                self.model.update_gps(meta)
+
+            else:
+                logger.debug(
+                    "[CalculationController] Ignoring unknown role=%s files=%s",
+                    role,
+                    files,
+                )
 
 
     @pyqtSlot(str, str)
@@ -749,7 +807,41 @@ class CalculationController(QObject):
         elif command == "Stop":
             self.stop_calculation()
 
-    # @pyqtSlot(object)
-    # def _on_job_ready(self, job: CalcJob) -> None:
-    #     """Forward ready jobs to the calculation worker queue."""
-    #     self.calc_worker.enqueue_job(job)
+    @pyqtSlot(str)
+    def _on_calc_job_started(self, jid: str) -> None:
+        """
+        Log the beginning of one calculation job and store the start time.
+        """
+        self._job_t0[jid] = time.perf_counter()
+        logger.info("[Calc] job_started %s", jid)
+
+
+    @pyqtSlot(str, dict)
+    def _on_calc_job_finished(self, jid: str, res: dict) -> None:
+        """
+        Log successful completion of one calculation job and forward the result
+        to the result dock.
+        """
+        t0 = self._job_t0.pop(jid, None)
+
+        if t0 is None:
+            logger.info("[Calc] job_finished %s", jid)
+        else:
+            dt = time.perf_counter() - t0
+            logger.info("[Calc] job_finished %s in %.3f s", jid, dt)
+
+        self.print_results(jid, res)
+
+
+    @pyqtSlot(str, str)
+    def _on_calc_job_failed(self, jid: str, info: str) -> None:
+        """
+        Log failed completion of one calculation job.
+        """
+        t0 = self._job_t0.pop(jid, None)
+
+        if t0 is None:
+            logger.error("[Calc] job_failed %s\n%s", jid, info)
+        else:
+            dt = time.perf_counter() - t0
+            logger.error("[Calc] job_failed %s after %.3f s\n%s", jid, dt, info)

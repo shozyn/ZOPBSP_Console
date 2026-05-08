@@ -1,0 +1,16 @@
+Update date:2025-08-22 12:55:24
+RPI1
+Serial=6937
+IP=192.168.138.12
+MASK=255.255.255.0
+Mode=2
+BatPerc=100
+StPPS=5
+RPiProc=0
+Act_SRate=aaa
+Act_Nagrywanie=aaa
+Act_AktHydro=aaa
+Act_AktGPS=aaa
+Act_AktStreaming=aaa
+Act_RecDur=aaa
+Act_Pause=aaa  

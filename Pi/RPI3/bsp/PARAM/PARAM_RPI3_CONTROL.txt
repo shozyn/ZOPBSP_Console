@@ -1,0 +1,7 @@
+SRate=64000
+Nagrywanie=False
+AktHydro=False
+AktGPS=True
+AktStreaming=False
+RecDur=1
+Pause=9

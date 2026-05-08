@@ -1,0 +1,9 @@
+Update date:2025-08-22 12:56:13
+RPI2
+Serial=6675
+IP=192.168.138.12
+MASK=255.255.255.0
+Mode=2
+BatPerc=100
+StPPS=5
+RPiProc=92.2%
