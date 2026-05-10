@@ -217,10 +217,10 @@ class ReceiverModel(QObject):
     #     else:
     #         return None
 
-    def set_sftp_cfg(self, name: str, value: Any) -> None:
-        """Update the parameter value (for dialog/UI update)."""
-        if name in self.parameters:
-            self.parasftp_cfgmeters[name]['value'] = value
+    # def set_sftp_cfg(self, name: str, value: Any) -> None:
+    #     """Update the parameter value (for dialog/UI update)."""
+    #     if name in self.parameters:
+    #         self.parasftp_cfgmeters[name]['value'] = value
     
     @staticmethod       
     def nmea_to_decimal(coord: str, deg_len: int) -> float:
@@ -747,3 +747,37 @@ class CalculationModel(QObject):
             for rid in self.required_receivers:
                 self.receivers_wav_meta[rid].clear()
                 self.receivers_gps_meta[rid].clear()
+
+class ObjectModel(QObject):
+    """
+    Model representing a calculated object position.
+    """
+
+    position_updated = pyqtSignal(QgsPointXY, str)  # point, timestamp label
+
+    def __init__(self, object_id: str = "Object1", parent=None):
+        super().__init__(parent)
+        self.object_id = object_id
+        self.position: QgsPointXY | None = None
+        self.timestamp: str = ""
+
+    def update_position(self, lat: float, lon: float, timestamp: str) -> None:
+        """
+        Store and emit the calculated object position.
+
+        Parameters
+        ----------
+        lat:
+            Latitude in decimal degrees.
+
+        lon:
+            Longitude in decimal degrees.
+
+        timestamp:
+            Text displayed next to the object marker. In our case, it is
+            derived from job_id.
+        """
+        self.position = QgsPointXY(float(lon), float(lat))
+        self.timestamp = str(timestamp)
+
+        self.position_updated.emit(self.position, self.timestamp)

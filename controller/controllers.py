@@ -7,7 +7,7 @@ from pathlib import Path, PureWindowsPath
 from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog, QWidget
 from view.parameter_dialog import ParameterDialog
 from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
-from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem
+from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem, QgsPointXY
 from utils.receiver_client_worker import ReceiverClientWorker  
 from utils.math_worker import CalculationWorker, start_calculation_thread, stop_calculation_thread
 from model.models import (
@@ -619,6 +619,7 @@ class CalculationController(QObject):
     """
 
     print_res = pyqtSignal(dict)
+    object_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp
     def __init__(self, model: CalculationModel, menu_bar: MenuBar, dock_result: DockResultWidget,
                  parent: Optional[QObject] = None) -> None:
         super().__init__(parent)
@@ -819,8 +820,8 @@ class CalculationController(QObject):
     @pyqtSlot(str, dict)
     def _on_calc_job_finished(self, jid: str, res: dict) -> None:
         """
-        Log successful completion of one calculation job and forward the result
-        to the result dock.
+        Log successful completion of one calculation job, forward the result
+        to the result dock, and update Object1 if Est_pos is available.
         """
         t0 = self._job_t0.pop(jid, None)
 
@@ -829,6 +830,8 @@ class CalculationController(QObject):
         else:
             dt = time.perf_counter() - t0
             logger.info("[Calc] job_finished %s in %.3f s", jid, dt)
+
+        self._emit_object_position_from_result(jid, res)
 
         self.print_results(jid, res)
 
@@ -845,3 +848,137 @@ class CalculationController(QObject):
         else:
             dt = time.perf_counter() - t0
             logger.error("[Calc] job_failed %s after %.3f s\n%s", jid, dt, info)
+
+    @staticmethod
+    def _extract_last_est_pos(est_pos):
+        """
+        Extract the last object position from Est_pos.
+
+        Expected Est_pos structure:
+            [
+                [gps_time_1, lat_1, lon_1],
+                [gps_time_2, lat_2, lon_2],
+                ...
+            ]
+
+        Returns
+        -------
+        tuple[float, float] | None
+            (lat, lon), or None if the result is invalid.
+        """
+        if not est_pos:
+            return None
+
+        try:
+            last_pos = est_pos[-1]
+
+            if len(last_pos) < 3:
+                return None
+
+            lat = float(last_pos[1])
+            lon = float(last_pos[2])
+
+            return lat, lon
+
+        except Exception as e:
+            logger.warning("[CalculationController] Invalid Est_pos format: %s", e)
+            return None
+
+    @staticmethod
+    def _format_job_id_as_time(job_id: str) -> str:
+        """
+        Convert job_id from 'YYYYMMDD_HHMMSS' to 'HH:MM:SS'.
+
+        If parsing fails, return the original job_id.
+        """
+        try:
+            from datetime import datetime
+
+            dt = datetime.strptime(job_id, "%Y%m%d_%H%M%S")
+            return dt.strftime("%H:%M:%S")
+
+        except Exception:
+            return str(job_id)
+
+    def _emit_object_position_from_result(self, jid: str, res: dict) -> None:
+        if res.get("Est_pos_status") != "OK":
+            logger.warning(
+                "[CalculationController] Object1 not updated for job %s because Est_pos_status=%s",
+                jid,
+                res.get("Est_pos_status"),
+            )
+            return
+
+        est_pos = res.get("Est_pos")
+        pos = self._extract_last_est_pos(est_pos)
+
+        if pos is None:
+            return
+
+        lat, lon = pos
+        timestamp = self._format_job_id_as_time(jid)
+
+        res["Object1"] = {
+            "timestamp": timestamp,
+            "lat": lat,
+            "lon": lon,
+        }
+
+        self.object_position_ready.emit(lat, lon, timestamp)
+
+
+class ObjectController(QObject):
+    """
+    Controller for Object1.
+    """
+
+    def __init__(self, model, view, menu_bar, parent=None):
+        super().__init__(parent)
+
+        self.model = model
+        self.view = view
+        self.menu_bar = menu_bar
+
+        self.display_enabled = False
+        self.tracking_enabled = False
+
+        self.model.position_updated.connect(self.on_position_updated)
+        self.menu_bar.command_triggered.connect(self.handle_command)
+
+    @pyqtSlot(str, str)
+    def handle_command(self, sender_id: str, command: str) -> None:
+        if sender_id != self.model.object_id:
+            return
+
+        if command == "display":
+            self.display_enabled = True
+            self.view.show_latest()
+
+        elif command == "hide":
+            self.display_enabled = False
+            self.view.hide_object()
+
+        elif command == "track":
+            self.tracking_enabled = True
+            self.display_enabled = True
+            self.view.show_latest()
+
+        elif command == "stop_tracking":
+            self.tracking_enabled = False
+
+        elif command == "clear_track":
+            self.view.clear_track()
+
+    @pyqtSlot(QgsPointXY, str)
+    def on_position_updated(self, point: QgsPointXY, timestamp: str) -> None:
+        """
+        Receive a new calculated object position.
+        """
+        if not self.display_enabled and not self.tracking_enabled:
+            return
+
+        self.view.display_position(
+            point,
+            timestamp,
+            add_to_track=self.tracking_enabled,
+        )

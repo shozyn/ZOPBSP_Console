@@ -9,10 +9,7 @@ import numpy as np
 from scipy.io import wavfile
 from Classifier.classifier1 import wav_to_si_cut, OUTPUT_CLASSES
 from calculation.algorithms import (
-    AKA1AAlgorithm,
-    VMDv2Algorithm,
-    TDOAAlgorithm,
-    TDOAPositionAlgorithm,
+    AKA1AAlgorithm, ESTPOSAlgorithm
 )
 
 
@@ -35,10 +32,7 @@ class CalculationWorker(QObject):
         self._busy = False
         self._stopping = False 
         self.algo_aka1a = AKA1AAlgorithm()
-        self.algo_vmd = VMDv2Algorithm()
-        self.algo_tdoa = TDOAAlgorithm()
-        self.algo_pos = TDOAPositionAlgorithm()
-
+        self.algo_est_pos = ESTPOSAlgorithm()
 
     @pyqtSlot()
     def request_stop(self) -> None:
@@ -55,10 +49,11 @@ class CalculationWorker(QObject):
         if self._stopping:
             logger.info("[CalculationWorker] Ignoring job %s: stopping", job.job_id)
             return
+
+        was_idle = not self._busy and not self._queue
         self._queue.append(job)
-        for calc_job in self._queue:
-            print(f"[CalculationWorker] queued job: {calc_job.job_id}")
-        if not self._busy:
+
+        if was_idle:
             QTimer.singleShot(0, self._get_job_from_queue)
 
     def _get_job_from_queue(self) -> None:
@@ -96,14 +91,10 @@ class CalculationWorker(QObject):
 
         if n == 1:
             rid1, path1 = wav_items[0]
-            fs1, d1 = wavfile.read(path1)
-            
-            if d1.ndim == 2:
-                d1 = d1.mean(axis=1)
+            fs1, s1 = wav_to_si_cut(path1)
             
             d1=d1.astype(np.int32)
-            aka1a_res1 = self.algo_aka1a.run(*wav_to_si_cut(path1)[::-1])
-            vmd_res1 = self.algo_vmd.run(d1, fs1)
+            aka1a_res1 = self.algo_aka1a.run(s1,fs1)
 
             return {
                 "job_id": job.job_id,
@@ -111,13 +102,12 @@ class CalculationWorker(QObject):
                 "receivers": [rid1],
                 "gps_files": gps_rpis,
                 "AKA1A": [aka1a_res1],
-                "VMDv2": [vmd_res1],
             }
 
         if n == 2:
             (rid1, path1), (rid2, path2) = wav_items[0], wav_items[1]
-            fs1, d1 = wavfile.read(path1)
-            fs2, d2 = wavfile.read(path2) #! Changed input
+            fs1, s1 = wav_to_si_cut(path1)
+            fs2, s2 = wav_to_si_cut(path2)
 
             if fs1 != fs2:
                 raise ValueError(f"Sampling rate mismatch: {rid1}={fs1}, {rid1}={fs2}") #! rid1 and rid2
@@ -125,20 +115,8 @@ class CalculationWorker(QObject):
             d1=d1.astype(np.int32)
             d2=d2.astype(np.int32)
 
-            aka1a_res1 = self.algo_aka1a.run(*wav_to_si_cut(path1)[::-1])
-            aka1a_res2 = self.algo_aka1a.run(*wav_to_si_cut(path2)[::-1])
-            vmd_res1 = self.algo_vmd.run(d1, fs1)
-            vmd_res2 = self.algo_vmd.run(d2, fs2)
-            
-            # sample_duration = 10
-            # x1 = np.array(d1[0:sample_duration*fs1], dtype=np.float64)
-            # x2 = np.array(d2[0:sample_duration*fs2], dtype=np.float64)
-
-            tdoa_res_1_2 = self.algo_tdoa.run(d1, d2, fs1)
-
-            # TDOA_POS currently ignores tdoa_res and runs the developer synthetic demo,
-            # but we still pass it so the interface is future-ready.
-            pos_res_1_2 = self.algo_pos.run(tdoa_res_1_2)
+            aka1a_res1 = self.algo_aka1a.run(s1,fs1)
+            aka1a_res2 = self.algo_aka1a.run(s2,fs2)
 
             return {
                 "job_id": job.job_id,
@@ -146,55 +124,75 @@ class CalculationWorker(QObject):
                 "receivers": [rid1, rid2], #! rid1 and rid2
                 "gps_files": gps_rpis,
                 "AKA1A": [aka1a_res1,aka1a_res2],
-                "VMDv2": [vmd_res1,vmd_res2],
-                "TDOA": [tdoa_res_1_2],
-                "TDOA_POS": [pos_res_1_2],
             }
 
         if n == 3:
             (rid1, path1), (rid2, path2), (rid3, path3) = wav_items[0], wav_items[1], wav_items[2]
-            fs1, d1 = wavfile.read(path1)
-            fs2, d2 = wavfile.read(path2) #! Changed input
-            fs3, d3 = wavfile.read(path3)
+            fs1, s1 = wav_to_si_cut(path1)
+            fs2, s2 = wav_to_si_cut(path2)
+            fs3, s3 = wav_to_si_cut(path3)
 
-            if fs1 != fs2 or fs2 != fs3:
-                raise ValueError(f"Sampling rate mismatch: {rid1}={fs1}, {rid2}={fs2}, {rid3}={fs3}") #! rid1 and rid2
+            print("before est_pos_res")
+            est_pos_res = self.algo_est_pos.run(gps_rpis[rid1],gps_rpis[rid2],gps_rpis[rid2],path1,path2,path3)
+            print(f"est_pos_res: {est_pos_res}")
 
-            d1=d1.astype(np.int32)
-            d2=d2.astype(np.int32)
-            d3=d3.astype(np.int32)
-
-            aka1a_res1 = self.algo_aka1a.run(*wav_to_si_cut(path1)[::-1])
-            aka1a_res2 = self.algo_aka1a.run(*wav_to_si_cut(path2)[::-1])
-            aka1a_res3 = self.algo_aka1a.run(*wav_to_si_cut(path3)[::-1])
-            vmd_res1 = self.algo_vmd.run(d1, fs1)
-            vmd_res2 = self.algo_vmd.run(d2, fs2)
-            vmd_res3 = self.algo_vmd.run(d3, fs3)
+            aka1a_res1 = self.algo_aka1a.run(s1,fs1)
+            aka1a_res2 = self.algo_aka1a.run(s2,fs2)
+            aka1a_res3 = self.algo_aka1a.run(s3,fs3)
             
-            sample_duration = 10
-            x1 = np.array(d1[0:sample_duration*fs1], dtype=np.float64)
-            x2 = np.array(d2[0:sample_duration*fs2], dtype=np.float64)
-            x3 = np.array(d3[0:sample_duration*fs3], dtype=np.float64)
+            # ------------------------------------------------------------
+            # Safe Est_pos localisation
+            # ------------------------------------------------------------
+            est_pos_res = []
+            est_pos_status = "NOT_RUN"
+            est_pos_error = ""
 
-            tdoa_res_1_2 = self.algo_tdoa.run(x1, x2, fs1)
-            tdoa_res_2_3 = self.algo_tdoa.run(x2, x3, fs2)
-            tdoa_res_3_1 = self.algo_tdoa.run(x3, x1, fs3)
+            missing_gps = [
+                rid for rid in (rid1, rid2, rid3)
+                if rid not in gps_rpis
+            ]
 
-            # TDOA_POS currently ignores tdoa_res and runs the developer synthetic demo,
-            # but we still pass it so the interface is future-ready.
-            pos_res_1_2 = self.algo_pos.run(tdoa_res_1_2)
-            pos_res_2_3 = self.algo_pos.run(tdoa_res_2_3)
-            pos_res_3_1 = self.algo_pos.run(tdoa_res_3_1)
+            if missing_gps:
+                est_pos_status = "FAILED"
+                est_pos_error = f"Missing GPS files for receivers: {missing_gps}"
+                logger.error(
+                    "[CalculationWorker] Est_pos cannot run for job %s: %s",
+                    job.job_id,
+                    est_pos_error,
+                )
+
+            else:
+                try:
+                    est_pos_res = self.algo_est_pos.run(
+                        gps_rpis[rid1],
+                        gps_rpis[rid2],
+                        gps_rpis[rid3],
+                        path1,
+                        path2,
+                        path3,
+                    )
+
+                    est_pos_status = "OK"
+
+                except Exception as e:
+                    est_pos_res = []
+                    est_pos_status = "FAILED"
+                    est_pos_error = str(e)
+
+                    logger.exception(
+                        "[CalculationWorker] Est_pos failed for job %s. "
+                        "The worker thread will continue with the next job.",
+                        job.job_id,
+                    )
 
             return {
                 "job_id": job.job_id,
-                "fs": [fs1,fs2,fs3],
-                "receivers": [rid1, rid2,rid3], #! rid1 and rid2
+                "receivers": [rid1, rid2, rid3],
                 "gps_files": gps_rpis,
-                "AKA1A": [aka1a_res1,aka1a_res2,aka1a_res3],
-                "VMDv2": [vmd_res1,vmd_res2,vmd_res3],
-                "TDOA": [tdoa_res_1_2,tdoa_res_2_3,tdoa_res_3_1],
-                "TDOA_POS": [pos_res_1_2,pos_res_2_3,pos_res_3_1],
+                "AKA1A": [aka1a_res1, aka1a_res2, aka1a_res3],
+                "Est_pos": est_pos_res,
+                "Est_pos_status": est_pos_status,
+                "Est_pos_error": est_pos_error,
             }
 
     @pyqtSlot()
@@ -213,7 +211,6 @@ def start_calculation_thread(worker: CalculationWorker) -> QThread:
     th.finished.connect(th.deleteLater)
     th.start()
     logger.info("[CalculationWorker] Thread started (id=%s)", int(th.currentThreadId()))
-    print("[CalculationWorker] Thread started")
     return th
 
 def stop_calculation_thread(worker: CalculationWorker, thread: QThread, timeout_ms: int = 3000) -> bool:

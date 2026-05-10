@@ -40,24 +40,24 @@ def load_gps_txt_unique_seconds(filename):
 
 
 
-def import_data(time_point=133400):
+def import_data(gps1_path,gps2_path,gps3_path,wav1_path,wav2_path,wav3_path):
     # GPS 3×RPI
-    GPS1 = load_gps_txt_unique_seconds(f"GPS_RPI1_20251015_{time_point}_Hydro_6673.txt")
-    GPS2 = load_gps_txt_unique_seconds(f"GPS_RPI2_20251015_{time_point}_Hydro_6676.txt")
-    GPS3 = load_gps_txt_unique_seconds(f"GPS_RPI3_20251015_{time_point}_Hydro_6675.txt")
+    GPS1 = load_gps_txt_unique_seconds(gps1_path)
+    GPS2 = load_gps_txt_unique_seconds(gps2_path)
+    GPS3 = load_gps_txt_unique_seconds(gps3_path)
 
-    # OP (LAUV Server) — -2h
-    op_ts = int(time_point)-20000# time shift 
-    # next bierze kolejny element path
-    GPS_OP = load_gps_txt_unique_seconds(f"trajektoria_LAUV 20251015__20251015_{op_ts}_UTC__WIN00_19.txt")
+    # # OP (LAUV Server) — -2h
+    # op_ts = int(time_point)-20000# time shift 
+    # # next bierze kolejny element path
+    # GPS_OP = load_gps_txt_unique_seconds(f"trajektoria_LAUV 20251015__20251015_{op_ts}_UTC__WIN00_19.txt")
 
     # WAV
-    fs, s1_raw = wavfile.read(f"RBW6673_20251015_{str(time_point).zfill(6)}.wav")
-    _,  s2_raw = wavfile.read(f"RBW6676_20251015_{str(time_point).zfill(6)}.wav")
-    _,  s3_raw = wavfile.read(f"RBW6675_20251015_{str(time_point).zfill(6)}.wav")
+    fs, s1_raw = wavfile.read(wav1_path)
+    _,  s2_raw = wavfile.read(wav2_path)
+    _,  s3_raw = wavfile.read(wav3_path)
 
     s1_raw = np.asarray(s1_raw, dtype=float)
     s2_raw = np.asarray(s2_raw, dtype=float)
     s3_raw = np.asarray(s3_raw, dtype=float)
 
-    return GPS1, GPS2, GPS3, GPS_OP, s1_raw, s2_raw, s3_raw, fs
+    return GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs

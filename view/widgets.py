@@ -79,6 +79,8 @@ class MenuBar(QMenuBar):
         self.target_connect_actions = {}
         self.target_display_actions = {}
         self.target_track_actions = {}
+        self.object_display_actions = {}
+        self.object_track_actions = {}
         self.receiver_read_actions = {}  # ReceiverID -> QAction("Read files")
         self.calc_action:  Optional[QAction] = None
 
@@ -115,7 +117,7 @@ class MenuBar(QMenuBar):
             calc_menu.addAction(self.calc_action)
 
 
-              # Target Menus with toggle logic
+        # Target Menus with toggle logic
         for tgt in targets:
             tgt_id = tgt["id"]
             menu = self.addMenu(f"{tgt_id}")
@@ -139,6 +141,31 @@ class MenuBar(QMenuBar):
             self.target_track_actions[tgt_id] = track_action
 
             menu.addAction(self._make_action("Clear Track", tgt_id, "clear_track"))
+
+        # Object Menus with toggle logic
+        object_id = "Object1"
+        object_menu = self.addMenu(object_id)
+
+        display_action = QAction("Display", self)
+        display_action.triggered.connect(
+            lambda _, oid=object_id: self._toggle_object_display(oid)
+        )
+        object_menu.addAction(display_action)
+        self.object_display_actions[object_id] = display_action
+
+        track_action = QAction("Track", self)
+        track_action.triggered.connect(
+            lambda _, oid=object_id: self._toggle_object_tracking(oid)
+        )
+        object_menu.addAction(track_action)
+        self.object_track_actions[object_id] = track_action
+
+        object_menu.addAction(
+            self._make_action("Clear Track", object_id, "clear_track")
+        )
+
+
+
 
         for rx in receivers:
             rx_id = rx["id"]
@@ -177,7 +204,6 @@ class MenuBar(QMenuBar):
         """
         if self.calc_action is not None:
             is_calculating = self.calc_action.text().lower() == "stop"
-            print(f"is_calculating: {is_calculating}")
             self.calc_action.setText("Start" if is_calculating else "Stop")
             self.command_triggered.emit("Calculation","Stop" if is_calculating else "Start")
 
@@ -227,6 +253,30 @@ class MenuBar(QMenuBar):
         action = self.target_connect_actions.get(target_id)
         if action:
             action.setText("Disconnect" if connected else "Connect")
+
+
+    def _toggle_object_display(self, object_id: str):
+        action = self.object_display_actions[object_id]
+        is_displaying = action.text().lower() == "display"
+
+        action.setText("Hide" if is_displaying else "Display")
+
+        self.command_triggered.emit(
+            object_id,
+            "display" if is_displaying else "hide",
+        )
+
+
+    def _toggle_object_tracking(self, object_id: str):
+        action = self.object_track_actions[object_id]
+        is_tracking = action.text().lower() == "track"
+
+        action.setText("Stop Tracking" if is_tracking else "Track")
+
+        self.command_triggered.emit(
+            object_id,
+            "track" if is_tracking else "stop_tracking",
+        )
 
 class MyQgsMapCanvas(QgsMapCanvas):
     map_moved = pyqtSignal(QgsPointXY)

@@ -1,16 +1,17 @@
-from datetime import datetime
-import numpy as np
-import pandas as pd
-import matplotlib
-matplotlib.use("Agg")  # headless (bez okna GUI)
+#from datetime import datetime
+#import numpy as np
+#import pandas as pd
+#import matplotlib
+#matplotlib.use("Agg")  # headless (bez okna GUI)
 from geopy.distance import geodesic
 from pyproj import Transformer, CRS
-from plotowanie import plot_final_results, save_folium_map
-from odleglosci_wg_GPS import  GPS_dist_Vincenty
-from importowanie import import_data
+#from plotowanie import plot_final_results, save_folium_map
+#from odleglosci_wg_GPS import  GPS_dist_Vincenty
+#from importowanie import import_data
 # scytonizowane funkcje
-from tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
-from tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
+from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+from Est_pos.tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
+from Est_pos.importowanie import import_data
 
 
 """
@@ -48,10 +49,15 @@ high_cut = low_cut + band_width
 
 # ===== zmiana współrzędnych =====
 def make_local_transformer(ref_lat: float, ref_lon: float):
+    print(f"ref_lat:  {ref_lat}") 
+    print(f"ref_lon:  {ref_lon}") 
     aeqd = CRS.from_proj4(f"+proj=aeqd +lat_0={ref_lat} +lon_0={ref_lon} +datum=WGS84 +units=m +no_defs")
+    print(f"aeqd: {aeqd}")
     wgs84 = CRS.from_epsg(4326)
     fwd = Transformer.from_crs(wgs84, aeqd, always_xy=True)   # lon,lat -> x,y
+    print(f"fwd: {fwd}")
     inv = Transformer.from_crs(aeqd, wgs84, always_xy=True)   # x,y -> lon,lat
+    print(f"inv: {inv}")
     return fwd, inv
 
 # funkcja do posptocesingu - usuwamy estymowane polozenie źródła dzwieku 
@@ -64,7 +70,7 @@ def filter_est_track_by_radius(est_track, lat0, lon0, radius_m=300.0):
                 keep.append(rec)
         except Exception:
             pass
-    print(f"[tdoa] filtr promienia: zachowano {len(keep)}/{len(est_track)} ≤ {radius_m:.0f} m.")
+    #print(f"[tdoa] filtr promienia: zachowano {len(keep)}/{len(est_track)} ≤ {radius_m:.0f} m.")
     return keep
 
 # ===================== ZAPIS WYNIKOW do pliku txt =====================
@@ -92,15 +98,18 @@ def save_detailed_results(GPS1, GPS2, GPS3, GPS_OP,
             )
 # ===================== GŁÓWNA PĘTLA - POCZĄTEK ===================================
 
-def main():
+def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path):
+
+    GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs = import_data(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path)
+
+    print("after import data")
 
     # wczytanie danych:
     # pomiarowych (GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs)
     # do weryfikacji (GPS_OP) 
-    GPS1, GPS2, GPS3, GPS_OP, s1_raw, s2_raw, s3_raw, fs = import_data()
    
     # sprawdzenie minimalnej liczby danych pomiarowych z GPS (do TDOA i weryfikacji)
-    n_gps = min(len(GPS1), len(GPS2), len(GPS3), len(GPS_OP))
+    #n_gps = min(len(GPS1), len(GPS2), len(GPS3))
 
     # PIERWSZA FUNKCJA SCYTONIZOWANA - wyznaczenie TDOA;
     """
@@ -127,12 +136,18 @@ def main():
     tdoa12_1hz_m = tdoa(s1_raw, s2_raw)
     tdoa13_1hz_m = tdoa(s1_raw, s3_raw)
     tdoa23_1hz_m = tdoa(s2_raw, s3_raw)
+
+    print("after tdoa")
+    print(f"GPS1: {GPS1}")
+    print(f"GPS2: {GPS2}")
+    print(f"GPS3: {GPS3}")
     
     # Estymacja toru źródła dźwięku z TDOA (1 Hz) 
     # początek układu współrzędnych (Tylko 3 — solver sam wygeneruje 4-ty w centroidzie)
-    ref_lat = GPS1[0][1]; 
+    ref_lat = GPS1[0][1] 
     ref_lon = GPS1[0][2] 
-    fwd,inv = make_local_transformer(ref_lat,ref_lon)    
+    fwd,inv = make_local_transformer(ref_lat,ref_lon)   
+    print("after make_local_transformer") 
 
     # współrzędne hydrofonów
     H_coord=[
@@ -140,7 +155,7 @@ def main():
     [*fwd.transform(*GPS2[0][1:3]),-1], # lista x,y,z RPI2
     [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
     ]
-
+    print("after H_coord")
     # Niepewności (metry)
     B = [1.0, 1.0, 1.0]
             
@@ -155,50 +170,56 @@ def main():
 
         pos_est = inv.transform(*res_1hz['Pe'][0:2]) # Pe - position estomation 
         est_track.append([czas_gps1[0],*pos_est])
-    print(f'{est_track=}')
+
+    print("after tdoa_estimate_mode_6")
+    #print(f'{est_track=}')
 
     # Weryfikacja dokładności estymacji pozycji poprzez porównanie do danych z GPS -> MAE (1Hz)
-    gps12_m = GPS_dist_Vincenty(GPS1, GPS2, GPS_OP)[:n_gps]
-    gps13_m = GPS_dist_Vincenty(GPS1, GPS3, GPS_OP)[:n_gps]
-    gps23_m = GPS_dist_Vincenty(GPS2, GPS3, GPS_OP)[:n_gps]
-    mae12 = float(np.mean(np.abs(tdoa12_1hz_m - gps12_m)))  # zamiana na float bo json nie  przyjmuje numpy
-    mae13 = float(np.mean(np.abs(tdoa13_1hz_m - gps13_m)))
-    mae23 = float(np.mean(np.abs(tdoa23_1hz_m - gps23_m)))
-    mae = (mae12 + mae13 + mae23) / 3.0 # średni błąd estymacji pozycji w odniesieniu do GPS
-    print(f"MAE (1Hz): 12={mae12:.2f} 13={mae13:.2f} 23={mae23:.2f} | mean_{mae=:.2f}")
+    # gps12_m = GPS_dist_Vincenty(GPS1, GPS2, GPS_OP)[:n_gps]
+    # gps13_m = GPS_dist_Vincenty(GPS1, GPS3, GPS_OP)[:n_gps]
+    # gps23_m = GPS_dist_Vincenty(GPS2, GPS3, GPS_OP)[:n_gps]
+    # mae12 = float(np.mean(np.abs(tdoa12_1hz_m - gps12_m)))  # zamiana na float bo json nie  przyjmuje numpy
+    # mae13 = float(np.mean(np.abs(tdoa13_1hz_m - gps13_m)))
+    # mae23 = float(np.mean(np.abs(tdoa23_1hz_m - gps23_m)))
+    # mae = (mae12 + mae13 + mae23) / 3.0 # średni błąd estymacji pozycji w odniesieniu do GPS
+    # print(f"MAE (1Hz): 12={mae12:.2f} 13={mae13:.2f} 23={mae23:.2f} | mean_{mae=:.2f}")
 
-    # zapis szczegółów (1Hz) -> opcjonalnie
-    save_detailed_results(GPS1, GPS2, GPS3, GPS_OP,
-                            tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m)
+    # # zapis szczegółów (1Hz) -> opcjonalnie
+    # save_detailed_results(GPS1, GPS2, GPS3, GPS_OP,
+    #                         tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m)
     
     # filtrowanie estymowanych pozycji, akceptujemy tylko pozycje w odległości do radius_m=300m od RPi1 (opcjonalnie)
     if GPS1:
         est_track = filter_est_track_by_radius(est_track, GPS1[0][1], GPS1[0][2], radius_m=300.0)
 
+    print("after filter_est_track_by_radius")
+
+    return est_track
+
     # zapis śladu (opcjonalnie) 
-    out_est = f"TDOA_track.txt"
-    with open(out_est, "w", encoding="utf-8") as f:
-        f.write("time\tlat\tlon\n")
-        for t, la, lo in est_track:
-            f.write(f"{t}\t{la:.8f}\t{lo:.8f}\n")
+    # out_est = f"TDOA_track.txt"
+    # with open(out_est, "w", encoding="utf-8") as f:
+    #     f.write("time\tlat\tlon\n")
+    #     for t, la, lo in est_track:
+    #         f.write(f"{t}\t{la:.8f}\t{lo:.8f}\n")
 
     # rysowanie — stabilne wykresy + tor TDOA-EST na mapie
-    try:
-        plot_final_results(
-            s1_raw, s2_raw, s3_raw,   # sygnały z *.wav do wykresu
-            GPS1, GPS2, GPS3, GPS_OP, fs,
-            tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m,   # w miejsce TDOAs*_raw, ale i tak używasz trybu 1Hz
-            "time_point", mae, ".",
-            est_track=est_track,
-            TDOAs12_1hz=tdoa12_1hz_m, TDOAs13_1hz=tdoa13_1hz_m, TDOAs23_1hz=tdoa23_1hz_m,
-            use_1hz=True
-        )
+#     try:
+#         plot_final_results(
+#             s1_raw, s2_raw, s3_raw,   # sygnały z *.wav do wykresu
+#             GPS1, GPS2, GPS3, GPS_OP, fs,
+#             tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m,   # w miejsce TDOAs*_raw, ale i tak używasz trybu 1Hz
+#             "time_point", mae, ".",
+#             est_track=est_track,
+#             TDOAs12_1hz=tdoa12_1hz_m, TDOAs13_1hz=tdoa13_1hz_m, TDOAs23_1hz=tdoa23_1hz_m,
+#             use_1hz=True
+#         )
 
-        # HTML mapa (folium) z TDOA-EST
-        html_out = "mapa_.html"
-        save_folium_map(GPS1, GPS2, GPS3, GPS_OP, html_out, tdoa_track=est_track)
-    except Exception as e:
-        print(f"Błąd rysowania: {e}")
+#         # HTML mapa (folium) z TDOA-EST
+#         html_out = "mapa_.html"
+#         save_folium_map(GPS1, GPS2, GPS3, GPS_OP, html_out, tdoa_track=est_track)
+#     except Exception as e:
+#         print(f"Błąd rysowania: {e}")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

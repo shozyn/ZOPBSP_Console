@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from classifier1 import Classifier, wav_to_si_cut, OUTPUT_CLASSES
+from Classifier.classifier1 import Classifier, wav_to_si_cut, OUTPUT_CLASSES
 from scipy.io import wavfile
 import wave
-from AKA1A import AKA1A
+from Classifier.AKA1A import AKA1A
 import time
 import torchaudio
 import torch
 
-WAV_PATH = r"C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav"
+WAV_PATH = r"C:\Databases\ZOP-BSP\Database\Raft\UAV2_stream_20251016_113235.wav"
 #MODEL_DIR = r"C:\Users\stann\Pytorch\CNN\ZOPBSP\Results\FINAL_2026-02-15_13_10_51"  # folder with model_final.pth + scaler_final.pth
 
 
@@ -32,17 +32,17 @@ print(f"wav_to_si_cut s_i_cut.min: {s_i_cut.min()}")
 print(f"wav_to_si_cut s_i_cut.max: {s_i_cut.max()}")
 
 
-fs_i, s_i_cut = wavfile.read(WAV_PATH)
-print(f"wavfile s_i_cut.min: {s_i_cut.min()}")
-print(f"wavfile s_i_cut.max: {s_i_cut.max()}")
+# fs_i, s_i_cut = wavfile.read(WAV_PATH)
+# print(f"wavfile s_i_cut.min: {s_i_cut.min()}")
+# print(f"wavfile s_i_cut.max: {s_i_cut.max()}")
 
-wav, sr = torchaudio.load(WAV_PATH)
+#wav, sr = torchaudio.load(WAV_PATH)
 
-print("dtype:", wav.dtype)
-print("shape:", wav.shape)
-print("min:", wav.min().item())
-print("max:", wav.max().item())
-print("sample rate:", sr)
+# print("dtype:", wav.dtype)
+# print("shape:", wav.shape)
+# print("min:", wav.min().item())
+# print("max:", wav.max().item())
+# print("sample rate:", sr)
 
 start_time = time.perf_counter() 
 pred_class, class_prob = AKA1A(s_i_cut, fs_i)
@@ -54,4 +54,3 @@ for i, name in enumerate(OUTPUT_CLASSES):
     print(f"  {i:2d} {name:18s}: {float(class_prob[i]):.6f}")
 
 print(f"\nElapsed time: {elapsed:.3f} seconds")
-
