@@ -3,6 +3,17 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 import numpy as np
 
+OUTPUT_CLASSES = [
+    "Cisza",
+    "Cargo_47",
+    "LAUV",
+    "Otter",
+    "Passengership_109",
+    "Ponton_2",
+    "Ponton_3",
+    "INNE",
+]
+
 def _to_python_scalar(x):
     """
     Convert NumPy scalar to native Python scalar if needed.
@@ -191,7 +202,10 @@ def format_calculation_result(result: dict) -> str:
 
         for i, item in enumerate(aka1a, start=1):
             lines.append(f"Receiver {i}:")
-            lines.append(f"  Predicted class: {item.get('pred_class', 'N/A')}")
+            pred_class_nb = item.get('pred_class', -1)
+            pred_class_nb = OUTPUT_CLASSES[pred_class_nb] if pred_class_nb > -1 else 'N/A'
+            lines.append(f"  Predicted class: {pred_class_nb}")
+            #lines.append(f"  Predicted class: {item.get('pred_class', 'N/A')}")
 
             probs = item.get("class_prob", [])
             if probs:

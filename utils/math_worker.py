@@ -92,8 +92,7 @@ class CalculationWorker(QObject):
         if n == 1:
             rid1, path1 = wav_items[0]
             fs1, s1 = wav_to_si_cut(path1)
-            
-            d1=d1.astype(np.int32)
+
             aka1a_res1 = self.algo_aka1a.run(s1,fs1)
 
             return {
@@ -109,11 +108,8 @@ class CalculationWorker(QObject):
             fs1, s1 = wav_to_si_cut(path1)
             fs2, s2 = wav_to_si_cut(path2)
 
-            if fs1 != fs2:
-                raise ValueError(f"Sampling rate mismatch: {rid1}={fs1}, {rid1}={fs2}") #! rid1 and rid2
-
-            d1=d1.astype(np.int32)
-            d2=d2.astype(np.int32)
+            # if fs1 != fs2:
+            #     raise ValueError(f"Sampling rate mismatch: {rid1}={rid2}, {fs1}={fs2}") #! rid1 and rid2
 
             aka1a_res1 = self.algo_aka1a.run(s1,fs1)
             aka1a_res2 = self.algo_aka1a.run(s2,fs2)

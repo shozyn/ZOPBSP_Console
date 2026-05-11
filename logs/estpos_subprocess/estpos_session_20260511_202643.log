@@ -1,0 +1,2782 @@
+
+####################################################################################################
+# EST_POS SESSION START
+# Session ID : 20260511_202643
+# Log file   : C:\Code\ZOPBSP_Console\logs\estpos_subprocess\estpos_session_20260511_202643.log
+# Python     : C:\ProgramData\Anaconda3\envs\Console\python.exe
+# Started    : 2026-05-11 20:34:38.153361
+####################################################################################################
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203507_365980
+[Est_pos parent] Time: 2026-05-11 20:35:07.382451
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7ahhwkkd\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203507_365980 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203440_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203440.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203440.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203440.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203507_365980
+[Est_pos child] Time: 2026-05-11 20:35:07.814108
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203440_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203440.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203440.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203440.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183440, 53.83814481666666, 17.648810328333333]]
+GPS2: [[183440, 53.83814453666667, 17.64880568]]
+GPS3: [[183440, 53.83814453666667, 17.64880568]]
+ref_lat:  53.83814481666666
+ref_lon:  17.648810328333333
+aeqd: +proj=aeqd +lat_0=53.83814481666666 +lon_0=17.648810328333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448166667 lon_0=17.6488103283333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448166667 lon_0=17.6488103283333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203507_365980
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7ahhwkkd\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203507_365980
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203507_365980
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203516_595024
+[Est_pos parent] Time: 2026-05-11 20:35:16.597036
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_k4iunu04\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203516_595024 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203440_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203440_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203440.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203440.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203440.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203516_595024
+[Est_pos child] Time: 2026-05-11 20:35:16.885204
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203440_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203440_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203440_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203440.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203440.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203440.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183440, 53.83814481666666, 17.648810328333333]]
+GPS2: [[183440, 53.83814453666667, 17.64880568]]
+GPS3: [[183440, 53.838146728333335, 17.64880304]]
+ref_lat:  53.83814481666666
+ref_lon:  17.648810328333333
+aeqd: +proj=aeqd +lat_0=53.83814481666666 +lon_0=17.648810328333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448166667 lon_0=17.6488103283333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448166667 lon_0=17.6488103283333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203516_595024
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_k4iunu04\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203516_595024
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203516_595024
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203525_254821
+[Est_pos parent] Time: 2026-05-11 20:35:25.258663
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_sh6sqsm4\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203525_254821 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203500_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203500.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203500.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203500.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203525_254821
+[Est_pos child] Time: 2026-05-11 20:35:25.544172
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203500_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203500.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203500.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203500.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183500, 53.83814488833333, 17.648810360000002]]
+GPS2: [[183500, 53.83814452, 17.648805746666667]]
+GPS3: [[183500, 53.83814452, 17.648805746666667]]
+ref_lat:  53.83814488833333
+ref_lon:  17.648810360000002
+aeqd: +proj=aeqd +lat_0=53.83814488833333 +lon_0=17.648810360000002 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448883333 lon_0=17.64881036 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448883333 lon_0=17.64881036 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203525_254821
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_sh6sqsm4\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203525_254821
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203525_254821
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203529_474081
+[Est_pos parent] Time: 2026-05-11 20:35:29.476084
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_xzzwj1on\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203529_474081 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203500_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203500_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203500.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203500.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203500.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203529_474081
+[Est_pos child] Time: 2026-05-11 20:35:29.826064
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203500_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203500_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203500_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203500.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203500.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203500.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183500, 53.83814488833333, 17.648810360000002]]
+GPS2: [[183500, 53.83814452, 17.648805746666667]]
+GPS3: [[183500, 53.838124661666676, 17.648803895]]
+ref_lat:  53.83814488833333
+ref_lon:  17.648810360000002
+aeqd: +proj=aeqd +lat_0=53.83814488833333 +lon_0=17.648810360000002 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448883333 lon_0=17.64881036 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448883333 lon_0=17.64881036 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203529_474081
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_xzzwj1on\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203529_474081
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203529_474081
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203600_392677
+[Est_pos parent] Time: 2026-05-11 20:36:00.394678
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_njzi474f\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203600_392677 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203520_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203520.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203520.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203520.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203600_392677
+[Est_pos child] Time: 2026-05-11 20:36:00.675014
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203520_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203520.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203520.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203520.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183520, 53.838144803333336, 17.648810108333333]]
+GPS2: [[183520, 53.83814453833334, 17.648806096666664]]
+GPS3: [[183520, 53.83814453833334, 17.648806096666664]]
+ref_lat:  53.838144803333336
+ref_lon:  17.648810108333333
+aeqd: +proj=aeqd +lat_0=53.838144803333336 +lon_0=17.648810108333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448033333 lon_0=17.6488101083333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448033333 lon_0=17.6488101083333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203600_392677
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_njzi474f\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203600_392677
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203600_392677
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203604_719132
+[Est_pos parent] Time: 2026-05-11 20:36:04.721126
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_28ss44fo\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203604_719132 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203520_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203520_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203520.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203520.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203520.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203604_719132
+[Est_pos child] Time: 2026-05-11 20:36:05.098270
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203520_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203520_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203520_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203520.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203520.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203520.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183520, 53.838144803333336, 17.648810108333333]]
+GPS2: [[183520, 53.83814453833334, 17.648806096666664]]
+GPS3: [[183520, 53.838129265, 17.648788513333333]]
+ref_lat:  53.838144803333336
+ref_lon:  17.648810108333333
+aeqd: +proj=aeqd +lat_0=53.838144803333336 +lon_0=17.648810108333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448033333 lon_0=17.6488101083333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448033333 lon_0=17.6488101083333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203604_719132
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_28ss44fo\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203604_719132
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203604_719132
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203617_507937
+[Est_pos parent] Time: 2026-05-11 20:36:17.509924
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_m0v3rd7_\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203617_507937 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203540_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203540.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203540.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203540.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203617_507937
+[Est_pos child] Time: 2026-05-11 20:36:17.845177
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203540_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203540.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203540.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203540.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183540, 53.838144715, 17.648809963333335]]
+GPS2: [[183540, 53.83814451833334, 17.648805945]]
+GPS3: [[183540, 53.83814451833334, 17.648805945]]
+ref_lat:  53.838144715
+ref_lon:  17.648809963333335
+aeqd: +proj=aeqd +lat_0=53.838144715 +lon_0=17.648809963333335 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144715 lon_0=17.6488099633333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144715 lon_0=17.6488099633333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203617_507937
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_m0v3rd7_\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203617_507937
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203617_507937
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203622_050013
+[Est_pos parent] Time: 2026-05-11 20:36:22.052031
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_fg4fl8c1\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203622_050013 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203540_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203540_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203540.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203540.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203540.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203622_050013
+[Est_pos child] Time: 2026-05-11 20:36:22.353404
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203540_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203540_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203540_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203540.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203540.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203540.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183540, 53.838144715, 17.648809963333335]]
+GPS2: [[183540, 53.83814451833334, 17.648805945]]
+GPS3: [[183540, 53.83812567500001, 17.64878593]]
+ref_lat:  53.838144715
+ref_lon:  17.648809963333335
+aeqd: +proj=aeqd +lat_0=53.838144715 +lon_0=17.648809963333335 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144715 lon_0=17.6488099633333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144715 lon_0=17.6488099633333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203622_050013
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_fg4fl8c1\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203622_050013
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203622_050013
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203626_280422
+[Est_pos parent] Time: 2026-05-11 20:36:26.282892
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_m5fzp7j5\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203626_280422 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203600_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203600.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203600.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203600.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203626_280422
+[Est_pos child] Time: 2026-05-11 20:36:26.588480
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203600_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203600.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203600.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203600.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183600, 53.83814463833334, 17.648809746666664]]
+GPS2: [[183600, 53.83814453333333, 17.64880603]]
+GPS3: [[183600, 53.83814453333333, 17.64880603]]
+ref_lat:  53.83814463833334
+ref_lon:  17.648809746666664
+aeqd: +proj=aeqd +lat_0=53.83814463833334 +lon_0=17.648809746666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446383333 lon_0=17.6488097466667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446383333 lon_0=17.6488097466667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203626_280422
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_m5fzp7j5\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203626_280422
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203626_280422
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203630_532312
+[Est_pos parent] Time: 2026-05-11 20:36:30.535947
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_oez4zjcp\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203630_532312 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203600_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203600_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203600.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203600.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203600.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203630_532312
+[Est_pos child] Time: 2026-05-11 20:36:30.806520
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203600_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203600_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203600_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203600.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203600.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203600.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183600, 53.83814463833334, 17.648809746666664]]
+GPS2: [[183600, 53.83814453333333, 17.64880603]]
+GPS3: [[183600, 53.83813772166666, 17.648792785]]
+ref_lat:  53.83814463833334
+ref_lon:  17.648809746666664
+aeqd: +proj=aeqd +lat_0=53.83814463833334 +lon_0=17.648809746666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446383333 lon_0=17.6488097466667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446383333 lon_0=17.6488097466667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203630_532312
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_oez4zjcp\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203630_532312
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203630_532312
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203650_516846
+[Est_pos parent] Time: 2026-05-11 20:36:50.516846
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_rns64kph\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203650_516846 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203620_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203620.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203620.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203620.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203650_516846
+[Est_pos child] Time: 2026-05-11 20:36:50.889517
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203620_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203620.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203620.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203620.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183620, 53.838144656666664, 17.64881035]]
+GPS2: [[183620, 53.83814459666667, 17.648806118333333]]
+GPS3: [[183620, 53.83814459666667, 17.648806118333333]]
+ref_lat:  53.838144656666664
+ref_lon:  17.64881035
+aeqd: +proj=aeqd +lat_0=53.838144656666664 +lon_0=17.64881035 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446566667 lon_0=17.64881035 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446566667 lon_0=17.64881035 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203650_516846
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_rns64kph\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203650_516846
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203650_516846
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203654_815485
+[Est_pos parent] Time: 2026-05-11 20:36:54.817515
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_t76c0cxb\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203654_815485 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203620_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203620_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203620.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203620.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203620.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203654_815485
+[Est_pos child] Time: 2026-05-11 20:36:55.052291
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203620_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203620_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203620_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203620.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203620.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203620.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183620, 53.838144656666664, 17.64881035]]
+GPS2: [[183620, 53.83814459666667, 17.648806118333333]]
+GPS3: [[183620, 53.83815986, 17.648816056666664]]
+ref_lat:  53.838144656666664
+ref_lon:  17.64881035
+aeqd: +proj=aeqd +lat_0=53.838144656666664 +lon_0=17.64881035 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446566667 lon_0=17.64881035 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446566667 lon_0=17.64881035 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203654_815485
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_t76c0cxb\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203654_815485
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203654_815485
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203706_942503
+[Est_pos parent] Time: 2026-05-11 20:37:06.948567
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_wp4a1371\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203706_942503 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203640_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203640.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203640.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203640.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203706_942503
+[Est_pos child] Time: 2026-05-11 20:37:07.281577
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203640_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203640.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203640.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203640.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183640, 53.838144715, 17.64881013666667]]
+GPS2: [[183640, 53.83814443666667, 17.648805881666664]]
+GPS3: [[183640, 53.83814443666667, 17.648805881666664]]
+ref_lat:  53.838144715
+ref_lon:  17.64881013666667
+aeqd: +proj=aeqd +lat_0=53.838144715 +lon_0=17.64881013666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144715 lon_0=17.6488101366667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144715 lon_0=17.6488101366667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203706_942503
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_wp4a1371\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203706_942503
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203706_942503
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203711_254760
+[Est_pos parent] Time: 2026-05-11 20:37:11.256774
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_ergkdm1k\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203711_254760 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203640_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203640_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203640.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203640.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203640.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203711_254760
+[Est_pos child] Time: 2026-05-11 20:37:11.490937
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203640_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203640_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203640_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203640.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203640.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203640.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183640, 53.838144715, 17.64881013666667]]
+GPS2: [[183640, 53.83814443666667, 17.648805881666664]]
+GPS3: [[183640, 53.83813744833333, 17.64879284]]
+ref_lat:  53.838144715
+ref_lon:  17.64881013666667
+aeqd: +proj=aeqd +lat_0=53.838144715 +lon_0=17.64881013666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144715 lon_0=17.6488101366667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144715 lon_0=17.6488101366667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203711_254760
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_ergkdm1k\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203711_254760
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203711_254760
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203731_790639
+[Est_pos parent] Time: 2026-05-11 20:37:31.794675
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_d2dety3e\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203731_790639 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203700_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203700.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203700.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203700.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203731_790639
+[Est_pos child] Time: 2026-05-11 20:37:32.089285
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203700_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203700.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203700.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203700.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183700, 53.83814483, 17.648810509999997]]
+GPS2: [[183700, 53.83814397833333, 17.648805928333335]]
+GPS3: [[183700, 53.83814397833333, 17.648805928333335]]
+ref_lat:  53.83814483
+ref_lon:  17.648810509999997
+aeqd: +proj=aeqd +lat_0=53.83814483 +lon_0=17.648810509999997 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814483 lon_0=17.64881051 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814483 lon_0=17.64881051 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203731_790639
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_d2dety3e\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203731_790639
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203731_790639
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203736_108382
+[Est_pos parent] Time: 2026-05-11 20:37:36.110797
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos__58rsdjg\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203736_108382 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203700_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203700_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203700.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203700.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203700.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203736_108382
+[Est_pos child] Time: 2026-05-11 20:37:36.338005
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203700_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203700_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203700_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203700.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203700.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203700.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183700, 53.83814483, 17.648810509999997]]
+GPS2: [[183700, 53.83814397833333, 17.648805928333335]]
+GPS3: [[183700, 53.838143513333335, 17.648826798333335]]
+ref_lat:  53.83814483
+ref_lon:  17.648810509999997
+aeqd: +proj=aeqd +lat_0=53.83814483 +lon_0=17.648810509999997 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814483 lon_0=17.64881051 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814483 lon_0=17.64881051 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203736_108382
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos__58rsdjg\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203736_108382
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203736_108382
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203739_880981
+[Est_pos parent] Time: 2026-05-11 20:37:39.880981
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_wm60yaq_\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203739_880981 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203720_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203720.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203720.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203720.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203739_880981
+[Est_pos child] Time: 2026-05-11 20:37:40.139945
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203720_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203720.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203720.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203720.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183720, 53.838144765, 17.648810315]]
+GPS2: [[183720, 53.83814454, 17.648805560000003]]
+GPS3: [[183720, 53.83814454, 17.648805560000003]]
+ref_lat:  53.838144765
+ref_lon:  17.648810315
+aeqd: +proj=aeqd +lat_0=53.838144765 +lon_0=17.648810315 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144765 lon_0=17.648810315 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144765 lon_0=17.648810315 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203739_880981
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_wm60yaq_\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203739_880981
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203739_880981
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203743_899304
+[Est_pos parent] Time: 2026-05-11 20:37:43.903347
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_tcuf85zm\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203743_899304 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203720_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203720_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203720.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203720.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203720.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203743_899304
+[Est_pos child] Time: 2026-05-11 20:37:44.166325
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203720_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203720_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203720_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203720.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203720.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203720.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183720, 53.838144765, 17.648810315]]
+GPS2: [[183720, 53.83814454, 17.648805560000003]]
+GPS3: [[183720, 53.83815238333333, 17.648823208333333]]
+ref_lat:  53.838144765
+ref_lon:  17.648810315
+aeqd: +proj=aeqd +lat_0=53.838144765 +lon_0=17.648810315 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144765 lon_0=17.648810315 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144765 lon_0=17.648810315 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203743_899304
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_tcuf85zm\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203743_899304
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203743_899304
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203801_988762
+[Est_pos parent] Time: 2026-05-11 20:38:01.992568
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_mrhyij0z\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203801_988762 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203740_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203740.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203740.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203740.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203801_988762
+[Est_pos child] Time: 2026-05-11 20:38:02.409731
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203740_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203740.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203740.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203740.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183740, 53.83814486166666, 17.648810476666664]]
+GPS2: [[183740, 53.83814454666667, 17.648805693333333]]
+GPS3: [[183740, 53.83814454666667, 17.648805693333333]]
+ref_lat:  53.83814486166666
+ref_lon:  17.648810476666664
+aeqd: +proj=aeqd +lat_0=53.83814486166666 +lon_0=17.648810476666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448616667 lon_0=17.6488104766667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448616667 lon_0=17.6488104766667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203801_988762
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_mrhyij0z\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203801_988762
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203801_988762
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203806_136405
+[Est_pos parent] Time: 2026-05-11 20:38:06.140263
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_4vyzl4jx\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203806_136405 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203740_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203740_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203740.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203740.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203740.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203806_136405
+[Est_pos child] Time: 2026-05-11 20:38:06.374448
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203740_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203740_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203740_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203740.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203740.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203740.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183740, 53.83814486166666, 17.648810476666664]]
+GPS2: [[183740, 53.83814454666667, 17.648805693333333]]
+GPS3: [[183740, 53.838134746666675, 17.648808405]]
+ref_lat:  53.83814486166666
+ref_lon:  17.648810476666664
+aeqd: +proj=aeqd +lat_0=53.83814486166666 +lon_0=17.648810476666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381448616667 lon_0=17.6488104766667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381448616667 lon_0=17.6488104766667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203806_136405
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_4vyzl4jx\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203806_136405
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203806_136405
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203822_877097
+[Est_pos parent] Time: 2026-05-11 20:38:22.877097
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_t6n85jen\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203822_877097 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203800_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203800.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203800.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203800.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203822_877097
+[Est_pos child] Time: 2026-05-11 20:38:23.135084
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203800_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203800.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203800.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203800.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183800, 53.838144918333334, 17.648810273333332]]
+GPS2: [[183800, 53.83814436166667, 17.648805588333335]]
+GPS3: [[183800, 53.83814436166667, 17.648805588333335]]
+ref_lat:  53.838144918333334
+ref_lon:  17.648810273333332
+aeqd: +proj=aeqd +lat_0=53.838144918333334 +lon_0=17.648810273333332 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381449183333 lon_0=17.6488102733333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381449183333 lon_0=17.6488102733333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203822_877097
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_t6n85jen\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203822_877097
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203822_877097
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203827_174158
+[Est_pos parent] Time: 2026-05-11 20:38:27.176170
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_3p5u_vi0\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203827_174158 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203800_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203800_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203800.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203800.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203800.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203827_174158
+[Est_pos child] Time: 2026-05-11 20:38:27.442307
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203800_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203800_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203800_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203800.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203800.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203800.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183800, 53.838144918333334, 17.648810273333332]]
+GPS2: [[183800, 53.83814436166667, 17.648805588333335]]
+GPS3: [[183800, 53.83813830333334, 17.648812955]]
+ref_lat:  53.838144918333334
+ref_lon:  17.648810273333332
+aeqd: +proj=aeqd +lat_0=53.838144918333334 +lon_0=17.648810273333332 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381449183333 lon_0=17.6488102733333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381449183333 lon_0=17.6488102733333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203827_174158
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_3p5u_vi0\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203827_174158
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203827_174158
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203848_092671
+[Est_pos parent] Time: 2026-05-11 20:38:48.092671
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_92qrjf8y\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203848_092671 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203820_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203820.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203820.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203820.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203848_092671
+[Est_pos child] Time: 2026-05-11 20:38:48.353342
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203820_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203820.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203820.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203820.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183820, 53.838144825, 17.648810228333332]]
+GPS2: [[183820, 53.83814446166666, 17.648804615]]
+GPS3: [[183820, 53.83814446166666, 17.648804615]]
+ref_lat:  53.838144825
+ref_lon:  17.648810228333332
+aeqd: +proj=aeqd +lat_0=53.838144825 +lon_0=17.648810228333332 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144825 lon_0=17.6488102283333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144825 lon_0=17.6488102283333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203848_092671
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_92qrjf8y\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203848_092671
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203848_092671
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203852_284862
+[Est_pos parent] Time: 2026-05-11 20:38:52.286872
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_bgg5i3c3\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203852_284862 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203820_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203820_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203820.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203820.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203820.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203852_284862
+[Est_pos child] Time: 2026-05-11 20:38:52.503487
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203820_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203820_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203820_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203820.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203820.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203820.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183820, 53.838144825, 17.648810228333332]]
+GPS2: [[183820, 53.83814446166666, 17.648804615]]
+GPS3: [[183820, 53.83813504666667, 17.64880425]]
+ref_lat:  53.838144825
+ref_lon:  17.648810228333332
+aeqd: +proj=aeqd +lat_0=53.838144825 +lon_0=17.648810228333332 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144825 lon_0=17.6488102283333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144825 lon_0=17.6488102283333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203852_284862
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_bgg5i3c3\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203852_284862
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203852_284862
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203915_538454
+[Est_pos parent] Time: 2026-05-11 20:39:15.542495
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_e6p2giy2\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203915_538454 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203840_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203840.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203840.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203840.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203915_538454
+[Est_pos child] Time: 2026-05-11 20:39:15.821707
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203840_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203840.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203840.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203840.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183840, 53.83814468333333, 17.64881003]]
+GPS2: [[183840, 53.83814464, 17.648805601666666]]
+GPS3: [[183840, 53.83814464, 17.648805601666666]]
+ref_lat:  53.83814468333333
+ref_lon:  17.64881003
+aeqd: +proj=aeqd +lat_0=53.83814468333333 +lon_0=17.64881003 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446833333 lon_0=17.64881003 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446833333 lon_0=17.64881003 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203915_538454
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_e6p2giy2\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203915_538454
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203915_538454
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203919_805537
+[Est_pos parent] Time: 2026-05-11 20:39:19.807531
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_p2xkbir3\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203919_805537 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203840_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203840_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203840.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203840.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203840.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203919_805537
+[Est_pos child] Time: 2026-05-11 20:39:20.108358
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203840_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203840_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203840_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203840.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203840.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203840.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183840, 53.83814468333333, 17.64881003]]
+GPS2: [[183840, 53.83814464, 17.648805601666666]]
+GPS3: [[183840, 53.838136783333326, 17.648804738333336]]
+ref_lat:  53.83814468333333
+ref_lon:  17.64881003
+aeqd: +proj=aeqd +lat_0=53.83814468333333 +lon_0=17.64881003 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446833333 lon_0=17.64881003 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446833333 lon_0=17.64881003 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203919_805537
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_p2xkbir3\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203919_805537
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203919_805537
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203930_997225
+[Est_pos parent] Time: 2026-05-11 20:39:30.999233
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_tgpb37j6\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203930_997225 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203900_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203900.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203900.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203900.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203930_997225
+[Est_pos child] Time: 2026-05-11 20:39:31.319659
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203900_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203900.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203900.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203900.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183900, 53.83814469833332, 17.64881012]]
+GPS2: [[183900, 53.838144584999995, 17.64880563666667]]
+GPS3: [[183900, 53.838144584999995, 17.64880563666667]]
+ref_lat:  53.83814469833332
+ref_lon:  17.64881012
+aeqd: +proj=aeqd +lat_0=53.83814469833332 +lon_0=17.64881012 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446983333 lon_0=17.64881012 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446983333 lon_0=17.64881012 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203930_997225
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_tgpb37j6\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203930_997225
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203930_997225
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_203935_160248
+[Est_pos parent] Time: 2026-05-11 20:39:35.162272
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_v1334mn9\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_203935_160248 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203900_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203900_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203900.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203900.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203900.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_203935_160248
+[Est_pos child] Time: 2026-05-11 20:39:35.479193
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203900_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203900_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203900_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203900.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203900.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203900.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183900, 53.83814469833332, 17.64881012]]
+GPS2: [[183900, 53.838144584999995, 17.64880563666667]]
+GPS3: [[183900, 53.83813651833334, 17.648808738333333]]
+ref_lat:  53.83814469833332
+ref_lon:  17.64881012
+aeqd: +proj=aeqd +lat_0=53.83814469833332 +lon_0=17.64881012 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446983333 lon_0=17.64881012 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446983333 lon_0=17.64881012 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_203935_160248
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_v1334mn9\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_203935_160248
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_203935_160248
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204025_974485
+[Est_pos parent] Time: 2026-05-11 20:40:25.978268
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7trjnsb9\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204025_974485 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203920_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203920.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203920.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203920.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204025_974485
+[Est_pos child] Time: 2026-05-11 20:40:26.260957
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203920_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203920.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203920.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203920.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183920, 53.83814475166667, 17.648810031666667]]
+GPS2: [[183920, 53.838144513333326, 17.64880584666667]]
+GPS3: [[183920, 53.838144513333326, 17.64880584666667]]
+ref_lat:  53.83814475166667
+ref_lon:  17.648810031666667
+aeqd: +proj=aeqd +lat_0=53.83814475166667 +lon_0=17.648810031666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447516667 lon_0=17.6488100316667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447516667 lon_0=17.6488100316667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204025_974485
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7trjnsb9\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204025_974485
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204025_974485
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204030_195357
+[Est_pos parent] Time: 2026-05-11 20:40:30.197372
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_xnos8knm\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204030_195357 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203920_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203920_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203920.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203920.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203920.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204030_195357
+[Est_pos child] Time: 2026-05-11 20:40:30.539318
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203920_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203920_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203920_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203920.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203920.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203920.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183920, 53.83814475166667, 17.648810031666667]]
+GPS2: [[183920, 53.838144513333326, 17.64880584666667]]
+GPS3: []
+ref_lat:  53.83814475166667
+ref_lon:  17.648810031666667
+aeqd: +proj=aeqd +lat_0=53.83814475166667 +lon_0=17.648810031666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447516667 lon_0=17.6488100316667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447516667 lon_0=17.6488100316667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204030_195357
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204030_195357
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204030_195357
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204053_176146
+[Est_pos parent] Time: 2026-05-11 20:40:53.178172
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_870adpfu\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204053_176146 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204000_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204000.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204000.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204000.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204053_176146
+[Est_pos child] Time: 2026-05-11 20:40:53.472447
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204000_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204000.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204000.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204000.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184000, 53.83814477833333, 17.648809981666666]]
+GPS2: [[184000, 53.838151124999996, 17.648773455]]
+GPS3: [[184000, 53.838151124999996, 17.648773455]]
+ref_lat:  53.83814477833333
+ref_lon:  17.648809981666666
+aeqd: +proj=aeqd +lat_0=53.83814477833333 +lon_0=17.648809981666666 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447783333 lon_0=17.6488099816667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447783333 lon_0=17.6488099816667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204053_176146
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_870adpfu\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204053_176146
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204053_176146
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204057_524940
+[Est_pos parent] Time: 2026-05-11 20:40:57.526957
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7p7sbw2o\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204057_524940 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204000_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204000_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204000.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204000.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204000.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204057_524940
+[Est_pos child] Time: 2026-05-11 20:40:57.788778
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204000_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204000_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204000_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204000.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204000.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204000.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184000, 53.83814477833333, 17.648809981666666]]
+GPS2: [[184000, 53.838151124999996, 17.648773455]]
+GPS3: []
+ref_lat:  53.83814477833333
+ref_lon:  17.648809981666666
+aeqd: +proj=aeqd +lat_0=53.83814477833333 +lon_0=17.648809981666666 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447783333 lon_0=17.6488099816667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447783333 lon_0=17.6488099816667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204057_524940
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204057_524940
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204057_524940
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204101_560699
+[Est_pos parent] Time: 2026-05-11 20:41:01.560699
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_pr2_0gl5\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204101_560699 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203940_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203940.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203940.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203940.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204101_560699
+[Est_pos child] Time: 2026-05-11 20:41:01.808243
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203940_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203940.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203940.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203940.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183940, 53.83814494, 17.648809983333333]]
+GPS2: [[183940, 53.838144295, 17.648805478333333]]
+GPS3: [[183940, 53.838144295, 17.648805478333333]]
+ref_lat:  53.83814494
+ref_lon:  17.648809983333333
+aeqd: +proj=aeqd +lat_0=53.83814494 +lon_0=17.648809983333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814494 lon_0=17.6488099833333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814494 lon_0=17.6488099833333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204101_560699
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_pr2_0gl5\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204101_560699
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204101_560699
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204105_466566
+[Est_pos parent] Time: 2026-05-11 20:41:05.468578
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_tncgg0ix\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204105_466566 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203940_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203940_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203940.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203940.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203940.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204105_466566
+[Est_pos child] Time: 2026-05-11 20:41:05.807635
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_203940_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_203940_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_203940_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_203940.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_203940.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_203940.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[183940, 53.83814494, 17.648809983333333]]
+GPS2: [[183940, 53.838144295, 17.648805478333333]]
+GPS3: []
+ref_lat:  53.83814494
+ref_lon:  17.648809983333333
+aeqd: +proj=aeqd +lat_0=53.83814494 +lon_0=17.648809983333333 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814494 lon_0=17.6488099833333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814494 lon_0=17.6488099833333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204105_466566
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204105_466566
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204105_466566
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204130_289277
+[Est_pos parent] Time: 2026-05-11 20:41:30.291295
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_c_sk54ny\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204130_289277 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204020_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204020.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204020.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204020.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204130_289277
+[Est_pos child] Time: 2026-05-11 20:41:30.572228
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204020_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204020.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204020.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204020.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184020, 53.83814475833333, 17.648809901666667]]
+GPS2: [[184020, 53.838154575, 17.648779756666666]]
+GPS3: [[184020, 53.838154575, 17.648779756666666]]
+ref_lat:  53.83814475833333
+ref_lon:  17.648809901666667
+aeqd: +proj=aeqd +lat_0=53.83814475833333 +lon_0=17.648809901666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447583333 lon_0=17.6488099016667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447583333 lon_0=17.6488099016667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204130_289277
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_c_sk54ny\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204130_289277
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204130_289277
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204134_466071
+[Est_pos parent] Time: 2026-05-11 20:41:34.468081
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7aduivgr\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204134_466071 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204020_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204020_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204020.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204020.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204020.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204134_466071
+[Est_pos child] Time: 2026-05-11 20:41:34.787291
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204020_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204020_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204020_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204020.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204020.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204020.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184020, 53.83814475833333, 17.648809901666667]]
+GPS2: [[184020, 53.838154575, 17.648779756666666]]
+GPS3: []
+ref_lat:  53.83814475833333
+ref_lon:  17.648809901666667
+aeqd: +proj=aeqd +lat_0=53.83814475833333 +lon_0=17.648809901666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447583333 lon_0=17.6488099016667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447583333 lon_0=17.6488099016667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204134_466071
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204134_466071
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204134_466071
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204156_402294
+[Est_pos parent] Time: 2026-05-11 20:41:56.406335
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_5f4319h4\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204156_402294 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204100_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204100.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204100.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204100.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204156_402294
+[Est_pos child] Time: 2026-05-11 20:41:56.688142
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204100_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204100.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204100.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204100.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184100, 53.83814468333333, 17.648809861666667]]
+GPS2: [[184100, 53.838165986666674, 17.64883380666667]]
+GPS3: [[184100, 53.838165986666674, 17.64883380666667]]
+ref_lat:  53.83814468333333
+ref_lon:  17.648809861666667
+aeqd: +proj=aeqd +lat_0=53.83814468333333 +lon_0=17.648809861666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446833333 lon_0=17.6488098616667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446833333 lon_0=17.6488098616667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204156_402294
+[Est_pos child] Result length: 1
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_5f4319h4\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204156_402294
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204156_402294
+[Est_pos parent] Result length: 1
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204200_518815
+[Est_pos parent] Time: 2026-05-11 20:42:00.523989
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_1ro8vnxu\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204200_518815 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204100_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204100_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204100.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204100.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204100.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204200_518815
+[Est_pos child] Time: 2026-05-11 20:42:00.816267
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204100_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204100_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204100_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204100.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204100.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204100.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184100, 53.83814468333333, 17.648809861666667]]
+GPS2: [[184100, 53.838165986666674, 17.64883380666667]]
+GPS3: []
+ref_lat:  53.83814468333333
+ref_lon:  17.648809861666667
+aeqd: +proj=aeqd +lat_0=53.83814468333333 +lon_0=17.648809861666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381446833333 lon_0=17.6488098616667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381446833333 lon_0=17.6488098616667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204200_518815
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204200_518815
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204200_518815
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204204_429639
+[Est_pos parent] Time: 2026-05-11 20:42:04.429639
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_s1w7jyw6\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204204_429639 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204040_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204040.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204040.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204040.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204204_429639
+[Est_pos child] Time: 2026-05-11 20:42:04.678827
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204040_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204040.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204040.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204040.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184040, 53.83814473, 17.64881002166667]]
+GPS2: [[184040, 53.838159686666664, 17.648808975]]
+GPS3: [[184040, 53.838159686666664, 17.648808975]]
+ref_lat:  53.83814473
+ref_lon:  17.64881002166667
+aeqd: +proj=aeqd +lat_0=53.83814473 +lon_0=17.64881002166667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814473 lon_0=17.6488100216667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814473 lon_0=17.6488100216667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204204_429639
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_s1w7jyw6\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204204_429639
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204204_429639
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204208_326352
+[Est_pos parent] Time: 2026-05-11 20:42:08.328362
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_wlktwe05\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204208_326352 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204040_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204040_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204040.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204040.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204040.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204208_326352
+[Est_pos child] Time: 2026-05-11 20:42:08.648767
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204040_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204040_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204040_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204040.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204040.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204040.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184040, 53.83814473, 17.64881002166667]]
+GPS2: [[184040, 53.838159686666664, 17.648808975]]
+GPS3: []
+ref_lat:  53.83814473
+ref_lon:  17.64881002166667
+aeqd: +proj=aeqd +lat_0=53.83814473 +lon_0=17.64881002166667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.83814473 lon_0=17.6488100216667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.83814473 lon_0=17.6488100216667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204208_326352
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204208_326352
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204208_326352
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204236_218281
+[Est_pos parent] Time: 2026-05-11 20:42:36.218281
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_1oej_7cn\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204236_218281 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204120_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204120.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204120.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204120.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204236_218281
+[Est_pos child] Time: 2026-05-11 20:42:36.511202
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204120_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204120.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204120.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204120.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184120, 53.83814472666666, 17.648809826666664]]
+GPS2: [[184120, 53.83814143833333, 17.648803076666663]]
+GPS3: [[184120, 53.83814143833333, 17.648803076666663]]
+ref_lat:  53.83814472666666
+ref_lon:  17.648809826666664
+aeqd: +proj=aeqd +lat_0=53.83814472666666 +lon_0=17.648809826666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447266667 lon_0=17.6488098266667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447266667 lon_0=17.6488098266667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204236_218281
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_1oej_7cn\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204236_218281
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204236_218281
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204240_308419
+[Est_pos parent] Time: 2026-05-11 20:42:40.310442
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_72lrzpfv\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204240_308419 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204120_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204120_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204120.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204120.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204120.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204240_308419
+[Est_pos child] Time: 2026-05-11 20:42:40.584469
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204120_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204120_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204120_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204120.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204120.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204120.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184120, 53.83814472666666, 17.648809826666664]]
+GPS2: [[184120, 53.83814143833333, 17.648803076666663]]
+GPS3: []
+ref_lat:  53.83814472666666
+ref_lon:  17.648809826666664
+aeqd: +proj=aeqd +lat_0=53.83814472666666 +lon_0=17.648809826666664 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447266667 lon_0=17.6488098266667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447266667 lon_0=17.6488098266667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204240_308419
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204240_308419
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204240_308419
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204304_075184
+[Est_pos parent] Time: 2026-05-11 20:43:04.077205
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_vnybluqt\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204304_075184 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204140_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204140.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204140.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204140.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204304_075184
+[Est_pos child] Time: 2026-05-11 20:43:04.372268
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204140_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204140.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204140.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204140.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184140, 53.83814473666666, 17.648809863333334]]
+GPS2: [[184140, 53.83814354333334, 17.648807678333334]]
+GPS3: [[184140, 53.83814354333334, 17.648807678333334]]
+ref_lat:  53.83814473666666
+ref_lon:  17.648809863333334
+aeqd: +proj=aeqd +lat_0=53.83814473666666 +lon_0=17.648809863333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447366667 lon_0=17.6488098633333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447366667 lon_0=17.6488098633333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204304_075184
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_vnybluqt\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204304_075184
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204304_075184
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204308_294971
+[Est_pos parent] Time: 2026-05-11 20:43:08.295487
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_odpx3tse\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204308_294971 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204140_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204140_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204140.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204140.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204140.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204308_294971
+[Est_pos child] Time: 2026-05-11 20:43:08.527560
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204140_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204140_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204140_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204140.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204140.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204140.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184140, 53.83814473666666, 17.648809863333334]]
+GPS2: [[184140, 53.83814354333334, 17.648807678333334]]
+GPS3: []
+ref_lat:  53.83814473666666
+ref_lon:  17.648809863333334
+aeqd: +proj=aeqd +lat_0=53.83814473666666 +lon_0=17.648809863333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447366667 lon_0=17.6488098633333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447366667 lon_0=17.6488098633333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204308_294971
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204308_294971
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204308_294971
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204312_070094
+[Est_pos parent] Time: 2026-05-11 20:43:12.071111
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_xb3uuqcc\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204312_070094 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204200_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204200.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204200.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204200.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204312_070094
+[Est_pos child] Time: 2026-05-11 20:43:12.319597
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204200_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204200.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204200.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204200.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184200, 53.83814475833333, 17.648809733333334]]
+GPS2: [[184200, 53.83814344333334, 17.64880768833333]]
+GPS3: [[184200, 53.83814344333334, 17.64880768833333]]
+ref_lat:  53.83814475833333
+ref_lon:  17.648809733333334
+aeqd: +proj=aeqd +lat_0=53.83814475833333 +lon_0=17.648809733333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447583333 lon_0=17.6488097333333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447583333 lon_0=17.6488097333333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204312_070094
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_xb3uuqcc\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204312_070094
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204312_070094
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204316_096377
+[Est_pos parent] Time: 2026-05-11 20:43:16.098386
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_c193rt2r\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204316_096377 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204200_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204200_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204200.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204200.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204200.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204316_096377
+[Est_pos child] Time: 2026-05-11 20:43:16.346188
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204200_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204200_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204200_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204200.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204200.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204200.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184200, 53.83814475833333, 17.648809733333334]]
+GPS2: [[184200, 53.83814344333334, 17.64880768833333]]
+GPS3: []
+ref_lat:  53.83814475833333
+ref_lon:  17.648809733333334
+aeqd: +proj=aeqd +lat_0=53.83814475833333 +lon_0=17.648809733333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447583333 lon_0=17.6488097333333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447583333 lon_0=17.6488097333333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204316_096377
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204316_096377
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204316_096377
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204330_784340
+[Est_pos parent] Time: 2026-05-11 20:43:30.784340
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_kgg2in9q\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204330_784340 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204220_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204220.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204220.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204220.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204330_784340
+[Est_pos child] Time: 2026-05-11 20:43:31.166873
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204220_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204220.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204220.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204220.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184220, 53.838144713333335, 17.648809518333334]]
+GPS2: [[184220, 53.83814360166666, 17.648807606666665]]
+GPS3: [[184220, 53.83814360166666, 17.648807606666665]]
+ref_lat:  53.838144713333335
+ref_lon:  17.648809518333334
+aeqd: +proj=aeqd +lat_0=53.838144713333335 +lon_0=17.648809518333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447133333 lon_0=17.6488095183333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447133333 lon_0=17.6488095183333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204330_784340
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_kgg2in9q\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204330_784340
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204330_784340
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204335_625622
+[Est_pos parent] Time: 2026-05-11 20:43:35.631947
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_2td056em\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204335_625622 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204220_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204220_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204220.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204220.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204220.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204335_625622
+[Est_pos child] Time: 2026-05-11 20:43:35.902911
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204220_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204220_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204220_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204220.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204220.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204220.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184220, 53.838144713333335, 17.648809518333334]]
+GPS2: [[184220, 53.83814360166666, 17.648807606666665]]
+GPS3: []
+ref_lat:  53.838144713333335
+ref_lon:  17.648809518333334
+aeqd: +proj=aeqd +lat_0=53.838144713333335 +lon_0=17.648809518333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447133333 lon_0=17.6488095183333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447133333 lon_0=17.6488095183333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204335_625622
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204335_625622
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204335_625622
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204342_943669
+[Est_pos parent] Time: 2026-05-11 20:43:42.945696
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_hplb4lqq\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204342_943669 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204300_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204300.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204300.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204300.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204342_943669
+[Est_pos child] Time: 2026-05-11 20:43:43.198510
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204300_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204300.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204300.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204300.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184300, 53.838144718333325, 17.648809736666667]]
+GPS2: [[184300, 53.83814379333333, 17.648807383333335]]
+GPS3: [[184300, 53.83814379333333, 17.648807383333335]]
+ref_lat:  53.838144718333325
+ref_lon:  17.648809736666667
+aeqd: +proj=aeqd +lat_0=53.838144718333325 +lon_0=17.648809736666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447183333 lon_0=17.6488097366667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447183333 lon_0=17.6488097366667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204342_943669
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_hplb4lqq\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204342_943669
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204342_943669
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204346_989356
+[Est_pos parent] Time: 2026-05-11 20:43:46.991380
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_7j01wte9\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204346_989356 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204300_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204300_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204300.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204300.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204300.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204346_989356
+[Est_pos child] Time: 2026-05-11 20:43:47.309594
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204300_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204300_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204300_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204300.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204300.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204300.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184300, 53.838144718333325, 17.648809736666667]]
+GPS2: [[184300, 53.83814379333333, 17.648807383333335]]
+GPS3: []
+ref_lat:  53.838144718333325
+ref_lon:  17.648809736666667
+aeqd: +proj=aeqd +lat_0=53.838144718333325 +lon_0=17.648809736666667 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.8381447183333 lon_0=17.6488097366667 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.8381447183333 lon_0=17.6488097366667 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204346_989356
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204346_989356
+[Est_pos parent] Return code: 1
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] PYTHON FAILURE IN CHILD: 20260511_204346_989356
+[Est_pos parent] Error: IndexError('list index out of range')
+[Est_pos parent] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204351_061900
+[Est_pos parent] Time: 2026-05-11 20:43:51.063665
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_b7yo_kzh\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204351_061900 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204240_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204240.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204240.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204240.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204351_061900
+[Est_pos child] Time: 2026-05-11 20:43:51.314584
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204240_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204240.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204240.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204240.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184240, 53.838144765, 17.648809738333334]]
+GPS2: [[184240, 53.83814379166667, 17.648807421666667]]
+GPS3: [[184240, 53.83814379166667, 17.648807421666667]]
+ref_lat:  53.838144765
+ref_lon:  17.648809738333334
+aeqd: +proj=aeqd +lat_0=53.838144765 +lon_0=17.648809738333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144765 lon_0=17.6488097383333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144765 lon_0=17.6488097383333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+after H_coord
+after tdoa_estimate_mode_6
+after filter_est_track_by_radius
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN OK: 20260511_204351_061900
+[Est_pos child] Result length: 0
+[Est_pos child] Output JSON: C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_b7yo_kzh\estpos_result.json
+==========================================================================================
+
+[Est_pos parent] Run finished: 20260511_204351_061900
+[Est_pos parent] Return code: 0
+[Est_pos parent] JSON exists: True
+
+[Est_pos parent] RUN OK: 20260511_204351_061900
+[Est_pos parent] Result length: 0
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+[Est_pos parent] Starting run: 20260511_204355_000361
+[Est_pos parent] Time: 2026-05-11 20:43:55.000361
+[Est_pos parent] Command:
+  C:\ProgramData\Anaconda3\envs\Console\python.exe -u -m Est_pos.estimate_pos_runner --out C:\Users\Dell\AppData\Local\Temp\zopbsp_estpos_0ae7xr8z\estpos_result.json --session-log logs\estpos_subprocess\estpos_session_20260511_202643.log --run-id 20260511_204355_000361 C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204240_Hydro_6673.txt C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204240_Hydro_2624.txt C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204240.wav C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204240.wav C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204240.wav
+[Est_pos parent] Working directory:
+  C:\Code\ZOPBSP_Console
+----------------------------------------------------------------------------------------------------
+
+==========================================================================================
+[Est_pos child] RUN START: 20260511_204355_000361
+[Est_pos child] Time: 2026-05-11 20:43:55.352154
+[Est_pos child] Input files:
+  gps1: C:\Pi_loc\05_11_12\RPI1\gps\GPS_RPI1_20260511_204240_Hydro_6673.txt
+  gps2: C:\Pi_loc\05_11_12\RPI2\gps\GPS_RPI2_20260511_204240_Hydro_6675.txt
+  gps3: C:\Pi_loc\05_11_12\RPI3\gps\GPS_RPI3_20260511_204240_Hydro_2624.txt
+  wav1: C:\Pi_loc\05_11_12\RPI1\streaming\RBW6673_20260511_204240.wav
+  wav2: C:\Pi_loc\05_11_12\RPI2\streaming\RBW6675_20260511_204240.wav
+  wav3: C:\Pi_loc\05_11_12\RPI3\streaming\SAW2624_20260511_204240.wav
+------------------------------------------------------------------------------------------
+after import data
+C:\ProgramData\Anaconda3\envs\Console\Lib\site-packages\scipy\interpolate\_interpolate.py:497: RuntimeWarning: invalid value encountered in divide
+  slope = (y_hi - y_lo) / (x_hi - x_lo)[:, None]
+after tdoa
+GPS1: [[184240, 53.838144765, 17.648809738333334]]
+GPS2: [[184240, 53.83814379166667, 17.648807421666667]]
+GPS3: []
+ref_lat:  53.838144765
+ref_lon:  17.648809738333334
+aeqd: +proj=aeqd +lat_0=53.838144765 +lon_0=17.648809738333334 +datum=WGS84 +units=m +no_defs +type=crs
+fwd: proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=aeqd lat_0=53.838144765 lon_0=17.6488097383333 x_0=0 y_0=0 ellps=WGS84
+inv: proj=pipeline step inv proj=aeqd lat_0=53.838144765 lon_0=17.6488097383333 x_0=0 y_0=0 ellps=WGS84 step proj=unitconvert xy_in=rad xy_out=deg
+after make_local_transformer
+------------------------------------------------------------------------------------------
+[Est_pos child] RUN FAILED: 20260511_204355_000361
+[Est_pos child] Error: IndexError('list index out of range')
+[Est_pos child] Traceback:
+Traceback (most recent call last):
+  File "C:\Code\ZOPBSP_Console\Est_pos\estimate_pos_runner.py", line 120, in main
+    result = estimate_pos(
+             ^^^^^^^^^^^^^
+  File "C:\Code\ZOPBSP_Console\Est_pos\Estimator_pos.py", line 156, in estimate_pos
+    [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
+                     ~~~~^^^
+IndexError: list index out of range
+
+==========================================================================================
