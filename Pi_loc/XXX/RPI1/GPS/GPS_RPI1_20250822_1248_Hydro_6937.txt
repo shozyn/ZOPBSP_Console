@@ -1,8 +1,0 @@
-104836.00, 5432.6645656, N, 01832.7637005, E, Satellites: 15, lon_err: 0.639, lat_err: 2.544, alt_err: 1.793
-104837.00, 5432.6645970, N, 01832.7638079, E, Satellites: 15, lon_err: 0.636, lat_err: 2.742, alt_err: 1.782
-104838.00, 5432.6646053, N, 01832.7637379, E, Satellites: 15, lon_err: 0.640, lat_err: 3.004, alt_err: 1.793
-104839.00, 5432.6646105, N, 01832.7636749, E, Satellites: 15, lon_err: 0.658, lat_err: 2.732, alt_err: 1.770
-104840.00, 5432.6646493, N, 01832.7637544, E, Satellites: 15, lon_err: 0.645, lat_err: 2.507, alt_err: 1.712
-104841.00, 5432.6646706, N, 01832.7637500, E, Satellites: 15, lon_err: 0.651, lat_err: 2.549, alt_err: 1.741
-104842.00, 5432.6646677, N, 01832.7636803, E, Satellites: 15, lon_err: 0.647, lat_err: 3.013, alt_err: 1.812
-104843.00, 5432.6646995, N, 01832.7637653, E, Satellites: 15, lon_err: 0.625, lat_err: 2.637, alt_err: 1.785

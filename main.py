@@ -71,32 +71,53 @@ def main():
         receiver_models.append(rx_model)
         receiver_views.append(rx_view)
         receiver_controllers.append(rx_controller)
+
+
     # TARGET
     target_models = []
     target_views = []
     target_controllers = []
 
-    
-    for target_cfg in targets_cfg:      
-        target_id = target_cfg.get("id")
-        parameters = target_cfg.get("parameters", {}).copy()
-        target_ip = None
-        target_port = None
-        target_ip = parameters.get("IP").get("value")
-        target_port = parameters.get("Port").get("value")
+    for target_cfg in targets_cfg:
+        target_id = target_cfg.get("id", "TargetUnknown")
+        parameters = target_cfg.get("parameters", {}) or {}
 
-        # Model holds state (actual, predicted), created with IP/port
+        ip_meta = parameters.get("IP") or {}
+        port_meta = parameters.get("Port") or {}
+
+        target_ip = ip_meta.get("value")
+        target_port_raw = port_meta.get("value")
+
+        if not target_ip:
+            # logger.warning(
+            #     "[Target] Missing IP address for %s. Target skipped.",
+            #     target_id,
+            # )
+            continue
+
+        try:
+            target_port = int(target_port_raw)
+        except (TypeError, ValueError):
+            # logger.warning(
+            #     "[Target] Invalid UDP port for %s: %r. Target skipped.",
+            #     target_id,
+            #     target_port_raw,
+            # )
+            continue
+
         target_model = TargetModel(target_id, target_ip, target_port)
         target_view = TargetView(map_view.m_MapCanvas)
-        target_controller = TargetController(target_model, target_view,menu_bar)
+        target_controller = TargetController(
+            target_model,
+            target_view,
+            menu_bar,
+        )
 
         target_models.append(target_model)
         target_views.append(target_view)
         target_controllers.append(target_controller)
 
-
     # OBJECT
-    # OBJECT1
     object_model = ObjectModel("Object1")
     object_view = ObjectView(map_view.m_MapCanvas)
     object_controller = ObjectController(object_model, object_view, menu_bar)
@@ -131,26 +152,8 @@ def main():
     )
 
     receiver_ids = []
-    #receiver_ips = []
-    ##for rc in receiver_controllers:
-        #receiver_ids.append(rc.receiver_id)
-        #receiver_ips.append(rc.model.sftp_cfg["host"])
-        
-    ##receiver_ips = tuple(receiver_ips)
-    ##print(f"receiver_ips: {receiver_ips}")
-
-    # CALCULATION
-    ## calc_model = CalculationModel(required_receivers=receiver_ips)
-    ## calc_worker = CalculationWorker()
-    ## calc_controller = CalculationController(calc_model, menu_bar=menu_bar)
-    
-    ##receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
-    
     receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
     calc_model = CalculationModel(required_receivers=receiver_ids)
-
-    #calc_model = CalculationModel(required_receivers=receiver_ids) !!!
-    #calc_worker = CalculationWorker() !!!
     calc_controller = CalculationController(calc_model, menu_bar=menu_bar, dock_result=dock_result)
     
     main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
@@ -164,15 +167,9 @@ def main():
 
     map_controller.coordinates_changed.connect(main_window.on_coordinates_changed)
     main_window.show()
-
-
-    #exit_code = app.exec_()
     exit_code = qgs.exec()
-
     qgs.exitQgis()
     sys.exit(exit_code)
-
-
 
 if __name__ == "__main__":
     main()

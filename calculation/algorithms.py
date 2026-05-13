@@ -31,9 +31,6 @@ _ESTPOS_HEADER_WRITTEN = False
 def _append_estpos_session_log(text: str) -> None:
     """
     Append parent-process messages to the Est_pos session log.
-
-    The child process also writes to the same file. Parent writes are short and
-    occur before/after child execution.
     """
     with _ESTPOS_LOG_LOCK:
         with _ESTPOS_SESSION_LOG_PATH.open(
@@ -72,8 +69,6 @@ def _ensure_estpos_session_header() -> None:
 class AKA1AAlgorithm:
     """
     Single-channel classifier.
-
-    run(data, fs) -> dict
     """
 
     def run(self, data, fs):
@@ -106,10 +101,6 @@ class EstPosProcessFailed(EstPosError):
 class ESTPOSAlgorithm:
     """
     Safe wrapper around estimate_pos().
-
-    A new child process is created for every localisation job. If pyproj/PROJ,
-    QGIS DLLs, or Cython code crash, only the child process dies.
-    The calculation worker thread remains alive and can process the next job.
     """
 
     def __init__(self, timeout_s: float = 180.0):
@@ -132,14 +123,12 @@ class ESTPOSAlgorithm:
     ):
         run_id = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 
-        # JSON result can be temporary.
         # The diagnostic text goes to the persistent session log file.
         with tempfile.TemporaryDirectory(prefix="zopbsp_estpos_") as tmp_dir:
             tmp_dir = Path(tmp_dir)
             out_path = tmp_dir / "estpos_result.json"
 
             # algorithms.py is usually:
-            #   <project_root>/calculation/algorithms.py
             project_root = Path(__file__).resolve().parents[1]
 
             cmd = [

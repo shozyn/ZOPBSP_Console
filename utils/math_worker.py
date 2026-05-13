@@ -1,4 +1,3 @@
-# calculation/math_worker.py
 from __future__ import annotations
 
 import logging
@@ -12,9 +11,6 @@ from calculation.algorithms import (
     AKA1AAlgorithm, ESTPOSAlgorithm
 )
 
-
-#from Estymacja_Pozycji.Estymacja_Pozycji.tdoa_solver_31_03_2025 import position_estimation_TDOA_6
-
 from PyQt5.QtCore import QObject, QThread, QTimer, pyqtSignal, pyqtSlot
 
 from model.models import CalcJob
@@ -26,23 +22,64 @@ class CalculationWorker(QObject):
     job_finished = pyqtSignal(str, dict)
     job_failed   = pyqtSignal(str, str)
 
+    # NEW: emitted when the worker is ready for thread shutdown
+    finished = pyqtSignal()
+
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self._queue: Deque[CalcJob] = deque()
         self._busy = False
-        self._stopping = False 
+        self._stopping = False
+        self._finished_emitted = False
+
         self.algo_aka1a = AKA1AAlgorithm()
         self.algo_est_pos = ESTPOSAlgorithm()
+
+    def _emit_finished_once(self) -> None:
+        """
+        Emit finished only once.
+        This prevents duplicate thread.quit() calls and duplicate deleteLater()
+        scheduling during repeated Stop clicks.
+        """
+        if self._finished_emitted:
+            return
+
+        self._finished_emitted = True
+        logger.info("[CalculationWorker] finished emitted")
+        self.finished.emit()
+
+    @pyqtSlot()
+    def stop(self) -> None:
+        """
+        Stop the worker from its own Qt thread.
+        """
+        logger.info(
+            "[CalculationWorker] stop requested; busy=%s queue_size=%d",
+            self._busy,
+            len(self._queue),
+        )
+
+        self._stopping = True
+        self._queue.clear()
+
+        cancel = getattr(self.algo_est_pos, "cancel", None)
+        if callable(cancel):
+            try:
+                cancel()
+            except Exception:
+                logger.exception("[CalculationWorker] Est_pos cancel failed")
+
+        if not self._busy:
+            self._emit_finished_once()
 
     @pyqtSlot()
     def request_stop(self) -> None:
         """
-        Ask the worker to stop: no new drains will be scheduled after
-        the current job. You may also choose to clear the queue here.
+        Backward-compatible name.
+        It is safer to route this to stop(), but still call it only via
+        Qt queued connection.
         """
-        self._stopping = True
-        # Optional policy: drop pending jobs
-        # self._queue.clear()
+        self.stop()
 
     @pyqtSlot(object)
     def enqueue_job(self, job: CalcJob) -> None:
@@ -53,27 +90,50 @@ class CalculationWorker(QObject):
         was_idle = not self._busy and not self._queue
         self._queue.append(job)
 
+        logger.debug(
+            "[CalculationWorker] Job enqueued: %s; queue_size=%d",
+            job.job_id,
+            len(self._queue),
+        )
+
         if was_idle:
             QTimer.singleShot(0, self._get_job_from_queue)
 
     def _get_job_from_queue(self) -> None:
         if self._busy or not self._queue:
             return
+
+        if self._stopping:
+            logger.info("[CalculationWorker] Stop requested; no further jobs will be processed")
+            self._queue.clear()
+            self._emit_finished_once()
+            return
+
         job = self._queue.popleft()
         self._busy = True
+
         try:
             if self._stopping:
                 logger.info("[CalculationWorker] Stop requested; skipping job %s", job.job_id)
                 return
+
             self.job_started.emit(job.job_id)
             result = self._compute(job)
             self.job_finished.emit(job.job_id, result)
+
         except Exception as e:
             import traceback
             self.job_failed.emit(job.job_id, f"{e}\n{traceback.format_exc()}")
+
         finally:
             self._busy = False
-            if self._queue and not self._stopping:
+
+            if self._stopping:
+                self._queue.clear()
+                self._emit_finished_once()
+                return
+
+            if self._queue:
                 QTimer.singleShot(0, self._get_job_from_queue)
 
     def _compute(self, job):
@@ -108,9 +168,6 @@ class CalculationWorker(QObject):
             fs1, s1 = wav_to_si_cut(path1)
             fs2, s2 = wav_to_si_cut(path2)
 
-            # if fs1 != fs2:
-            #     raise ValueError(f"Sampling rate mismatch: {rid1}={rid2}, {fs1}={fs2}") #! rid1 and rid2
-
             aka1a_res1 = self.algo_aka1a.run(s1,fs1)
             aka1a_res2 = self.algo_aka1a.run(s2,fs2)
 
@@ -128,10 +185,7 @@ class CalculationWorker(QObject):
             fs2, s2 = wav_to_si_cut(path2)
             fs3, s3 = wav_to_si_cut(path3)
 
-            print("before est_pos_res")
-            est_pos_res = self.algo_est_pos.run(gps_rpis[rid1],gps_rpis[rid2],gps_rpis[rid2],path1,path2,path3)
-            print(f"est_pos_res: {est_pos_res}")
-
+            #est_pos_res = self.algo_est_pos.run(gps_rpis[rid1],gps_rpis[rid2],gps_rpis[rid2],path1,path2,path3)
             aka1a_res1 = self.algo_aka1a.run(s1,fs1)
             aka1a_res2 = self.algo_aka1a.run(s2,fs2)
             aka1a_res3 = self.algo_aka1a.run(s3,fs3)
@@ -180,7 +234,7 @@ class CalculationWorker(QObject):
                         "The worker thread will continue with the next job.",
                         job.job_id,
                     )
-
+            
             return {
                 "job_id": job.job_id,
                 "receivers": [rid1, rid2, rid3],
@@ -200,27 +254,32 @@ class CalculationWorker(QObject):
         self._queue.clear()
         
 def start_calculation_thread(worker: CalculationWorker) -> QThread:
-
     th = QThread()
+
     worker.moveToThread(th)
+
+    # Worker decides when it is safe to stop the thread.
+    worker.finished.connect(th.quit)
+
+    # Delete objects after the event loop has stopped.
     th.finished.connect(worker.deleteLater)
     th.finished.connect(th.deleteLater)
+
     th.start()
-    logger.info("[CalculationWorker] Thread started (id=%s)", int(th.currentThreadId()))
+
+    logger.info("[CalculationWorker] Thread started")
+
     return th
 
 def stop_calculation_thread(worker: CalculationWorker, thread: QThread, timeout_ms: int = 3000) -> bool:
     """
-    Attempt graceful stop. Returns True if the thread stopped within timeout.
-    If False, caller MUST keep references alive and retry / escalate.
-    """
-    try:
-        worker.request_stop()
-    except Exception:
-        pass
+    Deprecated compatibility wrapper.
 
-    thread.quit()
-    stopped = thread.wait(timeout_ms)  # blocks caller thread until finished or timeout :contentReference[oaicite:5]{index=5}
-    if not stopped:
-        logger.warning("[CalculationWorker] Thread did not stop within %d ms", timeout_ms)
-    return stopped
+    Do not directly call worker methods across threads.
+    The controller should now use QMetaObject.invokeMethod(worker, "stop", ...).
+    """
+    logger.warning(
+        "[CalculationWorker] stop_calculation_thread() is deprecated; "
+        "use queued worker.stop() instead."
+    )
+    return False

@@ -9,7 +9,7 @@ targets:
         value: 153.19.108.122
         readable: true 
       Port:
-        value: 7000
+        value: 7001
         readable: true   
 receivers:
   - id: RPI1

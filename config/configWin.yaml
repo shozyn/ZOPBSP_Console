@@ -9,7 +9,7 @@ targets:
         value: 153.19.108.122
         readable: true 
       Port:
-        value: 7000
+        value: 7001
         readable: true   
 receivers:
   - id: RPI1
@@ -93,8 +93,8 @@ receivers:
         readable: true
     sftp: 
       host: '127.0.0.1'
-      user:   'dell' # 'wme-kao-01\stann' 
-      password: '098' # 'klaudia2005' # 
+      user:   'dell' 
+      password: '098' 
       port: 22      
       keepalive_s: 30
       remote_dirs:
@@ -191,8 +191,8 @@ receivers:
         readable: true
     sftp: 
       host: '127.0.0.1' #host: '172.23.21.12'
-      user:   'dell' #'wme-kao-01\stann' # 
-      password: '098' # 'klaudia2005' # 
+      user:   'dell' 
+      password: '098' 
       port: 22      
       keepalive_s: 30
       remote_dirs:
@@ -289,8 +289,8 @@ receivers:
         readable: true
     sftp: 
       host: '127.0.0.1' #host: '172.23.21.12'
-      user:   'dell' #'wme-kao-01\stann' # 
-      password: '098' # 'klaudia2005' # 
+      user:   'dell' 
+      password: '098' 
       port: 22      
       keepalive_s: 30
       remote_dirs:

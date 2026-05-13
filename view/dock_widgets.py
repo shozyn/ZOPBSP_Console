@@ -215,17 +215,15 @@ def format_calculation_result(result: dict) -> str:
     # ==============================================================
     # Est_pos
     # ==============================================================
+    lines.append("")
+    lines.append("=== Est_pos ===")
     est_pos = result.get("Est_pos")
     if est_pos:
-        lines.append("")
-        lines.append("=== Est_pos ===")
         for positions in est_pos:
             lines.append(", ".join(str(x) for x in positions))
-
-    est_pos_error = result.get("Est_pos_error")
-    if est_pos_error:
-        lines.append("Error:")
-        lines.append(str(est_pos_error))
+            
+    else:
+        lines.append("Estimation position error")
 
     return "\n".join(lines)
 

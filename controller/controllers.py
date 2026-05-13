@@ -9,7 +9,7 @@ from view.parameter_dialog import ParameterDialog
 from PyQt5.QtCore import QObject, QThread, Qt, pyqtSignal, pyqtSlot
 from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem, QgsPointXY
 from utils.receiver_client_worker import ReceiverClientWorker  
-from utils.math_worker import CalculationWorker, start_calculation_thread, stop_calculation_thread
+from utils.math_worker import CalculationWorker, start_calculation_thread
 from model.models import (
     CalculationModel,
     FileMeta,
@@ -19,7 +19,6 @@ from model.models import (
 )
 from view.parameter_dialog import FolderNameDialog 
 from view.dock_widgets import DockResultWidget
-#from utils.server_comm_sftp import ServerCommSFTP
 from utils.sftp_worker import _SftpWorker
 import inspect
 import logging
@@ -39,12 +38,16 @@ def current_func_name() -> str:
     frame = inspect.currentframe()
     return frame.f_code.co_name if frame else "<unknown>"
 
-
 class TargetController(QObject):
+    """
+    Controller for one Target.
+    """
+
     stopRequested = pyqtSignal()
 
     def __init__(self, model, view, menu_bar, parent=None):
         super().__init__(parent)
+
         self.model = model
         self.view = view
         self.menu_bar = menu_bar
@@ -52,81 +55,220 @@ class TargetController(QObject):
         self.thread: QThread | None = None
         self.worker: ReceiverClientWorker | None = None
 
-        self.model.actual_position_updated.connect(self.view.display_actual_position)
-        self.menu_bar.command_triggered.connect(self.handle_command)
-
         self.connected = False
         self.tracking_enabled = False
         self.display_enabled = False
 
-    def handle_new_gps(self, lat, lon):
-        #print(f"[{self.__class__.__name__}] Slot activated: [{current_func_name()}]; {lat, lon}")
-        self.model.update_actual_position(lat, lon)
+        # Model -> Controller. The controller decides if/how to draw.
+        self.model.actual_position_updated.connect(self.on_actual_position_updated)
+        self.model.predicted_position_updated.connect(self.on_predicted_position_updated)
+        self.model.status_changed.connect(self.on_target_status_changed)
 
-        if self.display_enabled:
-            self.update_display()
-    
+        # Menu -> Controller.
+        self.menu_bar.command_triggered.connect(self.handle_command)
+
+    # ------------------------------------------------------------------
+    # Menu command handling
+    # ------------------------------------------------------------------
+
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
         if sender_id != self.model.target_id:
-            return   
+            return
+
         if command == "connect":
             self.connect_target()
+
         elif command == "disconnect":
             self.disconnect_target()
+
         elif command == "display":
             self.display_enabled = True
-            self.update_display()
+            self.view.show_latest()
+
         elif command == "hide":
             self.display_enabled = False
-            self.view.clear_track()
+            self.view.hide_target()
+
         elif command == "track":
             self.tracking_enabled = True
+            self.display_enabled = True
+            self.view.show_latest()
+
         elif command == "stop_tracking":
             self.tracking_enabled = False
+
         elif command == "clear_track":
             self.view.clear_track()
 
-    def update_display(self):
+    # ------------------------------------------------------------------
+    # Worker -> Model
+    # ------------------------------------------------------------------
+
+    @pyqtSlot(float, float, str)
+    def handle_new_gps(self, lat, lon, timestamp):
+        """
+        Receive a new GPS position from the UDP worker and store it in the model.
+        """
+        self.model.update_actual_position(lat, lon, timestamp)
+
+    @pyqtSlot(str)
+    def handle_worker_status(self, status: str):
+        """
+        Receive communication status from the UDP worker.
+        """
+        self.model.set_status(status)
+
+    @pyqtSlot(str)
+    def handle_worker_error(self, message: str):
+        """
+        Receive communication error from the UDP worker.
+        """
+        logger.error(
+            "[TargetController][%s] Worker error: %s",
+            self.model.target_id,
+            message,
+        )
+        self.model.set_status("ERROR")
+
+    # ------------------------------------------------------------------
+    # Model -> View
+    # ------------------------------------------------------------------
+
+    @pyqtSlot(QgsPointXY, str)
+    def on_actual_position_updated(self, point: QgsPointXY, timestamp: str):
+        """
+        Display and/or track the new target position.
+
+        The point is drawn only if display or tracking is enabled.
+        """
+        if not self.display_enabled and not self.tracking_enabled:
+            return
+
+        self.view.display_actual_position(
+            point,
+            timestamp,
+            add_to_track=self.tracking_enabled,
+        )
+
+    @pyqtSlot(QgsPointXY, str)
+    def on_predicted_position_updated(self, point: QgsPointXY, timestamp: str):
+        """
+        Display predicted target position if display mode is active.
+        """
         if not self.display_enabled:
             return
 
-        if self.model.actual_position:
-            self.view.display_actual_position(self.model.actual_position)
-    
+        self.view.display_predicted_position(point, timestamp)
+
+    @pyqtSlot(str)
+    def on_target_status_changed(self, status: str):
+        """
+        Currently logs target status. Later, this can also update the status
+        panel.
+        """
+        logger.info(
+            "[TargetController][%s] status=%s",
+            self.model.target_id,
+            status,
+        )
+
+    # ------------------------------------------------------------------
+    # Connection lifecycle
+    # ------------------------------------------------------------------
+
     def connect_target(self):
+        """
+        Start UDP polling in a worker thread.
+        """
         if self.connected:
+            logger.info(
+                "[TargetController][%s] Target already connected.",
+                self.model.target_id,
+            )
             return
 
         self.thread = QThread(self)
         self.worker = ReceiverClientWorker(self.model.ip, self.model.port)
+
         self.worker.moveToThread(self.thread)
-        if self.thread is None: #For Pylance
-            return
+
         self.thread.started.connect(self.worker.start)
-        self.stopRequested.connect(self.worker.stop, type=Qt.QueuedConnection)
-        self.worker.finished.connect(self.thread.quit)
+
+        self.stopRequested.connect(
+            self.worker.stop,
+            type=Qt.QueuedConnection,
+        )
+
         self.worker.new_gps.connect(self.handle_new_gps)
+        self.worker.status_changed.connect(self.handle_worker_status)
+        self.worker.error_occurred.connect(self.handle_worker_error)
+
+        self.worker.finished.connect(self.thread.quit)
 
         self.thread.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
+        self.thread.finished.connect(self._on_thread_finished)
+
         self.thread.start()
 
         self.connected = True
+        self.model.set_status("STARTING")
         self.menu_bar.set_target_connection_text(self.model.target_id, True)
 
+        logger.info(
+            "[TargetController][%s] UDP polling started for %s:%s",
+            self.model.target_id,
+            self.model.ip,
+            self.model.port,
+        )
+
     def disconnect_target(self):
+        """
+        Stop UDP polling safely.
+
+        If the thread does not stop in time, references are kept alive.
+        This avoids the dangerous situation where a QThread is destroyed while
+        still running.
+        """
         if not self.connected:
             return
-        
-        if self.thread is None:
+
+        if self.thread is None or self.worker is None:
+            self.connected = False
+            self.model.set_status("DISCONNECTED")
+            self.menu_bar.set_target_connection_text(self.model.target_id, False)
             return
-        self.stopRequested.emit()  # queued into worker thread
-        self.thread.wait(2000)       
+
+        self.model.set_status("STOPPING")
+        self.stopRequested.emit()
+
+        stopped = self.thread.wait(3000)
+
+        if not stopped:
+            logger.warning(
+                "[TargetController][%s] Worker thread did not stop within timeout.",
+                self.model.target_id,
+            )
+            self.model.set_status("ERROR")
+            return
+
+        logger.info(
+            "[TargetController][%s] UDP polling stopped.",
+            self.model.target_id,
+        )
+
+    @pyqtSlot()
+    def _on_thread_finished(self):
+        """
+        Called when QThread really finishes.
+        """
         self.connected = False
-        self.menu_bar.set_target_connection_text(self.model.target_id, False)
-        self.thread = None
         self.worker = None
+        self.thread = None
+
+        self.model.set_status("DISCONNECTED")
+        self.menu_bar.set_target_connection_text(self.model.target_id, False)
 
     def __del__(self):
         try:
@@ -172,8 +314,6 @@ class ReceiverController(QObject):
         """
         from utils.local_folder_reader import LocalFolderReader
 
-        # Optional safety: avoid mixing live downloads and offline replay
-        # If you prefer, remove this guard.
         if self.connected:
             self.disconnect_receiver()
             
@@ -198,17 +338,9 @@ class ReceiverController(QObject):
             self.view.show_warning("Local read", "No local_dirs configured for this receiver.")
             return
 
-        
-        # Keep reference so object is not garbage-collected mid-emission
         self.local_reader = LocalFolderReader(self.receiver_id, batch=100, parent=self)
-
-        # forward local-reader events exactly like the SFTP pipeline
-        #self.local_reader.files_arrived.connect(self.files_arrived.emit)
         self.local_reader.files_arrived.connect(self._on_worker_files_arrived)
-
-        # optional: route status to logs/UI
         self.local_reader.status.connect(lambda msg: logger.info(msg))
-
         # cleanup
         self.local_reader.finished.connect(self.local_reader.deleteLater)
         self.local_reader.finished.connect(lambda: setattr(self, "local_reader", None))
@@ -241,7 +373,7 @@ class ReceiverController(QObject):
     
     def _set_folder(self) -> str:
         base = PureWindowsPath(r"C:\Pi_loc") / ReceiverController._last_folder_token / str(self.receiver_id) / "streaming" 
-        # 4) Ensure the directory exists
+
         try:
             Path(str(base)).mkdir(parents=True, exist_ok=True)
         except Exception as e:
@@ -628,6 +760,7 @@ class CalculationController(QObject):
         self._calc_worker: Optional[CalculationWorker] = None
         self._calc_thread = None
         self._calc_running: bool = False
+        self._calc_stopping: bool = False
         self._job_t0: dict[str, float] = {}
         self.menu_bar = menu_bar
         self.menu_bar.command_triggered.connect(self.handle_command)
@@ -657,11 +790,16 @@ class CalculationController(QObject):
         worker.job_started.connect(self._on_calc_job_started)
         worker.job_finished.connect(self._on_calc_job_finished)
         worker.job_failed.connect(self._on_calc_job_failed)
+        
+        # NEW: cleanup only after the thread is really finished.
+        thread.finished.connect(self._on_calc_thread_finished)
 
         # Keep references
         self._calc_worker = worker
         self._calc_thread = thread
         self._calc_running = True
+        self._calc_stopping = False
+        
         logger.info("[CalculationController] Calculation started.")
         # Enable "Receiver X / Read files" while calculation is running.
         if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
@@ -674,50 +812,54 @@ class CalculationController(QObject):
     @pyqtSlot()
     def stop_calculation(self) -> None:
         """
-        Cooperatively stop and tear down the worker thread. Idempotent.
+        Request calculation shutdown.
+
+        The worker is stopped asynchronously in its own thread. The controller
+        releases references only after QThread.finished is emitted.
         """
         if not self._calc_running:
             logger.info("[CalculationController] Calculation is not running.")
+
             if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
                 self.menu_bar.set_receiver_read_files_enabled(False)
+
             return
 
-        assert self._calc_worker is not None and self._calc_thread is not None
+        if self._calc_stopping:
+            logger.info("[CalculationController] Calculation stop already requested.")
+            return
 
-        # Disconnect model→worker to avoid late deliveries during teardown
+        if self._calc_worker is None or self._calc_thread is None:
+            logger.warning("[CalculationController] Inconsistent calculation state during stop.")
+            self._calc_running = False
+            self._calc_stopping = False
+            return
+
+        self._calc_stopping = True
+
+        logger.info("[CalculationController] Calculation stop requested.")
+
+        # Do not accept new jobs during shutdown.
         try:
             self.model.job_ready.disconnect(self._calc_worker.enqueue_job)
         except Exception:
             pass
-        
-        try:
-            QMetaObject.invokeMethod(self._calc_worker, "clear_pending", Qt.QueuedConnection)
-        except Exception:
-            pass
-        
-        
-        # Stop gracefully
-        stopped = stop_calculation_thread(self._calc_worker, self._calc_thread, timeout_ms=3000)
 
-        if not stopped:
-            # IMPORTANT: keep references so PyQt/Qt do not destroy objects while thread is still running.
-            logger.warning("[CalculationController] Stop requested but thread still running; keeping references.")
-            return
-
-        # Safe to release references now (thread finished will deleteLater both worker and thread)
-        self._calc_worker = None
-        self._calc_thread = None
-        self._calc_running = False
-        logger.info("[CalculationController] Calculation stopped.")
-        # Disable "Receiver X / Read files" once calculation is stopped.
+        # Immediately disable local reading actions in the GUI.
         if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
             self.menu_bar.set_receiver_read_files_enabled(False)
-            
-            # This makes Stop→Start act like a "simulation reset".
-        try:
-            self.model.reset_processed(clear_file_meta=True)
-        except Exception:
-            pass
+
+        # IMPORTANT:
+        # Queue the stop call into the worker thread.
+        # Do not call self._calc_worker.stop() directly.
+        ok = QMetaObject.invokeMethod(
+            self._calc_worker,
+            "stop",
+            Qt.QueuedConnection,
+        )
+
+        if not ok:
+            logger.error("[CalculationController] Could not queue CalculationWorker.stop().")
 
 
 
@@ -737,7 +879,7 @@ class CalculationController(QObject):
         A calculation job is emitted only when all required receivers have
         both WAV and GPS files for the same timestamp key.
         """
-        if not self._calc_running:
+        if not self._calc_running or self._calc_stopping:
             return
 
         for f in files:
@@ -925,6 +1067,28 @@ class CalculationController(QObject):
         }
 
         self.object_position_ready.emit(lat, lon, timestamp)
+        
+    @pyqtSlot()
+    def _on_calc_thread_finished(self) -> None:
+        """
+        Final cleanup after the calculation thread has really stopped.
+
+        This slot runs after QThread.finished, so it is safe to release Python
+        references here.
+        """
+        logger.info("[CalculationController] Calculation thread finished.")
+
+        self._calc_worker = None
+        self._calc_thread = None
+        self._calc_running = False
+        self._calc_stopping = False
+
+        try:
+            self.model.reset_processed(clear_file_meta=True)
+        except Exception:
+            logger.exception("[CalculationController] Could not reset calculation model after stop.")
+
+        logger.info("[CalculationController] Calculation stopped.")
 
 
 class ObjectController(QObject):

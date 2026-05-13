@@ -102,8 +102,6 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
 
     GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs = import_data(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path)
 
-    print("after import data")
-
     # wczytanie danych:
     # pomiarowych (GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs)
     # do weryfikacji (GPS_OP) 
@@ -137,7 +135,6 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     tdoa13_1hz_m = tdoa(s1_raw, s3_raw)
     tdoa23_1hz_m = tdoa(s2_raw, s3_raw)
 
-    print("after tdoa")
     print(f"GPS1: {GPS1}")
     print(f"GPS2: {GPS2}")
     print(f"GPS3: {GPS3}")
@@ -147,7 +144,6 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     ref_lat = GPS1[0][1] 
     ref_lon = GPS1[0][2] 
     fwd,inv = make_local_transformer(ref_lat,ref_lon)   
-    print("after make_local_transformer") 
 
     # współrzędne hydrofonów
     H_coord=[
@@ -155,7 +151,7 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     [*fwd.transform(*GPS2[0][1:3]),-1], # lista x,y,z RPI2
     [*fwd.transform(*GPS3[0][1:3]),-1] # lista x,y,z RPI3
     ]
-    print("after H_coord")
+
     # Niepewności (metry)
     B = [1.0, 1.0, 1.0]
             
@@ -171,8 +167,7 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
         pos_est = inv.transform(*res_1hz['Pe'][0:2]) # Pe - position estomation 
         est_track.append([czas_gps1[0],*pos_est])
 
-    print("after tdoa_estimate_mode_6")
-    #print(f'{est_track=}')
+    print(f"pos_est: {pos_est}")
 
     # Weryfikacja dokładności estymacji pozycji poprzez porównanie do danych z GPS -> MAE (1Hz)
     # gps12_m = GPS_dist_Vincenty(GPS1, GPS2, GPS_OP)[:n_gps]
@@ -192,7 +187,7 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     if GPS1:
         est_track = filter_est_track_by_radius(est_track, GPS1[0][1], GPS1[0][2], radius_m=300.0)
 
-    print("after filter_est_track_by_radius")
+    print(f"est_track: {est_track}")
 
     return est_track
 

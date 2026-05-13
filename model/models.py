@@ -82,33 +82,104 @@ def parse_gps_ts_key(p: Path) -> Optional[str]:
         return None
     return parse_file_ts_key(p)
 
+# class TargetModel(QObject):
+#     """
+#     Model representing a single target (real and predicted positions).
+#     """
+#     actual_position_updated = pyqtSignal(QgsPointXY)
+#     predicted_position_updated = pyqtSignal(QgsPointXY)
+
+#     def __init__(self, target_id, ip, port, parent=None):
+#         super().__init__(parent)
+#         self.target_id = target_id
+#         self.ip = ip
+#         self.port = port
+#         self.actual_position = None
+#         self.predicted_position = None
+
+#         #self.actual_position_updated.connect(lambda p: print(f"Actual: {p}"))
+#         #target.predicted_position_updated.connect(lambda p: print(f"Predicted: {p}"))
+
+#     def update_actual_position(self, lat, lon):
+#         self.actual_position = QgsPointXY(lon, lat)
+#         #print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {lat, lon}")
+#         #self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
+#         self.actual_position_updated.emit(self.actual_position)
+
+#     def update_predicted_position(self, point: QgsPointXY):
+#         self.predicted_position = point
+#         self.predicted_position_updated.emit(self.predicted_position)
+
 class TargetModel(QObject):
     """
-    Model representing a single target (real and predicted positions).
+    Model representing one physical Target.
+
+    The model stores data only. It does not draw anything and it does not
+    communicate over the network.
     """
-    actual_position_updated = pyqtSignal(QgsPointXY)
-    predicted_position_updated = pyqtSignal(QgsPointXY)
+
+    actual_position_updated = pyqtSignal(QgsPointXY, str)
+    predicted_position_updated = pyqtSignal(QgsPointXY, str)
+    status_changed = pyqtSignal(str)
 
     def __init__(self, target_id, ip, port, parent=None):
         super().__init__(parent)
-        self.target_id = target_id
+
+        self.target_id = str(target_id)
         self.ip = ip
         self.port = port
-        self.actual_position = None
-        self.predicted_position = None
 
-        #self.actual_position_updated.connect(lambda p: print(f"Actual: {p}"))
-        #target.predicted_position_updated.connect(lambda p: print(f"Predicted: {p}"))
+        self.actual_position: QgsPointXY | None = None
+        self.predicted_position: QgsPointXY | None = None
 
-    def update_actual_position(self, lat, lon):
-        self.actual_position = QgsPointXY(lon, lat)
-        #print(f"[{self.__class__.__name__}] Slot activated: {inspect.currentframe().f_code.co_name}; {lat, lon}")
-        #self.actual_position = QgsPointXY(18.54534607666666801, 54.5435800300000011)
-        self.actual_position_updated.emit(self.actual_position)
+        self.actual_timestamp: str = ""
+        self.predicted_timestamp: str = ""
+        self.status: str = "DISCONNECTED"
 
-    def update_predicted_position(self, point: QgsPointXY):
+    def update_actual_position(self, lat, lon, timestamp: str = "") -> None:
+        """
+        Store the latest measured target position.
+
+        GPS data is naturally expressed as (latitude, longitude). QGIS points
+        are expressed as (x, y). For EPSG:4326:
+
+            x = longitude
+            y = latitude
+
+        Therefore the correct construction is QgsPointXY(lon, lat).
+        """
+        self.actual_position = QgsPointXY(float(lon), float(lat))
+        self.actual_timestamp = str(timestamp)
+
+        self.actual_position_updated.emit(
+            self.actual_position,
+            self.actual_timestamp,
+        )
+
+    def update_predicted_position(self, point: QgsPointXY, timestamp: str = "") -> None:
+        """
+        Store the latest predicted target position.
+        """
         self.predicted_position = point
-        self.predicted_position_updated.emit(self.predicted_position)
+        self.predicted_timestamp = str(timestamp)
+
+        self.predicted_position_updated.emit(
+            self.predicted_position,
+            self.predicted_timestamp,
+        )
+
+    def set_status(self, status: str) -> None:
+        """
+        Store target communication/display status and notify observers.
+        """
+        status = str(status)
+
+        if self.status == status:
+            return
+
+        self.status = status
+        self.status_changed.emit(self.status)
+
 
 class ReceiverModel(QObject): 
     actual_position_updated = pyqtSignal(QgsPointXY)
@@ -316,15 +387,6 @@ class ReceiverModel(QObject):
     def parse_gps_line(line: str) -> Optional[QgsPointXY]:
         """
         Parse one GPS text line.
-
-        Supported examples:
-            ACT_Pos=5432.6659792,01832.7680816
-            ACT_Pos:5432.6659792,01832.7680816
-            5432.6659792,01832.7680816
-            54.544432,18.546135
-            $GNGGA,123519.00,5432.6659792,N,01832.7680816,E,...
-            $GPGGA,123519.00,5432.6659792,N,01832.7680816,E,...
-            105849.00, 5350.0894387, N, 01738.7878200, E, Satellites: 20, ...
         """
         s = line.strip()
         if not s:
