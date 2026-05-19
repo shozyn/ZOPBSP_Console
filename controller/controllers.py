@@ -306,6 +306,7 @@ class ReceiverController(QObject):
         menu_bar.command_triggered.connect(self.handle_command)
 
         self.model.actual_position_updated.connect(self.view.display_actual_position)
+        self.model.classification_updated.connect(self.view.display_classification_result)
         
     def read_local_files(self):
         """
@@ -536,6 +537,21 @@ class ReceiverController(QObject):
                 self.model.update_position_from_gps_file(gps_file)
 
         self.files_arrived.emit(self.receiver_id, role, files)
+        
+    @pyqtSlot(str, int)
+    def on_classification_ready(self, receiver_id: str, pred_class: int) -> None:
+        """
+        Receive a classification result from the calculation subsystem.
+
+        Only the controller whose receiver_id matches the result updates its model.
+        """
+        if receiver_id != self.receiver_id:
+            return
+
+        self.model.update_predicted_class(pred_class)
+        
+        
+        
 
     def __del__(self):
         # best-effort cleanup
@@ -752,6 +768,8 @@ class CalculationController(QObject):
 
     print_res = pyqtSignal(dict)
     object_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp
+    receiver_classification_ready = pyqtSignal(str, int)  # receiver_id, pred_class
+    
     def __init__(self, model: CalculationModel, menu_bar: MenuBar, dock_result: DockResultWidget,
                  parent: Optional[QObject] = None) -> None:
         super().__init__(parent)
@@ -767,6 +785,37 @@ class CalculationController(QObject):
         self.print_res.connect(dock_result.add_result)
 
 # ----------------- Lifecycle slots (bind to GUI) -----------------
+
+    def _emit_receiver_classifications_from_result(self, res: dict) -> None:
+        """
+        Emit one classification result per receiver.
+
+        Expected result structure:
+            res["receivers"] = ["RPI1", "RPI2", "RPI3"]
+            res["AKA1A"] = [
+                {"pred_class": ...},
+                {"pred_class": ...},
+                {"pred_class": ...},
+            ]
+        """
+        receivers = res.get("receivers") or []
+        aka1a = res.get("AKA1A") or []
+
+        if not receivers or not aka1a:
+            return
+
+        for receiver_id, cls_result in zip(receivers, aka1a):
+            try:
+                pred_class = int(cls_result.get("pred_class"))
+            except Exception as e:
+                logger.warning(
+                    "[CalculationController] Invalid AKA1A result for receiver %s: %s",
+                    receiver_id,
+                    e,
+                )
+                continue
+
+            self.receiver_classification_ready.emit(str(receiver_id), pred_class)
 
     @pyqtSlot()
     def start_calculation(self) -> None:
@@ -973,7 +1022,9 @@ class CalculationController(QObject):
             dt = time.perf_counter() - t0
             logger.info("[Calc] job_finished %s in %.3f s", jid, dt)
 
+        self._emit_receiver_classifications_from_result(res)
         self._emit_object_position_from_result(jid, res)
+        
 
         self.print_results(jid, res)
 
@@ -1042,7 +1093,21 @@ class CalculationController(QObject):
         except Exception:
             return str(job_id)
 
+
     def _emit_object_position_from_result(self, jid: str, res: dict) -> None:
+        """
+        Emit all estimated object positions returned by Est_pos.
+
+        Expected Est_pos structure:
+            [
+                [gps_time_1, lat_1, lon_1],
+                [gps_time_2, lat_2, lon_2],
+                ...
+            ]
+
+        Each valid point is emitted through the already existing
+        object_position_ready(lat, lon, timestamp) signal.
+        """
         if res.get("Est_pos_status") != "OK":
             logger.warning(
                 "[CalculationController] Object1 not updated for job %s because Est_pos_status=%s",
@@ -1052,21 +1117,73 @@ class CalculationController(QObject):
             return
 
         est_pos = res.get("Est_pos")
-        pos = self._extract_last_est_pos(est_pos)
 
-        if pos is None:
+        if not est_pos:
+            logger.warning(
+                "[CalculationController] Object1 not updated for job %s because Est_pos is empty.",
+                jid,
+            )
             return
 
-        lat, lon = pos
-        timestamp = self._format_job_id_as_time(jid)
+        emitted_points = []
 
-        res["Object1"] = {
-            "timestamp": timestamp,
-            "lat": lat,
-            "lon": lon,
-        }
+        for item in est_pos:
+            try:
+                if len(item) < 3:
+                    continue
 
-        self.object_position_ready.emit(lat, lon, timestamp)
+                est_time = str(item[0])
+                lat = float(item[1])
+                lon = float(item[2])
+
+            except Exception as e:
+                logger.warning(
+                    "[CalculationController] Invalid Est_pos item for job %s: %r; error=%s",
+                    jid,
+                    item,
+                    e,
+                )
+                continue
+
+            emitted_points.append(
+                {
+                    "timestamp": est_time,
+                    "lat": lat,
+                    "lon": lon,
+                }
+            )
+
+            self.object_position_ready.emit(lat, lon, est_time)
+
+        if emitted_points:
+            res["Object1"] = emitted_points
+
+
+    # def _emit_object_position_from_result(self, jid: str, res: dict) -> None:
+    #     if res.get("Est_pos_status") != "OK":
+    #         logger.warning(
+    #             "[CalculationController] Object1 not updated for job %s because Est_pos_status=%s",
+    #             jid,
+    #             res.get("Est_pos_status"),
+    #         )
+    #         return
+
+    #     est_pos = res.get("Est_pos")
+    #     pos = self._extract_last_est_pos(est_pos)
+
+    #     if pos is None:
+    #         return
+
+    #     lat, lon = pos
+    #     timestamp = self._format_job_id_as_time(jid)
+
+    #     res["Object1"] = {
+    #         "timestamp": timestamp,
+    #         "lat": lat,
+    #         "lon": lon,
+    #     }
+
+    #     self.object_position_ready.emit(lat, lon, timestamp)
         
     @pyqtSlot()
     def _on_calc_thread_finished(self) -> None:

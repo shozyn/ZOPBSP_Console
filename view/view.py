@@ -9,6 +9,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+OUTPUT_CLASSES = [
+    "Cisza",
+    "Cargo_47",
+    "LAUV",
+    "Otter",
+    "Passengership_109",
+    "Ponton_2",
+    "Ponton_3",
+    "INNE",
+]
 
 class TargetView(QObject):
     """
@@ -235,6 +245,9 @@ class TargetView(QObject):
 class ReceiverView(QWidget):
     """
     View for displaying a receiver marker on the map.
+
+    Additionally, it can display the latest AKA1A predicted class close to the
+    receiver marker.
     """
 
     def __init__(self, canvas, colour="red", parent=None):
@@ -248,10 +261,65 @@ class ReceiverView(QWidget):
         self.actual_marker.setPenWidth(2)
         self.actual_marker.hide()
 
+        self.class_label_item = QGraphicsSimpleTextItem()
+        self.class_label_item.setBrush(QBrush(QColor(0, 0, 0)))
+        self.class_label_item.setFont(QFont("Arial", 9))
+        self.class_label_item.hide()
+        self.canvas.scene().addItem(self.class_label_item)
+
+        self._latest_point: QgsPointXY | None = None
+        self._latest_class_text: str = ""
+
+        self.canvas.extentsChanged.connect(self._update_class_label_position)
+
     def display_actual_position(self, point: QgsPointXY):
+        self._latest_point = point
+
         self.actual_marker.setCenter(point)
         self.actual_marker.show()
+
+        if self._latest_class_text:
+            self.class_label_item.show()
+            self._update_class_label_position()
+
         self.canvas.refresh()
+
+    def display_classification_result(self, pred_class: int) -> None:
+        """
+        Display the latest predicted class close to the receiver marker.
+
+        The text is updated after every completed calculation job.
+        """
+        #self._latest_class_text = str(int(pred_class))
+        self._latest_class_text = OUTPUT_CLASSES[pred_class]
+        self.class_label_item.setText(self._latest_class_text)
+
+        if self._latest_point is not None:
+            self.class_label_item.show()
+            self._update_class_label_position()
+
+        self.canvas.refresh()
+
+    def _update_class_label_position(self) -> None:
+        """
+        Keep the classification label close to the receiver marker after map
+        panning or zooming.
+        """
+        if self._latest_point is None:
+            return
+
+        try:
+            screen_point = self.canvas.getCoordinateTransform().transform(
+                self._latest_point.x(),
+                self._latest_point.y(),
+            )
+
+            self.class_label_item.setPos(
+                QPointF(screen_point.x() + 10, screen_point.y() - 10)
+            )
+
+        except Exception:
+            pass
 
     def show_warning(self, title: str, message: str):
         m = QMessageBox(self)

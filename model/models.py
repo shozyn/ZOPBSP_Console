@@ -183,38 +183,38 @@ class TargetModel(QObject):
 
 class ReceiverModel(QObject): 
     actual_position_updated = pyqtSignal(QgsPointXY)
+    classification_updated = pyqtSignal(int)
+    
     def __init__(self, receiver_id, parameters,sftp_cfg, parent=None):
         super().__init__(parent)
         self.receiver_id = receiver_id
         self.parameters = parameters
         self.sftp_cfg = sftp_cfg
         self.actual_position: QgsPointXY  | None = None
-        #self.xxx_pos: QgsPointXY = QgsPointXY(17.64695232, 53.83649398)
-
-    # def update_actual_position(self) -> None:
-    #     #act_pos = "5432.6659792,01832.7680816"
-    #     act_pos = self.parameters.get("param_monitor",{}).get("ACT_Pos",{}).get("value","")
-    #     # step = 1e-5
-    #     # self.xxx_pos.setX(self.xxx_pos.x() + step)
-    #     # self.xxx_pos.setY(self.xxx_pos.y() + step)
-    #     if not act_pos or act_pos == "xxx":
-    #         return
-    #     pos = ReceiverModel.parse_act_pos(act_pos)
-    #     if pos is None:
-    #         return
-    #     self.actual_position = pos
-    #     self.actual_position_updated.emit(self.actual_position)
+        self.predicted_class: int | None = None
     
+    def update_predicted_class(self, pred_class: int) -> None:
+        """
+        Store the latest AKA1A predicted class for this receiver and notify the view.
+        """
+        try:
+            self.predicted_class = int(pred_class)
+        except (TypeError, ValueError):
+            logger.warning(
+                "[ReceiverModel][%s] Invalid predicted class: %r",
+                self.receiver_id,
+                pred_class,
+            )
+            return
+
+        self.classification_updated.emit(self.predicted_class)
+        
     def set_actual_position(self, point: QgsPointXY) -> None:
         """
         Set the receiver's actual position explicitly.
 
         This method does not read ACT_Pos, monitor.txt, or any file.
         It only stores an already parsed point and emits the update signal.
-
-        Expected coordinate convention:
-            QgsPointXY(longitude, latitude)
-        if the map is displayed in EPSG:4326.
         """
         self.actual_position = point
         self.actual_position_updated.emit(self.actual_position)

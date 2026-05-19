@@ -160,9 +160,11 @@ def main():
                                      receiver_controllers=receiver_controllers)
     
     calc_controller.object_position_ready.connect(object_model.update_position)
+    calc_controller.object_position_ready.connect(object_model.update_position)
 
     for rc in receiver_controllers:
         rc.files_arrived.connect(calc_controller.on_files_arrived)
+        calc_controller.receiver_classification_ready.connect(rc.on_classification_ready)
 
 
     map_controller.coordinates_changed.connect(main_window.on_coordinates_changed)
