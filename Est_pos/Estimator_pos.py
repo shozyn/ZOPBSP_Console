@@ -39,12 +39,23 @@ Realizacja w krokach:
 c: int = 1470        # prędkość dźwięku w wodzie [m/s]
 
 # parametry wyznaczone na podstawie wykonanych pomiarów w Czernicy przez GA
-epsilon = 0.055
-k = 0.1314      # lub sigma
-jump_sig = 0.23 # przesunięcie pomiędzy kolejnymi oknami analizy
-len_sig = 0.85  # długość okna
-low_cut = 177
-band_width = 573
+
+### 3 m/s
+# epsilon = 0.055
+# k = 0.1314      # lub sigma
+# jump_sig = 0.23 # przesunięcie pomiędzy kolejnymi oknami analizy
+# len_sig = 0.85  # długość okna
+# low_cut = 177
+# band_width = 573
+# high_cut = low_cut + band_width
+
+#### 1 m/s
+epsilon = 0.25
+k = 0.55     # lub sigma
+jump_sig = 0.15 # przesunięcie pomiędzy kolejnymi oknami analizy
+len_sig = 0.73  # długość okna
+low_cut = 187
+band_width = 2170
 high_cut = low_cut + band_width
 
 # ===== zmiana współrzędnych =====

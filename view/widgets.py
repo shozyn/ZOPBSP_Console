@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLabel, QToolBar, QAction, QActionGroup, QMenuBar
+from PyQt5.QtWidgets import QLabel, QToolBar, QAction, QActionGroup, QMenuBar, QToolButton
 from qgis.gui import QgsMapCanvas, QgsMapTool, QgsMapToolPan, QgsMapToolZoom, QgsVertexMarker
 from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem, QgsPointXY, QgsCoordinateTransform, QgsProject
 from PyQt5.QtWidgets import QWidget, QSizePolicy
@@ -9,6 +9,60 @@ from typing import  Optional
 def make_coord_label() -> QLabel:
     return QLabel("Coordinates: ")
 
+# class ToolBar(QToolBar):
+#     """
+#     Custom toolbar for the application.
+#     """
+#     tool_changed = pyqtSignal(str)
+#     bulk_action = pyqtSignal(str)
+
+#     def __init__(self, parent=None):
+#         super().__init__("Tools", parent)
+#         self._setup_actions()
+
+#     def _setup_actions(self):
+#         self.action_group = QActionGroup(self)
+#         self.action_group.setExclusive(True)
+
+#         self.action_show = QAction("Show", self)
+#         self.action_show.setCheckable(True)
+#         self.action_show.triggered.connect(lambda: self.tool_changed.emit("Show"))
+#         self.addAction(self.action_show)
+
+#         self.action_pan = QAction("Pan", self)
+#         self.action_pan.setCheckable(True)
+#         self.action_pan.triggered.connect(lambda: self.tool_changed.emit("Pan"))
+#         self.addAction(self.action_pan)
+
+#         self.action_zoom_in = QAction("Zoom In", self)
+#         self.action_zoom_in.setCheckable(True)
+#         self.action_zoom_in.triggered.connect(lambda: self.tool_changed.emit("zoomIn"))
+#         self.addAction(self.action_zoom_in)
+
+#         self.action_zoom_out = QAction("Zoom Out", self)
+#         self.action_zoom_out.setCheckable(True)
+#         self.action_zoom_out.triggered.connect(lambda: self.tool_changed.emit("zoomOut"))
+#         self.addAction(self.action_zoom_out)
+
+#         self.action_group.addAction(self.action_show)
+#         self.action_group.addAction(self.action_pan)
+#         self.action_group.addAction(self.action_zoom_in)
+#         self.action_group.addAction(self.action_zoom_out)
+
+#         self.action_show.setChecked(True)
+#         self.addSeparator()
+#         act_set_all = QAction("Set Parameters All", self)
+#         act_set_all.triggered.connect(lambda: self.bulk_action.emit("set_params_all"))
+#         self.addAction(act_set_all)
+
+#         act_connect_all = QAction("Connect All", self)
+#         act_connect_all.triggered.connect(lambda: self.bulk_action.emit("connect_all"))
+#         self.addAction(act_connect_all)
+
+#         act_disconnect_all = QAction("Disconnect All", self)
+#         act_disconnect_all.triggered.connect(lambda: self.bulk_action.emit("disconnect_all"))
+#         self.addAction(act_disconnect_all)
+        
 class ToolBar(QToolBar):
     """
     Custom toolbar for the application.
@@ -16,8 +70,10 @@ class ToolBar(QToolBar):
     tool_changed = pyqtSignal(str)
     bulk_action = pyqtSignal(str)
 
-    def __init__(self, parent=None):
+    def __init__(self, receivers=None, parent=None):
         super().__init__("Tools", parent)
+        self.receiver_status_buttons = {}
+        self.receivers = receivers or []
         self._setup_actions()
 
     def _setup_actions(self):
@@ -50,7 +106,13 @@ class ToolBar(QToolBar):
         self.action_group.addAction(self.action_zoom_out)
 
         self.action_show.setChecked(True)
+
         self.addSeparator()
+
+        self._add_receiver_status_buttons()
+
+        self.addSeparator()
+
         act_set_all = QAction("Set Parameters All", self)
         act_set_all.triggered.connect(lambda: self.bulk_action.emit("set_params_all"))
         self.addAction(act_set_all)
@@ -62,10 +124,95 @@ class ToolBar(QToolBar):
         act_disconnect_all = QAction("Disconnect All", self)
         act_disconnect_all.triggered.connect(lambda: self.bulk_action.emit("disconnect_all"))
         self.addAction(act_disconnect_all)
-        
-        #act_read_all = QAction("Read All", self)
-        #act_read_all.triggered.connect(lambda: self.bulk_action.emit("read_all"))
-        #self.addAction(act_read_all)
+
+    def _add_receiver_status_buttons(self):
+        """
+        Add one persistent status indicator per receiver.
+        These buttons are visual indicators, not the main connection mechanism.
+        """
+        for rx in self.receivers:
+            rx_id = rx.get("id", "unknown")
+
+            btn = QToolButton(self)
+            btn.setText(f"{rx_id}: OFF")
+            btn.setToolTip(f"{rx_id}: DISCONNECTED")
+            btn.setAutoRaise(False)
+            btn.setEnabled(False)
+
+            self.receiver_status_buttons[rx_id] = btn
+            self.addWidget(btn)
+
+            self.set_receiver_status(rx_id, "DISCONNECTED")
+
+    def set_receiver_status(self, receiver_id: str, status: str) -> None:
+        """
+        Update one receiver status indicator in the toolbar.
+        """
+        btn = self.receiver_status_buttons.get(receiver_id)
+        if btn is None:
+            return
+
+        status = str(status).upper()
+
+        if status == "CONNECTED":
+            text = f"{receiver_id}: ON"
+            tooltip = f"{receiver_id}: CONNECTED"
+            style = """
+                QToolButton {
+                    background-color: #2e7d32;
+                    color: white;
+                    font-weight: bold;
+                    border: 1px solid #1b5e20;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            """
+
+        elif status == "CONNECTING":
+            text = f"{receiver_id}: ..."
+            tooltip = f"{receiver_id}: CONNECTING"
+            style = """
+                QToolButton {
+                    background-color: #f9a825;
+                    color: black;
+                    font-weight: bold;
+                    border: 1px solid #f57f17;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            """
+
+        elif status == "DISCONNECTED":
+            text = f"{receiver_id}: OFF"
+            tooltip = f"{receiver_id}: DISCONNECTED"
+            style = """
+                QToolButton {
+                    background-color: #c62828;
+                    color: white;
+                    font-weight: bold;
+                    border: 1px solid #8e0000;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            """
+
+        else:
+            text = f"{receiver_id}: ?"
+            tooltip = f"{receiver_id}: {status}"
+            style = """
+                QToolButton {
+                    background-color: #757575;
+                    color: white;
+                    font-weight: bold;
+                    border: 1px solid #424242;
+                    border-radius: 4px;
+                    padding: 4px 8px;
+                }
+            """
+
+        btn.setText(text)
+        btn.setToolTip(tooltip)
+        btn.setStyleSheet(style)
 
 class MenuBar(QMenuBar):
     """

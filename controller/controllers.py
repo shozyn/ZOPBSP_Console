@@ -289,15 +289,23 @@ class ReceiverController(QObject):
     files_arrived = pyqtSignal(str, str, list)   
     download_files_requested = pyqtSignal()
 
-    def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
+    # def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, parent=None):
+    #     super().__init__(parent)
+
+    #     self.model = receiver_model
+    #     self.view = receiver_view
+    #     self.menu_bar = menu_bar
+    #     self.status_widget = status_widget
+    #     self.receiver_id = receiver_model.receiver_id
+    def __init__(self, receiver_model, receiver_view, menu_bar, status_widget, tool_bar=None, parent=None):
         super().__init__(parent)
 
         self.model = receiver_model
         self.view = receiver_view
         self.menu_bar = menu_bar
         self.status_widget = status_widget
+        self.tool_bar = tool_bar
         self.receiver_id = receiver_model.receiver_id
-
         self.thread: QThread | None = None
         self.worker: _SftpWorker | None = None
         self.connected = False
@@ -463,12 +471,19 @@ class ReceiverController(QObject):
                 self.model.set_parameter_control(name, value)
             self.on_model_updated()
 
+    
+    # def on_status_sftp_changed(self,status : str) -> None:
+    #     self.model.set_parameter_status("Status", status)
+    #     self.update_status_widget()
+    #     #print(status)
     @pyqtSlot(str)
-    def on_status_sftp_changed(self,status : str) -> None:
+    def on_status_sftp_changed(self, status: str) -> None:
         self.model.set_parameter_status("Status", status)
         self.update_status_widget()
-        #print(status)
 
+        if self.tool_bar is not None:
+            self.tool_bar.set_receiver_status(self.receiver_id, status)
+            
     def connect_receiver(self):
         self._start_sftp()
 
@@ -516,6 +531,8 @@ class ReceiverController(QObject):
 
         self.connected = False
         self.menu_bar.set_receiver_connection_text(self.receiver_id, False)
+        if self.tool_bar is not None:
+            self.tool_bar.set_receiver_status(self.receiver_id, "DISCONNECTED")
 
         self.thread = None
         self.worker = None

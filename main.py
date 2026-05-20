@@ -21,8 +21,8 @@ def main():
     qgs = QgsApplication([], True)
     qgs.initQgis()
 
-    CONFIG_PATH = "config/configPi.yaml"
-    #CONFIG_PATH = "config/configWin.yaml"
+    #CONFIG_PATH = "config/configPi.yaml"
+    CONFIG_PATH = "config/configWin.yaml"
 
     try:
      config = Config(CONFIG_PATH)
@@ -45,7 +45,8 @@ def main():
     map_view = MapView()
     map_model = MapModel()
 
-    tool_bar = ToolBar()
+    # tool_bar = ToolBar()
+    tool_bar = ToolBar(receivers=receivers_cfg)
     menu_bar = MenuBar(receivers=receivers_cfg, targets=targets_cfg)
     map_controller = MapController(map_view, map_model, map_layer, tool_bar,menu_bar)
     coord_label = make_coord_label() #GUI label
@@ -66,7 +67,14 @@ def main():
         rx_model = ReceiverModel(receiver_id=receiver_id, parameters=parameters,sftp_cfg=sftp_cfg)
         rx_colour = rx_cfg.get("status",{}).get("Colour",{}).get("value","red")
         rx_view = ReceiverView(map_view.m_MapCanvas,rx_colour) 
-        rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)
+        # rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)
+        rx_controller = ReceiverController(
+                                            rx_model,
+                                            rx_view,
+                                            menu_bar,
+                                            status_widget,
+                                            tool_bar=tool_bar,
+                                        )
 
         receiver_models.append(rx_model)
         receiver_views.append(rx_view)
