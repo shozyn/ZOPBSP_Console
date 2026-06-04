@@ -159,7 +159,7 @@ def main():
     ),
     )
 
-    receiver_ids = []
+    # receiver_ids = []
     receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
     calc_model = CalculationModel(required_receivers=receiver_ids)
     calc_controller = CalculationController(calc_model, menu_bar=menu_bar, dock_result=dock_result)
@@ -167,7 +167,6 @@ def main():
     main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
                                      receiver_controllers=receiver_controllers)
     
-    calc_controller.object_position_ready.connect(object_model.update_position)
     calc_controller.object_position_ready.connect(object_model.update_position)
 
     for rc in receiver_controllers:
