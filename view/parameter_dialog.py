@@ -64,9 +64,12 @@ class FolderNameDialog(QtWidgets.QDialog):
         self._edit.setText(self.initial_text)
         self._edit.setPlaceholderText("Enter folder name (e.g., Run_001)")
 
-        # Validator: disallow characters invalid on Windows
-        # <>:\"/\\|?* and ASCII control chars. We also handle trailing dots/spaces and reserved names in _on_accept.
-        invalid_chars = r'<>:"/\\|?*\x00-\x1F'
+        # Validator: disallow characters invalid on Windows, EXCEPT the path
+        # separators '/' and '\\'. The token may be a relative subpath such as
+        # 'LA\\20260520_Otter1', which _set_folder joins under C:\Pi_loc.
+        # Remaining invalid chars <>:"|?* and ASCII control chars are blocked;
+        # trailing dots/spaces and reserved names are refined in _on_accept.
+        invalid_chars = r'<>:"|?*\x00-\x1F'
         # Accept anything that does NOT contain these characters (validation is refined on accept).
         rx = QtCore.QRegularExpression(f'^[^{invalid_chars}]+$')
         self._edit.setValidator(QtGui.QRegularExpressionValidator(rx, self))

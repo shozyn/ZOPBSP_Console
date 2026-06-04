@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Projekt ZOPBSP - lokalne / cache / pliki poboczne
+tools/_optim_cache.json
+tools/_*.txt
+*.tif.aux.xml
