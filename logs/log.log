@@ -22593,3 +22593,1385 @@ Downloaded and archived:
 2026-05-20 12:13:58 | DEBUG | paramiko.transport.sftp | [chan 1] stat(b'C:/Pi/RPI1/bsp/PARAM/PARAM_RPI1_MONITOR.txt')
 2026-05-20 12:13:58 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
 2026-05-20 12:13:58 | DEBUG | paramiko.transport.sftp | [chan 1] close(00000000)
+2026-05-26 20:01:08 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-26 20:01:08 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-26 20:01:31 | INFO | controller.controllers | [LocalFolderReader][RPI1] missing folder: C:\Pi_loc\XXX\RPI1\GPS
+2026-05-26 20:01:31 | INFO | controller.controllers | [LocalFolderReader][RPI1] missing folder: C:\Pi_loc\XXX\RPI1\streaming
+2026-05-26 20:01:31 | INFO | controller.controllers | [LocalFolderReader][RPI1] emitting 0 files
+2026-05-26 20:01:31 | INFO | controller.controllers | [LocalFolderReader][RPI1] done
+2026-05-26 20:03:24 | INFO | controller.controllers | [CalculationController] Calculation stop requested.
+2026-05-26 20:03:24 | INFO | utils.math_worker | [CalculationWorker] stop requested; busy=False queue_size=0
+2026-05-26 20:03:24 | INFO | utils.math_worker | [CalculationWorker] finished emitted
+2026-05-26 20:03:24 | ERROR | controller.controllers | [CalculationController] Could not queue CalculationWorker.stop().
+2026-05-26 20:03:24 | INFO | controller.controllers | [CalculationController] Calculation thread finished.
+2026-05-26 20:03:24 | INFO | controller.controllers | [CalculationController] Calculation stopped.
+2026-05-26 20:03:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Worker sftp started
+2026-05-26 20:03:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:03:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:03:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:03:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:03:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:03:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:04:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:04:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:04:58 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:04 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:04 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:04 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:09 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:14 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:14 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:14 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:19 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:24 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:24 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:24 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:29 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:34 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:34 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:34 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:39 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:44 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:44 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:44 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:49 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:05:54 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:54 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:05:54 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:05:59 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:01 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:01 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Worker sftp stopped)
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Worker sftp started
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Worker sftp started
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Worker sftp started
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:08 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:08 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:08 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:18 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:18 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:18 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:23 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:28 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:28 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:28 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:36 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-26 20:06:36 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-26 20:06:38 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:38 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:38 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:48 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:48 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:48 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:58 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:06:58 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:06:58 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:06:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:03 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:08 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:13 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:18 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:07:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:07:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:07:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:07:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:03 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:08 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:13 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:18 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:23 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:33 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:33 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:38 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:38 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:43 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:43 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:48 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:48 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-26 20:08:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-26 20:08:53 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-26 20:08:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connection problem!!!
+timed out
+2026-05-26 20:08:53 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connection problem!!!
+timed out
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Disconnected
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.96]; Connecting...
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Disconnected
+2026-05-26 20:08:58 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.79]; Connecting...
+2026-05-26 20:08:58 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-27 08:41:05 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-27 08:41:05 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-27 08:42:56 | INFO | controller.controllers | [CalculationController] Calculation stop requested.
+2026-05-27 08:42:56 | ERROR | controller.controllers | [CalculationController] Could not queue CalculationWorker.stop().
+2026-05-27 08:42:56 | INFO | utils.math_worker | [CalculationWorker] stop requested; busy=False queue_size=0
+2026-05-27 08:42:56 | INFO | utils.math_worker | [CalculationWorker] finished emitted
+2026-05-27 08:42:56 | INFO | controller.controllers | [CalculationController] Calculation thread finished.
+2026-05-27 08:42:56 | INFO | controller.controllers | [CalculationController] Calculation stopped.
+2026-05-27 08:42:57 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-27 08:42:57 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-27 08:43:12 | INFO | controller.controllers | [LocalFolderReader][RPI1] emitting 20 files
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt: lon=17.64661092, lat=53.83543181
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt: lon=17.64660981, lat=53.83543111
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt: lon=17.64660792, lat=53.83542941
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt: lon=17.64660146, lat=53.83542462
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt: lon=17.64660020, lat=53.83542179
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt: lon=17.64659532, lat=53.83542196
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt: lon=17.64660826, lat=53.83542789
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt: lon=17.64661526, lat=53.83543357
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt: lon=17.64662061, lat=53.83543888
+2026-05-27 08:43:12 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt: lon=17.64661533, lat=53.83543360
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav
+2026-05-27 08:43:12 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav
+2026-05-27 08:43:12 | INFO | controller.controllers | [LocalFolderReader][RPI1] done
+2026-05-27 08:43:21 | INFO | controller.controllers | [LocalFolderReader][RPI2] emitting 20 files
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt: lon=17.64617442, lat=53.83506858
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt: lon=17.64617675, lat=53.83507403
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt: lon=17.64617669, lat=53.83507561
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt: lon=17.64617581, lat=53.83507138
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt: lon=17.64617498, lat=53.83507085
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt: lon=17.64617518, lat=53.83507041
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt: lon=17.64617451, lat=53.83506848
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt: lon=17.64617358, lat=53.83506661
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt: lon=17.64617438, lat=53.83506810
+2026-05-27 08:43:21 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt: lon=17.64617384, lat=53.83506691
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav
+2026-05-27 08:43:21 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav
+2026-05-27 08:43:21 | INFO | controller.controllers | [LocalFolderReader][RPI2] done
+2026-05-27 08:43:34 | INFO | controller.controllers | [LocalFolderReader][RPI2] emitting 20 files
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt: lon=17.64617442, lat=53.83506858
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt: lon=17.64617675, lat=53.83507403
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt: lon=17.64617669, lat=53.83507561
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt: lon=17.64617581, lat=53.83507138
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt: lon=17.64617498, lat=53.83507085
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt: lon=17.64617518, lat=53.83507041
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt: lon=17.64617451, lat=53.83506848
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt: lon=17.64617358, lat=53.83506661
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt: lon=17.64617438, lat=53.83506810
+2026-05-27 08:43:34 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt: lon=17.64617384, lat=53.83506691
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav
+2026-05-27 08:43:34 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav
+2026-05-27 08:43:34 | INFO | controller.controllers | [LocalFolderReader][RPI2] done
+2026-05-27 08:43:39 | INFO | controller.controllers | [LocalFolderReader][RPI3] emitting 20 files
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt: lon=17.64620851, lat=53.83489702
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt: lon=17.64626856, lat=53.83489186
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt: lon=17.64632599, lat=53.83487469
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt: lon=17.64638266, lat=53.83485219
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt: lon=17.64642584, lat=53.83483218
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt: lon=17.64646367, lat=53.83482398
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt: lon=17.64650316, lat=53.83480824
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt: lon=17.64655121, lat=53.83478313
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt: lon=17.64661745, lat=53.83476068
+2026-05-27 08:43:39 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt: lon=17.64668221, lat=53.83473899
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:43:39 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125600
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125600; queue_size=1
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125630
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125700
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125730
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125800
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125830
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125900
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_125930
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_130000
+2026-05-27 08:43:40 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:43:40 | INFO | model.models | [CalculationModel] Job ready: 20251015_130030
+2026-05-27 08:43:40 | INFO | controller.controllers | [Calc] job_started 20251015_125600
+2026-05-27 08:43:40 | INFO | controller.controllers | [LocalFolderReader][RPI3] done
+2026-05-27 08:43:40 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084340_526106 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:40 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125600. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125630; queue_size=1
+2026-05-27 08:43:40 | INFO | controller.controllers | [Calc] job_finished 20251015_125600 in 0.581 s
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125700; queue_size=2
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125730; queue_size=3
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125800; queue_size=4
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125830; queue_size=5
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125900; queue_size=6
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125930; queue_size=7
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130000; queue_size=8
+2026-05-27 08:43:40 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130030; queue_size=9
+2026-05-27 08:43:40 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125600 because Est_pos_status=FAILED
+2026-05-27 08:43:40 | INFO | controller.controllers | [Calc] job_started 20251015_125630
+2026-05-27 08:43:40 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084340_816087 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:40 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125630. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:40 | INFO | controller.controllers | [Calc] job_finished 20251015_125630 in 0.274 s
+2026-05-27 08:43:40 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125630 because Est_pos_status=FAILED
+2026-05-27 08:43:40 | INFO | controller.controllers | [Calc] job_started 20251015_125700
+2026-05-27 08:43:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084341_097689 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125700. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_finished 20251015_125700 in 0.261 s
+2026-05-27 08:43:41 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125700 because Est_pos_status=FAILED
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_started 20251015_125730
+2026-05-27 08:43:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084341_361495 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125730. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_finished 20251015_125730 in 0.278 s
+2026-05-27 08:43:41 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125730 because Est_pos_status=FAILED
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_started 20251015_125800
+2026-05-27 08:43:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084341_671908 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125800. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_finished 20251015_125800 in 0.294 s
+2026-05-27 08:43:41 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125800 because Est_pos_status=FAILED
+2026-05-27 08:43:41 | INFO | controller.controllers | [Calc] job_started 20251015_125830
+2026-05-27 08:43:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084341_927686 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125830. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_finished 20251015_125830 in 0.259 s
+2026-05-27 08:43:42 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125830 because Est_pos_status=FAILED
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_started 20251015_125900
+2026-05-27 08:43:42 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084342_229187 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125900. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_finished 20251015_125900 in 0.317 s
+2026-05-27 08:43:42 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125900 because Est_pos_status=FAILED
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_started 20251015_125930
+2026-05-27 08:43:42 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084342_569974 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125930. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_finished 20251015_125930 in 0.350 s
+2026-05-27 08:43:42 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125930 because Est_pos_status=FAILED
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_started 20251015_130000
+2026-05-27 08:43:42 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084342_878790 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_130000. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_finished 20251015_130000 in 0.266 s
+2026-05-27 08:43:42 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_130000 because Est_pos_status=FAILED
+2026-05-27 08:43:42 | INFO | controller.controllers | [Calc] job_started 20251015_130030
+2026-05-27 08:43:43 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084343_138163 log=logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:43 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_130030. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084053.log
+2026-05-27 08:43:43 | INFO | controller.controllers | [Calc] job_finished 20251015_130030 in 0.263 s
+2026-05-27 08:43:43 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_130030 because Est_pos_status=FAILED
+2026-05-27 08:45:46 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-27 08:45:46 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-27 08:45:53 | INFO | controller.controllers | [LocalFolderReader][RPI1] emitting 20 files
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt: lon=17.64661092, lat=53.83543181
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt: lon=17.64660981, lat=53.83543111
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt: lon=17.64660792, lat=53.83542941
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt: lon=17.64660146, lat=53.83542462
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt: lon=17.64660020, lat=53.83542179
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt: lon=17.64659532, lat=53.83542196
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt: lon=17.64660826, lat=53.83542789
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt: lon=17.64661526, lat=53.83543357
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt: lon=17.64662061, lat=53.83543888
+2026-05-27 08:45:53 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt: lon=17.64661533, lat=53.83543360
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav
+2026-05-27 08:45:53 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav
+2026-05-27 08:45:53 | INFO | controller.controllers | [LocalFolderReader][RPI1] done
+2026-05-27 08:45:57 | INFO | controller.controllers | [LocalFolderReader][RPI2] emitting 20 files
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt: lon=17.64617442, lat=53.83506858
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt: lon=17.64617675, lat=53.83507403
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt: lon=17.64617669, lat=53.83507561
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt: lon=17.64617581, lat=53.83507138
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt: lon=17.64617498, lat=53.83507085
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt: lon=17.64617518, lat=53.83507041
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt: lon=17.64617451, lat=53.83506848
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt: lon=17.64617358, lat=53.83506661
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt: lon=17.64617438, lat=53.83506810
+2026-05-27 08:45:57 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt: lon=17.64617384, lat=53.83506691
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav
+2026-05-27 08:45:57 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav
+2026-05-27 08:45:57 | INFO | controller.controllers | [LocalFolderReader][RPI2] done
+2026-05-27 08:46:01 | INFO | controller.controllers | [LocalFolderReader][RPI3] emitting 20 files
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt: lon=17.64620851, lat=53.83489702
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt: lon=17.64626856, lat=53.83489186
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt: lon=17.64632599, lat=53.83487469
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt: lon=17.64638266, lat=53.83485219
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt: lon=17.64642584, lat=53.83483218
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt: lon=17.64646367, lat=53.83482398
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt: lon=17.64650316, lat=53.83480824
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt: lon=17.64655121, lat=53.83478313
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt: lon=17.64661745, lat=53.83476068
+2026-05-27 08:46:01 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt: lon=17.64668221, lat=53.83473899
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125600
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125600; queue_size=1
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125630
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125700
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125730
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125800
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125830
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125900
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_125930
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_130000
+2026-05-27 08:46:01 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:46:01 | INFO | model.models | [CalculationModel] Job ready: 20251015_130030
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_started 20251015_125600
+2026-05-27 08:46:01 | INFO | controller.controllers | [LocalFolderReader][RPI3] done
+2026-05-27 08:46:01 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084601_289742 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125600. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_finished 20251015_125600 in 0.310 s
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125630; queue_size=1
+2026-05-27 08:46:01 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125600 because Est_pos_status=FAILED
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125700; queue_size=2
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125730; queue_size=3
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125800; queue_size=4
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125830; queue_size=5
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125900; queue_size=6
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125930; queue_size=7
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130000; queue_size=8
+2026-05-27 08:46:01 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130030; queue_size=9
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_started 20251015_125630
+2026-05-27 08:46:01 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084601_561388 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125630. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_finished 20251015_125630 in 0.257 s
+2026-05-27 08:46:01 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125630 because Est_pos_status=FAILED
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_started 20251015_125700
+2026-05-27 08:46:01 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084601_821987 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125700. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_finished 20251015_125700 in 0.255 s
+2026-05-27 08:46:01 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125700 because Est_pos_status=FAILED
+2026-05-27 08:46:01 | INFO | controller.controllers | [Calc] job_started 20251015_125730
+2026-05-27 08:46:02 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084602_070135 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125730. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_finished 20251015_125730 in 0.266 s
+2026-05-27 08:46:02 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125730 because Est_pos_status=FAILED
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_started 20251015_125800
+2026-05-27 08:46:02 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084602_347662 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125800. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_finished 20251015_125800 in 0.269 s
+2026-05-27 08:46:02 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125800 because Est_pos_status=FAILED
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_started 20251015_125830
+2026-05-27 08:46:02 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084602_646947 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125830. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_finished 20251015_125830 in 0.310 s
+2026-05-27 08:46:02 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125830 because Est_pos_status=FAILED
+2026-05-27 08:46:02 | INFO | controller.controllers | [Calc] job_started 20251015_125900
+2026-05-27 08:46:02 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084602_939329 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125900. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_finished 20251015_125900 in 0.270 s
+2026-05-27 08:46:03 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125900 because Est_pos_status=FAILED
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_started 20251015_125930
+2026-05-27 08:46:03 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084603_206529 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_125930. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_finished 20251015_125930 in 0.261 s
+2026-05-27 08:46:03 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_125930 because Est_pos_status=FAILED
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_started 20251015_130000
+2026-05-27 08:46:03 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084603_453524 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_130000. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_finished 20251015_130000 in 0.251 s
+2026-05-27 08:46:03 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_130000 because Est_pos_status=FAILED
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_started 20251015_130030
+2026-05-27 08:46:03 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084603_712995 log=logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | ERROR | utils.math_worker | [CalculationWorker] Est_pos failed for job 20251015_130030. The worker thread will continue with the next job.
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\utils\math_worker.py", line 216, in _compute
+    est_pos_res = self.algo_est_pos.run(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\User\Desktop\ZOPBSP_konsola\calculation\algorithms.py", line 255, in run
+    raise EstPosProcessFailed(
+calculation.algorithms.EstPosProcessFailed: estimate_pos failed with a Python exception in subprocess.
+Error: ModuleNotFoundError("No module named 'geopy'")
+Session log: C:\Users\User\Desktop\ZOPBSP_konsola\logs\estpos_subprocess\estpos_session_20260527_084543.log
+2026-05-27 08:46:03 | INFO | controller.controllers | [Calc] job_finished 20251015_130030 in 0.254 s
+2026-05-27 08:46:03 | WARNING | controller.controllers | [CalculationController] Object1 not updated for job 20251015_130030 because Est_pos_status=FAILED
+2026-05-27 08:48:51 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-27 08:48:51 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-27 08:48:56 | INFO | controller.controllers | [LocalFolderReader][RPI1] emitting 20 files
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt: lon=17.64661092, lat=53.83543181
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt: lon=17.64660981, lat=53.83543111
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt: lon=17.64660792, lat=53.83542941
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt: lon=17.64660146, lat=53.83542462
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt: lon=17.64660020, lat=53.83542179
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt: lon=17.64659532, lat=53.83542196
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt: lon=17.64660826, lat=53.83542789
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt: lon=17.64661526, lat=53.83543357
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt: lon=17.64662061, lat=53.83543888
+2026-05-27 08:48:56 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt: lon=17.64661533, lat=53.83543360
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav
+2026-05-27 08:48:56 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav
+2026-05-27 08:48:56 | INFO | controller.controllers | [LocalFolderReader][RPI1] done
+2026-05-27 08:49:02 | INFO | controller.controllers | [LocalFolderReader][RPI2] emitting 20 files
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt: lon=17.64617442, lat=53.83506858
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt: lon=17.64617675, lat=53.83507403
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt: lon=17.64617669, lat=53.83507561
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt: lon=17.64617581, lat=53.83507138
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt: lon=17.64617498, lat=53.83507085
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt: lon=17.64617518, lat=53.83507041
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt: lon=17.64617451, lat=53.83506848
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt: lon=17.64617358, lat=53.83506661
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt: lon=17.64617438, lat=53.83506810
+2026-05-27 08:49:02 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt: lon=17.64617384, lat=53.83506691
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav
+2026-05-27 08:49:02 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav
+2026-05-27 08:49:02 | INFO | controller.controllers | [LocalFolderReader][RPI2] done
+2026-05-27 08:49:05 | INFO | controller.controllers | [LocalFolderReader][RPI3] emitting 20 files
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt: lon=17.64620851, lat=53.83489702
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt: lon=17.64626856, lat=53.83489186
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt: lon=17.64632599, lat=53.83487469
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt: lon=17.64638266, lat=53.83485219
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt: lon=17.64642584, lat=53.83483218
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt: lon=17.64646367, lat=53.83482398
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt: lon=17.64650316, lat=53.83480824
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt: lon=17.64655121, lat=53.83478313
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt: lon=17.64661745, lat=53.83476068
+2026-05-27 08:49:05 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt: lon=17.64668221, lat=53.83473899
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125600
+2026-05-27 08:49:05 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125600; queue_size=1
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125630
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125700
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125730
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125800
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125830
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125900
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_125930
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_130000
+2026-05-27 08:49:05 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-27 08:49:05 | INFO | model.models | [CalculationModel] Job ready: 20251015_130030
+2026-05-27 08:49:05 | INFO | controller.controllers | [Calc] job_started 20251015_125600
+2026-05-27 08:49:05 | INFO | controller.controllers | [LocalFolderReader][RPI3] done
+2026-05-27 08:49:05 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084905_392991 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:14 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084905_392991 result_length=10 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125630; queue_size=1
+2026-05-27 08:49:14 | INFO | controller.controllers | [Calc] job_finished 20251015_125600 in 9.085 s
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125700; queue_size=2
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125730; queue_size=3
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125800; queue_size=4
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125830; queue_size=5
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125900; queue_size=6
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125930; queue_size=7
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130000; queue_size=8
+2026-05-27 08:49:14 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130030; queue_size=9
+2026-05-27 08:49:14 | INFO | controller.controllers | [Calc] job_started 20251015_125630
+2026-05-27 08:49:14 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084914_402667 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:22 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084914_402667 result_length=14 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:22 | INFO | controller.controllers | [Calc] job_finished 20251015_125630 in 8.180 s
+2026-05-27 08:49:22 | INFO | controller.controllers | [Calc] job_started 20251015_125700
+2026-05-27 08:49:22 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084922_596627 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:30 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084922_596627 result_length=14 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:30 | INFO | controller.controllers | [Calc] job_finished 20251015_125700 in 8.118 s
+2026-05-27 08:49:30 | INFO | controller.controllers | [Calc] job_started 20251015_125730
+2026-05-27 08:49:30 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084930_746086 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:40 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084930_746086 result_length=14 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:40 | INFO | controller.controllers | [Calc] job_finished 20251015_125730 in 9.820 s
+2026-05-27 08:49:40 | INFO | controller.controllers | [Calc] job_started 20251015_125800
+2026-05-27 08:49:40 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084940_574019 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:47 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084940_574019 result_length=18 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:47 | INFO | controller.controllers | [Calc] job_finished 20251015_125800 in 7.492 s
+2026-05-27 08:49:47 | INFO | controller.controllers | [Calc] job_started 20251015_125830
+2026-05-27 08:49:48 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084948_012488 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:55 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084948_012488 result_length=17 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:49:55 | INFO | controller.controllers | [Calc] job_finished 20251015_125830 in 7.156 s
+2026-05-27 08:49:55 | INFO | controller.controllers | [Calc] job_started 20251015_125900
+2026-05-27 08:49:55 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_084955_163471 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:01 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_084955_163471 result_length=14 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:01 | INFO | controller.controllers | [Calc] job_finished 20251015_125900 in 6.340 s
+2026-05-27 08:50:01 | INFO | controller.controllers | [Calc] job_started 20251015_125930
+2026-05-27 08:50:01 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_085001_515755 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:08 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_085001_515755 result_length=18 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:08 | INFO | controller.controllers | [Calc] job_finished 20251015_125930 in 6.952 s
+2026-05-27 08:50:08 | INFO | controller.controllers | [Calc] job_started 20251015_130000
+2026-05-27 08:50:08 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_085008_465565 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:15 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_085008_465565 result_length=17 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:15 | INFO | controller.controllers | [Calc] job_finished 20251015_130000 in 6.730 s
+2026-05-27 08:50:15 | INFO | controller.controllers | [Calc] job_started 20251015_130030
+2026-05-27 08:50:15 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260527_085015_198033 log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:21 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260527_085015_198033 result_length=18 session_log=logs\estpos_subprocess\estpos_session_20260527_084843.log
+2026-05-27 08:50:21 | INFO | controller.controllers | [Calc] job_finished 20251015_130030 in 6.695 s
+2026-05-29 21:13:14 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-29 21:13:14 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-29 21:14:03 | INFO | controller.controllers | [CalculationController] Calculation stop requested.
+2026-05-29 21:14:03 | ERROR | controller.controllers | [CalculationController] Could not queue CalculationWorker.stop().
+2026-05-29 21:14:03 | INFO | utils.math_worker | [CalculationWorker] stop requested; busy=False queue_size=0
+2026-05-29 21:14:03 | INFO | utils.math_worker | [CalculationWorker] finished emitted
+2026-05-29 21:14:03 | INFO | controller.controllers | [CalculationController] Calculation thread finished.
+2026-05-29 21:14:03 | INFO | controller.controllers | [CalculationController] Calculation stopped.
+2026-05-29 21:14:06 | INFO | utils.math_worker | [CalculationWorker] Thread started
+2026-05-29 21:14:06 | INFO | controller.controllers | [CalculationController] Calculation started.
+2026-05-29 21:14:19 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Worker sftp started
+2026-05-29 21:14:19 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-29 21:14:19 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connecting...
+2026-05-29 21:14:24 | ERROR | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Connection problem!!!
+timed out
+2026-05-29 21:14:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-29 21:14:28 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Worker sftp stopped)
+2026-05-29 21:14:30 | INFO | utils.sftp_worker | [_SftpWorker][10.83.172.29]; Disconnected
+2026-05-29 21:14:35 | INFO | controller.controllers | [LocalFolderReader][RPI1] emitting 20 files
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt: lon=17.64661092, lat=53.83543181
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt: lon=17.64660981, lat=53.83543111
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt: lon=17.64660792, lat=53.83542941
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt: lon=17.64660146, lat=53.83542462
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt: lon=17.64660020, lat=53.83542179
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt: lon=17.64659532, lat=53.83542196
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt: lon=17.64660826, lat=53.83542789
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt: lon=17.64661526, lat=53.83543357
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt: lon=17.64662061, lat=53.83543888
+2026-05-29 21:14:35 | INFO | model.models | [ReceiverModel][RPI1] Position updated from GPS file C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt: lon=17.64661533, lat=53.83543360
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/gps: C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav
+2026-05-29 21:14:35 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI1/wav: C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav
+2026-05-29 21:14:35 | INFO | controller.controllers | [LocalFolderReader][RPI1] done
+2026-05-29 21:15:09 | INFO | controller.controllers | [LocalFolderReader][RPI2] emitting 20 files
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt: lon=17.64617442, lat=53.83506858
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt: lon=17.64617675, lat=53.83507403
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt: lon=17.64617669, lat=53.83507561
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt: lon=17.64617581, lat=53.83507138
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt: lon=17.64617498, lat=53.83507085
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt: lon=17.64617518, lat=53.83507041
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt: lon=17.64617451, lat=53.83506848
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt: lon=17.64617358, lat=53.83506661
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt: lon=17.64617438, lat=53.83506810
+2026-05-29 21:15:09 | INFO | model.models | [ReceiverModel][RPI2] Position updated from GPS file C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt: lon=17.64617384, lat=53.83506691
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/gps: C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav
+2026-05-29 21:15:09 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI2/wav: C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav
+2026-05-29 21:15:09 | INFO | controller.controllers | [LocalFolderReader][RPI2] done
+2026-05-29 21:15:15 | INFO | controller.controllers | [LocalFolderReader][RPI3] emitting 20 files
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt: lon=17.64620851, lat=53.83489702
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt: lon=17.64626856, lat=53.83489186
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt: lon=17.64632599, lat=53.83487469
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt: lon=17.64638266, lat=53.83485219
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt: lon=17.64642584, lat=53.83483218
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt: lon=17.64646367, lat=53.83482398
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt: lon=17.64650316, lat=53.83480824
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt: lon=17.64655121, lat=53.83478313
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt: lon=17.64661745, lat=53.83476068
+2026-05-29 21:15:15 | INFO | model.models | [ReceiverModel][RPI3] Position updated from GPS file C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt: lon=17.64668221, lat=53.83473899
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/gps: C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125600 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125600.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125600_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125600.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125600_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125600 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125600.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125600_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125600
+2026-05-29 21:15:15 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125600; queue_size=1
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125630 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125630.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125630_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125630.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125630_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125630 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125630.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125630_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125630
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125700 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125700.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125700_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125700.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125700_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125700 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125700.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125700_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125700
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125730 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125730.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125730_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125730.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125730_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125730 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125730.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125730_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125730
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125800 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125800.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125800_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125800.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125800_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125800 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125800.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125800_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125800
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125830 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125830.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125830_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125830.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125830_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125830 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125830.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125830_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125830
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125900 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125900.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125900_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125900.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125900_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125900 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125900.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125900_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125900
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_125930 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_125930.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_125930_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_125930.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_125930_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_125930 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_125930.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_125930_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_125930
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_130000 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130000.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130000_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130000.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130000_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130000 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130000.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130000_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_130000
+2026-05-29 21:15:15 | DEBUG | model.models | [CalculationModel] Stored 20251015_130030 for RPI3/wav: C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI1: wav=C:\Pi_loc\LA\RPI1\streaming\RBW6673_20251015_130030.wav gps=C:\Pi_loc\LA\RPI1\gps\GPS_RPI1_20251015_130030_Hydro_6673.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI2: wav=C:\Pi_loc\LA\RPI2\streaming\RBW6676_20251015_130030.wav gps=C:\Pi_loc\LA\RPI2\gps\GPS_RPI2_20251015_130030_Hydro_6676.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job 20251015_130030 receiver RPI3: wav=C:\Pi_loc\LA\RPI3\streaming\RBW6675_20251015_130030.wav gps=C:\Pi_loc\LA\RPI3\gps\GPS_RPI3_20251015_130030_Hydro_6675.txt
+2026-05-29 21:15:15 | INFO | model.models | [CalculationModel] Job ready: 20251015_130030
+2026-05-29 21:15:15 | INFO | controller.controllers | [Calc] job_started 20251015_125600
+2026-05-29 21:15:15 | INFO | controller.controllers | [LocalFolderReader][RPI3] done
+2026-05-29 21:15:16 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211516_179094 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:29 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211516_179094 result_length=13 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125630; queue_size=1
+2026-05-29 21:15:29 | INFO | controller.controllers | [Calc] job_finished 20251015_125600 in 14.007 s
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125700; queue_size=2
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125730; queue_size=3
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125800; queue_size=4
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125830; queue_size=5
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125900; queue_size=6
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_125930; queue_size=7
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130000; queue_size=8
+2026-05-29 21:15:29 | DEBUG | utils.math_worker | [CalculationWorker] Job enqueued: 20251015_130030; queue_size=9
+2026-05-29 21:15:29 | INFO | controller.controllers | [Calc] job_started 20251015_125630
+2026-05-29 21:15:29 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211529_859859 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211529_859859 result_length=16 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:41 | INFO | controller.controllers | [Calc] job_finished 20251015_125630 in 11.855 s
+2026-05-29 21:15:41 | INFO | controller.controllers | [Calc] job_started 20251015_125700
+2026-05-29 21:15:41 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211541_683506 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:52 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211541_683506 result_length=15 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:15:52 | INFO | controller.controllers | [Calc] job_finished 20251015_125700 in 11.514 s
+2026-05-29 21:15:52 | INFO | controller.controllers | [Calc] job_started 20251015_125730
+2026-05-29 21:15:53 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211553_186745 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:06 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211553_186745 result_length=18 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:06 | INFO | controller.controllers | [Calc] job_finished 20251015_125730 in 13.142 s
+2026-05-29 21:16:06 | INFO | controller.controllers | [Calc] job_started 20251015_125800
+2026-05-29 21:16:06 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211606_360011 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:18 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211606_360011 result_length=18 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:18 | INFO | controller.controllers | [Calc] job_finished 20251015_125800 in 12.501 s
+2026-05-29 21:16:18 | INFO | controller.controllers | [Calc] job_started 20251015_125830
+2026-05-29 21:16:18 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211618_832632 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:30 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211618_832632 result_length=15 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:30 | INFO | controller.controllers | [Calc] job_finished 20251015_125830 in 11.427 s
+2026-05-29 21:16:30 | INFO | controller.controllers | [Calc] job_started 20251015_125900
+2026-05-29 21:16:30 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211630_272917 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:43 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211630_272917 result_length=17 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:43 | INFO | controller.controllers | [Calc] job_finished 20251015_125900 in 13.006 s
+2026-05-29 21:16:43 | INFO | controller.controllers | [Calc] job_started 20251015_125930
+2026-05-29 21:16:43 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211643_461273 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:58 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211643_461273 result_length=19 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:16:58 | INFO | controller.controllers | [Calc] job_finished 20251015_125930 in 15.815 s
+2026-05-29 21:16:58 | INFO | controller.controllers | [Calc] job_started 20251015_130000
+2026-05-29 21:16:59 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211659_199637 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:17:13 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211659_199637 result_length=15 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:17:13 | INFO | controller.controllers | [Calc] job_finished 20251015_130000 in 14.253 s
+2026-05-29 21:17:13 | INFO | controller.controllers | [Calc] job_started 20251015_130030
+2026-05-29 21:17:13 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Starting Est_pos subprocess. run_id=20260529_211713_460222 log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:17:27 | INFO | calculation.algorithms | [ESTPOSAlgorithm] Est_pos subprocess finished successfully. run_id=20260529_211713_460222 result_length=14 session_log=logs\estpos_subprocess\estpos_session_20260529_211304.log
+2026-05-29 21:17:27 | INFO | controller.controllers | [Calc] job_finished 20251015_130030 in 14.116 s
+2026-05-29 21:18:28 | INFO | controller.controllers | [CalculationController] Calculation stop requested.
+2026-05-29 21:18:28 | ERROR | controller.controllers | [CalculationController] Could not queue CalculationWorker.stop().
+2026-05-29 21:18:28 | INFO | utils.math_worker | [CalculationWorker] stop requested; busy=False queue_size=0
+2026-05-29 21:18:28 | INFO | utils.math_worker | [CalculationWorker] finished emitted
+2026-05-29 21:18:28 | INFO | controller.controllers | [CalculationController] Calculation thread finished.
+2026-05-29 21:18:28 | INFO | controller.controllers | [CalculationController] Calculation stopped.

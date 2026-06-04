@@ -9,7 +9,8 @@ from pyproj import Transformer, CRS
 #from odleglosci_wg_GPS import  GPS_dist_Vincenty
 #from importowanie import import_data
 # scytonizowane funkcje
-from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+# from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+from oblicz_TDOA import compute_tdoa_1hz
 from Est_pos.tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
 from Est_pos.importowanie import import_data
 

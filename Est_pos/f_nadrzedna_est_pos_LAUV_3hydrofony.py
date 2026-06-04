@@ -9,7 +9,8 @@ from plotowanie import plot_final_results, save_folium_map
 from odleglosci_wg_GPS import  GPS_dist_Vincenty
 from importowanie import import_data
 # scytonizowane funkcje
-from tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+# from tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+from oblicz_TDOA import compute_tdoa_1hz
 from tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
 
 
@@ -121,7 +122,7 @@ def main():
     tdoa23_1hz_m = tdoa(s2_raw, s3_raw)
     """
 
-    def tdoa(s1,s2):
+    def tdoa(s1,s2): 
         return compute_tdoa_1hz(s1, s2, fs, c, epsilon, k, len_sig, jump_sig, low_cut, high_cut)
 
     tdoa12_1hz_m = tdoa(s1_raw, s2_raw)
