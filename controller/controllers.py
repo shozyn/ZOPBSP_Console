@@ -22,10 +22,13 @@ from view.dock_widgets import DockResultWidget
 from utils.sftp_worker import _SftpWorker
 import inspect
 import logging
+import math
 from pathlib import Path
 import string
 from typing import List, Optional
 import time
+
+from utils.kalman import ConstantVelocityKalman2D
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -355,7 +358,46 @@ class ReceiverController(QObject):
         self.local_reader.finished.connect(lambda: setattr(self, "local_reader", None))
 
         self.local_reader.start(hydro_dir, gps_dir)
-        
+
+    def read_local_session(self, session_dir: str) -> bool:
+        """
+        Offline replay for this receiver from an explicit session folder
+        (no token dialog). Expects '<session_dir>/<RPIx>/streaming' and
+        '<session_dir>/<RPIx>/gps'. Returns True if a reader was started.
+        """
+        from utils.local_folder_reader import LocalFolderReader
+
+        if self.connected:
+            self.disconnect_receiver()
+
+        rpi_dir = Path(session_dir) / str(self.receiver_id)
+        streaming = str(rpi_dir / "streaming")
+        gps = str(rpi_dir / "gps")
+
+        if not Path(streaming).is_dir() and not Path(gps).is_dir():
+            self.view.show_warning(
+                "Wczytaj sesję",
+                f"Brak danych dla {self.receiver_id} w:\n{rpi_dir}",
+            )
+            return False
+
+        self.model.sftp_cfg["local_dirs"]["streaming"] = streaming
+        self.model.sftp_cfg["local_dirs"]["gps"] = gps
+
+        self.local_reader = LocalFolderReader(self.receiver_id, batch=100, parent=self)
+        self.local_reader.files_arrived.connect(self._on_worker_files_arrived)
+        self.local_reader.status.connect(lambda msg: logger.info(msg))
+        self.local_reader.finished.connect(self.local_reader.deleteLater)
+        self.local_reader.finished.connect(lambda: setattr(self, "local_reader", None))
+
+        self.local_reader.start(streaming, gps)
+        logger.info(
+            "[ReceiverController][%s] Reading local session: %s",
+            self.receiver_id,
+            rpi_dir,
+        )
+        return True
+
     def download_all_files(self):
         if not self.connected or not self.worker:
             self.view.show_warning("Download files", "Receiver is not connected. Connect first.")
@@ -634,20 +676,26 @@ class MainController(QObject):
     """
     Main application controller (handles user input, updates models and views).
     """
-    def __init__(self, main_window, menu_bar, tool_bar=None, receiver_controllers=None):
+    def __init__(self, main_window, menu_bar, tool_bar=None, receiver_controllers=None,
+                 calc_controller=None):
         super().__init__()
         self.main_window = main_window
         self.menu_bar = menu_bar
         self.tool_bar = tool_bar
         self.receiver_controllers = receiver_controllers or []
+        self.calc_controller = calc_controller
 
         self.menu_bar.command_triggered.connect(self.handle_menu_command)
         if self.tool_bar is not None:
             self.tool_bar.bulk_action.connect(self.handle_bulk_action)
 
     def handle_menu_command(self, sender_id, command):
+        if sender_id == "Calculation" and command == "load_session":
+            self.load_session()
+            return
+
         if sender_id != "": # Handle only project functions
-            return  
+            return
         """
         Receives the command string from the menu bar and dispatches to the correct logic.
         """
@@ -713,6 +761,43 @@ class MainController(QObject):
             rc.model.sftp_cfg["local_dirs"]["streaming"] = chosen_folder
             chosen_folder_gps = chosen_folder.replace("streaming","gps")
             rc.model.sftp_cfg["local_dirs"]["gps"] = chosen_folder_gps
+
+    def load_session(self):
+        """
+        Convenience loader: pick one session folder (e.g. '20260520_Otter1'),
+        then automatically start the calculation and replay RPI1/2/3 from
+        '<session>/RPIx/streaming' and '<session>/RPIx/gps'.
+        """
+        if not self.receiver_controllers:
+            return
+
+        start_dir = r"C:\Pi_loc\LA"
+        if not Path(start_dir).is_dir():
+            start_dir = r"C:\Pi_loc"
+
+        session_dir = QFileDialog.getExistingDirectory(
+            self.main_window,
+            "Wybierz folder sesji (np. 20260520_Otter1)",
+            start_dir,
+        )
+        if not session_dir:
+            return  # cancelled
+
+        # Calculation must run before files arrive, otherwise jobs are dropped.
+        if self.calc_controller is not None:
+            self.calc_controller.start_calculation()
+
+        started = 0
+        for rc in self.receiver_controllers:
+            if rc.read_local_session(session_dir):
+                started += 1
+
+        logger.info(
+            "[MainController] load_session: started %d/%d receivers from %s",
+            started,
+            len(self.receiver_controllers),
+            session_dir,
+        )
 
     def open_project(self):
         # Implement logic to open a project (dialog, load file, etc.)
@@ -786,7 +871,9 @@ class CalculationController(QObject):
     print_res = pyqtSignal(dict)
     object_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp
     receiver_classification_ready = pyqtSignal(str, int)  # receiver_id, pred_class
-    
+    reference_track_ready = pyqtSignal(str, list)  # object_name, [(lat, lon), ...]
+    object_type_detected = pyqtSignal(int)  # pred_class index (nearest hydrophone)
+
     def __init__(self, model: CalculationModel, menu_bar: MenuBar, dock_result: DockResultWidget,
                  parent: Optional[QObject] = None) -> None:
         super().__init__(parent)
@@ -797,6 +884,33 @@ class CalculationController(QObject):
         self._calc_running: bool = False
         self._calc_stopping: bool = False
         self._job_t0: dict[str, float] = {}
+        # Reference (ground-truth) track state.
+        # Session whose reference track has already been loaded (avoid reloading).
+        self._reference_session: Optional[str] = None
+        self._reference_index: dict = {}            # UTC second-of-day -> (lat, lon)
+        self._reference_object: Optional[str] = None
+        self._reference_matched: list = []          # [(sec, (lat, lon)), ...] at estimation times
+        self._reference_matched_secs: set = set()
+        # TDOA closure tolerance [m]: |d12 + d23 - d13| above this is rejected
+        # (inconsistent triple). Applied here on raw estimates (4th element of
+        # each Est_pos item), so it is tunable without re-running the estimator.
+        self._closure_tol_m = 20.0
+        # Geometric gate margin [m] around the hydrophone triangle. Estimates
+        # inside the triangle or within this distance of it are accepted.
+        self._geo_margin_m = 100.0
+        # Temporal smoothing of the estimated object position with a 2D
+        # constant-velocity Kalman filter (object moves at ~0.75-3 m/s).
+        # Parametry dostrojone offline na trasach referencyjnych pod GLADKOSC
+        # (tools/optimize_params.py): jitter ~0.7 m, mediana ~19 m. Duze meas_std
+        # => filtr ufa modelowi stalej predkosci, ignoruje rozrzut TDOA.
+        # max_gap_s duze => filtr nie resetuje sie na przerwach miedzy rzadkimi
+        # ocalalymi punktami (te resety dawaly "odloty" na mapie); utrzymuje
+        # ciaglosc i wygladza przez luki.
+        self._kalman = ConstantVelocityKalman2D(
+            process_std=0.1, meas_std=60.0, max_gap_s=300.0
+        )
+        self._kalman_ref = None         # (lat0, lon0) local-frame origin
+        self._kalman_last_sec = None    # UTC second-of-day of previous estimate
         self.menu_bar = menu_bar
         self.menu_bar.command_triggered.connect(self.handle_command)
         self.print_res.connect(dock_result.add_result)
@@ -865,7 +979,15 @@ class CalculationController(QObject):
         self._calc_thread = thread
         self._calc_running = True
         self._calc_stopping = False
-        
+        self._reference_session = None
+        self._reference_index = {}
+        self._reference_object = None
+        self._reference_matched = []
+        self._reference_matched_secs = set()
+        self._kalman.reset()
+        self._kalman_ref = None
+        self._kalman_last_sec = None
+
         logger.info("[CalculationController] Calculation started.")
         # Enable "Receiver X / Read files" while calculation is running.
         if hasattr(self.menu_bar, "set_receiver_read_files_enabled"):
@@ -948,6 +1070,9 @@ class CalculationController(QObject):
         if not self._calc_running or self._calc_stopping:
             return
 
+        if role == "hydro" and files:
+            self._maybe_load_reference_track(files[0])
+
         for f in files:
             p = Path(f)
 
@@ -1006,11 +1131,74 @@ class CalculationController(QObject):
                     files,
                 )
 
+    def _maybe_load_reference_track(self, sample_file: str) -> None:
+        """
+        Detect the measurement session from an incoming file path and, once per
+        session, load the matching object reference track (LAUV/Otter/Ponton)
+        restricted to the session UTC window, then emit it for display.
+
+        The session is the folder two levels above the file:
+            <...>/<session>/RPIx/streaming/<file>
+        Flat folders (e.g. .../LA/RPI1/streaming) do not match a session name,
+        so no reference is loaded and nothing breaks.
+        """
+        try:
+            p = Path(sample_file)
+            if len(p.parents) < 3:
+                return
+
+            session_dir = p.parents[2]
+            if session_dir.name == self._reference_session:
+                return  # already handled this session
+
+            # Mark as handled regardless of outcome to avoid repeated work.
+            self._reference_session = session_dir.name
+
+            from utils.reference_track import (
+                session_object_and_date,
+                load_reference_track,
+                build_second_index,
+            )
+
+            obj, _date = session_object_and_date(session_dir)
+            if obj is None:
+                logger.info(
+                    "[CalculationController] No reference object for session '%s'",
+                    session_dir.name,
+                )
+                return
+
+            track = load_reference_track(session_dir)
+            if not track:
+                logger.warning(
+                    "[CalculationController] No reference track points for session '%s'",
+                    session_dir.name,
+                )
+                return
+
+            # Index by UTC second; the reference is drawn only at estimation
+            # timestamps (added per finished job), not as the full dense track.
+            self._reference_index = build_second_index(track)
+            self._reference_object = obj
+            self._reference_matched = []
+            self._reference_matched_secs = set()
+
+            logger.info(
+                "[CalculationController] Reference '%s': %d points indexed "
+                "(shown only at estimation timestamps)",
+                obj,
+                len(track),
+            )
+            # Clear any previous reference drawing.
+            self.reference_track_ready.emit(obj, [])
+
+        except Exception:
+            logger.exception("[CalculationController] Failed to load reference track")
 
     @pyqtSlot(str, str)
     def handle_command(self, sender_id, command):
         if sender_id != "Calculation":
-            return   
+            return
         if command == "Start":
             self.start_calculation()
         elif command == "Stop":
@@ -1041,9 +1229,51 @@ class CalculationController(QObject):
 
         self._emit_receiver_classifications_from_result(res)
         self._emit_object_position_from_result(jid, res)
-        
+        self._emit_reference_for_result(res)
 
         self.print_results(jid, res)
+
+    def _emit_reference_for_result(self, res: dict) -> None:
+        """
+        Add reference (ground-truth) positions only at the timestamps present in
+        this job's Est_pos result, accumulate them chronologically, and redraw.
+
+        Est_pos items are [time(HHMMSS, UTC), lat, lon]; the reference index is
+        keyed by UTC second, so both align directly.
+        """
+        if not self._reference_index:
+            return
+
+        est_pos = res.get("Est_pos")
+        if not est_pos:
+            return
+
+        from utils.reference_track import hhmmss_to_sec, lookup_nearest
+
+        added = False
+        for item in est_pos:
+            try:
+                sec = hhmmss_to_sec(item[0])
+            except (IndexError, TypeError):
+                continue
+
+            if sec is None or sec in self._reference_matched_secs:
+                continue
+
+            pos = lookup_nearest(self._reference_index, sec)
+            if pos is None:
+                continue
+
+            self._reference_matched_secs.add(sec)
+            self._reference_matched.append((sec, pos))
+            added = True
+
+        if not added:
+            return
+
+        self._reference_matched.sort(key=lambda x: x[0])
+        points = [pos for _sec, pos in self._reference_matched]
+        self.reference_track_ready.emit(self._reference_object or "", points)
 
 
     @pyqtSlot(str, str)
@@ -1142,7 +1372,13 @@ class CalculationController(QObject):
             )
             return
 
+        # Geometric gate: accept estimates inside the hydrophone triangle, plus
+        # a metre margin around it (small baseline -> many near-edge points).
+        from utils.reference_track import point_in_triangle_with_margin
+        triangle = self._hydrophone_triangle(res)
+
         emitted_points = []
+        rejected = 0
 
         for item in est_pos:
             try:
@@ -1152,6 +1388,7 @@ class CalculationController(QObject):
                 est_time = str(item[0])
                 lat = float(item[1])
                 lon = float(item[2])
+                closure = float(item[3]) if len(item) > 3 else 0.0
 
             except Exception as e:
                 logger.warning(
@@ -1162,18 +1399,130 @@ class CalculationController(QObject):
                 )
                 continue
 
+            # Reject inconsistent triples (TDOA closure too large).
+            if abs(closure) > self._closure_tol_m:
+                rejected += 1
+                continue
+
+            # Reject estimates that fall outside the hydrophone triangle
+            # (geometrically unreliable TDOA). Point/vertices are (lon, lat).
+            if triangle is not None and not point_in_triangle_with_margin(
+                (lon, lat), triangle[0], triangle[1], triangle[2],
+                margin_m=self._geo_margin_m,
+            ):
+                rejected += 1
+                continue
+
+            # Temporal smoothing with the constant-velocity Kalman filter.
+            sm_lat, sm_lon = self._kalman_step(est_time, lat, lon)
+
             emitted_points.append(
                 {
                     "timestamp": est_time,
-                    "lat": lat,
-                    "lon": lon,
+                    "lat": sm_lat,
+                    "lon": sm_lon,
                 }
             )
 
-            self.object_position_ready.emit(lat, lon, est_time)
+            self.object_position_ready.emit(sm_lat, sm_lon, est_time)
+
+        if rejected:
+            logger.info(
+                "[CalculationController] Job %s: rejected %d/%d estimates outside hydrophone triangle.",
+                jid,
+                rejected,
+                len(est_pos),
+            )
 
         if emitted_points:
             res["Object1"] = emitted_points
+            self._emit_object_icon(res, emitted_points[-1], triangle)
+
+    def _emit_object_icon(self, res: dict, last_point: dict, triangle) -> None:
+        """
+        Pick the detected object class from the hydrophone NEAREST to the
+        estimated position and emit it, so the view can show the matching icon.
+        """
+        if triangle is None:
+            return
+        aka1a = res.get("AKA1A") or []
+        if not aka1a:
+            return
+
+        ox, oy = last_point["lon"], last_point["lat"]   # vertices are (lon, lat)
+        best_i, best_d = None, None
+        for i, v in enumerate(triangle):
+            d = (v[0] - ox) ** 2 + (v[1] - oy) ** 2
+            if best_d is None or d < best_d:
+                best_d, best_i = d, i
+
+        if best_i is None or best_i >= len(aka1a):
+            return
+        try:
+            pred_class = int(aka1a[best_i].get("pred_class"))
+        except (TypeError, ValueError):
+            return
+
+        self.object_type_detected.emit(pred_class)
+
+    def _hydrophone_triangle(self, res: dict):
+        """
+        Build the hydrophone triangle for this job from the receivers' GPS
+        files. Returns three (lon, lat) vertices, or None if positions for all
+        three receivers are not available (then no geometric filtering).
+        """
+        gps_files = res.get("gps_files") or {}
+        if len(gps_files) < 3:
+            return None
+
+        from utils.reference_track import parse_receiver_gps_position
+
+        verts = []
+        for path in gps_files.values():
+            pos = parse_receiver_gps_position(path)
+            if pos is None:
+                return None
+            lat, lon = pos
+            verts.append((lon, lat))
+
+        if len(verts) != 3:
+            return None
+        return verts
+
+    def _kalman_step(self, est_time: str, lat: float, lon: float):
+        """
+        Smooth one estimated position with the constant-velocity Kalman filter.
+        Works in a local metric frame anchored at the first accepted estimate;
+        dt is derived from the UTC timestamps. Returns filtered (lat, lon),
+        falling back to the raw point on error.
+        """
+        try:
+            from utils.reference_track import hhmmss_to_sec
+
+            if self._kalman_ref is None:
+                self._kalman_ref = (lat, lon)
+
+            lat0, lon0 = self._kalman_ref
+            R = 6378137.0  # earth radius [m]
+            mx = math.radians(lon - lon0) * R * math.cos(math.radians(lat0))
+            my = math.radians(lat - lat0) * R
+
+            sec = hhmmss_to_sec(est_time)
+            if sec is None or self._kalman_last_sec is None:
+                dt = None
+            else:
+                dt = sec - self._kalman_last_sec
+            self._kalman_last_sec = sec
+
+            fx, fy = self._kalman.update(mx, my, dt)
+
+            f_lat = lat0 + math.degrees(fy / R)
+            f_lon = lon0 + math.degrees(fx / (R * math.cos(math.radians(lat0))))
+            return f_lat, f_lon
+
+        except Exception:
+            logger.exception("[CalculationController] Kalman step failed; using raw point")
+            return lat, lon
 
 
     # def _emit_object_position_from_result(self, jid: str, res: dict) -> None:

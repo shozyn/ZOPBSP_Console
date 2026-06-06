@@ -1,5 +1,6 @@
-name: Console
+name: zopbsp_konsola
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - libcholmod==5.3.1=hdf2ebef_7100102
@@ -40,8 +41,9 @@ dependencies:
   - metis==5.1.0=h6538335_4
   - exiv2==0.28.5=h29f99b1_0
   - m2w64-gcc-libs-core==5.3.0=7
-  - aws-c-auth==0.9.0=hf0c1250_10
-  - libparquet==20.0.0=ha850022_6_cuda
+  #- aws-c-auth==0.9.0=hf0c1250_10
+  - aws-c-auth
+  #- libparquet==20.0.0=ha850022_6_cuda
   - pyyaml==6.0.2=py312h827c3e9_0
   - zlib==1.3.1=h2466b09_2
   - libcblas==3.9.0=12_hb3dda5d_netlib
@@ -80,7 +82,7 @@ dependencies:
   - tbb==2021.8.0=h59b6b97_0
   - geotiff==1.7.4=h86c3423_2
   - vs2015_runtime==14.42.34438=h7142326_26
-  - libarrow==20.0.0=h7a3273b_6_cuda
+  #- libarrow==20.0.0=h7a3273b_6_cuda
   - libcamd==3.3.3=h8c1c262_7100102
   - libtiff==4.7.0=h05922d8_5
   - libssh2==1.11.1=h9aa295b_0
@@ -145,7 +147,7 @@ dependencies:
   - libspatialindex==2.1.0=h518811d_0
   - openssl
   - aws-sdk-cpp==1.11.510=h7deb975_10
-  - libarrow-acero==20.0.0=h7d8d6a5_6_cuda
+  #- libarrow-acero==20.0.0=h7d8d6a5_6_cuda
   - pyqt5-sip==12.13.0=py312h827c3e9_1
   - aws-c-mqtt==0.13.1=h78aaacf_0
   - httplib2==0.22.0=pyhd8ed1ab_1
@@ -190,7 +192,7 @@ dependencies:
   - azure-storage-blobs-cpp==12.13.0=h3241184_1
   - bzip2==1.0.8=h2bbff1b_6
   - aws-c-event-stream==0.5.4=hf27a43c_10
-  - libarrow-dataset==20.0.0=h7d8d6a5_6_cuda
+  #- libarrow-dataset==20.0.0=h7d8d6a5_6_cuda
   - pixman==0.46.0=had0cd8c_0
   - packaging==24.2=py312haa95532_0
   - libgdal-postgisraster==3.10.3=hc8f1838_10

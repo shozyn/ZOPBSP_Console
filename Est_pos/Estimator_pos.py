@@ -3,13 +3,15 @@
 #import pandas as pd
 #import matplotlib
 #matplotlib.use("Agg")  # headless (bez okna GUI)
+import math
 from geopy.distance import geodesic
 from pyproj import Transformer, CRS
 #from plotowanie import plot_final_results, save_folium_map
 #from odleglosci_wg_GPS import  GPS_dist_Vincenty
 #from importowanie import import_data
 # scytonizowane funkcje
-from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+# from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+from oblicz_TDOA import compute_tdoa_1hz
 from Est_pos.tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
 from Est_pos.importowanie import import_data
 
@@ -37,6 +39,12 @@ Realizacja w krokach:
 """
 # ===================== KONFIG / STAŁE =====================
 c: int = 1470        # prędkość dźwięku w wodzie [m/s]
+
+# Warunek zamknięcia TDOA: dla różnic odległości (w metrach) powinno zachodzić
+# d12 + d23 - d13 ≈ 0. Krok czasowy, dla którego |reszta| przekracza tę
+# tolerancję, jest niespójny (szum/multipath) i jest pomijany. Wartość do
+# strojenia wg jakości danych.
+CLOSURE_TOL_M: float = 15.0
 
 # parametry wyznaczone na podstawie wykonanych pomiarów w Czernicy przez GA
 
@@ -166,19 +174,35 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     # Niepewności (metry)
     B = [1.0, 1.0, 1.0]
             
+    # Return RAW per-step estimates as [time, lat, lon, closure]. All filtering
+    # (closure threshold, geometric gate, smoothing) is done by the controller,
+    # so it can be tuned at runtime without re-running the TDOA. Only steps with
+    # non-finite TDOA are skipped here.
     est_track=[]
+    n_skipped = 0
+    pos_est = None
     for *dSH,czas_gps1 in zip(tdoa12_1hz_m,tdoa13_1hz_m,tdoa23_1hz_m,GPS1): # do dSH podajemy 3xtdoa, a z GPS1 podajemy czas do czas_gps1
+        d12, d13, d23 = dSH
+
+        if not all(math.isfinite(x) for x in (d12, d13, d23)):
+            n_skipped += 1
+            continue
+
+        closure = d12 + d23 - d13  # powinno być ~0; przekazujemy do kontrolera
+
         res_1hz = tdoa_estimate_mode_6(
             H_coord = H_coord,
             dSH     = dSH,
             B       = B,
             mode_po = 0,   # centroid
-            )  
+            )
 
-        pos_est = inv.transform(*res_1hz['Pe'][0:2]) # Pe - position estomation 
-        est_track.append([czas_gps1[0],*pos_est])
+        pos_est = inv.transform(*res_1hz['Pe'][0:2]) # Pe - position estimation
+        # Zachowujemy oryginalna kolejnosc (*pos_est) + doklejamy closure jako 4-ty element.
+        est_track.append([czas_gps1[0], *pos_est, float(closure)])
 
-    print(f"pos_est: {pos_est}")
+    print(f"[tdoa] pominieto {n_skipped} krokow z niefinitnym TDOA; zwrocono {len(est_track)} punktow")
+    print(f"pos_est: {pos_est if est_track else 'brak'}")
 
     # Weryfikacja dokładności estymacji pozycji poprzez porównanie do danych z GPS -> MAE (1Hz)
     # gps12_m = GPS_dist_Vincenty(GPS1, GPS2, GPS_OP)[:n_gps]
@@ -194,10 +218,8 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     # save_detailed_results(GPS1, GPS2, GPS3, GPS_OP,
     #                         tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m)
     
-    # filtrowanie estymowanych pozycji, akceptujemy tylko pozycje w odległości do radius_m=300m od RPi1 (opcjonalnie)
-    if GPS1:
-        est_track = filter_est_track_by_radius(est_track, GPS1[0][1], GPS1[0][2], radius_m=300.0)
-
+    # UWAGA: filtrowanie (promień / zamknięcie / geometria) przeniesione do
+    # kontrolera, który operuje na surowych punktach [time, lat, lon, closure].
     print(f"est_track: {est_track}")
 
     return est_track

@@ -263,6 +263,12 @@ class MenuBar(QMenuBar):
             self.calc_action.triggered.connect(lambda: self._toggle_calculation())
             calc_menu.addAction(self.calc_action)
 
+        load_session_action = QAction("Wczytaj sesję…", self)
+        load_session_action.triggered.connect(
+            lambda: self.command_triggered.emit("Calculation", "load_session")
+        )
+        calc_menu.addAction(load_session_action)
+
 
         # Target Menus with toggle logic
         for tgt in targets:

@@ -1,6 +1,6 @@
 num_receivers: 3
 map:
-  - layer: "C:\\Code\\Console\\kosobudno.tif"
+  - layer: "C:\\Users\\User\\Desktop\\ZOPBSP_konsola\\kosobudno_w_stopniach_2.tif"
   #- layer: "resources/ortofot_topocentryczny.bmp"
 targets:
   - id: "Target1"

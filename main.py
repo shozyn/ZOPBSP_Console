@@ -7,7 +7,7 @@ from view.widgets import MapView, ToolBar, make_coord_label
 from controller.controllers import MapController, MainController, ReceiverController, TargetController, ObjectController, CalculationController
 from view.widgets import MenuBar
 from model.models import ReceiverModel, TargetModel, ObjectModel, MapModel, CalculationModel
-from view.view import ReceiverView, TargetView, ObjectView
+from view.view import ReceiverView, TargetView, ObjectView, ReferenceTrackView
 from utils.loggings import setup_logging_for_app, LoggingConfig
 from utils.status_builder import populate_status_panel
 from utils.math_worker import CalculationWorker
@@ -130,6 +130,9 @@ def main():
     object_view = ObjectView(map_view.m_MapCanvas)
     object_controller = ObjectController(object_model, object_view, menu_bar)
 
+    # REFERENCE TRACK (ground-truth path of the measured object)
+    reference_track_view = ReferenceTrackView(map_view.m_MapCanvas)
+
 
     #populate_from_yaml(status_widget.get_model(), receivers_cfg, targets_cfg)
     populate_status_panel(
@@ -159,16 +162,18 @@ def main():
     ),
     )
 
-    receiver_ids = []
+    # receiver_ids = []
     receiver_ids = tuple(rc.receiver_id for rc in receiver_controllers)
     calc_model = CalculationModel(required_receivers=receiver_ids)
     calc_controller = CalculationController(calc_model, menu_bar=menu_bar, dock_result=dock_result)
     
     main_controller = MainController(main_window=main_window, menu_bar = menu_bar,tool_bar=tool_bar,
-                                     receiver_controllers=receiver_controllers)
+                                     receiver_controllers=receiver_controllers,
+                                     calc_controller=calc_controller)
     
     calc_controller.object_position_ready.connect(object_model.update_position)
-    calc_controller.object_position_ready.connect(object_model.update_position)
+    calc_controller.reference_track_ready.connect(reference_track_view.draw_track)
+    calc_controller.object_type_detected.connect(object_view.set_object_icon)
 
     for rc in receiver_controllers:
         rc.files_arrived.connect(calc_controller.on_files_arrived)
