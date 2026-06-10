@@ -182,7 +182,24 @@ class ReceiverClientWorker(QObject):
 
         while self._sock.hasPendingDatagrams():
             datagram_size = self._sock.pendingDatagramSize()
+            if datagram_size < 0:
+                logger.debug(
+                    "[ReceiverClientWorker][%s:%s] Ignoring invalid UDP datagram size: %s",
+                    self.server_ip,
+                    self.server_port,
+                    datagram_size,
+                )
+                break
+
             data, host, port = self._sock.readDatagram(datagram_size)
+            if data is None:
+                logger.warning(
+                    "[ReceiverClientWorker][%s:%s] UDP read failed: %s",
+                    self.server_ip,
+                    self.server_port,
+                    self._sock.errorString(),
+                )
+                continue
 
             text = data.decode("utf-8", errors="replace").strip()
 

@@ -378,14 +378,14 @@ class ObjectView(QObject):
         self.canvas = canvas
 
         self.current_marker = QgsVertexMarker(self.canvas)
-        self.current_marker.setColor(QColor(0, 0, 0))
+        self.current_marker.setColor(QColor(255, 0, 0))
         self.current_marker.setIconType(QgsVertexMarker.ICON_BOX)
         self.current_marker.setIconSize(9)
         self.current_marker.setPenWidth(3)
         self.current_marker.hide()
 
         self.label_item = QGraphicsSimpleTextItem()
-        self.label_item.setBrush(QBrush(QColor(0, 0, 0)))
+        self.label_item.setBrush(QBrush(QColor(255, 0, 0)))
         self.label_item.setFont(QFont("Arial", 9))
         self.label_item.hide()
         self.canvas.scene().addItem(self.label_item)
@@ -394,7 +394,7 @@ class ObjectView(QObject):
         self.track_points = []
 
         self.track_line = QgsRubberBand(self.canvas, QgsWkbTypes.LineGeometry)
-        self.track_line.setColor(QColor(0, 0, 0))
+        self.track_line.setColor(QColor(255, 0, 0))
         self.track_line.setWidth(1)
         self.track_line.hide()
 
@@ -560,7 +560,7 @@ class ObjectView(QObject):
         Add a small historical marker and extend the tracking polyline.
         """
         marker = QgsVertexMarker(self.canvas)
-        marker.setColor(QColor(0, 0, 0))
+        marker.setColor(QColor(255, 0, 0))
         marker.setIconType(QgsVertexMarker.ICON_BOX)
         marker.setIconSize(5)
         marker.setPenWidth(1)
