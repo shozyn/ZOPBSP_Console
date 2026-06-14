@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QColor
 from config.config_loader import Config, ConfigError, DataError
 from qgis.core import QgsApplication
 from view.mainwindow import MainWindow
@@ -25,7 +26,7 @@ def main():
     #CONFIG_PATH = "config/configWin.yaml"
 
     try:
-     config = Config(CONFIG_PATH)
+        config = Config(CONFIG_PATH)
     except Exception as e:
         if isinstance(Exception,ConfigError):           
             QMessageBox.critical(None, "Conif file cannot be read", str(e)) 
@@ -37,9 +38,13 @@ def main():
         qgs.exitQgis()
         sys.exit(1)  
 
-    log_cfg_dict = config.log_cfg 
+    log_cfg_dict = config.log_cfg
     receivers_cfg = config.receivers
     targets_cfg = config.targets
+
+    # Wybor solvera pozycji TDOA przekazywany do podprocesu Est_pos przez srodowisko
+    # (algorithms.py kopiuje os.environ). "mode6" = produkcyjny, "3hydro" = 3-parowy.
+    os.environ["ZOPBSP_ESTPOS_SOLVER"] = str(config._data.get("est_pos_solver", "mode6"))
 
     map_layer = config.get_layer()
     map_view = MapView()
@@ -66,7 +71,8 @@ def main():
         sftp_cfg = rx_cfg.get("sftp", {})
         rx_model = ReceiverModel(receiver_id=receiver_id, parameters=parameters,sftp_cfg=sftp_cfg)
         rx_colour = rx_cfg.get("status",{}).get("Colour",{}).get("value","red")
-        rx_view = ReceiverView(map_view.m_MapCanvas,rx_colour) 
+        rx_icon = rx_cfg.get("img")
+        rx_view = ReceiverView(map_view.m_MapCanvas, rx_colour, icon_path=rx_icon)
         # rx_controller = ReceiverController(rx_model, rx_view, menu_bar,status_widget)
         rx_controller = ReceiverController(
                                             rx_model,
@@ -130,6 +136,12 @@ def main():
     object_view = ObjectView(map_view.m_MapCanvas)
     object_controller = ObjectController(object_model, object_view, menu_bar)
 
+    # OBJECT2 - drugi tor (3hydro) pokazywany rownolegle w trybie est_pos_solver: "both".
+    # W trybie jedno-solverowym nie dostaje danych i pozostaje pusty/niewidoczny.
+    object2_model = ObjectModel("Object2")
+    object2_view = ObjectView(map_view.m_MapCanvas, colour=QColor(0, 170, 0), marker_icon="cross")  # zielony krzyzyk (widoczny gdy pokrywa sie z Object1)
+    object2_controller = ObjectController(object2_model, object2_view, menu_bar)
+
     # REFERENCE TRACK (ground-truth path of the measured object)
     reference_track_view = ReferenceTrackView(map_view.m_MapCanvas)
 
@@ -172,6 +184,7 @@ def main():
                                      calc_controller=calc_controller)
     
     calc_controller.object_position_ready.connect(object_model.update_position)
+    calc_controller.object2_position_ready.connect(object2_model.update_position)
     calc_controller.reference_track_ready.connect(reference_track_view.draw_track)
     calc_controller.object_type_detected.connect(object_view.set_object_icon)
 
