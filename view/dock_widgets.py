@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QDockWidget, QTreeView, QPlainTextEdit
+from PyQt5.QtWidgets import QDockWidget, QTreeView, QPlainTextEdit, QTextEdit
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from html import escape
 import numpy as np
 
 OUTPUT_CLASSES = [
@@ -54,6 +55,35 @@ def _fmt_prob_list(values, digits=6, indent="    "):
         lines.append(f"{indent}class {cls_id}: {_fmt_float(prob, digits)}")
     return "\n".join(lines)
 
+def _format_result_html(text: str) -> str:
+    """
+    Convert plain calculation-result text into simple HTML.
+
+    Only the line:
+        Predicted class: XXX
+
+    is emphasized:
+        - whole line is bigger;
+        - class name XXX is bold.
+    """
+    html_lines = []
+
+    for line in text.splitlines():
+        stripped = line.strip()
+
+        if stripped.startswith("Predicted class:"):
+            _label, value = stripped.split(":", 1)
+            class_name = value.strip()
+
+            html_lines.append(
+                '<span style="font-size: 14pt;">'
+                f'Predicted class: <b>{escape(class_name)}</b>'
+                '</span>'
+            )
+        else:
+            html_lines.append(escape(line))
+
+    return "<br>".join(html_lines)
 
 def format_calculation_result(result: dict) -> str:
     """
@@ -89,18 +119,33 @@ def format_calculation_result(result: dict) -> str:
     # ==============================================================
     # AKA1A
     # ==============================================================
-    aka1a = result.get("AKA1A")
-    if aka1a:
+    aka1a_avg = result.get("AKA1A_avg")
+
+    if aka1a_avg:
         lines.append("")
         lines.append("=== AKA1A ===")
+        lines.append("Average 3-RPI prediction:")
 
-        for i, item in enumerate(aka1a, start=1):
-            lines.append(f"Receiver {i}:")
-            pred_class_nb = item.get('pred_class', -1)
-            pred_class_nb = OUTPUT_CLASSES[pred_class_nb] if pred_class_nb > -1 else 'N/A'
-            lines.append(f"  Predicted class: {pred_class_nb}")
-            #lines.append(f"  Predicted class: {item.get('pred_class', 'N/A')}")
-        lines.append("\n")
+        pred_class_nb = aka1a_avg.get("pred_class", -1)
+        pred_class_name = (
+            OUTPUT_CLASSES[pred_class_nb]
+            if isinstance(pred_class_nb, int) and 0 <= pred_class_nb < len(OUTPUT_CLASSES)
+            else "N/A"
+        )
+
+        lines.append(f" Predicted class: {pred_class_name}")
+
+        object_score = aka1a_avg.get("object_score")
+        salience_score = aka1a_avg.get("salience_score")
+        threshold = aka1a_avg.get("threshold")
+
+        if object_score is not None:
+            lines.append(f" Object score: {_fmt_float(object_score, digits=3)}")
+
+        if salience_score is not None:
+            lines.append(f" Salience score: {_fmt_float(salience_score, digits=3)}")
+
+        lines.append("")
             # probs = item.get("class_prob", [])
             # if probs:
             #     lines.append("  Class probabilities:")
@@ -192,15 +237,16 @@ class DockResultWidget(QDockWidget):
         super().__init__("Calculations", parent)
         self.setAllowedAreas(Qt.LeftDockWidgetArea)
 
-        text_edit = QPlainTextEdit()
+        # QTextEdit is needed because QPlainTextEdit cannot display bold / larger text.
+        text_edit = QTextEdit()
         text_edit.setReadOnly(True)
-        # Optional: limit blocks to guard memory; this is an extra safety
-        # The GUI handler also keeps a ring buffer (authoritative).
-        text_edit.setMaximumBlockCount(10000)  # tweak via config later if desired
 
         self.setWidget(text_edit)
         self.text_edit = text_edit
 
     def add_result(self, res):
         text = format_calculation_result(res)
-        self.text_edit.appendPlainText(text)
+        html = _format_result_html(text)
+
+        self.text_edit.append(html)
+        self.text_edit.append("<br>")
