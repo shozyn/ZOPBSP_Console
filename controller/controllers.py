@@ -923,7 +923,7 @@ class CalculationController(QObject):
     # 2 = LAUV
     # 3 = Otter
     # 5 = Ponton_2 / Raft
-    OBJECT_THRESHOLD = 0.55
+    OBJECT_THRESHOLD = 0.5
     SALIENCE_CLASS = 0
     OBJECT_CLASSES = (2, 3, 5)
 
@@ -988,16 +988,6 @@ class CalculationController(QObject):
             except Exception:
                 return CalculationController.SALIENCE_CLASS
 
-
-
-# External class indices in OUTPUT_CLASSES:
-    # 0 = Cisza / Salience
-    # 2 = LAUV
-    # 3 = Otter
-    # 5 = Ponton_2 / Raft
-    OBJECT_THRESHOLD = 0.55
-    SALIENCE_CLASS = 0
-    OBJECT_CLASSES = (2, 3, 5)
 
     @staticmethod
     def _threshold_aka1a_details(cls_result: dict, threshold: float = OBJECT_THRESHOLD):

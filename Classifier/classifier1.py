@@ -365,11 +365,6 @@ class Classifier:
                 preds_all.append(yb.cpu().numpy())
 
         probs = np.concatenate(probs_all, axis=0).astype(np.float32)  # (n_windows, 4)
-
-        with open("softmax_windows.txt", "a") as f:
-            for row in probs:
-                f.write(f"{row[0]:.6f}\t{row[1]:.6f}\t{row[2]:.6f}\t{row[3]:.6f}\n")
-
         preds = np.concatenate(preds_all, axis=0).astype(np.int64)    # (n_windows,)
 
         # majority vote in internal space
