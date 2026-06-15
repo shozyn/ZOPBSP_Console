@@ -1,4 +1,9 @@
 num_receivers: 3
+# Solver estymacji pozycji TDOA:
+#   "mode6"  - produkcyjny (4-ty wirtualny hydrofon w centroidzie) -> Object1 (czerwony)
+#   "3hydro" - estymator 3-parowy (Est_pos/tdoa_solver_3hydro.py)  -> Object1 (czerwony)
+#   "both"   - oba naraz: mode6 -> Object1 (czerwony), 3hydro -> Object2 (niebieski)
+est_pos_solver: "both"
 map:
   - layer: "C:\\Code\\ZOPBSP_Console\\kosobudno_w_stopniach_2.tif"
   #- layer: "resources/ortofot_topocentryczny.bmp"
@@ -13,10 +18,11 @@ targets:
         readable: true   
 receivers:
   - id: RPI1
+    img: "C:\\Code\\Console\\OP_figures_png\\shad.png"
     status:
       Colour: 
         value: "red"
-        readable: true 
+        readable: true
       Status: 
         value: "DISCONNECTED"
         readable: true 
@@ -111,6 +117,7 @@ receivers:
         gps: "C:\\Pi_loc\\XXX\\RPI1\\GPS"
         config: "C:\\Pi_loc\\XXX\\RPI1\\PARAM"
   - id: RPI2
+    img: "C:\\Code\\Console\\OP_figures_png\\Korum.png"
     status:
       Colour: 
         value: "green"
@@ -209,6 +216,7 @@ receivers:
         gps: "C:\\Pi_loc\\XXX\\RPI2\\GPS"
         config: "C:\\Pi_loc\\XXX\\RPI2\\PARAM"
   - id: RPI3
+    img: "C:\\Code\\Console\\OP_figures_png\\Szary.png"
     status:
       Colour: 
         value: "blue"

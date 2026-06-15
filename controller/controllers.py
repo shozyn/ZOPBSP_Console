@@ -41,6 +41,24 @@ def current_func_name() -> str:
     frame = inspect.currentframe()
     return frame.f_code.co_name if frame else "<unknown>"
 
+
+class _KalmanTrack:
+    """
+    One smoothed object track: a constant-velocity Kalman filter plus its
+    local-frame origin and the last UTC second seen. One instance per displayed
+    object (Object1 = mode6, Object2 = 3hydro in 'both' mode).
+    """
+
+    def __init__(self, **kw):
+        self.kf = ConstantVelocityKalman2D(**kw)
+        self.ref = None        # (lat0, lon0) local-frame origin
+        self.last_sec = None   # UTC second-of-day of previous estimate
+
+    def reset(self) -> None:
+        self.kf.reset()
+        self.ref = None
+        self.last_sec = None
+
 class TargetController(QObject):
     """
     Controller for one Target.
@@ -869,7 +887,8 @@ class CalculationController(QObject):
     """
 
     print_res = pyqtSignal(dict)
-    object_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp
+    object_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp (Object1)
+    object2_position_ready = pyqtSignal(float, float, str)  # lat, lon, timestamp (Object2, tryb 'both')
     receiver_classification_ready = pyqtSignal(str, int)  # receiver_id, pred_class
     reference_track_ready = pyqtSignal(str, list)  # object_name, [(lat, lon), ...]
     object_type_detected = pyqtSignal(int)  # pred_class index (nearest hydrophone)
@@ -894,10 +913,10 @@ class CalculationController(QObject):
         # TDOA closure tolerance [m]: |d12 + d23 - d13| above this is rejected
         # (inconsistent triple). Applied here on raw estimates (4th element of
         # each Est_pos item), so it is tunable without re-running the estimator.
-        self._closure_tol_m = 20.0
+        self._closure_tol_m = 50.0
         # Geometric gate margin [m] around the hydrophone triangle. Estimates
         # inside the triangle or within this distance of it are accepted.
-        self._geo_margin_m = 100.0
+        self._geo_margin_m = 300.0
         # Temporal smoothing of the estimated object position with a 2D
         # constant-velocity Kalman filter (object moves at ~0.75-3 m/s).
         # Parametry dostrojone offline na trasach referencyjnych pod GLADKOSC
@@ -905,12 +924,15 @@ class CalculationController(QObject):
         # => filtr ufa modelowi stalej predkosci, ignoruje rozrzut TDOA.
         # max_gap_s duze => filtr nie resetuje sie na przerwach miedzy rzadkimi
         # ocalalymi punktami (te resety dawaly "odloty" na mapie); utrzymuje
-        # ciaglosc i wygladza przez luki.
-        self._kalman = ConstantVelocityKalman2D(
-            process_std=0.1, meas_std=60.0, max_gap_s=300.0
+        # ciaglosc i wygladza przez luki. 
+        # 2026_06_12 zmianiam na process_std = 0.05–0.1
+        # Dwa niezalezne tory wygladzania: t1 = Object1 (mode6 / pojedynczy solver),
+        # t2 = Object2 (3hydro, uzywany tylko w trybie 'both').
+        _kalman_params = dict(
+            process_std=0.05, meas_std=90.0, max_gap_s=300.0, init_speed_std=2.5
         )
-        self._kalman_ref = None         # (lat0, lon0) local-frame origin
-        self._kalman_last_sec = None    # UTC second-of-day of previous estimate
+        self._kalman_t1 = _KalmanTrack(**_kalman_params)
+        self._kalman_t2 = _KalmanTrack(**_kalman_params)
         self.menu_bar = menu_bar
         self.menu_bar.command_triggered.connect(self.handle_command)
         self.print_res.connect(dock_result.add_result)
@@ -1193,9 +1215,8 @@ class CalculationController(QObject):
         self._reference_object = None
         self._reference_matched = []
         self._reference_matched_secs = set()
-        self._kalman.reset()
-        self._kalman_ref = None
-        self._kalman_last_sec = None
+        self._kalman_t1.reset()
+        self._kalman_t2.reset()
 
         logger.info("[CalculationController] Calculation started.")
         # Enable "Receiver X / Read files" while calculation is running.
@@ -1457,6 +1478,14 @@ class CalculationController(QObject):
         if not est_pos:
             return
 
+        # W trybie 'both' Est_pos to dict {"mode6": [...], "3hydro": [...]};
+        # znaczniki czasu w obu torach sa identyczne, wiec do dopasowania
+        # referencji wystarczy dowolny niepusty tor.
+        if isinstance(est_pos, dict):
+            est_pos = est_pos.get("mode6") or est_pos.get("3hydro") or []
+            if not est_pos:
+                return
+
         from utils.reference_track import hhmmss_to_sec, lookup_nearest
 
         added = False
@@ -1581,10 +1610,33 @@ class CalculationController(QObject):
             )
             return
 
+        triangle = self._hydrophone_triangle(res)
+
+        # Est_pos is either a flat list (single solver -> Object1) or a dict
+        # {"mode6": [...], "3hydro": [...]} in 'both' mode (mode6 -> Object1,
+        # 3hydro -> Object2). Each track is gated and smoothed independently.
+        if isinstance(est_pos, dict):
+            self._process_track(jid, est_pos.get("mode6") or [], triangle, res,
+                                self._kalman_t1, self.object_position_ready,
+                                "Object1", emit_icon=True)
+            self._process_track(jid, est_pos.get("3hydro") or [], triangle, res,
+                                self._kalman_t2, self.object2_position_ready,
+                                "Object2", emit_icon=False)
+        else:
+            self._process_track(jid, est_pos, triangle, res,
+                                self._kalman_t1, self.object_position_ready,
+                                "Object1", emit_icon=True)
+
+    def _process_track(self, jid, est_pos, triangle, res, kalman_ctx,
+                       emit_signal, object_key, emit_icon):
+        """
+        Gate (closure + geometric), smooth (Kalman) and emit one estimated
+        track. Stores the smoothed points under res[object_key] and, when
+        emit_icon is True, emits the nearest-hydrophone object class icon.
+        """
         # Geometric gate: accept estimates inside the hydrophone triangle, plus
         # a metre margin around it (small baseline -> many near-edge points).
         from utils.reference_track import point_in_triangle_with_margin
-        triangle = self._hydrophone_triangle(res)
 
         emitted_points = []
         rejected = 0
@@ -1622,8 +1674,8 @@ class CalculationController(QObject):
                 rejected += 1
                 continue
 
-            # Temporal smoothing with the constant-velocity Kalman filter.
-            sm_lat, sm_lon = self._kalman_step(est_time, lat, lon)
+            # Temporal smoothing with this track's constant-velocity Kalman filter.
+            sm_lat, sm_lon = self._kalman_step(kalman_ctx, est_time, lat, lon)
 
             emitted_points.append(
                 {
@@ -1633,19 +1685,21 @@ class CalculationController(QObject):
                 }
             )
 
-            self.object_position_ready.emit(sm_lat, sm_lon, est_time)
+            emit_signal.emit(sm_lat, sm_lon, est_time)
 
         if rejected:
             logger.info(
-                "[CalculationController] Job %s: rejected %d/%d estimates outside hydrophone triangle.",
+                "[CalculationController] Job %s [%s]: rejected %d/%d estimates outside hydrophone triangle.",
                 jid,
+                object_key,
                 rejected,
                 len(est_pos),
             )
 
         if emitted_points:
-            res["Object1"] = emitted_points
-            self._emit_object_icon(res, emitted_points[-1], triangle)
+            res[object_key] = emitted_points
+            if emit_icon:
+                self._emit_object_icon(res, emitted_points[-1], triangle)
 
     def _emit_object_icon(self, res: dict, last_point: dict, triangle) -> None:
         """
@@ -1699,32 +1753,32 @@ class CalculationController(QObject):
             return None
         return verts
 
-    def _kalman_step(self, est_time: str, lat: float, lon: float):
+    def _kalman_step(self, ctx: "_KalmanTrack", est_time: str, lat: float, lon: float):
         """
-        Smooth one estimated position with the constant-velocity Kalman filter.
-        Works in a local metric frame anchored at the first accepted estimate;
-        dt is derived from the UTC timestamps. Returns filtered (lat, lon),
-        falling back to the raw point on error.
+        Smooth one estimated position with the given track's constant-velocity
+        Kalman filter. Works in a local metric frame anchored at that track's
+        first accepted estimate; dt is derived from the UTC timestamps. Returns
+        filtered (lat, lon), falling back to the raw point on error.
         """
         try:
             from utils.reference_track import hhmmss_to_sec
 
-            if self._kalman_ref is None:
-                self._kalman_ref = (lat, lon)
+            if ctx.ref is None:
+                ctx.ref = (lat, lon)
 
-            lat0, lon0 = self._kalman_ref
+            lat0, lon0 = ctx.ref
             R = 6378137.0  # earth radius [m]
             mx = math.radians(lon - lon0) * R * math.cos(math.radians(lat0))
             my = math.radians(lat - lat0) * R
 
             sec = hhmmss_to_sec(est_time)
-            if sec is None or self._kalman_last_sec is None:
+            if sec is None or ctx.last_sec is None:
                 dt = None
             else:
-                dt = sec - self._kalman_last_sec
-            self._kalman_last_sec = sec
+                dt = sec - ctx.last_sec
+            ctx.last_sec = sec
 
-            fx, fy = self._kalman.update(mx, my, dt)
+            fx, fy = ctx.kf.update(mx, my, dt)
 
             f_lat = lat0 + math.degrees(fy / R)
             f_lon = lon0 + math.degrees(fx / (R * math.cos(math.radians(lat0))))

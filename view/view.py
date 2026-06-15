@@ -53,8 +53,8 @@ _OBJECT_ICON_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "OP_figures_png"
 )
 _OBJECT_ICON_FILES = {
-    "LAUV": "LAUV.png",
-    "Otter": "USV_Otter.png",
+    "LAUV": "LAUV-Bez_napisow.png",
+    "Otter": "otter.png",
     "Ponton": "ponton.png",
 }
 
@@ -289,16 +289,26 @@ class ReceiverView(QWidget):
     receiver marker.
     """
 
-    def __init__(self, canvas, colour="red", parent=None):
+    def __init__(self, canvas, colour="red", icon_path=None, icon_size=80, parent=None):
         super().__init__(parent)
         self.canvas = canvas
 
+        # Fallback marker (coloured circle) used when no PNG icon is configured
+        # or the icon file cannot be loaded.
         self.actual_marker = QgsVertexMarker(self.canvas)
         self.actual_marker.setColor(QColor(colour))
         self.actual_marker.setIconType(QgsVertexMarker.ICON_CIRCLE)
         self.actual_marker.setIconSize(8)
         self.actual_marker.setPenWidth(2)
         self.actual_marker.hide()
+
+        # Optional PNG icon drawn at the receiver position instead of the circle.
+        self._icon_size = int(icon_size)
+        self.icon_item = QGraphicsPixmapItem()
+        self.icon_item.setZValue(15)
+        self.icon_item.hide()
+        self.canvas.scene().addItem(self.icon_item)
+        self._icon_pixmap = self._load_icon(icon_path)
 
         self.class_label_item = QGraphicsSimpleTextItem()
         self.class_label_item.setBrush(QBrush(QColor(0, 0, 0)))
@@ -310,18 +320,67 @@ class ReceiverView(QWidget):
         self._latest_class_text: str = ""
 
         self.canvas.extentsChanged.connect(self._update_class_label_position)
+        self.canvas.extentsChanged.connect(self._update_icon_position)
+
+    def _load_icon(self, icon_path):
+        """
+        Load and scale the receiver PNG icon. Relative paths are resolved
+        against the project root. Returns a scaled QPixmap, or None if no icon
+        is configured or the file is missing/invalid (caller falls back to the
+        coloured circle).
+        """
+        if not icon_path:
+            return None
+
+        path = icon_path
+        if not os.path.isabs(path):
+            base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            path = os.path.join(base, icon_path)
+
+        pix = QPixmap(path)
+        if pix.isNull():
+            logger.warning("[ReceiverView] Nie udalo sie wczytac ikony: %s", path)
+            return None
+
+        return pix.scaled(
+            self._icon_size, self._icon_size,
+            Qt.KeepAspectRatio, Qt.SmoothTransformation,
+        )
 
     def display_actual_position(self, point: QgsPointXY):
         self._latest_point = point
 
-        self.actual_marker.setCenter(point)
-        self.actual_marker.show()
+        if self._icon_pixmap is not None:
+            self.icon_item.setPixmap(self._icon_pixmap)
+            self.icon_item.show()
+            self._update_icon_position()
+            self.actual_marker.hide()
+        else:
+            self.actual_marker.setCenter(point)
+            self.actual_marker.show()
 
         if self._latest_class_text:
             self.class_label_item.show()
             self._update_class_label_position()
 
         self.canvas.refresh()
+
+    def _update_icon_position(self) -> None:
+        """Keep the PNG icon centred on the receiver point after pan/zoom."""
+        if self._latest_point is None or self._icon_pixmap is None:
+            return
+        if not self.icon_item.isVisible():
+            return
+        try:
+            sp = self.canvas.getCoordinateTransform().transform(
+                self._latest_point.x(), self._latest_point.y()
+            )
+            pm = self.icon_item.pixmap()
+            self.icon_item.setPos(
+                QPointF(sp.x() - pm.width() / 2.0, sp.y() - pm.height() / 2.0)
+            )
+        except Exception:
+            pass
 
     def display_classification_result(self, pred_class: int) -> None:
         """
@@ -331,7 +390,7 @@ class ReceiverView(QWidget):
         """
         #self._latest_class_text = str(int(pred_class))
         self._latest_class_text = OUTPUT_CLASSES[pred_class]
-        self.class_label_item.setText(self._latest_class_text)
+        self.class_label_item.setText(f"Detect: {self._latest_class_text}")
 
         if self._latest_point is not None:
             self.class_label_item.show()
@@ -354,7 +413,10 @@ class ReceiverView(QWidget):
             )
 
             self.class_label_item.setPos(
-                QPointF(screen_point.x() + 10, screen_point.y() - 10)
+                QPointF(
+                    screen_point.x() - self.icon_item.pixmap().width()/2, 
+                    screen_point.y() - self.icon_item.pixmap().height()/2 - 12
+                )
             )
 
         except Exception:
@@ -373,19 +435,28 @@ class ObjectView(QObject):
     Draws the calculated object position on the map.
     """
 
-    def __init__(self, canvas, parent=None):
+    _MARKER_ICONS = {
+        "box": QgsVertexMarker.ICON_BOX,
+        "cross": QgsVertexMarker.ICON_CROSS,
+        "x": QgsVertexMarker.ICON_X,
+        "circle": QgsVertexMarker.ICON_CIRCLE,
+    }
+
+    def __init__(self, canvas, colour=QColor(255, 0, 0), marker_icon="box", parent=None):
         super().__init__(parent)
         self.canvas = canvas
+        self._colour = QColor(colour)
+        self._marker_icon = self._MARKER_ICONS.get(marker_icon, QgsVertexMarker.ICON_BOX)
 
         self.current_marker = QgsVertexMarker(self.canvas)
-        self.current_marker.setColor(QColor(255, 0, 0))
-        self.current_marker.setIconType(QgsVertexMarker.ICON_BOX)
+        self.current_marker.setColor(self._colour)
+        self.current_marker.setIconType(self._marker_icon)
         self.current_marker.setIconSize(9)
         self.current_marker.setPenWidth(3)
         self.current_marker.hide()
 
         self.label_item = QGraphicsSimpleTextItem()
-        self.label_item.setBrush(QBrush(QColor(255, 0, 0)))
+        self.label_item.setBrush(QBrush(self._colour))
         self.label_item.setFont(QFont("Arial", 9))
         self.label_item.hide()
         self.canvas.scene().addItem(self.label_item)
@@ -394,7 +465,7 @@ class ObjectView(QObject):
         self.track_points = []
 
         self.track_line = QgsRubberBand(self.canvas, QgsWkbTypes.LineGeometry)
-        self.track_line.setColor(QColor(255, 0, 0))
+        self.track_line.setColor(self._colour)
         self.track_line.setWidth(1)
         self.track_line.hide()
 
@@ -560,8 +631,8 @@ class ObjectView(QObject):
         Add a small historical marker and extend the tracking polyline.
         """
         marker = QgsVertexMarker(self.canvas)
-        marker.setColor(QColor(255, 0, 0))
-        marker.setIconType(QgsVertexMarker.ICON_BOX)
+        marker.setColor(self._colour)
+        marker.setIconType(self._marker_icon)
         marker.setIconSize(5)
         marker.setPenWidth(1)
         marker.setCenter(point)

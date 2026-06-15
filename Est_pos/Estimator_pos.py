@@ -4,16 +4,24 @@
 #import matplotlib
 #matplotlib.use("Agg")  # headless (bez okna GUI)
 import math
+import os
 from geopy.distance import geodesic
 from pyproj import Transformer, CRS
 #from plotowanie import plot_final_results, save_folium_map
 #from odleglosci_wg_GPS import  GPS_dist_Vincenty
 #from importowanie import import_data
 # scytonizowane funkcje
-# from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku 
+# from Est_pos.tdoa_cython import compute_tdoa_1hz  # pierwszy człon nazwy pliku
 from oblicz_TDOA import compute_tdoa_1hz
 from Est_pos.tdoa_solver_30_11_2025 import tdoa_estimate_mode_6
 from Est_pos.importowanie import import_data
+
+# Alternatywny estymator 3-parowy (bez wirtualnego 4-go hydrofonu w centroidzie).
+# Import zabezpieczony, zeby domyslna sciezka 'mode6' nigdy nie zalezala od tego pliku.
+try:
+    from Est_pos.tdoa_solver_3hydro import estimate_position_3hydro
+except Exception:
+    estimate_position_3hydro = None
 
 
 """
@@ -117,7 +125,8 @@ def save_detailed_results(GPS1, GPS2, GPS3, GPS_OP,
             )
 # ===================== GŁÓWNA PĘTLA - POCZĄTEK ===================================
 
-def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path):
+def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path,
+                 solver=None):
 
     GPS1, GPS2, GPS3, s1_raw, s2_raw, s3_raw, fs = import_data(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_path)
 
@@ -178,10 +187,30 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     # (closure threshold, geometric gate, smoothing) is done by the controller,
     # so it can be tuned at runtime without re-running the TDOA. Only steps with
     # non-finite TDOA are skipped here.
-    est_track=[]
+    # Wybor solvera pozycji:
+    #   "mode6"  - domyslny, produkcyjny (4-ty wirtualny hydrofon w centroidzie),
+    #   "3hydro" - estymator 3-parowy (Est_pos/tdoa_solver_3hydro.py), bez
+    #              wirtualnego hydrofonu i bez startu z centroidu.
+    # Sterowane z configu przez zmienna srodowiskowa ZOPBSP_ESTPOS_SOLVER
+    # (ustawiana w main.py). Format zwracanych punktow jest identyczny dla obu.
+    if solver is None:
+        solver = os.environ.get("ZOPBSP_ESTPOS_SOLVER", "mode6")
+    solver = str(solver).strip().lower()
+    if solver == "3hydro" and estimate_position_3hydro is None:
+        print("[Est_pos] solver '3hydro' niedostepny (brak modulu) -> uzywam 'mode6'")
+        solver = "mode6"
+    print(f"[Est_pos] solver pozycji: {solver}")
+
+    # Wspolrzedne hydrofonow w metrach lokalnych (dla estymatora 3-parowego).
+    H1xy, H2xy, H3xy = H_coord[0][:2], H_coord[1][:2], H_coord[2][:2]
+
+    want_mode6 = solver in ("mode6", "both")
+    want_3hydro = solver in ("3hydro", "both")
+
+    tracks = {"mode6": [], "3hydro": []}
     n_skipped = 0
-    pos_est = None
-    for *dSH,czas_gps1 in zip(tdoa12_1hz_m,tdoa13_1hz_m,tdoa23_1hz_m,GPS1): # do dSH podajemy 3xtdoa, a z GPS1 podajemy czas do czas_gps1
+    n_failed = 0  # tylko 3hydro (brak rozwiazania)
+    for *dSH, czas_gps1 in zip(tdoa12_1hz_m, tdoa13_1hz_m, tdoa23_1hz_m, GPS1):
         d12, d13, d23 = dSH
 
         if not all(math.isfinite(x) for x in (d12, d13, d23)):
@@ -189,20 +218,30 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
             continue
 
         closure = d12 + d23 - d13  # powinno być ~0; przekazujemy do kontrolera
+        t = czas_gps1[0]
 
-        res_1hz = tdoa_estimate_mode_6(
-            H_coord = H_coord,
-            dSH     = dSH,
-            B       = B,
-            mode_po = 0,   # centroid
-            )
+        if want_mode6:
+            res_1hz = tdoa_estimate_mode_6(
+                H_coord = H_coord,
+                dSH     = (d12, d13, d23),
+                B       = B,
+                mode_po = 0,   # centroid
+                )
+            xm, ym = res_1hz['Pe'][0:2]  # Pe - position estimation
+            ll = inv.transform(xm, ym)
+            tracks["mode6"].append([t, *ll, float(closure)])
 
-        pos_est = inv.transform(*res_1hz['Pe'][0:2]) # Pe - position estimation
-        # Zachowujemy oryginalna kolejnosc (*pos_est) + doklejamy closure jako 4-ty element.
-        est_track.append([czas_gps1[0], *pos_est, float(closure)])
+        if want_3hydro:
+            xy = estimate_position_3hydro(H1xy, H2xy, H3xy, d12, d13, d23)
+            if xy is None:
+                n_failed += 1
+            else:
+                ll = inv.transform(xy[0], xy[1])
+                tracks["3hydro"].append([t, *ll, float(closure)])
 
-    print(f"[tdoa] pominieto {n_skipped} krokow z niefinitnym TDOA; zwrocono {len(est_track)} punktow")
-    print(f"pos_est: {pos_est if est_track else 'brak'}")
+    print(f"[tdoa] pominieto {n_skipped} krokow z niefinitnym TDOA "
+          f"(+ {n_failed} bez rozwiazania 3hydro); "
+          f"mode6={len(tracks['mode6'])} pkt, 3hydro={len(tracks['3hydro'])} pkt")
 
     # Weryfikacja dokładności estymacji pozycji poprzez porównanie do danych z GPS -> MAE (1Hz)
     # gps12_m = GPS_dist_Vincenty(GPS1, GPS2, GPS_OP)[:n_gps]
@@ -220,9 +259,14 @@ def estimate_pos(gps1_path, gps2_path, gps3_path, wav1_path, wav2_path, wav3_pat
     
     # UWAGA: filtrowanie (promień / zamknięcie / geometria) przeniesione do
     # kontrolera, który operuje na surowych punktach [time, lat, lon, closure].
-    print(f"est_track: {est_track}")
-
-    return est_track
+    # Format zwrotu:
+    #   "mode6"/"3hydro" -> lista [time, lat, lon, closure] (jak dotychczas),
+    #   "both"           -> dict {"mode6": [...], "3hydro": [...]}.
+    if solver == "both":
+        return {"mode6": tracks["mode6"], "3hydro": tracks["3hydro"]}
+    if solver == "3hydro":
+        return tracks["3hydro"]
+    return tracks["mode6"]
 
     # zapis śladu (opcjonalnie) 
     # out_est = f"TDOA_track.txt"

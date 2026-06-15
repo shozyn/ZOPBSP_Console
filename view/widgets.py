@@ -295,27 +295,28 @@ class MenuBar(QMenuBar):
 
             menu.addAction(self._make_action("Clear Track", tgt_id, "clear_track"))
 
-        # Object Menus with toggle logic
-        object_id = "Object1"
-        object_menu = self.addMenu(object_id)
+        # Object Menus with toggle logic.
+        # Object1 = mode6 (lub pojedynczy solver), Object2 = 3hydro w trybie 'both'.
+        for object_id in ("Object1", "Object2"):
+            object_menu = self.addMenu(object_id)
 
-        display_action = QAction("Display", self)
-        display_action.triggered.connect(
-            lambda _, oid=object_id: self._toggle_object_display(oid)
-        )
-        object_menu.addAction(display_action)
-        self.object_display_actions[object_id] = display_action
+            display_action = QAction("Display", self)
+            display_action.triggered.connect(
+                lambda _, oid=object_id: self._toggle_object_display(oid)
+            )
+            object_menu.addAction(display_action)
+            self.object_display_actions[object_id] = display_action
 
-        track_action = QAction("Track", self)
-        track_action.triggered.connect(
-            lambda _, oid=object_id: self._toggle_object_tracking(oid)
-        )
-        object_menu.addAction(track_action)
-        self.object_track_actions[object_id] = track_action
+            track_action = QAction("Track", self)
+            track_action.triggered.connect(
+                lambda _, oid=object_id: self._toggle_object_tracking(oid)
+            )
+            object_menu.addAction(track_action)
+            self.object_track_actions[object_id] = track_action
 
-        object_menu.addAction(
-            self._make_action("Clear Track", object_id, "clear_track")
-        )
+            object_menu.addAction(
+                self._make_action("Clear Track", object_id, "clear_track")
+            )
 
 
 
