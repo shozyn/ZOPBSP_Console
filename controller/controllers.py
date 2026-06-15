@@ -937,7 +937,204 @@ class CalculationController(QObject):
         self.menu_bar.command_triggered.connect(self.handle_command)
         self.print_res.connect(dock_result.add_result)
 
+    
+
 # ----------------- Lifecycle slots (bind to GUI) -----------------
+    # Class indices in OUTPUT_CLASSES:
+    # 0 = Cisza / Salience
+    # 2 = LAUV
+    # 3 = Otter
+    # 5 = Ponton_2 / Raft
+    OBJECT_THRESHOLD = 0.5
+    SALIENCE_CLASS = 0
+    OBJECT_CLASSES = (2, 3, 5)
+
+    @staticmethod
+    def _threshold_aka1a_result(cls_result: dict, threshold: float = OBJECT_THRESHOLD) -> int:
+        """
+        Convert raw AKA1A output into thresholded display class.
+
+        The classifier returns external class indices:
+            0 = Cisza
+            2 = LAUV
+            3 = Otter
+            5 = Ponton_2 / Raft
+
+        Rule:
+            - take the strongest object class among LAUV/Otter/Raft;
+            - if its probability >= threshold and is stronger than Salience,
+              display that object;
+            - otherwise display Cisza.
+        """
+        probs = cls_result.get("class_prob")
+
+        # Fallback: if probabilities are missing, preserve old behaviour.
+        if not probs:
+            try:
+                return int(cls_result.get("pred_class"))
+            except Exception:
+                return CalculationController.SALIENCE_CLASS
+
+        try:
+            object_scores = {
+                cls_id: float(probs[cls_id])
+                for cls_id in CalculationController.OBJECT_CLASSES
+                if cls_id < len(probs)
+            }
+
+            if not object_scores:
+                return CalculationController.SALIENCE_CLASS
+
+            best_object_class = max(object_scores, key=object_scores.get)
+            best_object_score = object_scores[best_object_class]
+
+            salience_score = (
+                float(probs[CalculationController.SALIENCE_CLASS])
+                if CalculationController.SALIENCE_CLASS < len(probs)
+                else 0.0
+            )
+
+            if best_object_score >= threshold and best_object_score > salience_score:
+                return int(best_object_class)
+
+            return CalculationController.SALIENCE_CLASS
+
+        except Exception as e:
+            logger.warning(
+                "[CalculationController] AKA1A thresholding failed for result=%r: %s",
+                cls_result,
+                e,
+            )
+            try:
+                return int(cls_result.get("pred_class"))
+            except Exception:
+                return CalculationController.SALIENCE_CLASS
+
+
+    @staticmethod
+    def _threshold_aka1a_details(cls_result: dict, threshold: float = OBJECT_THRESHOLD):
+        """
+        Threshold one AKA1A result.
+
+        Returns:
+            pred_class, object_score, salience_score
+
+        pred_class is an external class index:
+            0 = Cisza
+            2 = LAUV
+            3 = Otter
+            5 = Ponton_2 / Raft
+        """
+        probs = cls_result.get("class_prob")
+
+        # Fallback: preserve old behaviour if probabilities are unavailable.
+        if not probs:
+            try:
+                return int(cls_result.get("pred_class")), None, None
+            except Exception:
+                return CalculationController.SALIENCE_CLASS, None, None
+
+        try:
+            object_scores = {
+                cls_id: float(probs[cls_id])
+                for cls_id in CalculationController.OBJECT_CLASSES
+                if cls_id < len(probs)
+            }
+
+            if not object_scores:
+                return CalculationController.SALIENCE_CLASS, None, None
+
+            best_object_class = max(object_scores, key=object_scores.get)
+            object_score = float(object_scores[best_object_class])
+
+            salience_score = (
+                float(probs[CalculationController.SALIENCE_CLASS])
+                if CalculationController.SALIENCE_CLASS < len(probs)
+                else 0.0
+            )
+
+            if object_score >= threshold and object_score > salience_score:
+                return int(best_object_class), object_score, salience_score
+
+            return CalculationController.SALIENCE_CLASS, object_score, salience_score
+
+        except Exception as e:
+            logger.warning(
+                "[CalculationController] AKA1A thresholding failed for result=%r: %s",
+                cls_result,
+                e,
+            )
+            try:
+                return int(cls_result.get("pred_class")), None, None
+            except Exception:
+                return CalculationController.SALIENCE_CLASS, None, None
+
+    @staticmethod
+    def _threshold_aka1a_result(cls_result: dict, threshold: float = OBJECT_THRESHOLD) -> int:
+        pred_class, _object_score, _salience_score = (
+            CalculationController._threshold_aka1a_details(cls_result, threshold)
+        )
+        return pred_class
+
+    @staticmethod
+    def _mean_aka1a_probabilities(aka1a: list):
+        """
+        Average class_prob vectors from all available RPIs.
+        """
+        rows = []
+
+        for item in aka1a:
+            probs = item.get("class_prob") if isinstance(item, dict) else None
+            if not probs:
+                continue
+
+            try:
+                rows.append([float(v) for v in probs])
+            except Exception:
+                continue
+
+        if not rows:
+            return None
+
+        n = min(len(row) for row in rows)
+        if n <= 0:
+            return None
+
+        return [
+            sum(row[i] for row in rows) / len(rows)
+            for i in range(n)
+        ]
+
+    def _add_average_classification_to_result(self, res: dict) -> None:
+        """
+        Add one averaged 3-RPI AKA1A result to the result dictionary.
+
+        New field:
+            res["AKA1A_avg"]
+        """
+        aka1a = res.get("AKA1A") or []
+        avg_probs = self._mean_aka1a_probabilities(aka1a)
+
+        if avg_probs is None:
+            return
+
+        avg_item = {
+            "class_prob": avg_probs,
+        }
+
+        pred_class, object_score, salience_score = self._threshold_aka1a_details(
+            avg_item,
+            threshold=self.OBJECT_THRESHOLD,
+        )
+
+        avg_item["pred_class"] = pred_class
+        avg_item["object_score"] = object_score
+        avg_item["salience_score"] = salience_score
+        avg_item["threshold"] = self.OBJECT_THRESHOLD
+        avg_item["source"] = "average_3_rpi"
+
+        res["AKA1A_avg"] = avg_item
+
 
     def _emit_receiver_classifications_from_result(self, res: dict) -> None:
         """
@@ -957,9 +1154,21 @@ class CalculationController(QObject):
         if not receivers or not aka1a:
             return
 
+        # for receiver_id, cls_result in zip(receivers, aka1a):
+        #     try:
+        #         pred_class = int(cls_result.get("pred_class"))
+        #     except Exception as e:
+        #         logger.warning(
+        #             "[CalculationController] Invalid AKA1A result for receiver %s: %s",
+        #             receiver_id,
+        #             e,
+        #         )
+        #         continue
+
+        #     self.receiver_classification_ready.emit(str(receiver_id), pred_class)
         for receiver_id, cls_result in zip(receivers, aka1a):
             try:
-                pred_class = int(cls_result.get("pred_class"))
+                pred_class = self._threshold_aka1a_result(cls_result)
             except Exception as e:
                 logger.warning(
                     "[CalculationController] Invalid AKA1A result for receiver %s: %s",
@@ -1249,9 +1458,9 @@ class CalculationController(QObject):
             logger.info("[Calc] job_finished %s in %.3f s", jid, dt)
 
         self._emit_receiver_classifications_from_result(res)
+        self._add_average_classification_to_result(res)
         self._emit_object_position_from_result(jid, res)
         self._emit_reference_for_result(res)
-
         self.print_results(jid, res)
 
     def _emit_reference_for_result(self, res: dict) -> None:
@@ -1512,9 +1721,10 @@ class CalculationController(QObject):
 
         if best_i is None or best_i >= len(aka1a):
             return
+        
         try:
-            pred_class = int(aka1a[best_i].get("pred_class"))
-        except (TypeError, ValueError):
+            pred_class = self._threshold_aka1a_result(aka1a[best_i])
+        except Exception:
             return
 
         self.object_type_detected.emit(pred_class)

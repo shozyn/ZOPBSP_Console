@@ -5,7 +5,7 @@ num_receivers: 3
 #   "both"   - oba naraz: mode6 -> Object1 (czerwony), 3hydro -> Object2 (niebieski)
 est_pos_solver: "both"
 map:
-  - layer: "C:\\Code\\Console\\kosobudno_w_stopniach_2.tif"
+  - layer: "C:\\Code\\ZOPBSP_Console\\kosobudno_w_stopniach_2.tif"
   #- layer: "resources/ortofot_topocentryczny.bmp"
 targets:
   - id: "Target1"
